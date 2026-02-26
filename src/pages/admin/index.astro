@@ -1,0 +1,245 @@
+---
+/**
+ * admin/index.astro
+ * 
+ * Página principal do dashboard administrativo.
+ * Exibe visão geral do sistema com estatísticas, posts recentes e ações rápidas.
+ * Design moderno e informativo, rival do WordPress em funcionalidade mas superior em performance.
+ * 
+ * Widgets incluídos:
+ * - Cards estatísticos (Posts, Autores, Categorias, Temas)
+ * - Lista de posts recentes
+ * - Ações rápidas para criação de conteúdo
+ * - Links diretos para o Keystatic
+ */
+
+import { getCollection } from 'astro:content';
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import StatCard from '../../components/admin/StatCard.astro';
+import RecentPosts from '../../components/admin/RecentPosts.astro';
+import { verifySession, SESSION_COOKIE } from '../../utils/auth-utils';
+
+// ─── Autenticação ─────────────────────────────────────────────────────────────
+const token = Astro.cookies.get(SESSION_COOKIE)?.value;
+const sessionUser = token ? verifySession(token) : null;
+if (!sessionUser) return Astro.redirect('/admin/login');
+
+// ─── Dados do dashboard ───────────────────────────────────────────────────────
+const posts      = await getCollection('posts');
+const authors    = await getCollection('authors');
+const categories = await getCollection('categories');
+
+const publishedPosts = posts.filter(p => p.data.publishedDate);
+const draftPosts     = posts.length - publishedPosts.length;
+const isAdmin        = sessionUser.adminRole === 'admin';
+---
+
+<AdminLayout title="Dashboard">
+    <div class="mb-8">
+        <h1 class="text-3xl font-heading font-bold text-[#e5e5e5] mb-1">Dashboard</h1>
+        <p class="text-[#a3a3a3] text-sm">Olá, <strong class="text-white">{sessionUser.name}</strong> — visão geral do seu site</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <StatCard title="Total de Posts"    value={posts.length}      icon="📝" link="/admin/posts"      />
+        <StatCard title="Posts Publicados"  value={publishedPosts.length} icon="✅" link="/admin/posts"  />
+        <StatCard title="Rascunhos"         value={draftPosts}        icon="📄" link="/admin/posts"      />
+        <StatCard title="Autores"           value={authors.length}    icon="👤" link="/admin/authors"    />
+    </div>
+
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+            <RecentPosts posts={posts} />
+        </div>
+
+        <!-- Ações rápidas -->
+        <div class="admin-card p-6">
+            <h3 class="text-base font-heading font-bold text-[#e5e5e5] mb-4">⚡ Ações Rápidas</h3>
+            <div class="space-y-2">
+                <a href="/admin/posts/new"   class="admin-btn admin-btn-primary  text-sm w-full justify-center">+ Novo Post</a>
+                <a href="/admin/pages"       class="admin-btn admin-btn-ghost    text-sm w-full justify-start">✏️ Editar Páginas</a>
+                <a href="/admin/authors"     class="admin-btn admin-btn-ghost    text-sm w-full justify-start">👤 Gerenciar Autores</a>
+                <a href="/admin/categories"  class="admin-btn admin-btn-ghost    text-sm w-full justify-start">🏷️ Categorias</a>
+                {isAdmin && (
+                    <>
+                        <hr class="border-white/10 my-2" />
+                        <a href="/admin/pixels"    class="admin-btn admin-btn-ghost text-sm w-full justify-start">📡 Pixels & Analytics</a>
+                        <a href="/admin/analytics" class="admin-btn admin-btn-ghost text-sm w-full justify-start">📈 Ver Analytics</a>
+                    </>
+                )}
+                <hr class="border-white/10 my-2" />
+                <a href="/" target="_blank"  class="admin-btn admin-btn-ghost    text-sm w-full justify-start">👁️ Ver Site Público</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div class="mt-6 admin-card p-5">
+        <div class="flex items-center gap-6 flex-wrap text-sm text-[#a3a3a3]">
+            <span>📝 <strong class="text-white">{posts.length}</strong> posts</span>
+            <span>👤 <strong class="text-white">{authors.length}</strong> autores</span>
+            <span>🏷️ <strong class="text-white">{categories.length}</strong> categorias</span>
+            <span class="ml-auto text-xs text-[#525252]">
+                Role: <span class={isAdmin ? 'text-violet-400' : 'text-sky-400'}>{sessionUser.adminRole}</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Card de Aparência do Site -->
+    <div class="mt-6 admin-card p-5">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-lg" id="appearance-icon">🎨</span>
+                <div>
+                    <div class="text-sm font-semibold text-[#e5e5e5]">Aparência do Site</div>
+                    <div class="text-xs text-[#737373]">Define o tema visual para todos os visitantes</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 p-1 rounded-xl" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <button
+                    id="theme-dark-btn"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all"
+                    data-scheme="dark"
+                    title="Tema Escuro"
+                >
+                    🌙 Escuro
+                </button>
+                <button
+                    id="theme-light-btn"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all"
+                    data-scheme="light"
+                    title="Tema Claro"
+                >
+                    ☀️ Claro
+                </button>
+            </div>
+
+            <span id="appearance-status" class="text-xs text-[#525252] hidden">Salvando...</span>
+        </div>
+    </div>
+
+    <!-- Card de Versão do Template -->
+    <div class="mt-4 admin-card p-5" id="version-card">
+        <div class="flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <span class="text-lg" id="version-icon">⏳</span>
+                <div>
+                    <div class="text-sm font-semibold text-[#e5e5e5]" id="version-title">Verificando versão...</div>
+                    <div class="text-xs text-[#737373]" id="version-subtitle">Aguarde um momento</div>
+                </div>
+            </div>
+            <a
+                id="version-link"
+                href="#"
+                target="_blank"
+                class="hidden text-xs px-3 py-1.5 rounded-lg border border-white/10 text-[#a3a3a3] hover:text-white hover:border-white/20 transition-all"
+            >
+                Ver o que mudou →
+            </a>
+        </div>
+    </div>
+</AdminLayout>
+
+<script is:inline>
+/* ── Aparência do Site ─────────────────────────────────────────── */
+(function () {
+    var darkBtn   = document.getElementById('theme-dark-btn');
+    var lightBtn  = document.getElementById('theme-light-btn');
+    var statusEl  = document.getElementById('appearance-status');
+    var current   = 'dark';
+
+    function applyActiveStyle(scheme) {
+        var active   = scheme === 'dark' ? darkBtn  : lightBtn;
+        var inactive = scheme === 'dark' ? lightBtn : darkBtn;
+        if (!active || !inactive) return;
+        active.style.background  = 'rgba(168,85,247,0.25)';
+        active.style.color       = '#c084fc';
+        active.style.border      = '1px solid rgba(168,85,247,0.4)';
+        inactive.style.background = 'transparent';
+        inactive.style.color      = '#a3a3a3';
+        inactive.style.border     = '1px solid transparent';
+    }
+
+    function setScheme(scheme) {
+        if (scheme === current) return;
+        current = scheme;
+        applyActiveStyle(scheme);
+        if (statusEl) { statusEl.textContent = 'Salvando...'; statusEl.classList.remove('hidden'); }
+
+        fetch('/api/admin/site-settings', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ colorScheme: scheme }),
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            if (statusEl) {
+                statusEl.textContent = data.success ? '✅ Salvo! O site será reconstruído em instantes.' : '❌ Erro ao salvar';
+                statusEl.classList.remove('hidden');
+                setTimeout(function () { statusEl.classList.add('hidden'); }, 4000);
+            }
+        })
+        .catch(function () {
+            if (statusEl) { statusEl.textContent = '❌ Erro de rede'; statusEl.classList.remove('hidden'); }
+        });
+    }
+
+    /* Carregar estado atual */
+    fetch('/api/admin/site-settings')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            var scheme = (data.data && data.data.colorScheme) || 'dark';
+            current = scheme;
+            applyActiveStyle(scheme);
+        })
+        .catch(function () { applyActiveStyle('dark'); });
+
+    if (darkBtn)  darkBtn.addEventListener('click',  function () { setScheme('dark'); });
+    if (lightBtn) lightBtn.addEventListener('click', function () { setScheme('light'); });
+})();
+</script>
+
+<script is:inline>
+/* ── Versão do Template ────────────────────────────────────────── */
+(function () {
+    fetch('/api/admin/version')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            var icon     = document.getElementById('version-icon');
+            var title    = document.getElementById('version-title');
+            var subtitle = document.getElementById('version-subtitle');
+            var link     = document.getElementById('version-link');
+            var card     = document.getElementById('version-card');
+
+            if (data.upToDate) {
+                if (icon)     icon.textContent     = '✅';
+                if (title)    title.textContent     = 'Template CNX v' + data.installed + ' — Atualizado';
+                if (subtitle) subtitle.textContent  = 'Você está usando a versão mais recente.';
+            } else {
+                if (icon)     icon.textContent     = '🔔';
+                if (title)    title.textContent     = 'Atualização disponível: v' + data.installed + ' → v' + data.latest;
+                if (subtitle) subtitle.textContent  = 'Acesse GitHub → Actions → "Atualizar Template CNX" → Run workflow';
+                if (card) {
+                    card.style.borderColor = 'rgba(234, 179, 8, 0.3)';
+                    card.style.background  = 'rgba(234, 179, 8, 0.05)';
+                }
+            }
+
+            if (link && data.changelog) {
+                link.href = data.changelog;
+                link.classList.remove('hidden');
+            }
+        })
+        .catch(function () {
+            var title    = document.getElementById('version-title');
+            var subtitle = document.getElementById('version-subtitle');
+            var icon     = document.getElementById('version-icon');
+            if (icon)     icon.textContent     = '❓';
+            if (title)    title.textContent     = 'Versão não identificada';
+            if (subtitle) subtitle.textContent  = 'Não foi possível verificar atualizações agora.';
+        });
+})();
+</script>
