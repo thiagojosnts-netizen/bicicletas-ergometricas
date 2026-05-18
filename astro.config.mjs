@@ -11,11 +11,11 @@ export default defineConfig({
     adapter: vercel(),
     integrations: [
         react({
-            jsxRuntime: 'automatic',
-            jsxImportSource: 'react',
+            // classic evita erro "jsxDEV is not a function" com client:only em dev
+            jsxRuntime: 'classic',
         }),
         tailwind(), 
-        markdoc()
+        markdoc({ allowHTML: true })
     ],
     // Reset Trigger: 2026-02-07 11:40
 });

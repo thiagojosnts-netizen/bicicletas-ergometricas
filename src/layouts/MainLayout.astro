@@ -1,8 +1,17 @@
 ---
+/**
+ * MainLayout.astro
+ *
+ * Layout base para modo Blog/Agência.
+ * Usa tema classic fixo (Header, Footer, cores).
+ */
+
 import { getEntry } from 'astro:content';
+import CookieConsent from '../components/CookieConsent.astro';
+import { readSingleton } from '../utils/singleton-utils';
+import { readSiteSettings } from '../utils/read-site-settings';
 import Header from '../themes/classic/components/Header.astro';
 import Footer from '../themes/classic/components/Footer.astro';
-import { readSingleton } from '../utils/singleton-utils';
 import '../styles/global.css';
 import '@fontsource/inter';
 import '@fontsource/outfit';
@@ -19,16 +28,26 @@ const {
     ogImage = "/images/og-default.png",
 } = Astro.props;
 
-const theme = await getEntry('siteThemes', 'classic');
 const siteSettings = await getEntry('siteSettings', 'settings').catch(() => null);
+const siteConfig   = await readSiteSettings();
+const themeId = 'classic';
 const colorScheme: 'dark' | 'light' = (siteSettings?.data?.colorScheme as 'dark' | 'light') || 'dark';
-const pixelSettings = await readSingleton('pixels', 'classic').catch(() => null);
+
+const theme = await getEntry('siteThemes', 'classic').catch(() => null);
+
+// Canonical URL: preferir settings, fallback para URL da requisição
+const canonicalBase = (siteConfig.canonicalUrl as string)?.trim() || '';
+const pathname      = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalHref = canonicalBase
+    ? `${canonicalBase.replace(/\/$/, '')}${pathname === '/' ? '' : pathname}`
+    : Astro.url.origin + pathname;
+const pixelSettings = await readSingleton('pixels', themeId).catch(() => null);
 const gaId = pixelSettings?.googleAnalyticsId || '';
 const fbPixelId = pixelSettings?.facebookPixelId || '';
 
-const primaryColor = theme?.data.primaryColor || '#a855f7';
-const secondaryColor = theme?.data.secondaryColor || '#ec4899';
-const borderRadius = theme?.data.borderRadius || '16px';
+const primaryColor = theme?.data?.primaryColor || '#a855f7';
+const secondaryColor = theme?.data?.secondaryColor || '#ec4899';
+const borderRadius = theme?.data?.borderRadius || '16px';
 
 function hexToRgb(hex: string) {
     if (!hex || typeof hex !== 'string' || !hex.startsWith('#')) return '168 85 247';
@@ -53,6 +72,7 @@ const secondaryRGB = hexToRgb(secondaryColor);
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalHref} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
         <meta name="description" content={description} />
@@ -62,31 +82,7 @@ const secondaryRGB = hexToRgb(secondaryColor);
         <meta property="og:description" content={description} />
         {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.url)} />}
 
-        <!-- Google Analytics GA4 -->
-        {gaId && (
-            <>
-                <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-                <script define:vars={{ gaId }} is:inline>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', gaId);
-                </script>
-            </>
-        )}
-
-        <!-- Meta Pixel (Facebook) -->
-        {fbPixelId && (
-            <script define:vars={{ fbPixelId }} is:inline>
-                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-                document,'script','https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', fbPixelId);
-                fbq('track', 'PageView');
-            </script>
-        )}
+        <!-- GA e Meta Pixel são injetados via CookieConsent apenas após consentimento -->
 
         <!-- Theme Engine: Injected Variables -->
         <style is:global define:vars={{ primaryRGB, secondaryRGB, borderRadius }}>
@@ -105,12 +101,15 @@ const secondaryRGB = hexToRgb(secondaryColor);
             <div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 blur-[100px]"></div>
         </div>
 
-        <Header activeThemeId="classic" />
+        <Header activeThemeId={themeId} />
 
         <main class="flex-grow">
             <slot />
         </main>
 
-        <Footer activeThemeId="classic" />
+        <Footer activeThemeId={themeId} />
+
+        <!-- Banner de consentimento de cookies (LGPD/GDPR) -->
+        <CookieConsent gaId={gaId} fbPixelId={fbPixelId} />
 	</body>
 </html>
