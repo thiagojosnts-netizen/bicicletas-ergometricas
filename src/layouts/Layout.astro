@@ -1,117 +1,144 @@
 ﻿---
-const { title, description = 'Guia independente de bicicletas ergométricas no Brasil. Comparativos honestos, guias de compra por perfil e conteúdo de uso prático.', canonical = '' } = Astro.props;
-import '../styles/global.css';
-const siteUrl = 'https://www.bicicletasergometricas.com';
-const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
----
-<!DOCTYPE html>
-<html lang="pt-BR" itemscope itemtype="https://schema.org/WebSite">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href={fullCanonical} />
-<meta property="og:type" content="website" />
-<meta property="og:title" content={`${title} | BicicletasErgométricas`} />
-<meta property="og:description" content={description} />
-<meta property="og:url" content={fullCanonical} />
-<meta property="og:site_name" content="BicicletasErgométricas" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content={`${title} | BicicletasErgométricas`} />
-<meta name="twitter:description" content={description} />
-<title>{title} | BicicletasErgométricas</title>
-<script type="application/ld+json">
-{JSON.stringify({
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  modifiedDate?: string;
+  slug: string;
+  image?: string;
+  breadcrumbs: Array<{ label: string; href: string }>;
+  toc?: Array<{ id: string; label: string; level?: 2 | 3 }>;
+  affiliate?: boolean;
+  readingTime?: number;
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  modifiedDate,
+  slug,
+  image = "https://bicicletasergometricas.com/og-default.jpg",
+  breadcrumbs,
+  toc = [],
+  affiliate = true,
+  readingTime,
+} = Astro.props;
+
+const siteUrl = "https://bicicletasergometricas.com";
+const canonicalUrl = `/${slug}`;
+const datePublished = new Date(publishDate).toISOString();
+const dateModified = modifiedDate ? new Date(modifiedDate).toISOString() : datePublished;
+
+const schemaArticle = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "BicicletasErgométricas",
-  "url": siteUrl,
-  "description": "Guia independente de bicicletas ergométricas no Brasil",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${siteUrl}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
-})}
-</script>
-</head>
-<body class="bg-white text-gray-900 font-sans antialiased">
+  "@type": "Article",
+  headline: title,
+  description,
+  image,
+  datePublished,
+  dateModified,
+  author: { "@type": "Organization", name: "Bicicletas Ergométricas", url: siteUrl },
+  publisher: { "@type": "Organization", name: "Bicicletas Ergométricas", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}${canonicalUrl}` },
+};
 
-<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-rose-500 text-white px-4 py-2 rounded z-50">Pular para o conteúdo</a>
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: siteUrl },
+    ...breadcrumbs.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 2,
+      name: crumb.label,
+      item: `${siteUrl}${crumb.href}`,
+    })),
+  ],
+};
+---
 
-<header role="banner" class="border-b border-gray-200 sticky top-0 bg-white z-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-base font-bold text-gray-900 hover:text-rose-500 transition-colors" aria-label="BicicletasErgométricas - Página inicial">
-      🚴 BicicletasErgométricas
-    </a>
-    <nav role="navigation" aria-label="Menu principal">
-      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 list-none">
-        <li><a href="/guia" class="hover:text-gray-900 transition-colors">Guia de Compra</a></li>
-        <li><a href="/comparativos" class="hover:text-gray-900 transition-colors">Comparativos</a></li>
-        <li><a href="/como-usar" class="hover:text-gray-900 transition-colors">Como Usar</a></li>
-        <li><a href="/ferramentas" class="hover:text-gray-900 transition-colors">Ferramentas</a></li>
-      </ul>
-    </nav>
-    <a href="/ferramentas/quiz-qual-ergometrica" class="hidden md:inline-flex bg-rose-500 hover:bg-rose-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
-      Qual é a minha? →
-    </a>
+<Layout title={title} description={description} canonical={canonicalUrl}>
+
+  <!-- Schema extras no <head> via slot -->
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaArticle)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaBreadcrumb)} />
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Localização" class="border-b border-gray-100 bg-gray-50 px-4 py-2 text-sm text-gray-500">
+    <ol class="mx-auto flex max-w-6xl flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-rose-500">Início</a></li>
+      {breadcrumbs.map((crumb, i) => (
+        <>
+          <li aria-hidden="true">/</li>
+          <li>
+            {i < breadcrumbs.length - 1
+              ? <a href={crumb.href} class="hover:text-rose-500">{crumb.label}</a>
+              : <span class="text-gray-800 font-medium" aria-current="page">{crumb.label}</span>
+            }
+          </li>
+        </>
+      ))}
+    </ol>
+  </nav>
+
+  <!-- Layout artigo: conteúdo + sidebar TOC -->
+  <div class="mx-auto max-w-6xl px-4 py-8 lg:flex lg:gap-10">
+
+    <main class="min-w-0 flex-1">
+
+      <header class="mb-8">
+        <h1 class="mb-3 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">{title}</h1>
+        <p class="mb-4 text-lg text-gray-600 leading-relaxed">{description}</p>
+        <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+          <time datetime={datePublished}>
+            Publicado em {new Date(publishDate).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+          </time>
+          {modifiedDate && modifiedDate !== publishDate && (
+            <time datetime={dateModified}>
+              · Atualizado em {new Date(modifiedDate).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+            </time>
+          )}
+          {readingTime && <span>· {readingTime} min de leitura</span>}
+        </div>
+      </header>
+
+      {affiliate && (
+        <aside role="note" class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <strong>Transparência:</strong> Este site contém links de afiliado. Se você comprar por eles, recebemos uma comissão sem custo extra para você. Nossa curadoria é independente. <a href="/sobre" class="underline hover:text-amber-900">Saiba mais.</a>
+        </aside>
+      )}
+
+      <article class="prose prose-rose max-w-none prose-headings:scroll-mt-24 prose-a:text-rose-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
+        <slot />
+      </article>
+
+      <footer class="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-400">
+        <p>Última atualização: <time datetime={dateModified}>{new Date(dateModified).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></p>
+        <p class="mt-1">Informações baseadas em fichas técnicas dos fabricantes e avaliações públicas de usuários.</p>
+      </footer>
+
+    </main>
+
+    {toc.length > 0 && (
+      <aside class="hidden lg:block lg:w-64 lg:shrink-0">
+        <div class="sticky top-24">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">Neste artigo</p>
+          <ol class="space-y-1 text-sm">
+            {toc.map((item) => (
+              <li class={item.level === 3 ? "pl-3" : ""}>
+                <a href={`#${item.id}`} class="block rounded px-2 py-1 text-gray-600 transition-colors hover:bg-rose-50 hover:text-rose-500">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </aside>
+    )}
+
   </div>
-</header>
 
-<main id="main" role="main">
-  <slot />
-</main>
-
-<footer role="contentinfo" class="border-t border-gray-200 mt-24 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-      <nav aria-label="Links de guia de compra">
-        <h2 class="text-sm font-semibold text-gray-900 mb-4">Guia de Compra</h2>
-        <ul class="space-y-2 text-sm text-gray-500 list-none">
-          <li><a href="/guia" class="hover:text-rose-500 transition-colors">Como escolher</a></li>
-          <li><a href="/reviews/ergometrica-silenciosa-apartamento" class="hover:text-rose-500 transition-colors">Para apartamento</a></li>
-          <li><a href="/reviews/ergometrica-para-idosos" class="hover:text-rose-500 transition-colors">Para idosos</a></li>
-          <li><a href="/reviews/ergometrica-reabilitacao" class="hover:text-rose-500 transition-colors">Para reabilitação</a></li>
-          <li><a href="/reviews/ergometrica-acima-100kg" class="hover:text-rose-500 transition-colors">Acima de 100kg</a></li>
-        </ul>
-      </nav>
-      <nav aria-label="Links de comparativos">
-        <h2 class="text-sm font-semibold text-gray-900 mb-4">Comparativos</h2>
-        <ul class="space-y-2 text-sm text-gray-500 list-none">
-          <li><a href="/comparativos/mecanica-vs-magnetica" class="hover:text-rose-500 transition-colors">Mecânica vs Magnética</a></li>
-          <li><a href="/comparativos/ergometrica-vs-spinning" class="hover:text-rose-500 transition-colors">Ergométrica vs Spinning</a></li>
-        </ul>
-      </nav>
-      <nav aria-label="Links de como usar">
-        <h2 class="text-sm font-semibold text-gray-900 mb-4">Como Usar</h2>
-        <ul class="space-y-2 text-sm text-gray-500 list-none">
-          <li><a href="/como-usar/ajuste-ergonomico" class="hover:text-rose-500 transition-colors">Ajuste ergonômico</a></li>
-          <li><a href="/como-usar/quanto-tempo-pedalar" class="hover:text-rose-500 transition-colors">Quanto tempo pedalar</a></li>
-          <li><a href="/como-usar/manutencao-correia" class="hover:text-rose-500 transition-colors">Manutenção</a></li>
-          <li><a href="/como-usar/roda-de-inercia" class="hover:text-rose-500 transition-colors">Roda de inércia</a></li>
-        </ul>
-      </nav>
-      <nav aria-label="Links de ferramentas">
-        <h2 class="text-sm font-semibold text-gray-900 mb-4">Ferramentas</h2>
-        <ul class="space-y-2 text-sm text-gray-500 list-none">
-          <li><a href="/ferramentas/quiz-qual-ergometrica" class="hover:text-rose-500 transition-colors">Quiz: qual comprar</a></li>
-          <li><a href="/ferramentas/calculadora-calorias" class="hover:text-rose-500 transition-colors">Calculadora de calorias</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div>
-        <p class="text-sm font-semibold text-gray-900 mb-1">🚴 BicicletasErgométricas</p>
-        <p class="text-xs text-gray-400">Curadoria independente baseada em avaliações reais e dados públicos.</p>
-      </div>
-      <div class="text-xs text-gray-400 text-left md:text-right space-y-1">
-        <p>© 2026 BicicletasErgométricas.com</p>
-        <p>Este site contém links de afiliados. Veja nossa <a href="/sobre" class="hover:text-gray-600 underline">política editorial</a>.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+</Layout>
