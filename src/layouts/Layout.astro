@@ -1,0 +1,117 @@
+﻿---
+const { title, description = 'Guia independente de bicicletas ergométricas no Brasil. Comparativos honestos, guias de compra por perfil e conteúdo de uso prático.', canonical = '' } = Astro.props;
+import '../styles/global.css';
+const siteUrl = 'https://www.bicicletasergometricas.com';
+const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+---
+<!DOCTYPE html>
+<html lang="pt-BR" itemscope itemtype="https://schema.org/WebSite">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={fullCanonical} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={`${title} | BicicletasErgométricas`} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={fullCanonical} />
+<meta property="og:site_name" content="BicicletasErgométricas" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={`${title} | BicicletasErgométricas`} />
+<meta name="twitter:description" content={description} />
+<title>{title} | BicicletasErgométricas</title>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "BicicletasErgométricas",
+  "url": siteUrl,
+  "description": "Guia independente de bicicletas ergométricas no Brasil",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+})}
+</script>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-rose-500 text-white px-4 py-2 rounded z-50">Pular para o conteúdo</a>
+
+<header role="banner" class="border-b border-gray-200 sticky top-0 bg-white z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-base font-bold text-gray-900 hover:text-rose-500 transition-colors" aria-label="BicicletasErgométricas - Página inicial">
+      🚴 BicicletasErgométricas
+    </a>
+    <nav role="navigation" aria-label="Menu principal">
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 list-none">
+        <li><a href="/guia" class="hover:text-gray-900 transition-colors">Guia de Compra</a></li>
+        <li><a href="/comparativos" class="hover:text-gray-900 transition-colors">Comparativos</a></li>
+        <li><a href="/como-usar" class="hover:text-gray-900 transition-colors">Como Usar</a></li>
+        <li><a href="/ferramentas" class="hover:text-gray-900 transition-colors">Ferramentas</a></li>
+      </ul>
+    </nav>
+    <a href="/ferramentas/quiz-qual-ergometrica" class="hidden md:inline-flex bg-rose-500 hover:bg-rose-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+      Qual é a minha? →
+    </a>
+  </div>
+</header>
+
+<main id="main" role="main">
+  <slot />
+</main>
+
+<footer role="contentinfo" class="border-t border-gray-200 mt-24 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <nav aria-label="Links de guia de compra">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Guia de Compra</h2>
+        <ul class="space-y-2 text-sm text-gray-500 list-none">
+          <li><a href="/guia" class="hover:text-rose-500 transition-colors">Como escolher</a></li>
+          <li><a href="/reviews/ergometrica-silenciosa-apartamento" class="hover:text-rose-500 transition-colors">Para apartamento</a></li>
+          <li><a href="/reviews/ergometrica-para-idosos" class="hover:text-rose-500 transition-colors">Para idosos</a></li>
+          <li><a href="/reviews/ergometrica-reabilitacao" class="hover:text-rose-500 transition-colors">Para reabilitação</a></li>
+          <li><a href="/reviews/ergometrica-acima-100kg" class="hover:text-rose-500 transition-colors">Acima de 100kg</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Links de comparativos">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Comparativos</h2>
+        <ul class="space-y-2 text-sm text-gray-500 list-none">
+          <li><a href="/comparativos/mecanica-vs-magnetica" class="hover:text-rose-500 transition-colors">Mecânica vs Magnética</a></li>
+          <li><a href="/comparativos/ergometrica-vs-spinning" class="hover:text-rose-500 transition-colors">Ergométrica vs Spinning</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Links de como usar">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Como Usar</h2>
+        <ul class="space-y-2 text-sm text-gray-500 list-none">
+          <li><a href="/como-usar/ajuste-ergonomico" class="hover:text-rose-500 transition-colors">Ajuste ergonômico</a></li>
+          <li><a href="/como-usar/quanto-tempo-pedalar" class="hover:text-rose-500 transition-colors">Quanto tempo pedalar</a></li>
+          <li><a href="/como-usar/manutencao-correia" class="hover:text-rose-500 transition-colors">Manutenção</a></li>
+          <li><a href="/como-usar/roda-de-inercia" class="hover:text-rose-500 transition-colors">Roda de inércia</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Links de ferramentas">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Ferramentas</h2>
+        <ul class="space-y-2 text-sm text-gray-500 list-none">
+          <li><a href="/ferramentas/quiz-qual-ergometrica" class="hover:text-rose-500 transition-colors">Quiz: qual comprar</a></li>
+          <li><a href="/ferramentas/calculadora-calorias" class="hover:text-rose-500 transition-colors">Calculadora de calorias</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold text-gray-900 mb-1">🚴 BicicletasErgométricas</p>
+        <p class="text-xs text-gray-400">Curadoria independente baseada em avaliações reais e dados públicos.</p>
+      </div>
+      <div class="text-xs text-gray-400 text-left md:text-right space-y-1">
+        <p>© 2026 BicicletasErgométricas.com</p>
+        <p>Este site contém links de afiliados. Veja nossa <a href="/sobre" class="hover:text-gray-600 underline">política editorial</a>.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
