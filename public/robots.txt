@@ -1,0 +1,11 @@
+# robots.txt — bicicletasergometricas.com
+
+User-agent: *
+Allow: /
+
+# Não indexar assets internos
+Disallow: /src/
+Disallow: /_astro/
+
+# Sitemap
+Sitemap: https://bicicletasergometricas.com/sitemap.xml

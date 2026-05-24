@@ -1,0 +1,430 @@
+---
+// src/pages/ferramentas/quiz-qual-ergometrica.astro
+// Quiz interativo — sem dependências externas, JS puro no cliente
+
+const title = "Quiz: Qual Bicicleta Ergométrica é Ideal para Você?";
+const description = "Responda 5 perguntas rápidas e descubra qual tipo de bicicleta ergométrica combina com o seu perfil, espaço e orçamento.";
+const siteUrl = "https://bicicletasergometricas.com";
+const canonicalUrl = `${siteUrl}/ferramentas/quiz-qual-ergometrica`;
+
+const schemaWebApp = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: title,
+  description: description,
+  url: canonicalUrl,
+  applicationCategory: "HealthApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+};
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Ferramentas", item: `${siteUrl}/ferramentas` },
+    { "@type": "ListItem", position: 3, name: "Quiz", item: canonicalUrl },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Bicicletas Ergométricas</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaWebApp)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumb)} />
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-emerald-50 to-white text-gray-900 antialiased">
+
+  <!-- Header mínimo -->
+  <header class="border-b border-gray-200 bg-white/90 backdrop-blur-sm">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
+      <a href="/" class="font-bold text-emerald-700">← Bicicletas Ergométricas</a>
+      <span class="text-sm text-gray-500">Ferramenta gratuita</span>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Navegação" class="border-b border-gray-100 bg-gray-50 px-4 py-2 text-sm text-gray-500">
+    <ol class="mx-auto flex max-w-4xl gap-1">
+      <li><a href="/" class="hover:text-emerald-700">Início</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/ferramentas" class="hover:text-emerald-700">Ferramentas</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="font-medium text-gray-800" aria-current="page">Quiz</li>
+    </ol>
+  </nav>
+
+  <!-- Quiz container -->
+  <main class="mx-auto max-w-2xl px-4 py-10" role="main" id="quiz-root">
+
+    <!-- TELA INICIAL -->
+    <div id="tela-inicio" class="text-center">
+      <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h1 class="mb-3 text-3xl font-extrabold text-gray-900">Qual ergométrica é ideal para você?</h1>
+      <p class="mb-8 text-lg text-gray-600 leading-relaxed">
+        5 perguntas rápidas. Recomendação personalizada com base no seu perfil, espaço e orçamento. Sem cadastro.
+      </p>
+      <button
+        id="btn-iniciar"
+        class="rounded-xl bg-emerald-700 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-emerald-800 hover:shadow-xl active:scale-95"
+      >
+        Começar o quiz →
+      </button>
+      <p class="mt-4 text-sm text-gray-400">Leva menos de 2 minutos</p>
+    </div>
+
+    <!-- TELA DE PERGUNTAS -->
+    <div id="tela-quiz" class="hidden">
+      <!-- Progresso -->
+      <div class="mb-8">
+        <div class="mb-2 flex items-center justify-between text-sm text-gray-500">
+          <span id="label-progresso">Pergunta 1 de 5</span>
+          <span id="pct-progresso">20%</span>
+        </div>
+        <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+          <div id="barra-progresso" class="h-2 rounded-full bg-emerald-600 transition-all duration-300" style="width: 20%"></div>
+        </div>
+      </div>
+
+      <!-- Pergunta atual -->
+      <div id="pergunta-container">
+        <h2 id="texto-pergunta" class="mb-6 text-xl font-bold text-gray-900 leading-snug"></h2>
+        <div id="opcoes-container" class="grid gap-3"></div>
+      </div>
+
+      <!-- Botão voltar -->
+      <button id="btn-voltar" class="mt-6 text-sm text-gray-400 hover:text-gray-600 hidden">
+        ← Voltar
+      </button>
+    </div>
+
+    <!-- TELA DE RESULTADO -->
+    <div id="tela-resultado" class="hidden">
+      <div class="text-center mb-8">
+        <div class="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-extrabold text-gray-900 mb-2">Seu resultado</h2>
+        <p class="text-gray-500 text-sm">Com base nas suas respostas:</p>
+      </div>
+
+      <!-- Card resultado principal -->
+      <div id="card-resultado" class="rounded-2xl border-2 border-emerald-300 bg-white p-6 shadow-lg mb-6">
+        <div id="resultado-badge" class="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold"></div>
+        <h3 id="resultado-titulo" class="text-xl font-extrabold text-gray-900 mb-2"></h3>
+        <p id="resultado-descricao" class="text-gray-600 leading-relaxed mb-4"></p>
+        <ul id="resultado-criterios" class="space-y-1 text-sm text-gray-700"></ul>
+      </div>
+
+      <!-- Links para reviews -->
+      <div id="resultado-links" class="mb-8"></div>
+
+      <!-- Disclaimer -->
+      <aside class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700 mb-6">
+        Esta recomendação é baseada no seu perfil declarado. Os links dos modelos contêm comissão de afiliado sem custo extra para você.
+      </aside>
+
+      <div class="flex gap-3">
+        <button
+          id="btn-refazer"
+          class="flex-1 rounded-xl border-2 border-emerald-300 py-3 font-semibold text-emerald-700 transition hover:bg-emerald-50"
+        >
+          ← Refazer o quiz
+        </button>
+        <a
+          href="/guia"
+          class="flex-1 rounded-xl bg-emerald-700 py-3 text-center font-semibold text-white transition hover:bg-emerald-800"
+        >
+          Ver guia completo →
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="mt-12 border-t border-gray-200 py-6 text-center text-xs text-gray-400">
+    <a href="/" class="hover:text-emerald-700">Bicicletas Ergométricas</a> · Ferramenta gratuita e independente
+  </footer>
+
+</body>
+</html>
+
+<script>
+// ═══════════════════════════════════════
+// DADOS DO QUIZ
+// ═══════════════════════════════════════
+const perguntas = [
+  {
+    id: "objetivo",
+    texto: "Qual é o seu principal objetivo ao pedalar em casa?",
+    opcoes: [
+      { label: "Perder peso e melhorar o condicionamento geral", valor: "condicionamento" },
+      { label: "Reabilitação ou recomendação médica", valor: "reabilitacao" },
+      { label: "Manter a saúde cardiovascular no dia a dia", valor: "saude" },
+      { label: "Treinos mais intensos, próximos ao ciclismo real", valor: "performance" },
+    ],
+  },
+  {
+    id: "espaco",
+    texto: "Como é o espaço onde você vai usar a bicicleta?",
+    opcoes: [
+      { label: "Apartamento — precisa ser silenciosa e discreta", valor: "apartamento" },
+      { label: "Casa com espaço dedicado para exercício", valor: "casa" },
+      { label: "Espaço pequeno — precisa ser dobrável ou compacta", valor: "compacto" },
+      { label: "Não é uma preocupação principal", valor: "qualquer" },
+    ],
+  },
+  {
+    id: "perfil",
+    texto: "Como você descreveria seu perfil físico?",
+    opcoes: [
+      { label: "Iniciante ou sedentário há muito tempo", valor: "iniciante" },
+      { label: "Acima de 100 kg ou estrutura grande", valor: "pesado" },
+      { label: "Idoso ou com limitações físicas/articulares", valor: "idoso" },
+      { label: "Ativo — já me exercito com regularidade", valor: "ativo" },
+    ],
+  },
+  {
+    id: "orcamento",
+    texto: "Qual é o seu orçamento aproximado?",
+    opcoes: [
+      { label: "Até R$ 800 — quero o básico funcional", valor: "basico" },
+      { label: "R$ 800 a R$ 1.500 — quero boa qualidade", valor: "medio" },
+      { label: "R$ 1.500 a R$ 3.000 — priorizando durabilidade", valor: "premium" },
+      { label: "Acima de R$ 3.000 — quero o melhor", valor: "top" },
+    ],
+  },
+  {
+    id: "barulho",
+    texto: "O nível de ruído é um critério importante para você?",
+    opcoes: [
+      { label: "Sim, muito — moro em apartamento ou tenho vizinhos próximos", valor: "critico" },
+      { label: "Um pouco — prefiro silenciosa, mas não é decisivo", valor: "moderado" },
+      { label: "Não — o barulho não é problema", valor: "indiferente" },
+    ],
+  },
+];
+
+// ═══════════════════════════════════════
+// LÓGICA DE RESULTADO
+// ═══════════════════════════════════════
+function calcularResultado(respostas) {
+  const { objetivo, espaco, perfil, orcamento, barulho } = respostas;
+
+  // Recumbente
+  if (perfil === "idoso" || objetivo === "reabilitacao") {
+    return {
+      badge: "🦽 Ergométrica Recumbente",
+      cor: "bg-violet-100 text-violet-800",
+      titulo: "Bicicleta Ergométrica Recumbente",
+      descricao:
+        "A posição reclinada com encosto reduz o impacto na coluna e nos quadris. É a escolha mais segura para idosos, pessoas em reabilitação ou com dores nas costas. Garante conforto em sessões mais longas sem sobrecarga postural.",
+      criterios: [
+        "✔ Encosto com suporte lombar",
+        "✔ Resistência magnética — movimento suave e controlado",
+        "✔ Selim largo e acolchoado",
+        "✔ Base estável com pés reguláveis",
+      ],
+      links: [
+        { texto: "Reviews de ergométricas recumbentes", href: "/reviews/ergometrica-reabilitacao" },
+        { texto: "Ergométricas indicadas para idosos", href: "/reviews/ergometrica-para-idosos" },
+      ],
+    };
+  }
+
+  // Spinning
+  if (objetivo === "performance" || (orcamento === "premium" || orcamento === "top") && perfil === "ativo") {
+    return {
+      badge: "🚴 Bicicleta de Spinning",
+      cor: "bg-sky-100 text-sky-800",
+      titulo: "Bicicleta de Spinning / Indoor Cycling",
+      descricao:
+        "Para quem quer treinos intensos próximos ao ciclismo real. A roda de inércia pesada (14–22 kg) gera movimento fluido e permite intervalos de alta intensidade (HIIT). Exige mais espaço e produz mais ruído que uma ergométrica comum.",
+      criterios: [
+        "✔ Roda de inércia acima de 14 kg",
+        "✔ Selim e guidão completamente ajustáveis",
+        "✔ Suporte de carga robusto (mín. 120 kg)",
+        "⚠ Mais barulhosa — verificar viabilidade no espaço",
+      ],
+      links: [
+        { texto: "Ergométrica vs Spinning — diferenças reais", href: "/comparativos/ergometrica-vs-spinning" },
+      ],
+    };
+  }
+
+  // Pesado / acima de 100 kg
+  if (perfil === "pesado") {
+    return {
+      badge: "💪 Alta Capacidade",
+      cor: "bg-orange-100 text-orange-800",
+      titulo: "Ergométrica Magnética de Alta Capacidade",
+      descricao:
+        "Para quem pesa acima de 100 kg, a estrutura e a capacidade de carga são os critérios mais críticos. Procure modelos com capacidade declarada acima de 130 kg, quadro em aço carbono e selim reforçado.",
+      criterios: [
+        "✔ Capacidade de carga ≥ 130 kg",
+        "✔ Quadro em aço carbono (mais resistente)",
+        "✔ Resistência magnética com 8+ níveis",
+        "✔ Selim largo — verifique dimensões",
+      ],
+      links: [
+        { texto: "Reviews para quem pesa acima de 100 kg", href: "/reviews/ergometrica-acima-100kg" },
+      ],
+    };
+  }
+
+  // Apartamento / silenciosa
+  if (espaco === "apartamento" || barulho === "critico") {
+    return {
+      badge: "🤫 Silenciosa",
+      cor: "bg-emerald-100 text-emerald-800",
+      titulo: "Ergométrica Magnética Silenciosa",
+      descricao:
+        "Para apartamentos, a resistência magnética é inegociável. Ela elimina o chiado da resistência por atrito e permite pedalar em qualquer horário sem incomodar vizinhos. Verifique também se o modelo tem rodas de transporte para guardar quando não usar.",
+      criterios: [
+        "✔ Resistência magnética (sem contato físico)",
+        "✔ Correia de poliuretano — mais silenciosa",
+        "✔ Rodas de transporte na base",
+        "✔ Dimensões compatíveis com o espaço disponível",
+      ],
+      links: [
+        { texto: "Melhores ergométricas silenciosas para apartamento", href: "/reviews/ergometrica-silenciosa-apartamento" },
+        { texto: "Mecânica vs Magnética — diferenças", href: "/comparativos/mecanica-vs-magnetica" },
+      ],
+    };
+  }
+
+  // Padrão — ergométrica upright
+  return {
+    badge: "🏠 Uso Doméstico Geral",
+    cor: "bg-gray-100 text-gray-800",
+    titulo: "Ergométrica Upright Magnética",
+    descricao:
+      "A escolha mais versátil para uso doméstico. Boa para condicionamento geral, fácil de usar e disponível em boa variedade de preços. Opte por modelos com resistência magnética para maior durabilidade e silêncio.",
+    criterios: [
+      "✔ Resistência magnética com 8+ níveis",
+      "✔ Guidão e selim ajustáveis",
+      "✔ Monitor com calorias, velocidade e pulso",
+      "✔ Garantia mínima de 1 ano com assistência nacional",
+    ],
+    links: [
+      { texto: "Guia completo de compra", href: "/guia" },
+      { texto: "Calculadora de calorias no pedal", href: "/ferramentas/calculadora-calorias" },
+    ],
+  };
+}
+
+// ═══════════════════════════════════════
+// CONTROLE DO QUIZ
+// ═══════════════════════════════════════
+let etapaAtual = 0;
+const respostas = {};
+
+const telaInicio   = document.getElementById("tela-inicio");
+const telaQuiz     = document.getElementById("tela-quiz");
+const telaResult   = document.getElementById("tela-resultado");
+const btnIniciar   = document.getElementById("btn-iniciar");
+const btnVoltar    = document.getElementById("btn-voltar");
+const btnRefazer   = document.getElementById("btn-refazer");
+
+function mostrarPergunta(index) {
+  const p = perguntas[index];
+  document.getElementById("label-progresso").textContent = `Pergunta ${index + 1} de ${perguntas.length}`;
+  const pct = Math.round(((index + 1) / perguntas.length) * 100);
+  document.getElementById("pct-progresso").textContent = `${pct}%`;
+  document.getElementById("barra-progresso").style.width = `${pct}%`;
+  document.getElementById("texto-pergunta").textContent = p.texto;
+
+  const cont = document.getElementById("opcoes-container");
+  cont.innerHTML = "";
+  p.opcoes.forEach((op) => {
+    const btn = document.createElement("button");
+    btn.className =
+      "w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-700 transition-all hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-900 active:scale-95";
+    btn.textContent = op.label;
+    btn.addEventListener("click", () => selecionarOpcao(p.id, op.valor));
+    cont.appendChild(btn);
+  });
+
+  btnVoltar.classList.toggle("hidden", index === 0);
+}
+
+function selecionarOpcao(id, valor) {
+  respostas[id] = valor;
+  etapaAtual++;
+  if (etapaAtual < perguntas.length) {
+    mostrarPergunta(etapaAtual);
+  } else {
+    mostrarResultado();
+  }
+}
+
+function mostrarResultado() {
+  telaQuiz.classList.add("hidden");
+  telaResult.classList.remove("hidden");
+
+  const r = calcularResultado(respostas);
+
+  document.getElementById("resultado-badge").textContent = r.badge;
+  document.getElementById("resultado-badge").className =
+    `mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold ${r.cor}`;
+  document.getElementById("resultado-titulo").textContent = r.titulo;
+  document.getElementById("resultado-descricao").textContent = r.descricao;
+
+  const lista = document.getElementById("resultado-criterios");
+  lista.innerHTML = r.criterios.map((c) => `<li>${c}</li>`).join("");
+
+  const linksDiv = document.getElementById("resultado-links");
+  linksDiv.innerHTML =
+    `<p class="mb-3 text-sm font-semibold text-gray-700">Leituras recomendadas para você:</p>` +
+    r.links
+      .map(
+        (l) =>
+          `<a href="${l.href}" class="mb-2 flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 transition hover:bg-emerald-100">
+            <span>→</span> ${l.texto}
+          </a>`
+      )
+      .join("");
+}
+
+function reiniciar() {
+  etapaAtual = 0;
+  Object.keys(respostas).forEach((k) => delete respostas[k]);
+  telaResult.classList.add("hidden");
+  telaInicio.classList.remove("hidden");
+}
+
+// Eventos
+btnIniciar.addEventListener("click", () => {
+  telaInicio.classList.add("hidden");
+  telaQuiz.classList.remove("hidden");
+  mostrarPergunta(0);
+});
+
+btnVoltar.addEventListener("click", () => {
+  if (etapaAtual > 0) {
+    etapaAtual--;
+    mostrarPergunta(etapaAtual);
+  }
+});
+
+btnRefazer.addEventListener("click", reiniciar);
+</script>
