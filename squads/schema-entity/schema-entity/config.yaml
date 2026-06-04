@@ -1,0 +1,161 @@
+name: schema-entity
+version: 2.0.0
+tested: false
+updated_at: "2026-05-14"
+short-title: Semantic Schema & Entity Disambiguation
+description: >-
+  O squad mais completo de schema semântico disponível.
+  Cobre todos os 30+ tipos de rich results Google, todos os formatos
+  (JSON-LD, Microdata, RDFa), todos os stacks (HTML, Markdown, Astro, React,
+  Next.js, Vue, SvelteKit, Shopify, WordPress), e integra semântica Koray +
+  entity disambiguation (Jason Barnard) + schema arquitetura (Jarno van Driel)
+  + technical SEO (Patrick Stox) + knowledge graph engineering (Andrea Volpini).
+  Visão macro (arquitetura do site inteira) + micro (cada URL, cada entidade,
+  cada propriedade). Integra com SEO AI God squad.
+  Não é consultivo — tem poder de escrita, execução e implementação real.
+author: AIOX Squad Creator + Orion
+entry_agent: schema-chief
+slashPrefix: schemaEntity
+
+settings:
+  activation:
+    show_ecosystem_report: false
+    show_greeting: true
+    show_quick_commands: true
+
+agents:
+  - id: schema-chief
+    file: agents/schema-chief.md
+    icon: "🕸️"
+    role: Orchestrator & Triage — Schema Entity Squad v2.0
+    activate: "@schema-chief"
+
+  - id: koray-semantic
+    file: agents/koray-semantic.md
+    icon: "🧬"
+    role: Lead Semantic SEO Strategist (Koray Tuğberk GÜBÜR mindset)
+    activate: "@koray-semantic"
+    tier: 0
+
+  - id: schema-architect
+    file: agents/schema-architect.md
+    icon: "📐"
+    role: Schema/JSON-LD Architect (Jarno van Driel DNA) — @graph, templates
+    activate: "@schema-architect"
+    tier: 1
+
+  - id: entity-disambiguator
+    file: agents/entity-disambiguator.md
+    icon: "🔍"
+    role: Entity Disambiguation Specialist (Jason Barnard DNA) — Wikidata, sameAs
+    activate: "@entity-disambiguator"
+    tier: 1
+
+  - id: tech-seo-engineer
+    file: agents/tech-seo-engineer.md
+    icon: "⚙️"
+    role: Technical SEO Engineer (Patrick Stox DNA) — pipeline, GSC, CWV
+    activate: "@tech-seo-engineer"
+    tier: 1
+
+  - id: kg-engineer
+    file: agents/kg-engineer.md
+    icon: "🧩"
+    role: Knowledge Graph Engineer (Andrea Volpini DNA) — SPARQL, Python, CMS
+    activate: "@kg-engineer"
+    tier: 1
+
+  - id: rich-snippets-master
+    file: agents/rich-snippets-master.md
+    icon: "⭐"
+    role: Rich Snippets Master — todos os 30+ dados aprimorados Google
+    activate: "@rich-snippets-master"
+    tier: 1
+    version: "2.0"
+
+  - id: semantic-content-architect
+    file: agents/semantic-content-architect.md
+    icon: "🗺️"
+    role: Semantic Content Architect — visão macro×micro, schema-first content
+    activate: "@semantic-content-architect"
+    tier: 1
+    integrates_with: ["seo-ai-god"]
+    version: "2.0"
+
+  - id: multiformat-engineer
+    file: agents/multiformat-engineer.md
+    icon: "🔧"
+    role: Multiformat Engineer — JSON-LD×Microdata×RDFa × todos os stacks
+    activate: "@multiformat-engineer"
+    tier: 1
+    version: "2.0"
+
+workflows:
+  - id: wf-schema-audit
+    file: workflows/wf-schema-audit.yaml
+    description: Fases 1-2 — Discovery + Mapping completo do site
+
+  - id: wf-entity-disambiguation
+    file: workflows/wf-entity-disambiguation.yaml
+    description: Fase 3 — Estratégia de desambiguação + master entity table
+
+  - id: wf-schema-implementation
+    file: workflows/wf-schema-implementation.yaml
+    description: Fase 4 — Implementação JSON-LD + entity hub + bidirectional links
+
+  - id: wf-validation-pipeline
+    file: workflows/wf-validation-pipeline.yaml
+    description: Fase 5 — Validação Rich Results + GSC + A/B tracking
+
+  - id: wf-site-semantic-blueprint
+    file: workflows/wf-site-semantic-blueprint.yaml
+    description: Macro→Micro — Blueprint semântico completo de um site inteiro
+    version: "2.0"
+
+tasks:
+  - audit-schema-inventory.md
+  - map-entity-wikidata.md
+  - generate-jsonld-template.md
+  - inject-schema-cms.md
+  - validate-rich-results.md
+  - build-entity-hub.md
+  - setup-bidirectional-links.md
+  - enrich-entities-api.md
+  - score-page-schema.md
+  - map-rich-snippets-opportunities.md
+  - semantic-content-brief.md
+  - generate-microdata.md
+  - macro-site-semantic-audit.md
+
+data:
+  - schema-entity-kb.md
+
+entry_workflow: wf-site-semantic-blueprint
+
+quality_gates:
+  agent_min_lines: 300
+  workflow_min_lines: 400
+  task_min_lines: 200
+  overall_score_min: 7.0
+
+integrations:
+  - squad: seo-ai-god
+    bridge_agent: semantic-content-architect
+    protocol: "seoaigod-bridge report"
+
+rich_results_coverage:
+  total_types: 30+
+  categories:
+    content: [Article, NewsArticle, BlogPosting, FAQPage, HowTo, QAPage, Speakable, ClaimReview]
+    product: [Product, Offer, AggregateRating, Review, ItemList, ShippingDetails, ReturnPolicy]
+    business: [LocalBusiness, Organization, Service, Event, JobPosting]
+    media: [VideoObject, ImageObject, PodcastSeries, PodcastEpisode, AudioObject]
+    education: [Course, CourseInstance, LearningVideo]
+    food: [Recipe]
+    tech: [SoftwareApplication, Dataset]
+    foundation: [WebSite, WebPage, BreadcrumbList, Person]
+    specialized: [LodgingBusiness, Paywalled]
+
+output_formats:
+  markup: [json-ld, microdata, rdfa]
+  stacks: [html, markdown, astro, react, nextjs, vue, svelte, shopify, wordpress, webflow]

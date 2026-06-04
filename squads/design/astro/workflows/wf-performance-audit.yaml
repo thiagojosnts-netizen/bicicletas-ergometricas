@@ -1,0 +1,412 @@
+# Workflow: Performance Audit (Existing Astro Site)
+# Orchestrator: astro-chief → @astro:addy-osmani (primary)
+# Version: 1.0.0
+# Purpose: Diagnose and fix performance issues on an existing Astro site to hit
+#          Core Web Vitals targets.
+
+workflow:
+  id: wf-performance-audit
+  name: "Performance Audit"
+  version: "1.0.0"
+  squad: astro
+  orchestrator: astro-chief
+  primary_agent: addy-osmani
+
+  total_phases: 5
+  estimated_duration: "1-3 hours (depends on findings)"
+
+  quality_standard: |
+    Site achieves:
+    - LCP < 2.5s on mobile
+    - INP < 200ms (p75)
+    - CLS < 0.1
+    - Lighthouse Performance >= 95
+    - CrUX field data shows ≥75% of users in "good" bucket for all three metrics
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 0: INTAKE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_0_intake:
+  name: "Intake — what's slow?"
+  duration: "5-10 min"
+  agent: astro-chief
+  mode: interactive
+
+  questions:
+    - "What's the specific complaint? (slow page load, janky scroll, laggy input, layout jump)"
+    - "Which page(s)? (homepage, specific route, all pages)"
+    - "What device / network are users on? (mobile 3G, desktop fiber, enterprise VPN)"
+    - "Have you measured, or is this 'feels slow'?"
+    - "URL to the live site?"
+
+  route_to:
+    - complaint: "slow page / high LCP" → phase_1_measure (LCP focus)
+    - complaint: "laggy input / sluggish" → phase_1_measure (INP focus)
+    - complaint: "page jumps around" → phase_1_measure (CLS focus)
+    - complaint: "feels slow (no specifics)" → phase_1_measure (full audit)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 1: MEASURE (BASELINE)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_1_measure:
+  name: "Baseline measurement"
+  duration: "15-20 min"
+  agent: addy-osmani
+  mode: autonomous
+
+  steps:
+    - id: lighthouse_run
+      action: "Run Lighthouse 3 times on mobile emulation, take median"
+      command: |
+        for i in 1 2 3; do
+          npx lighthouse {url} --preset=experimental --form-factor=mobile --throttling-method=simulate --output=json --output-path=./lighthouse-$i.json
+        done
+      output:
+        - lcp_median: "ms"
+        - inp_median: "ms (TBT proxy in lab)"
+        - cls_median: "score"
+        - performance_score: "0-100"
+
+    - id: pagespeed_insights
+      action: "Run PageSpeed Insights for lab + field comparison"
+      url: "https://pagespeed.web.dev/analysis?url={url}"
+      capture:
+        - "CrUX field data (28-day)"
+        - "CrUX field data (real users)"
+        - "Compare lab vs field"
+
+    - id: webpagetest_optional
+      action: "WebPageTest for filmstrip + multi-location view"
+      url: "https://webpagetest.org"
+      useful_when: "LCP diagnosis needs network waterfall"
+
+    - id: capture_artifacts
+      save:
+        - "./perf-audit/lighthouse-median.json"
+        - "./perf-audit/psi-report.html"
+        - "./perf-audit/webpagetest-{runid}.json"
+      for_comparison: "phase 4 will re-measure against this"
+
+  checkpoint_criteria:
+    - "Lighthouse run (3x, median)"
+    - "PageSpeed Insights run with field data"
+    - "Baseline artifacts saved"
+
+  outputs:
+    baseline:
+      lcp_lab: "ms"
+      lcp_field: "ms (CrUX p75)"
+      inp_lab: "ms (TBT)"
+      inp_field: "ms (CrUX p75)"
+      cls_lab: "score"
+      cls_field: "score (CrUX p75)"
+      overall_performance: "0-100"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 2: DIAGNOSE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_2_diagnose:
+  name: "Diagnose root causes"
+  duration: "20-40 min"
+  agent: addy-osmani
+  mode: autonomous_with_specialist_handoffs
+
+  conditional_subphases:
+
+    # ═══ LCP > 2.5s ═══
+    lcp_diagnosis:
+      trigger: "baseline.lcp_lab > 2500 OR baseline.lcp_field > 2500"
+      applies_heuristic: AS_AO_001
+      steps:
+        - "Identify LCP element (from Lighthouse diagnostic panel)"
+        - "LCP breakdown: TTFB + resource load delay + resource load duration + render delay"
+        - "Determine primary cause:"
+        route_by_cause:
+          image_element:
+            handoff: "@astro:matt-kane"
+            applies_heuristic: AS_MK_003
+            expected_fixes:
+              - "Convert raw <img> to <Image>"
+              - "Set loading='eager' + fetchpriority='high'"
+              - "Preload in layout head"
+              - "Use AVIF/WebP via image service"
+          text_element_late:
+            handoff: "@astro:harry-roberts"
+            applies_heuristic: AS_HR_002
+            expected_fixes:
+              - "Preload fonts"
+              - "font-display: swap + size-adjust"
+              - "System-font fallback stack"
+          ttfb_slow:
+            handoff: "@astro:matthew-phillips"
+            applies_heuristic: AS_MP_005
+            expected_fixes:
+              - "Review adapter (consider edge-based: Cloudflare/Vercel Edge)"
+              - "Audit frontmatter for slow DB/API calls"
+              - "Add caching for server-data"
+          render_delay_high:
+            handoff: "@astro:jason-miller"
+            applies_heuristic: AS_JM_004
+            expected_fixes:
+              - "Remove unnecessary client:load"
+              - "Audit third-party scripts blocking main thread"
+
+    # ═══ INP > 200ms ═══
+    inp_diagnosis:
+      trigger: "baseline.inp_lab > 200 OR baseline.inp_field > 200"
+      applies_heuristic: AS_AO_002
+      handoff: "@astro:jason-miller"
+      steps:
+        - "Profile with Chrome DevTools Performance panel during user interaction"
+        - "Identify long tasks (>50ms)"
+        - "Audit third-party scripts (analytics, chat, ads)"
+        - "Audit hydration: count of client:load + client:visible islands"
+      expected_fixes:
+        - "Reduce client:load count (upgrade to client:visible or remove)"
+        - "Defer/lazy-load third-party scripts"
+        - "Split heavy event handlers with scheduler.yield()"
+        - "Consider Preact instead of React for lighter runtime"
+
+    # ═══ CLS > 0.1 ═══
+    cls_diagnosis:
+      trigger: "baseline.cls_lab > 0.1 OR baseline.cls_field > 0.1"
+      applies_heuristic: AS_AO_003
+      steps:
+        - "Open Lighthouse → Layout Shifts section"
+        - "Identify shifting elements"
+      route_by_cause:
+        images_no_dimensions:
+          handoff: "@astro:matt-kane"
+          fix: "Convert to <Image> — sets width/height automatically"
+        fonts_foiting:
+          handoff: "@astro:harry-roberts"
+          applies_heuristic: AS_HR_002
+          fix: "font-display: swap + size-adjust"
+        dynamic_content_injected:
+          fix: "Reserve min-height for ads/embeds/comments"
+        animations_causing_layout:
+          fix: "Use transform/opacity only, never top/left/width"
+
+    # ═══ Bundle size audit (always run if performance < 90) ═══
+    bundle_audit:
+      trigger: "baseline.overall_performance < 90"
+      handoff: "@astro:jason-miller"
+      applies_heuristic: AS_JM_002
+      steps:
+        - "Install rollup-plugin-visualizer"
+        - "Build + open treemap"
+        - "Identify top 3 dependencies by size"
+        - "Prescribe swaps (Moment → date-fns, full lib → tree-shaken imports, React → Preact)"
+
+    # ═══ CSS audit (if render-blocking > 500ms in Lighthouse) ═══
+    css_audit:
+      trigger: "lighthouse.render_blocking_ms > 500"
+      handoff: "@astro:harry-roberts"
+      applies_heuristic: AS_HR_001
+      steps:
+        - "Check inlineStylesheets config"
+        - "Measure CSS coverage (DevTools)"
+        - "If Tailwind, verify content array includes .astro/.mdx"
+
+  checkpoint_criteria:
+    - "Each failing metric diagnosed"
+    - "Specialist handoffs completed for each issue"
+    - "Prioritized fix list delivered"
+
+  outputs:
+    diagnosis:
+      lcp_root_cause: "{cause}"
+      inp_root_cause: "{cause}"
+      cls_root_cause: "{cause}"
+      prioritized_fixes:
+        - {fix: "...", expected_impact: "...", effort: "low|med|high", owner: "@specialist"}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 3: REMEDIATE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_3_remediate:
+  name: "Apply fixes"
+  duration: "30-120 min"
+  mode: autonomous_per_specialist
+
+  execution:
+    strategy: "Apply fixes in priority order (highest impact × lowest effort first)"
+    one_at_a_time: true # don't batch — single-variable changes let us measure impact
+    re_measure_after_each: true
+
+  per_fix_protocol:
+    - "Apply the fix"
+    - "Re-run Lighthouse (1 run, quick check)"
+    - "Compare to baseline"
+    - "If fix didn't work or regressed, revert + re-diagnose"
+    - "If fix worked, commit with message explaining impact"
+
+  specialist_parallelism:
+    note: "If multiple specialists have independent fixes, they can work in parallel"
+    example: "@matt-kane fixes images while @harry-roberts fixes fonts"
+
+  checkpoint_criteria:
+    - "All prioritized fixes applied"
+    - "Each fix has a commit message linking to metric impact"
+    - "No regressions introduced"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 4: RE-MEASURE (VALIDATE)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_4_remeasure:
+  name: "Re-measure to validate"
+  duration: "15-20 min"
+  agent: addy-osmani
+  mode: autonomous
+
+  steps:
+    - id: lighthouse_after
+      action: "Run Lighthouse 3 times on mobile, take median"
+      compare_to: "phase 1 baseline"
+      output:
+        - lcp_delta: "ms saved"
+        - inp_delta: "ms saved"
+        - cls_delta: "reduction"
+        - performance_delta: "point change"
+
+    - id: verify_targets
+      check_against: "quality_standard"
+      targets:
+        lcp: "< 2.5s"
+        inp: "< 200ms"
+        cls: "< 0.1"
+        performance: ">= 95"
+      on_fail: "Return to phase 2 for remaining issues"
+
+    - id: field_data_wait
+      action: "Note that CrUX field data takes 28 days to reflect changes"
+      followup: "Schedule re-check in 4 weeks to confirm field improvements"
+
+  outputs:
+    validation:
+      improved: "{delta on each metric}"
+      passes_targets: true/false
+      remaining_issues: "[]"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 5: MONITOR
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_5_monitor:
+  name: "Setup ongoing monitoring"
+  duration: "10-20 min"
+  agent: addy-osmani
+  mode: autonomous
+
+  steps:
+    - id: deploy_web_vitals
+      action: "Add web-vitals RUM"
+      template: |
+        <script type="module">
+          import { onCLS, onLCP, onINP } from 'https://unpkg.com/web-vitals@4?module';
+          const sendMetric = ({ name, value, id }) => {
+            navigator.sendBeacon('/api/rum', JSON.stringify({ name, value, id, url: location.pathname, ts: Date.now() }));
+          };
+          onCLS(sendMetric);
+          onLCP(sendMetric);
+          onINP(sendMetric);
+        </script>
+
+    - id: dashboard_setup
+      optional: true
+      choices:
+        - "Cloudflare Web Analytics (free, privacy-friendly)"
+        - "Vercel Speed Insights (if on Vercel)"
+        - "Custom dashboard via Analytics DB"
+
+    - id: alerting
+      action: "Set thresholds for alerts (e.g., p75 LCP > 3s)"
+
+    - id: regression_detection
+      recommendation: "Run Lighthouse CI on every PR"
+      config: "lighthouserc.json with performance budget"
+
+  checkpoint_criteria:
+    - "RUM deployed"
+    - "Dashboard/alerting (if chosen) configured"
+    - "CI perf budgets configured (if chosen)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_outputs:
+  deliverables:
+    - path: "./perf-audit/report.md"
+      description: "Before/after report with baseline, diagnoses, fixes, validation"
+    - path: "./perf-audit/*.json"
+      description: "Lighthouse artifacts"
+    - commits: "Each fix as an atomic commit with metric impact in message"
+    - monitoring: "web-vitals RUM deployed for ongoing visibility"
+
+  metrics_delivered:
+    - before_vs_after_lcp: "{before_ms} → {after_ms}"
+    - before_vs_after_inp: "{before_ms} → {after_ms}"
+    - before_vs_after_cls: "{before} → {after}"
+    - before_vs_after_performance: "{before} → {after}"
+
+  handoffs_remaining:
+    - "28-day field data re-check"
+    - "Ongoing monitoring via RUM"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ERROR HANDLING
+# ═══════════════════════════════════════════════════════════════════════════════
+
+error_handling:
+  metric_didnt_improve:
+    - "Root cause was different from hypothesis — re-diagnose in phase 2"
+    - "Fix was applied incorrectly — review implementation"
+    - "Interaction between fixes — revert + apply one at a time"
+
+  lighthouse_inconsistent:
+    - "Take median of 3 runs, not single result"
+    - "Throttle to same conditions (mobile emulation, simulated throttling)"
+    - "Close other tabs, disable browser extensions"
+
+  field_data_not_improving:
+    - "Wait full 28 days"
+    - "Check CrUX for your site is reporting (needs sufficient traffic)"
+    - "Ensure fixes deployed to production (not just staging)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEURISTICS REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+heuristics_applied:
+  - AS_AO_001: "LCP diagnosis"
+  - AS_AO_002: "INP diagnosis"
+  - AS_AO_003: "CLS diagnosis"
+  - AS_AO_004: "Lab vs field methodology"
+  - AS_AO_005: "Before/after protocol"
+  - AS_MK_003: "LCP image setup"
+  - AS_JM_002: "Bundle audit"
+  - AS_JM_004: "INP / main thread fixes"
+  - AS_HR_001: "Critical CSS"
+  - AS_HR_002: "Font loading"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  created: "2026-04-18"
+  squad: astro
+  version: "1.0.0"
+  specialists_involved:
+    - astro-chief (orchestrator)
+    - addy-osmani (primary diagnostician)
+    - matt-kane (image fixes)
+    - harry-roberts (CSS/font fixes)
+    - jason-miller (JS/hydration fixes)
+    - matthew-phillips (TTFB/adapter fixes)

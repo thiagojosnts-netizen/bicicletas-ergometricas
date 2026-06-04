@@ -1,0 +1,89 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Barata', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual é a bicicleta ergométrica mais barata que presta?',
+    answer: 'Na faixa abaixo de R$ 1.200, os modelos com melhor desempenho são o Randers BR-300 (R$ 800-R$ 1.000), o Moviment BEX-800 (R$ 900-R$ 1.100) e o Kikos BIO-800 (R$ 1.000-R$ 1.300). Todos têm resistência magnética, 8 níveis de carga e suporte de até 100 kg, sendo adequados para uso de 1 a 3 vezes por semana em intensidade moderada.',
+  },
+  {
+    question: 'Bicicleta ergométrica de R$ 500 vale a pena?',
+    answer: 'Geralmente não para uso regular. Modelos abaixo de R$ 700 tipicamente usam resistência mecânica por atrito (barulhenta e de rápido desgaste), têm suporte de 70 a 80 kg e estrutura de aço de espessura mínima. Para usuários leves (até 60 kg) que planejam usar 1 vez por semana em baixa intensidade, podem funcionar por 1 a 2 anos. Para qualquer uso mais frequente, o custo de substituição rápida torna a compra economicamente desvantajosa.',
+  },
+  {
+    question: 'Como economizar na compra de bicicleta ergométrica?',
+    answer: 'As melhores formas de economizar: (1) aguardar promoções de Black Friday e dia do consumidor, quando descontos chegam a 30-40%; (2) comparar preços entre Amazon, Mercado Livre e loja oficial da marca; (3) comprar modelos do ano anterior quando lançamentos chegam ao mercado; (4) buscar modelos seminovos de particulares que usaram pouco o equipamento.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Barata: Melhores Opções até R$ 1.200 com Qualidade"
+  description="Melhores bicicletas ergométricas baratas do Brasil: modelos até R$ 1.200 com resistência magnética, boa durabilidade e qualidade mínima para uso regular. O que evitar e onde encontrar as melhores ofertas."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-22"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Barata: Melhores Opções até R$ 1.200</h1>
+
+      <p class="summarization">
+        As melhores <strong>bicicletas ergométricas baratas</strong> do Brasil estão na faixa de <strong>R$ 800 a R$ 1.200</strong>, com modelos como <strong>Randers BR-300</strong> (R$ 900), <strong>Moviment BEX-800</strong> (R$ 1.000) e <strong>Kikos BIO-800</strong> (R$ 1.100), todos com <strong>resistência magnética</strong>, <strong>8 níveis de carga</strong> e <strong>suporte de 90 a 100 kg</strong>. Abaixo de R$ 700, os modelos raramente oferecem qualidade mínima para uso regular.
+      </p>
+
+      <p>
+        Uma bicicleta ergométrica barata de qualidade existe: é aquela que oferece resistência magnética (silenciosa e durável), suporte de peso adequado e estrutura de aço com espessura suficiente para uso regular dentro da faixa de investimento. O que não existe é bicicleta ergométrica de qualidade por R$ 400 a R$ 600, faixa onde os compromissos de qualidade são severos.
+      </p>
+
+      <h2>O que esperar de cada faixa de preço</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Faixa</th>
+            <th>O que você ganha</th>
+            <th>O que você perde</th>
+            <th>Ideal para</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Até R$ 700</strong></td><td>Preço inicial baixo</td><td>Resistência mecânica, durabilidade curta, pouco suporte</td><td>Uso muito ocasional, usuário leve</td></tr>
+          <tr><td><strong>R$ 700-R$ 1.000</strong></td><td>Resistência magnética básica</td><td>Poucos níveis, suporte limitado, painel simples</td><td>1-2x/semana, usuário até 75 kg</td></tr>
+          <tr><td><strong>R$ 1.000-R$ 1.200</strong></td><td>8-10 níveis, 90-100 kg suporte</td><td>Sem programas avançados, sem bluetooth</td><td>3x/semana, usuário até 80 kg</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Onde encontrar os melhores preços</h2>
+
+      <p>
+        Os melhores preços para bicicletas ergométricas na faixa econômica estão na <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/">Amazon Brasil</a> e no <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/">Mercado Livre</a>. Compare o mesmo modelo nas duas plataformas antes de decidir. Magazine Luiza e Shoptime também oferecem parcelamento em até 18 vezes, o que pode ser relevante para equilibrar o custo mensal.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Investimento mínimo recomendado:</strong> Para uso de 3 ou mais vezes por semana, o investimento mínimo para um equipamento com qualidade adequada é de R$ 1.000 a R$ 1.200. Abaixo disso, o risco de substituição precoce torna o custo total maior ao longo de 2 a 3 anos.
+        </p>
+      </div>
+
+      <p>
+        Para opções acima dessa faixa com melhor custo-benefício, veja o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/">guia de melhor custo-benefício por faixa de preço</a>. Para o guia completo de preços, acesse <a href="/preco-bicicleta-ergometrica/">preço de bicicleta ergométrica</a>.
+      </p>
+
+      <a href="#comprar" class="btn-cta" style="display:inline-flex;margin-top:1rem;">
+        Ver ofertas de bicicleta ergométrica
+      </a>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica barata" />
+</Layout>

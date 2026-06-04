@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <!-- ============================================================
+       CaminhãoBR — Portal de Compra e Venda de Caminhões
+       SEO: Title tag com keyword principal + brand
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caminhões à Venda | Comprar Caminhão Novo e Usado | CaminhãoBR</title>
+  <!-- SEO: Meta description 150-160 chars com keyword + CTA + diferencial -->
+  <meta name="description" content="Encontre milhares de caminhões novos e usados à venda. Compare preços de Scania, Volvo, Mercedes-Benz e mais. Acesse grátis e negocie direto com vendedores!">
+  <meta name="keywords" content="caminhões à venda, comprar caminhão, caminhão usado, caminhão novo, Scania, Volvo, Mercedes-Benz">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.caminhaobr.com.br/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Caminhões à Venda | CaminhãoBR">
+  <meta property="og:description" content="Encontre milhares de caminhões novos e usados. Compare preços e negocie direto!">
+  <meta property="og:url" content="https://www.caminhaobr.com.br/">
+  <meta property="og:site_name" content="CaminhãoBR">
+  <meta property="og:image" content="https://www.caminhaobr.com.br/assets/og-image.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Caminhões à Venda | CaminhãoBR">
+  <meta name="twitter:description" content="Encontre milhares de caminhões novos e usados à venda.">
+
+  <!-- SEO: Preconnect para Google Fonts (reduce LCP) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- SEO: font-display=swap para evitar FOIT (Core Web Vitals) -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS Crítico Inline (melhora LCP/FCP) -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --color-bg:#F8F9FA;--color-surface:#FFFFFF;--color-border:#E8E8E8;
+      --color-text:#1A1A2E;--color-text-muted:#6B7A8D;
+      --color-primary:#E4002B;--color-yellow:#F59E0B;--color-green:#10B981;
+      --font-display:'Inter',sans-serif;--font-body:'Inter',sans-serif;
+    }
+    [data-theme="light"]{
+      --color-bg:#0F1117;--color-surface:#1E2130;--color-border:#2E3347;
+      --color-text:#F1F2F6;--color-text-muted:#8892A4;
+    }
+    body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+    .skip-nav{position:absolute;top:-999px;left:0;z-index:9999;padding:12px 24px;background:var(--color-primary);color:#fff;font-weight:700;border-radius:0 0 8px 8px}
+    .skip-nav:focus{top:0}
+    img{max-width:100%;display:block}
+  </style>
+
+  <!-- Folha de estilo principal (defer via link rel) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- SEO: Preload hero image para LCP -->
+  <link rel="preload" as="image" href="assets/hero-bg.webp" fetchpriority="high">
+
+  <!-- ============================================================
+       JSON-LD Schema Markup
+       SEO: Organization + WebSite + SearchAction + ItemList
+       Usado pelo Google para rich results e Knowledge Panel
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.caminhaobr.com.br/#organization",
+        "name": "CaminhãoBR",
+        "url": "https://www.caminhaobr.com.br",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.caminhaobr.com.br/assets/logo.webp",
+          "width": 200,
+          "height": 60
+        },
+        "description": "Portal de compra e venda de caminhões novos e usados no Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/caminhaobr",
+          "https://www.facebook.com/caminhaobr",
+          "https://www.youtube.com/@caminhaobr"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.caminhaobr.com.br/#website",
+        "url": "https://www.caminhaobr.com.br",
+        "name": "CaminhãoBR",
+        "publisher": { "@id": "https://www.caminhaobr.com.br/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.caminhaobr.com.br/caminhoes/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Caminhões em Destaque",
+        "description": "Os melhores caminhões à venda no CaminhãoBR",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Product",
+              "name": "Scania R 450 2022",
+              "description": "Cavalo mecânico Scania R 450 ano 2022, 480.000 km, cor branca",
+              "offers": {
+                "@type": "Offer",
+                "price": "580000",
+                "priceCurrency": "BRL",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Product",
+              "name": "Volvo FH 460 2021",
+              "description": "Cavalo mecânico Volvo FH 460 ano 2021, 620.000 km, cor cinza",
+              "offers": {
+                "@type": "Offer",
+                "price": "510000",
+                "priceCurrency": "BRL",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Como comprar um caminhão pelo CaminhãoBR?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Navegue pelos anúncios, use os filtros para encontrar o modelo ideal e clique em 'Ver Oferta' para ser redirecionado ao anunciante parceiro e negociar diretamente."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Os caminhões anunciados são verificados?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Todos os anúncios são publicados por anunciantes parceiros verificados como OLX, WebMotors, iCarros e concessionárias credenciadas. Recomendamos sempre solicitar vistoria antes da compra."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Posso anunciar meu caminhão gratuitamente?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim! Você pode enviar os dados do seu caminhão pelo formulário na seção 'Vender Caminhão' gratuitamente. Nossa equipe entrará em contato para publicar o anúncio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o financiamento de caminhão?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O financiamento pode ser feito via CDC, FINAME/BNDES, leasing ou consórcio. Bancos como Bradesco, Itaú, Scania Banco e Volvo Financial oferecem taxas a partir de 1,2% ao mês para PJ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O CaminhãoBR cobra alguma taxa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. O acesso ao CaminhãoBR é 100% gratuito para compradores. Somos um portal de conteúdo e afiliados que conecta compradores aos melhores anunciantes do mercado."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quais formas de pagamento são aceitas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As formas de pagamento variam por anunciante. Os mais comuns são: à vista (transferência/PIX), financiamento bancário, FINAME, leasing e consórcio. Consulte o vendedor diretamente."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Acessibilidade: Skip navigation -->
+  <a href="#main-content" class="skip-nav">Ir para o conteúdo principal</a>
+
+  <!-- ============================================================
+       NAVBAR — Fixa no topo, SEO: logo com alt text + nav semântica
+       ============================================================ -->
+  <header class="navbar" role="banner">
+    <div class="container navbar__inner">
+      <!-- Logo -->
+      <a href="/" class="navbar__logo" aria-label="CaminhãoBR - Página inicial">
+        <span class="navbar__logo-icon" aria-hidden="true">🚛</span>
+        <span class="navbar__logo-text">CAMINHÃO<span class="navbar__logo-accent">BR</span></span>
+      </a>
+
+      <!-- Nav principal — SEO: links internos para silos principais -->
+      <nav class="navbar__nav" role="navigation" aria-label="Navegação principal">
+        <ul class="navbar__menu" role="list">
+          <li><a href="/caminhoes/" class="navbar__link">Caminhões</a></li>
+          <li class="navbar__dropdown">
+            <a href="/marcas/" class="navbar__link" aria-haspopup="true" aria-expanded="false">
+              Marcas <span aria-hidden="true">▾</span>
+            </a>
+            <ul class="navbar__submenu" role="list" aria-label="Marcas de caminhões">
+              <li><a href="/marcas/scania/">Scania</a></li>
+              <li><a href="/marcas/volvo/">Volvo</a></li>
+              <li><a href="/marcas/mercedes-benz/">Mercedes-Benz</a></li>
+              <li><a href="/marcas/man/">MAN</a></li>
+              <li><a href="/marcas/daf/">DAF</a></li>
+              <li><a href="/marcas/iveco/">Iveco</a></li>
+              <li><a href="/marcas/volkswagen/">Volkswagen</a></li>
+            </ul>
+          </li>
+          <li><a href="/guia/" class="navbar__link">Guia</a></li>
+          <li><a href="/blog/" class="navbar__link">Blog</a></li>
+          <li>
+            <a href="/vender-caminhao/" class="navbar__cta" aria-label="Anuncie seu caminhão gratuitamente">
+              ANUNCIAR GRÁTIS
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Controles direita -->
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" type="button">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <!-- Hamburger menu mobile -->
+        <button class="navbar__hamburger" id="mobileMenuBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu" type="button">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile" aria-hidden="true">
+      <ul role="list">
+        <li><a href="/caminhoes/">Caminhões</a></li>
+        <li><a href="/caminhoes/leves/">Caminhões Leves</a></li>
+        <li><a href="/caminhoes/medios/">Caminhões Médios</a></li>
+        <li><a href="/caminhoes/pesados/">Caminhões Pesados</a></li>
+        <li><a href="/caminhoes/extra-pesados/">Extra-Pesados</a></li>
+        <li><a href="/marcas/">Marcas</a></li>
+        <li><a href="/guia/">Guia do Comprador</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/vender-caminhao/" class="mobile-cta">ANUNCIAR GRÁTIS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         SEÇÃO 1 — HERO BRUTALISTA
+         SEO: H1 com keyword principal, barra de busca, estrutura semântica
+         ============================================================ -->
+    <section class="hero" aria-label="Busca de caminhões">
+      <!-- Grain texture overlay (CSS) -->
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <!-- SEO: H1 único por página, keyword principal no início -->
+        <h1 class="hero__title">
+          ENCONTRE SEU<br>
+          <span class="hero__title-accent">CAMINHÃO.</span>
+        </h1>
+        <p class="hero__subtitle">
+          Milhares de caminhões novos e usados em um só lugar.<br>
+          Compare preços, veja fichas técnicas e negocie direto.
+        </p>
+
+        <!-- Barra de busca com filtros — acessível com label e role -->
+        <form class="search-bar" role="search" aria-label="Buscar caminhões" action="/caminhoes/" method="get">
+          <div class="search-bar__filters">
+            <div class="search-bar__field">
+              <label for="searchMarca" class="sr-only">Marca</label>
+              <select id="searchMarca" name="marca" class="search-bar__select" aria-label="Selecionar marca">
+                <option value="">Marca</option>
+                <option value="scania">Scania</option>
+                <option value="volvo">Volvo</option>
+                <option value="mercedes-benz">Mercedes-Benz</option>
+                <option value="man">MAN</option>
+                <option value="daf">DAF</option>
+                <option value="iveco">Iveco</option>
+                <option value="volkswagen">Volkswagen</option>
+              </select>
+            </div>
+            <div class="search-bar__field">
+              <label for="searchModelo" class="sr-only">Modelo</label>
+              <select id="searchModelo" name="modelo" class="search-bar__select" aria-label="Selecionar modelo">
+                <option value="">Modelo</option>
+              </select>
+            </div>
+            <div class="search-bar__field">
+              <label for="searchAno" class="sr-only">Ano</label>
+              <select id="searchAno" name="ano" class="search-bar__select" aria-label="Selecionar ano">
+                <option value="">Ano</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+              </select>
+            </div>
+            <div class="search-bar__field">
+              <label for="searchTipo" class="sr-only">Tipo</label>
+              <select id="searchTipo" name="tipo" class="search-bar__select" aria-label="Selecionar tipo">
+                <option value="">Tipo</option>
+                <option value="leve">Leve (3/4)</option>
+                <option value="medio">Médio (Toco)</option>
+                <option value="pesado">Pesado (Truck)</option>
+                <option value="extra-pesado">Extra-Pesado (Carreta)</option>
+              </select>
+            </div>
+            <div class="search-bar__field">
+              <label for="searchPreco" class="sr-only">Preço máximo</label>
+              <select id="searchPreco" name="preco" class="search-bar__select" aria-label="Selecionar faixa de preço">
+                <option value="">Preço</option>
+                <option value="100000">Até R$ 100k</option>
+                <option value="200000">Até R$ 200k</option>
+                <option value="400000">Até R$ 400k</option>
+                <option value="600000">Até R$ 600k</option>
+                <option value="999999">Acima de R$ 600k</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="search-bar__btn" aria-label="Buscar caminhões">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            BUSCAR
+          </button>
+        </form>
+
+        <!-- Stats rápidos -->
+        <div class="hero__stats" aria-label="Estatísticas do portal">
+          <div class="hero__stat">
+            <strong>+5.247</strong>
+            <span>caminhões</span>
+          </div>
+          <div class="hero__stat">
+            <strong>7</strong>
+            <span>marcas</span>
+          </div>
+          <div class="hero__stat">
+            <strong>26</strong>
+            <span>estados</span>
+          </div>
+          <div class="hero__stat">
+            <strong>100%</strong>
+            <span>gratuito</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO: Marquee com text relevante para crawlers (visível, não hidden) -->
+      <div class="marquee" aria-label="Marcas disponíveis" role="marquee">
+        <div class="marquee__track" id="marqueeTrack">
+          <span class="marquee__item">+5.000 CAMINHÕES</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">SCANIA</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">VOLVO</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">MERCEDES-BENZ</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">MAN</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">DAF</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">IVECO</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">VOLKSWAGEN</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">NOVOS E USADOS</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+          <span class="marquee__item">TODO O BRASIL</span>
+          <span class="marquee__sep" aria-hidden="true">★</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 2 — CAMINHÕES EM DESTAQUE
+         SEO: H2 com variação semântica, cards com dados estruturados
+         ============================================================ -->
+    <section class="section featured" aria-labelledby="featuredTitle">
+      <div class="container">
+        <div class="section__header">
+          <!-- SEO: H2 com variação semântica da keyword principal -->
+          <h2 class="section__title" id="featuredTitle">CAMINHÕES EM DESTAQUE</h2>
+          <a href="/caminhoes/" class="section__link" aria-label="Ver todos os caminhões disponíveis">
+            Ver todos →
+          </a>
+        </div>
+
+        <!-- Filtro por tabs — acessível com role="tablist" -->
+        <div class="filter-tabs" role="tablist" aria-label="Filtrar caminhões por tipo">
+          <button class="filter-tab active" role="tab" aria-selected="true" data-filter="all" aria-controls="trucksGrid">
+            Todos
+          </button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="novo" aria-controls="trucksGrid">
+            Novos
+          </button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="usado" aria-controls="trucksGrid">
+            Usados
+          </button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="leve" aria-controls="trucksGrid">
+            Leves
+          </button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="pesado" aria-controls="trucksGrid">
+            Pesados
+          </button>
+        </div>
+
+        <!-- Grid de caminhões — SEO: dados realistas para engajamento -->
+        <div class="trucks-grid" id="trucksGrid" role="tabpanel" aria-label="Lista de caminhões">
+
+          <!-- Card 1 -->
+          <article class="truck-card" data-type="pesado" data-condition="usado" aria-label="Scania R 450 2022">
+            <a href="/caminhoes/scania/r-450/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <!-- SEO: alt text descritivo e nome de arquivo semântico -->
+              <img
+                src="assets/caminhao-scania-r450-2022-branco.webp"
+                alt="Caminhão Scania R 450 2022 branco cavalo mecânico"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">USADO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  São Paulo, SP
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/scania/r-450/">Scania R 450 2022</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  480.000 km
+                </span>
+                <span class="truck-card__spec">6x2</span>
+                <span class="truck-card__spec">Euro 6</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 580.000</strong>
+                </div>
+                <!-- SEO: rel="nofollow sponsored" obrigatório em links de afiliados -->
+                <a
+                  href="https://www.olx.com.br/autos-e-pecas/caminhoes/scania"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Scania R 450 2022 no anunciante parceiro"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="truck-card" data-type="pesado" data-condition="usado" aria-label="Volvo FH 460 2021">
+            <a href="/caminhoes/volvo/fh-460/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-volvo-fh460-2021-cinza.webp"
+                alt="Caminhão Volvo FH 460 2021 cinza cavalo mecânico na estrada"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">USADO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Curitiba, PR
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/volvo/fh-460/">Volvo FH 460 2021</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">620.000 km</span>
+                <span class="truck-card__spec">I-Shift</span>
+                <span class="truck-card__spec">6x4</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 510.000</strong>
+                </div>
+                <a
+                  href="https://www.webmotors.com.br/caminhoes/volvo"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Volvo FH 460 2021 no anunciante parceiro"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="truck-card" data-type="pesado" data-condition="novo" aria-label="Mercedes-Benz Actros 2651 2026">
+            <a href="/caminhoes/mercedes-benz/actros-2651/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-mercedes-actros-2651-2026-vermelho.webp"
+                alt="Caminhão Mercedes-Benz Actros 2651 2026 vermelho 0km"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge truck-card__badge--novo">NOVO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  São Paulo, SP
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/mercedes-benz/actros-2651/">Mercedes Actros 2651 2026</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">0 km</span>
+                <span class="truck-card__spec">Powershift</span>
+                <span class="truck-card__spec">6x4</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">A partir de</span>
+                  <strong class="truck-card__price-value">R$ 890.000</strong>
+                </div>
+                <a
+                  href="https://www.mercedes-benz-trucks.com/pt_BR"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Mercedes-Benz Actros 2651 2026"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="truck-card" data-type="leve" data-condition="usado" aria-label="Volkswagen Delivery 11.180 2020">
+            <a href="/caminhoes/volkswagen/delivery-11180/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-vw-delivery-11180-2020-branco.webp"
+                alt="Caminhão Volkswagen Delivery 11.180 2020 branco leve"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">USADO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Belo Horizonte, MG
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/volkswagen/delivery-11180/">VW Delivery 11.180 2020</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">180.000 km</span>
+                <span class="truck-card__spec">Leve</span>
+                <span class="truck-card__spec">4x2</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 165.000</strong>
+                </div>
+                <a
+                  href="https://www.icarros.com.br/comprar/caminhoes/volkswagen"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Volkswagen Delivery 11.180 2020"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="truck-card" data-type="pesado" data-condition="usado" aria-label="MAN TGX 29.480 2023">
+            <a href="/caminhoes/man/tgx-29480/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-man-tgx-29480-2023-azul.webp"
+                alt="Caminhão MAN TGX 29.480 2023 azul cavalo mecânico"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">USADO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Porto Alegre, RS
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/man/tgx-29480/">MAN TGX 29.480 2023</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">290.000 km</span>
+                <span class="truck-card__spec">8x4</span>
+                <span class="truck-card__spec">Euro 6</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 720.000</strong>
+                </div>
+                <a
+                  href="https://www.olx.com.br/autos-e-pecas/caminhoes/man"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do MAN TGX 29.480 2023"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="truck-card" data-type="pesado" data-condition="novo" aria-label="DAF XF 530 2026">
+            <a href="/caminhoes/daf/xf-530/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-daf-xf530-2026-prata.webp"
+                alt="Caminhão DAF XF 530 2026 prata extra-pesado 0km"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge truck-card__badge--novo">NOVO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Rio de Janeiro, RJ
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/daf/xf-530/">DAF XF 530 2026</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">0 km</span>
+                <span class="truck-card__spec">Traxon</span>
+                <span class="truck-card__spec">6x2</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">A partir de</span>
+                  <strong class="truck-card__price-value">R$ 960.000</strong>
+                </div>
+                <a
+                  href="https://www.daf.com/pt-br"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do DAF XF 530 2026"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="truck-card" data-type="medio" data-condition="usado" aria-label="Mercedes-Benz Atego 2430 2019">
+            <a href="/caminhoes/mercedes-benz/atego-2430/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-mercedes-atego-2430-2019-branco.webp"
+                alt="Caminhão Mercedes-Benz Atego 2430 2019 branco médio toco"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">USADO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Recife, PE
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/mercedes-benz/atego-2430/">Mercedes Atego 2430 2019</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">340.000 km</span>
+                <span class="truck-card__spec">Toco</span>
+                <span class="truck-card__spec">4x2</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 245.000</strong>
+                </div>
+                <a
+                  href="https://www.mercadolivre.com.br/caminhoes/mercedes"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Mercedes-Benz Atego 2430 2019"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="truck-card" data-type="pesado" data-condition="usado" aria-label="Iveco S-Way 570 2024">
+            <a href="/caminhoes/iveco/s-way-570/" class="truck-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/caminhao-iveco-s-way-570-2024-preto.webp"
+                alt="Caminhão Iveco S-Way 570 2024 preto cavalo mecânico"
+                width="380" height="220"
+                loading="lazy"
+                class="truck-card__image"
+              >
+            </a>
+            <div class="truck-card__body">
+              <div class="truck-card__header">
+                <span class="truck-card__badge">SEMI-NOVO</span>
+                <span class="truck-card__location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Goiânia, GO
+                </span>
+              </div>
+              <h3 class="truck-card__title">
+                <a href="/caminhoes/iveco/s-way-570/">Iveco S-Way 570 2024</a>
+              </h3>
+              <div class="truck-card__specs">
+                <span class="truck-card__spec">120.000 km</span>
+                <span class="truck-card__spec">HiTronix</span>
+                <span class="truck-card__spec">6x2</span>
+              </div>
+              <div class="truck-card__footer">
+                <div class="truck-card__price">
+                  <span class="truck-card__price-label">Preço</span>
+                  <strong class="truck-card__price-value">R$ 810.000</strong>
+                </div>
+                <a
+                  href="https://www.webmotors.com.br/caminhoes/iveco"
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="truck-card__cta"
+                  aria-label="Ver oferta do Iveco S-Way 570 2024"
+                >
+                  VER OFERTA →
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /trucks-grid -->
+
+        <div class="section__cta-wrapper">
+          <a href="/caminhoes/" class="btn btn--outline btn--lg" aria-label="Ver todos os 5247 caminhões disponíveis">
+            VER TODOS OS CAMINHÕES (+5.247)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 3 — CATEGORIAS POR TIPO
+         SEO: H2, links internos para silos de categoria
+         ============================================================ -->
+    <section class="section categories" aria-labelledby="categoriesTitle">
+      <div class="container">
+        <h2 class="section__title" id="categoriesTitle">COMPRAR POR TIPO</h2>
+        <p class="section__subtitle">Encontre o caminhão ideal para sua operação</p>
+
+        <div class="categories__grid">
+          <a href="/caminhoes/leves/" class="category-card" aria-label="Ver caminhões leves disponíveis">
+            <div class="category-card__icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">CAMINHÕES LEVES</h3>
+              <p class="category-card__desc">3/4 · PBT até 7,99t · CNH C</p>
+              <span class="category-card__count">1.240 anúncios</span>
+            </div>
+            <span class="category-card__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="/caminhoes/medios/" class="category-card" aria-label="Ver caminhões médios disponíveis">
+            <div class="category-card__icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">CAMINHÕES MÉDIOS</h3>
+              <p class="category-card__desc">Toco · PBT 8t a 15,99t · CNH D/E</p>
+              <span class="category-card__count">1.870 anúncios</span>
+            </div>
+            <span class="category-card__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="/caminhoes/pesados/" class="category-card" aria-label="Ver caminhões pesados disponíveis">
+            <div class="category-card__icon category-card__icon--accent" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">CAMINHÕES PESADOS</h3>
+              <p class="category-card__desc">Truck · PBT 16t a 29,99t · 6x2/6x4</p>
+              <span class="category-card__count">1.450 anúncios</span>
+            </div>
+            <span class="category-card__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="/caminhoes/extra-pesados/" class="category-card" aria-label="Ver caminhões extra-pesados disponíveis">
+            <div class="category-card__icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">EXTRA-PESADOS</h3>
+              <p class="category-card__desc">Bi-truck · Carreta · PBT 30t+ · 8x2/8x4</p>
+              <span class="category-card__count">687 anúncios</span>
+            </div>
+            <span class="category-card__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 4 — MARCAS
+         SEO: links internos para cada silo de marca
+         ============================================================ -->
+    <section class="section brands" aria-labelledby="brandsTitle">
+      <div class="container">
+        <h2 class="section__title" id="brandsTitle">COMPRAR POR MARCA</h2>
+        <p class="section__subtitle">Escolha sua marca preferida e veja todos os modelos disponíveis</p>
+
+        <div class="brands__grid" role="list" aria-label="Marcas de caminhões disponíveis">
+
+          <a href="/marcas/scania/" class="brand-card" role="listitem" aria-label="Ver caminhões Scania">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">SCANIA</span>
+            </div>
+            <span class="brand-card__count">842 modelos</span>
+          </a>
+
+          <a href="/marcas/volvo/" class="brand-card" role="listitem" aria-label="Ver caminhões Volvo">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">VOLVO</span>
+            </div>
+            <span class="brand-card__count">718 modelos</span>
+          </a>
+
+          <a href="/marcas/mercedes-benz/" class="brand-card" role="listitem" aria-label="Ver caminhões Mercedes-Benz">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">MERCEDES</span>
+            </div>
+            <span class="brand-card__count">1.120 modelos</span>
+          </a>
+
+          <a href="/marcas/man/" class="brand-card" role="listitem" aria-label="Ver caminhões MAN">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">MAN</span>
+            </div>
+            <span class="brand-card__count">390 modelos</span>
+          </a>
+
+          <a href="/marcas/daf/" class="brand-card" role="listitem" aria-label="Ver caminhões DAF">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">DAF</span>
+            </div>
+            <span class="brand-card__count">210 modelos</span>
+          </a>
+
+          <a href="/marcas/iveco/" class="brand-card" role="listitem" aria-label="Ver caminhões Iveco">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">IVECO</span>
+            </div>
+            <span class="brand-card__count">445 modelos</span>
+          </a>
+
+          <a href="/marcas/volkswagen/" class="brand-card" role="listitem" aria-label="Ver caminhões Volkswagen">
+            <div class="brand-card__logo" aria-hidden="true">
+              <span class="brand-card__name">VW</span>
+            </div>
+            <span class="brand-card__count">522 modelos</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 5 — GUIA DO COMPRADOR (Content Hub)
+         SEO: H2, links para silo de conteúdo informacional
+         ============================================================ -->
+    <section class="section guides" aria-labelledby="guidesTitle">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title" id="guidesTitle">GUIA DO COMPRADOR</h2>
+          <a href="/guia/" class="section__link" aria-label="Ver todos os guias do comprador">Ver todos →</a>
+        </div>
+        <p class="section__subtitle">Tudo que você precisa saber para comprar com segurança</p>
+
+        <div class="guides__grid">
+
+          <article class="guide-card" aria-labelledby="guide1Title">
+            <div class="guide-card__category">COMPRA</div>
+            <h3 class="guide-card__title" id="guide1Title">
+              <a href="/guia/como-comprar-caminhao/">Como Comprar seu Primeiro Caminhão</a>
+            </h3>
+            <p class="guide-card__excerpt">
+              Passo a passo completo: da escolha do modelo à transferência. Não cometa os erros dos iniciantes.
+            </p>
+            <a href="/guia/como-comprar-caminhao/" class="guide-card__link" aria-label="Ler guia completo sobre como comprar caminhão">
+              LER GUIA →
+            </a>
+          </article>
+
+          <article class="guide-card" aria-labelledby="guide2Title">
+            <div class="guide-card__category">FINANCIAMENTO</div>
+            <h3 class="guide-card__title" id="guide2Title">
+              <a href="/guia/financiamento-caminhao/">Financiamento: Tudo que Você Precisa Saber</a>
+            </h3>
+            <p class="guide-card__excerpt">
+              Taxas, prazos, bancos e como aumentar sua chance de aprovação. CDC, FINAME e leasing explicados.
+            </p>
+            <a href="/guia/financiamento-caminhao/" class="guide-card__link" aria-label="Ler guia completo sobre financiamento de caminhão">
+              LER GUIA →
+            </a>
+          </article>
+
+          <article class="guide-card guide-card--featured" aria-labelledby="guide3Title">
+            <div class="guide-card__category">OPERAÇÃO</div>
+            <h3 class="guide-card__title" id="guide3Title">
+              <a href="/guia/melhor-caminhao-para-frete/">Qual o Melhor Caminhão para Frete?</a>
+            </h3>
+            <p class="guide-card__excerpt">
+              Descubra qual caminhão se paga mais rápido para frete urbano, rodoviário e agrícola em 2026.
+            </p>
+            <a href="/guia/melhor-caminhao-para-frete/" class="guide-card__link" aria-label="Ler guia sobre o melhor caminhão para frete">
+              LER GUIA →
+            </a>
+          </article>
+
+          <article class="guide-card" aria-labelledby="guide4Title">
+            <div class="guide-card__category">COMPARATIVO</div>
+            <h3 class="guide-card__title" id="guide4Title">
+              <a href="/guia/comparativo-scania-vs-volvo/">Scania vs Volvo: Qual o Melhor?</a>
+            </h3>
+            <p class="guide-card__excerpt">
+              Comparativo completo entre os dois líderes do mercado. Consumo, manutenção, revenda e conforto.
+            </p>
+            <a href="/guia/comparativo-scania-vs-volvo/" class="guide-card__link" aria-label="Ler comparativo completo Scania vs Volvo">
+              LER GUIA →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 6 — POR QUE USAR NOSSO SITE
+         SEO: Prova social e diferenciais (E-E-A-T)
+         ============================================================ -->
+    <section class="section benefits" aria-labelledby="benefitsTitle">
+      <div class="container">
+        <h2 class="section__title" id="benefitsTitle">POR QUE O CAMINHÃOBR?</h2>
+        <p class="section__subtitle">O maior portal independente de caminhões do Brasil</p>
+
+        <div class="benefits__grid">
+
+          <div class="benefit-card" aria-labelledby="benefit1">
+            <div class="benefit-card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3 class="benefit-card__title" id="benefit1">+5.000 CAMINHÕES VERIFICADOS</h3>
+            <p class="benefit-card__desc">Anúncios de parceiros confiáveis: OLX, WebMotors, iCarros, Mercado Livre e concessionárias.</p>
+          </div>
+
+          <div class="benefit-card" aria-labelledby="benefit2">
+            <div class="benefit-card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <h3 class="benefit-card__title" id="benefit2">COMPARADOR DE PREÇOS</h3>
+            <p class="benefit-card__desc">Compare preços do mesmo modelo em vários anunciantes. Negocie com base em dados reais.</p>
+          </div>
+
+          <div class="benefit-card" aria-labelledby="benefit3">
+            <div class="benefit-card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+            <h3 class="benefit-card__title" id="benefit3">GUIAS EXCLUSIVOS</h3>
+            <p class="benefit-card__desc">+50 artigos e guias escritos por especialistas do setor de transporte rodoviário.</p>
+          </div>
+
+          <div class="benefit-card" aria-labelledby="benefit4">
+            <div class="benefit-card__icon benefit-card__icon--green" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <h3 class="benefit-card__title" id="benefit4">100% GRATUITO</h3>
+            <p class="benefit-card__desc">Sem cadastro obrigatório. Acesse todos os anúncios, guias e ferramentas gratuitamente.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 7 — VENDER SEU CAMINHÃO (Lead Capture)
+         SEO: Keyword "vender caminhão", formulário com acessibilidade
+         ============================================================ -->
+    <section class="section sell" aria-labelledby="sellTitle">
+      <div class="container sell__inner">
+        <div class="sell__content">
+          <!-- SEO: H2 com keyword "vender caminhão" -->
+          <h2 class="sell__title" id="sellTitle">QUER VENDER SEU CAMINHÃO?</h2>
+          <p class="sell__subtitle">
+            Anuncie grátis e alcance mais de <strong>200.000 compradores</strong> por mês em todo o Brasil.
+          </p>
+          <ul class="sell__benefits" aria-label="Benefícios de anunciar">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Publicação em até 24 horas
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Visibilidade em todo o Brasil
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              100% gratuito, sem comissão
+            </li>
+          </ul>
+        </div>
+
+        <form class="sell__form" action="/vender-caminhao/" method="get" aria-label="Formulário para anunciar caminhão">
+          <fieldset class="sell__fieldset">
+            <legend class="sr-only">Dados do seu caminhão</legend>
+
+            <div class="form-group">
+              <label for="sellNome" class="form-label">Seu Nome <span aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="sellNome"
+                name="nome"
+                class="form-input"
+                placeholder="João da Silva"
+                required
+                aria-required="true"
+                autocomplete="name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="sellTelefone" class="form-label">WhatsApp <span aria-hidden="true">*</span></label>
+              <input
+                type="tel"
+                id="sellTelefone"
+                name="telefone"
+                class="form-input"
+                placeholder="(11) 99999-9999"
+                required
+                aria-required="true"
+                autocomplete="tel"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="sellMarca" class="form-label">Marca do Caminhão <span aria-hidden="true">*</span></label>
+              <select id="sellMarca" name="marca" class="form-input form-select" required aria-required="true">
+                <option value="">Selecione a marca</option>
+                <option value="scania">Scania</option>
+                <option value="volvo">Volvo</option>
+                <option value="mercedes-benz">Mercedes-Benz</option>
+                <option value="man">MAN</option>
+                <option value="daf">DAF</option>
+                <option value="iveco">Iveco</option>
+                <option value="volkswagen">Volkswagen</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sellModelo" class="form-label">Modelo e Ano</label>
+              <input
+                type="text"
+                id="sellModelo"
+                name="modelo"
+                class="form-input"
+                placeholder="Ex: R 450 2022"
+              >
+            </div>
+
+          </fieldset>
+
+          <button type="submit" class="btn btn--primary btn--full sell__submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            ANUNCIAR GRÁTIS AGORA
+          </button>
+
+          <p class="sell__disclaimer">
+            Ao enviar, você concorda com nossos
+            <a href="/termos/" rel="nofollow">Termos de Uso</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 8 — BLOG / ÚLTIMAS NOTÍCIAS
+         SEO: H2, links para silo de blog, schema Article implícito
+         ============================================================ -->
+    <section class="section blog" aria-labelledby="blogTitle">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title" id="blogTitle">ÚLTIMAS DO MERCADO</h2>
+          <a href="/blog/" class="section__link" aria-label="Ver todos os artigos do blog">Ver blog →</a>
+        </div>
+
+        <div class="blog__grid">
+
+          <article class="blog-card" aria-labelledby="blog1Title">
+            <a href="/blog/melhores-caminhoes-2026/" class="blog-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/blog-melhores-caminhoes-2026.webp"
+                alt="Ranking dos melhores caminhões de 2026 no Brasil"
+                width="400" height="220"
+                loading="lazy"
+                class="blog-card__image"
+              >
+            </a>
+            <div class="blog-card__body">
+              <span class="blog-card__category">RANKING</span>
+              <h3 class="blog-card__title" id="blog1Title">
+                <a href="/blog/melhores-caminhoes-2026/">Melhores Caminhões de 2026: Ranking Completo por Segmento</a>
+              </h3>
+              <p class="blog-card__excerpt">
+                Analisamos desempenho, consumo, custo de manutenção e revenda dos principais lançamentos de 2026.
+              </p>
+              <div class="blog-card__meta">
+                <time datetime="2026-03-15" class="blog-card__date">15 Mar 2026</time>
+                <a href="/blog/melhores-caminhoes-2026/" class="blog-card__link">Ler mais →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" aria-labelledby="blog2Title">
+            <a href="/blog/lancamentos-caminhoes/" class="blog-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/blog-lancamentos-caminhoes-2026.webp"
+                alt="Lançamentos de caminhões previstos para 2026 no Brasil"
+                width="400" height="220"
+                loading="lazy"
+                class="blog-card__image"
+              >
+            </a>
+            <div class="blog-card__body">
+              <span class="blog-card__category">LANÇAMENTOS</span>
+              <h3 class="blog-card__title" id="blog2Title">
+                <a href="/blog/lancamentos-caminhoes/">Lançamentos de Caminhões em 2026: Todas as Novidades</a>
+              </h3>
+              <p class="blog-card__excerpt">
+                Scania Next Gen, Volvo FH Electric, novo Actros e as estreias brasileiras esperadas para o ano.
+              </p>
+              <div class="blog-card__meta">
+                <time datetime="2026-02-28" class="blog-card__date">28 Fev 2026</time>
+                <a href="/blog/lancamentos-caminhoes/" class="blog-card__link">Ler mais →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" aria-labelledby="blog3Title">
+            <a href="/blog/mercado-caminhoes-brasil/" class="blog-card__image-link" tabindex="-1" aria-hidden="true">
+              <img
+                src="assets/blog-mercado-caminhoes-2026.webp"
+                alt="Análise do mercado de caminhões no Brasil em 2026"
+                width="400" height="220"
+                loading="lazy"
+                class="blog-card__image"
+              >
+            </a>
+            <div class="blog-card__body">
+              <span class="blog-card__category">MERCADO</span>
+              <h3 class="blog-card__title" id="blog3Title">
+                <a href="/blog/mercado-caminhoes-brasil/">Mercado de Caminhões: Tendências e Perspectivas para 2026</a>
+              </h3>
+              <p class="blog-card__excerpt">
+                Licenciamentos, preços médios, tendências de financiamento e o impacto do diesel na frota nacional.
+              </p>
+              <div class="blog-card__meta">
+                <time datetime="2026-01-20" class="blog-card__date">20 Jan 2026</time>
+                <a href="/blog/mercado-caminhoes-brasil/" class="blog-card__link">Ler mais →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 9 — FAQ (Schema FAQPage já declarado no JSON-LD)
+         SEO: Accordion acessível com aria-expanded
+         ============================================================ -->
+    <section class="section faq" aria-labelledby="faqTitle">
+      <div class="container">
+        <h2 class="section__title" id="faqTitle">PERGUNTAS FREQUENTES</h2>
+        <p class="section__subtitle">Tudo que você precisa saber sobre o CaminhãoBR</p>
+
+        <div class="faq__list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-1"
+              type="button"
+            >
+              <span>Como comprar um caminhão pelo CaminhãoBR?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-1" hidden>
+              <p>Navegue pelos anúncios usando os filtros de marca, modelo, ano e tipo. Encontrou o caminhão ideal? Clique em "Ver Oferta" para ser redirecionado ao anunciante parceiro (OLX, WebMotors, iCarros, etc.) e negociar diretamente com o vendedor.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-2"
+              type="button"
+            >
+              <span>Os caminhões anunciados são verificados?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-2" hidden>
+              <p>Todos os anúncios são publicados por parceiros verificados como OLX, WebMotors, iCarros e concessionárias credenciadas. Mesmo assim, recomendamos sempre solicitar uma vistoria profissional antes de concluir a compra.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-3"
+              type="button"
+            >
+              <span>Quais formas de pagamento são aceitas?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-3" hidden>
+              <p>As formas de pagamento variam por anunciante. As mais comuns são: à vista (transferência/PIX), financiamento bancário (CDC), FINAME/BNDES, leasing e consórcio. Consulte diretamente o vendedor para as condições específicas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-4"
+              type="button"
+            >
+              <span>Como funciona o financiamento de caminhão?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-4" hidden>
+              <p>Existem várias modalidades: CDC (Crédito Direto ao Consumidor), FINAME (BNDES com taxas subsidiadas), leasing e consórcio. Bancos como Bradesco, Itaú, Scania Banco e Volvo Financial oferecem taxas a partir de 1,2% ao mês para CNPJ. <a href="/guia/financiamento-caminhao/">Veja nosso guia completo de financiamento.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-5"
+              type="button"
+            >
+              <span>Posso anunciar meu caminhão gratuitamente?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-5" hidden>
+              <p>Sim! Você pode enviar os dados do seu caminhão pelo formulário na seção acima ou na página <a href="/vender-caminhao/">Vender Caminhão</a>. É 100% gratuito e nossa equipe publica em até 24 horas. Nenhuma comissão é cobrada sobre a venda.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-6"
+              type="button"
+            >
+              <span>O CaminhãoBR cobra alguma taxa?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-6" hidden>
+              <p>Não cobramos nada de compradores ou vendedores. O CaminhãoBR é um portal de conteúdo e afiliados que se mantém através de parcerias com anunciantes. Você acessa todos os guias, ferramentas e anúncios de forma completamente gratuita.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-7"
+              type="button"
+            >
+              <span>O site é seguro para comprar caminhão?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-7" hidden>
+              <p>O CaminhãoBR é um portal que exibe anúncios de parceiros verificados. Todas as transações ocorrem nos sites dos parceiros (OLX, WebMotors, iCarros, etc.). Sempre recomendamos: solicite vistoria profissional, verifique CRLV e consulte o histórico do veículo no Detran antes de qualquer negociação.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-item__trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-8"
+              type="button"
+            >
+              <span>Como consultar a Tabela FIPE de caminhões?</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-8" hidden>
+              <p>Você pode consultar a Tabela FIPE diretamente no site da FIPE (fipe.org.br) pelo código do veículo. Também preparamos um guia completo com as tabelas dos modelos mais buscados. <a href="/guia/tabela-fipe-caminhoes/">Veja a Tabela FIPE de caminhões aqui.</a></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER DENSO
+       SEO: Rich footer com links internos para todos os silos
+       Internal linking: crucial para distribuição de PageRank
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Coluna 1: Marca + Redes sociais -->
+        <div class="footer__col footer__col--brand">
+          <a href="/" class="footer__logo" aria-label="CaminhãoBR - Página inicial">
+            <span class="footer__logo-icon" aria-hidden="true">🚛</span>
+            <span>CAMINHÃO<span class="footer__logo-accent">BR</span></span>
+          </a>
+          <p class="footer__desc">
+            O maior portal de compra e venda de caminhões do Brasil. Compare preços, leia guias exclusivos e negocie direto com vendedores verificados.
+          </p>
+          <!-- Disclaimer de afiliados — obrigatório pela LGPD e FTC -->
+          <p class="footer__disclaimer">
+            ⚠️ Este site contém links de afiliados. Ao clicar em "Ver Oferta", você será redirecionado a um parceiro externo. O CaminhãoBR pode receber comissão por leads qualificados.
+          </p>
+          <div class="footer__social" role="list" aria-label="Redes sociais do CaminhãoBR">
+            <a href="https://www.instagram.com/caminhaobr" target="_blank" rel="noopener noreferrer" class="footer__social-link" role="listitem" aria-label="CaminhãoBR no Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/caminhaobr" target="_blank" rel="noopener noreferrer" class="footer__social-link" role="listitem" aria-label="CaminhãoBR no Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@caminhaobr" target="_blank" rel="noopener noreferrer" class="footer__social-link" role="listitem" aria-label="CaminhãoBR no YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Caminhões por tipo -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">CAMINHÕES</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="/caminhoes/">Todos os Caminhões</a></li>
+            <li><a href="/caminhoes/novos/">Caminhões 0km</a></li>
+            <li><a href="/caminhoes/usados/">Caminhões Usados</a></li>
+            <li><a href="/caminhoes/semi-novos/">Caminhões Seminovos</a></li>
+            <li><a href="/caminhoes/leves/">Caminhões Leves (3/4)</a></li>
+            <li><a href="/caminhoes/medios/">Caminhões Médios (Toco)</a></li>
+            <li><a href="/caminhoes/pesados/">Caminhões Pesados (Truck)</a></li>
+            <li><a href="/caminhoes/extra-pesados/">Extra-Pesados (Carreta)</a></li>
+            <li><a href="/vender-caminhao/">Anunciar Caminhão</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Por marca -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">POR MARCA</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="/marcas/scania/">Caminhões Scania</a></li>
+            <li><a href="/marcas/volvo/">Caminhões Volvo</a></li>
+            <li><a href="/marcas/mercedes-benz/">Caminhões Mercedes-Benz</a></li>
+            <li><a href="/marcas/man/">Caminhões MAN</a></li>
+            <li><a href="/marcas/daf/">Caminhões DAF</a></li>
+            <li><a href="/marcas/iveco/">Caminhões Iveco</a></li>
+            <li><a href="/marcas/volkswagen/">Caminhões Volkswagen</a></li>
+            <li><a href="/marcas/">Ver Todas as Marcas</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Guias + Institucional -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">GUIAS E INFO</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="/guia/como-comprar-caminhao/">Como Comprar Caminhão</a></li>
+            <li><a href="/guia/financiamento-caminhao/">Financiamento de Caminhão</a></li>
+            <li><a href="/guia/tipos-de-caminhao/">Tipos de Caminhão</a></li>
+            <li><a href="/guia/tabela-fipe-caminhoes/">Tabela FIPE Caminhões</a></li>
+            <li><a href="/guia/consumo-diesel-por-modelo/">Consumo de Diesel</a></li>
+            <li><a href="/guia/melhor-caminhao-para-frete/">Melhor Caminhão para Frete</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/sobre/">Sobre o CaminhãoBR</a></li>
+            <li><a href="/contato/">Contato</a></li>
+            <li><a href="/termos/" rel="nofollow">Termos e Privacidade</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer bottom bar -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copyright">
+          &copy; 2026 CaminhãoBR. Todos os direitos reservados.
+        </p>
+        <nav class="footer__legal" aria-label="Links legais">
+          <a href="/termos/" rel="nofollow">Política de Privacidade</a>
+          <a href="/termos/" rel="nofollow">Termos de Uso</a>
+          <a href="/sobre/">Sobre</a>
+          <a href="/contato/">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner (LGPD) -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieDesc" aria-hidden="true">
+    <div class="cookie-banner__content">
+      <p id="cookieDesc">
+        <strong id="cookieTitle">🍪 Usamos cookies</strong> para melhorar sua experiência e analisar o tráfego. Ao continuar navegando, você concorda com nossa <a href="/termos/" rel="nofollow">Política de Privacidade</a>.
+      </p>
+      <div class="cookie-banner__actions">
+        <button class="btn btn--outline btn--sm" id="cookieReject" type="button">Rejeitar</button>
+        <button class="btn btn--primary btn--sm" id="cookieAccept" type="button">Aceitar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS principal — defer para não bloquear renderização (Core Web Vitals FID) -->
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Para Apartamento', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica faz barulho em apartamento?',
+    answer: 'Modelos com resistência magnética são muito silenciosos e adequados para apartamentos. O ruído produzido vem principalmente do atrito dos pedais e da correia, não do sistema de resistência. Em pisos de madeira ou cerâmica, adicionar um tapete amortecedor abaixo da bicicleta reduz a transmissão de vibração para a laje.',
+  },
+  {
+    question: 'Qual o menor tamanho de bicicleta ergométrica disponível?',
+    answer: 'Os modelos mais compactos do mercado brasileiro ocupam aproximadamente 50x90 cm de base. Alguns modelos dobráveis chegam a 40x80 cm quando dobrados. Para a maioria dos apartamentos, modelos verticais com base de 60x100 cm são perfeitamente adequados e não limitam a circulação no ambiente.',
+  },
+  {
+    question: 'Bicicleta ergométrica dobrável é boa?',
+    answer: 'Bicicletas ergométricas dobráveis são adequadas para uso ocasional (1 a 2 vezes por semana), mas geralmente têm estrutura mais fraca e resistência limitada. Para uso regular, prefira modelos fixos compactos, que oferecem maior durabilidade e qualidade de resistência mesmo em dimensões reduzidas.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Apartamento: Modelos Compactos e Silenciosos"
+  description="Como escolher bicicleta ergométrica para apartamento: dimensões ideais, resistência magnética silenciosa, modelos dobráveis e como evitar barulho e vibração para os vizinhos."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-25"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para Apartamento: Silenciosa, Compacta e Eficiente</h1>
+
+      <p class="summarization">
+        A melhor <strong>bicicleta ergométrica para apartamento</strong> é a que combina <strong>resistência magnética silenciosa</strong>, dimensões de base abaixo de <strong>65x115 cm</strong>, peso do equipamento abaixo de <strong>25 kg</strong> e rodízios de transporte. Modelos entre <strong>R$ 1.000 e R$ 2.000</strong> atendem bem a esses requisitos sem comprometer a qualidade do treino.
+      </p>
+
+      <p>
+        Usar bicicleta ergométrica em apartamento é totalmente viável com a escolha certa do equipamento. Os dois principais fatores a considerar são o <strong>espaço disponível</strong> (incluindo a área ao redor para acesso seguro) e o <strong>nível de ruído</strong>, que afeta tanto o usuário quanto os vizinhos, especialmente em treinos noturnos.
+      </p>
+
+      <h2>Critérios Específicos para Apartamento</h2>
+
+      <ul>
+        <li><strong>Resistência magnética:</strong> elimina o ruído de atrito mecânico durante o treino</li>
+        <li><strong>Dimensões compactas:</strong> base de no máximo 65x115 cm, com espaço adicional de 50 cm nas laterais</li>
+        <li><strong>Rodízios de transporte:</strong> facilitam o deslocamento sem riscar o piso</li>
+        <li><strong>Tapete antivibração:</strong> reduz a transmissão de vibração para a laje e para os vizinhos do andar de baixo</li>
+        <li><strong>Peso do equipamento:</strong> abaixo de 30 kg facilita o transporte no elevador na montagem inicial</li>
+      </ul>
+
+      <h2>Como Reduzir o Barulho ao Máximo</h2>
+
+      <p>
+        Mesmo com resistência magnética, a bicicleta ergométrica produz algum ruído de fundo (correia, pedais, movimento do usuário). Para minimizar o impacto nos vizinhos: (1) use um tapete de borracha de pelo menos 1 cm de espessura abaixo do equipamento; (2) lubrifique a correia ou corrente conforme recomendado pelo fabricante; (3) verifique periodicamente se os parafusos de fixação estão apertados, pois folgas aumentam o ruído estrutural.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Modelos compactos recomendados:</strong> Os modelos <strong>Randers BR-300</strong> (60x102 cm, 20 kg) e <strong>Kikos BIO-800</strong> (58x98 cm, 22 kg) são referências de compacidade com resistência magnética adequada para uso em apartamentos.
+        </p>
+      </div>
+
+      <p>
+        Volte ao <a href="/como-escolher-bicicleta-ergometrica/">guia de como escolher bicicleta ergométrica</a> para avaliar os demais critérios. Para ver opções por preço, consulte o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">guia de melhores bicicletas ergométricas baratas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para Apartamento" />
+</Layout>

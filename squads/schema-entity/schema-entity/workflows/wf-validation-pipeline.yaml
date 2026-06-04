@@ -1,0 +1,700 @@
+workflow:
+  id: wf-validation-pipeline
+  name: "Validation Pipeline"
+  version: "2.0"
+  purpose: "Fase 5-6: Validação Rich Results + GSC monitoring + A/B tracking + iteração contínua"
+  orchestrator: "@schema-chief"
+  requires: ["wf-schema-implementation outputs"]
+  estimated_duration: "ongoing (setup 2-4h, check semanal 30min)"
+  next_workflow: "Ciclo contínuo — retorna para wf-schema-implementation se necessário"
+
+# ─────────────────────────────────────────────
+# INPUTS
+# ─────────────────────────────────────────────
+
+inputs:
+  required:
+    - name: injection_report
+      type: file
+      path: "docs/injection-report.md"
+      description: "Output de wf-schema-implementation"
+
+    - name: site_url
+      type: url
+      description: "URL base do site"
+
+    - name: sitemap_url
+      type: url
+      description: "URL do sitemap para crawl de validação"
+
+  optional:
+    - name: gsc_property
+      type: string
+      description: "Google Search Console property URL"
+      example: "https://meusite.com"
+
+    - name: sample_urls
+      type: list
+      description: "URLs específicas para validar (20 máx)"
+
+    - name: baseline_date
+      type: date
+      description: "Data de início para comparação de métricas GSC"
+      default: "data do deploy"
+
+    - name: validation_mode
+      type: enum
+      values: [full, quick, gsc-only, rich-results-only]
+      default: full
+
+# ─────────────────────────────────────────════
+# PHASES
+# ════════════════════════════════════════════
+
+phases:
+
+  # ══════════════════════════════════════════
+  # FASE 5 — VALIDAÇÃO PÓS-DEPLOY
+  # ══════════════════════════════════════════
+
+  - id: phase_5_validation
+    name: "FASE 5: VALIDATION — Pós-Deploy"
+    purpose: "Validar schema implementado em produção e monitorar impacto"
+    agents: ["@tech-seo-engineer", "@koray-semantic"]
+    duration: "2-4 horas (setup inicial)"
+
+    steps:
+      - id: s5_1
+        name: "Rich Results Test — Amostra Estatística"
+        agent: "@tech-seo-engineer"
+        command: "*validate-url amostra"
+        sla: "Executar dentro de 24h após deploy"
+        prompt: |
+          Validar schema implementado em amostra representativa de 20 URLs.
+
+          SELEÇÃO DA AMOSTRA:
+          - 5 URLs de tipo Article/BlogPosting
+          - 5 URLs de tipo Product (se e-commerce)
+          - 2 URLs de tipo FAQPage ou HowTo
+          - 2 Entity hubs criados
+          - 2 URLs de categoria/listing
+          - 1 Homepage
+          - 3 URLs de outros tipos relevantes
+          Total: 20 URLs
+
+          MÉTODO DE VALIDAÇÃO:
+
+          OPÇÃO A — Manual (Rich Results Test):
+          URL: https://search.google.com/test/rich-results
+          Para cada URL: copiar e testar manualmente
+          Registrar: tipo testado, status, erros, warnings
+
+          OPÇÃO B — API (Google):
+          ```python
+          import requests, json
+
+          def test_rich_results(url):
+              api_url = "https://searchconsole.googleapis.com/v1/urlTestingTools/mobileFriendlyTest:run"
+              # Nota: Rich Results Test não tem API pública oficial
+              # Usar validator.schema.org como alternativa
+              validator_url = "https://validator.schema.org/validate"
+              r = requests.post(validator_url, data={"url": url})
+              return r.json()
+          ```
+
+          OPÇÃO C — Schema Extractor + Local Validation:
+          ```python
+          import requests, json, re
+          from jsonschema import validate as json_validate
+
+          def validate_schema_url(url):
+              r = requests.get(url, timeout=10)
+              schemas = re.findall(
+                  r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>',
+                  r.text, re.S
+              )
+              results = []
+              for s in schemas:
+                  try:
+                      data = json.loads(s.strip())
+                      results.append({
+                          "valid_json": True,
+                          "types": [n.get('@type') for n in data.get('@graph', [data])],
+                          "has_id": any('@id' in n for n in data.get('@graph', [data])),
+                          "has_context": bool(data.get('@context'))
+                      })
+                  except json.JSONDecodeError as e:
+                      results.append({"valid_json": False, "error": str(e)})
+              return results
+          ```
+
+          CRITÉRIOS DE AVALIAÇÃO POR URL:
+            PASS:  Rich Results Test = ELIGIBLE, sem erros críticos
+            WARN:  ELIGIBLE com warnings (não bloqueantes)
+            FAIL:  ERROR (impede rich results) ou JSON inválido
+
+        output:
+          file: "validation_report.md"
+          template: |
+            # Validation Report — {site_url}
+            **Data:** {ISO8601} (dentro de 24h do deploy)
+            **Validado por:** @tech-seo-engineer
+            **Método:** Rich Results Test + Schema Validator
+
+            ## Resumo
+            - URLs testadas: 20
+            - PASS: {N} ({%})
+            - WARN: {N} ({%})
+            - FAIL: {N} ({%})
+            - Score médio de schema: {X}/100
+
+            ## Resultados por URL
+            | URL | Tipo | Rich Results | Schema Valid | Score | Issues |
+            |-----|------|-------------|-------------|-------|--------|
+            {tabela de 20 linhas}
+
+            ## Erros Críticos (FAIL)
+            {lista com URL + erro específico}
+
+            ## Warnings (não bloqueantes)
+            {lista com URL + warning}
+
+            ## Próximos passos
+            {ações para resolver FAILs}
+
+        time_estimate: "45 min"
+
+      - id: s5_2
+        name: "Schema.org Validator — Qualidade Semântica"
+        agent: "@tech-seo-engineer"
+        command: "*schema-validate"
+        prompt: |
+          Validar semântica do schema.org (além do JSON syntax).
+          O Rich Results Test valida elegibilidade para Google.
+          O Schema.org Validator valida conformidade com o vocabulário.
+
+          URL: https://validator.schema.org
+
+          PARA CADA TEMPLATE IMPLEMENTADO:
+          1. Testar URL de produção em validator.schema.org
+          2. Verificar:
+             □ Tipos corretos na hierarquia schema.org (não inventados)
+             □ Propriedades são válidas para o @type declarado
+             □ Valores têm o formato correto (date: ISO8601, url: http*)
+             □ Propriedades obrigatórias presentes (schema.org required vs Google required)
+
+          NOTA JARNO VAN DRIEL:
+          "Schema.org suporta muito mais do que Google usa para rich results.
+           Implementar propriedades extras é válido para o KG mesmo sem rich result."
+
+          REGISTRAR:
+          - Erros de tipo (invalid @type): corrigir imediatamente
+          - Erros de valor (invalid format): corrigir se em propriedade crítica
+          - Propriedades desconhecidas (typos): corrigir
+
+        output:
+          file: "schema_validator_report.yaml"
+          format: |
+            results:
+              - url: ""
+                template_type: ""
+                errors: []
+                warnings: []
+                status: "PASS|WARN|FAIL"
+
+        time_estimate: "20 min"
+
+      - id: s5_3
+        name: "GSC — Structured Data Monitoring Setup"
+        agent: "@tech-seo-engineer"
+        command: "*audit-gsc {gsc_property}"
+        sla: "Verificar 72h após deploy"
+        prompt: |
+          Configurar monitoramento no Google Search Console e registrar baseline.
+
+          LOCALIZAÇÃO NO GSC:
+          Search Console → Indexação → Dados estruturados
+          Search Console → Aparência na pesquisa → Resultados avançados
+
+          MÉTRICAS A REGISTRAR (BASELINE):
+          Data de referência: {deploy_date - 1 semana} (antes do deploy)
+          - Total de itens com dados estruturados válidos: N
+          - Por tipo: Article (N), Product (N), FAQPage (N), etc.
+          - Erros por tipo: lista
+          - Warnings por tipo: lista
+
+          MÉTRICAS A MONITORAR (APÓS DEPLOY):
+          □ 24h após deploy: primeiros dados aparecem?
+          □ 72h após deploy: GSC mostra erros novos?
+          □ 7 dias após: rich results aparecem nas SERPs?
+          □ 14 dias após: CTR por query com rich result vs sem?
+
+          SLA DE RESPOSTA:
+          🔴 Erro crítico novo (bloqueia rich result): Corrigir em 48h
+          🟡 Warning novo: Corrigir na próxima sprint
+          🟠 Queda em itens válidos: Investigar em 24h
+          🔴 Rich result desapareceu: Investigar em 24h
+
+          SETUP DE ALERTAS:
+          - GSC: Email para erros de dados estruturados
+          - Google Alerts: "{marca} rich results"
+
+        output:
+          file: "gsc_baseline.yaml"
+          format: |
+            property: "{gsc_property}"
+            baseline_date: "{deploy_date}"
+            structured_data:
+              total_valid: 0
+              total_warnings: 0
+              total_errors: 0
+              by_type:
+                Article: { valid: 0, warnings: 0, errors: 0 }
+            monitoring_sla:
+              critical_error: "48h"
+              warning: "next_sprint"
+              regression: "24h"
+
+        time_estimate: "20 min"
+
+      - id: s5_4
+        name: "Crawl Log Analysis — Entity Hubs"
+        agent: "@tech-seo-engineer"
+        command: "*crawl-logs"
+        prompt: |
+          Verificar que o Googlebot está rastreando os novos entity hubs.
+
+          VERIFICAÇÃO VIA GSC:
+          GSC → Indexação → Páginas → Rastreadas (não indexadas / indexadas)
+          Verificar status de cada entity hub URL
+
+          VERIFICAÇÃO VIA LOGS (se disponível):
+          Filtrar logs de servidor por User-Agent: Googlebot
+          Para cada entity hub URL: verificar se aparece nos logs
+          Status HTTP esperado: 200 (não 301, 302, 404, 500)
+
+          VERIFICAÇÃO MANUAL:
+          Para cada entity hub:
+          1. curl -I {hub_url} → deve retornar 200
+          2. Buscar no Google: site:{hub_url} → indexado?
+          3. Usar "Inspecionar URL" no GSC → Request Indexing se necessário
+
+          SE HUB NÃO ESTÁ SENDO RASTREADO:
+          □ URL presente no sitemap?
+          □ URL tem canonical tag correta?
+          □ Robots.txt não bloqueia?
+          □ Nenhum noindex tag?
+          □ Internal links apontando para o hub? (link equity)
+
+        output:
+          file: "crawl_status.yaml"
+          format: |
+            entity_hubs:
+              - url: ""
+                http_status: 200
+                in_sitemap: true|false
+                in_crawl_logs: true|false
+                indexed: true|false
+                action_required: ""
+
+        time_estimate: "15 min"
+
+      - id: s5_5
+        name: "A/B Hypothesis — Registro de Baseline"
+        agent: "@koray-semantic"
+        command: "*ab-baseline"
+        prompt: |
+          Registrar hipóteses e baseline para medir impacto do schema implementado.
+
+          HIPÓTESES A TESTAR:
+          (baseadas na master entity table e nos rich results implementados)
+
+          HIPÓTESE 1 — Rich Snippets → CTR:
+            "Implementar FAQPage em artigos que já têm FAQ content
+             deve aumentar CTR dessas páginas em 20-40% em 30 dias"
+            Baseline: CTR médio atual das páginas com FAQPage implementada
+            Medição: GSC CTR em 14, 30, 60 dias após deploy
+
+          HIPÓTESE 2 — Entity Hubs → Topical Authority:
+            "Criar entity hubs para Central Entity e top 3 clusters
+             deve aumentar impressões orgânicas do site em 15% em 60 dias"
+            Baseline: Total de impressões na semana pré-deploy
+            Medição: GSC Impressions em 30, 60, 90 dias
+
+          HIPÓTESE 3 — sameAs + Knowledge Panel:
+            "Adicionar sameAs correto com Wikidata deve melhorar
+             Knowledge Panel confidence score em 30 dias"
+            Baseline: Confidence Score atual (metodologia Jason Barnard)
+            Medição: Verificação manual do KP em 30, 60 dias
+
+          HIPÓTESE 4 — Product Schema → Conversão:
+            "Product schema com AggregateRating deve aumentar CTR
+             de páginas de produto em 30-50%"
+            Baseline: CTR atual das páginas de produto no GSC
+
+          FORMATO DE REGISTRO:
+          Para cada hipótese:
+            - Declaração clara da hipótese
+            - Baseline registrado com data
+            - Métrica de sucesso definida
+            - Data de avaliação (14, 30, 60 dias)
+            - Critério de rollback (se metrics pioram)
+
+        output:
+          file: "ab_tracking_log.md"
+          template: |
+            # A/B Hypothesis Tracking — {domain}
+            **Período de observação:** {deploy_date} → {deploy_date + 90 dias}
+            **Registered by:** @koray-semantic
+
+            ## Hipótese 1: {título}
+            **Declaração:** {hipótese completa}
+            **Baseline ({date}):**
+              - Metric 1: {valor}
+              - Metric 2: {valor}
+            **Critério de sucesso:** {métrica} aumenta {%} em {N dias}
+            **Status:** MONITORING
+
+            ---
+            {repetir para cada hipótese}
+
+            ## Log de Checkpoints
+            | Data | Hipótese | Métrica | Valor | Delta | Status |
+            |------|---------|---------|-------|-------|--------|
+            {linha por checkpoint}
+
+        time_estimate: "20 min"
+
+    checkpoint:
+      id: CP_PHASE_5
+      name: "Validation Setup Complete"
+      blocking: true
+      criteria:
+        - "Rich Results Test: PASS em >= 80% das URLs testadas"
+        - "Zero erros JSON inválido em produção"
+        - "GSC baseline registrado"
+        - "Entity hubs: pelo menos hubs P1 retornam HTTP 200"
+        - "A/B hypotheses registradas"
+      on_fail:
+        critical: "FAILs no Rich Results Test → Executar rollback parcial"
+        moderate: "Warnings → Registrar e corrigir na próxima sprint"
+
+  # ══════════════════════════════════════════
+  # FASE 6 — ITERAÇÃO CONTÍNUA
+  # ══════════════════════════════════════════
+
+  - id: phase_6_iteration
+    name: "FASE 6: ITERATION — Monitoramento Contínuo"
+    purpose: "Monitoramento semanal e iteração baseada em dados reais do SERP"
+    agents: ["@koray-semantic", "@tech-seo-engineer"]
+    frequency:
+      weekly: "Check rápido (30 min)"
+      monthly: "Deep review (2-4h)"
+      quarterly: "Rediagnóstico completo (wf-schema-audit)"
+
+    steps:
+      - id: s6_1
+        name: "Weekly Check — 30 Minutos"
+        frequency: "Semanal — toda segunda-feira"
+        agent: "@tech-seo-engineer"
+        prompt: |
+          Checklist semanal de 30 minutos:
+
+          GSC — DADOS ESTRUTURADOS:
+          □ Novos erros de dados estruturados desde a última semana?
+          □ Queda em itens válidos?
+          □ Novos tipos de dados estruturados detectados pelo GSC?
+
+          GSC — PERFORMANCE:
+          □ Impressões totais vs semana anterior: delta?
+          □ CTR médio vs semana anterior: delta?
+          □ Queries com rich results aparecendo no SERP?
+
+          RICH RESULTS — SPOT CHECK:
+          □ Verificar 3-5 URLs críticas no Rich Results Test
+          □ Rich snippets visíveis na SERP para queries-alvo?
+
+          ENTITY HUBS:
+          □ Status HTTP 200 em todos os hubs? (verificar 2-3 aleatórios)
+          □ Novos erros de indexação?
+
+          AÇÃO:
+            - Nenhum problema: Registrar "OK" + data no weekly_log.md
+            - Problema menor: Documentar + agendar correção
+            - Problema crítico: Iniciar correção imediata + notificar
+
+        output:
+          file: "weekly_log.md"
+          format: |
+            ## Check {data}
+            **Agente:** @tech-seo-engineer
+            **GSC errors:** {N} (delta: {+/-N})
+            **GSC valid items:** {N} (delta: {+/-N})
+            **Impressions:** {N} (delta: {+/-N}%)
+            **CTR avg:** {%} (delta: {+/-N}%)
+            **Issues encontradas:** {lista ou "Nenhuma"}
+            **Ações tomadas:** {lista ou "Nenhuma"}
+            **Status geral:** 🟢 OK | 🟡 MONITORING | 🔴 ACTION REQUIRED
+
+        time_estimate: "30 min"
+
+      - id: s6_2
+        name: "Monthly Deep Review"
+        frequency: "Mensal — primeira semana do mês"
+        agent: "@koray-semantic"
+        command: "*ab-review + *update-analysis"
+        prompt: |
+          Revisão mensal profunda com perspectiva de Topical Authority.
+
+          ANÁLISE DE HIPÓTESES A/B:
+          Para cada hipótese registrada no ab_tracking_log.md:
+          □ Verificar métricas reais vs baseline
+          □ Calcular delta percentual
+          □ Declarar: CONFIRMED | PENDING | REJECTED
+
+          KORAY'S FRAMEWORK REVIEW:
+          □ Topical Authority Score melhorou? (nova análise rápida)
+          □ Novos clusters criados pelo site desde a última review?
+          □ Concorrentes rankeando com schema superior?
+          □ Novas entidades relevantes surgiram no tópico?
+
+          RICH RESULTS REVIEW:
+          □ Novos tipos de rich result lançados pelo Google?
+             (verificar em: developers.google.com/search/docs/appearance)
+          □ Tipos implementados ainda são suportados?
+          □ Novos requisitos de propriedade para tipos existentes?
+
+          ENTITY TABLE UPDATE:
+          □ Novas entidades surgindo no conteúdo novo?
+          □ Q-IDs mudaram ou entidades mergeadas no Wikidata?
+          □ Confidence Scores melhoraram após implementação?
+
+        output:
+          file: "monthly_review_{year}{month}.md"
+          template: |
+            # Monthly Deep Review — {domain}
+            **Mês:** {month}/{year}
+            **Agente:** @koray-semantic
+
+            ## 1. A/B Hypotheses Status
+            | Hipótese | Baseline | Atual | Delta | Status |
+            |---------|---------|-------|-------|--------|
+            {tabela}
+
+            ## 2. Topical Authority Delta
+            - Score anterior: {X}/10
+            - Score atual: {X}/10
+            - Novos clusters: {lista ou "Nenhum"}
+
+            ## 3. Rich Results SERP Verification
+            - Queries com rich snippets: {N} (delta: +{N})
+            - Tipos ativos: {lista}
+            - Tipos ausentes que deveriam aparecer: {lista}
+
+            ## 4. Entity Table Updates
+            - Novas entidades: {lista}
+            - Entidades removidas: {lista}
+            - Q-IDs atualizados: {lista}
+
+            ## 5. Decisões e Próximos Passos
+            {ações específicas para o próximo mês}
+
+        time_estimate: "2-4h"
+
+      - id: s6_3
+        name: "Historical Data Logging — Koray Framework"
+        agent: "@koray-semantic"
+        purpose: |
+          Manter o log histórico de dados que Koray usa para análise longitudinal.
+          "Dados históricos revelam padrões que dados pontuais escondem."
+        prompt: |
+          Para cada ciclo mensal, registrar no historical_data_log.csv:
+
+          DATA, ENTITIES_ADDED, ENTITIES_UPDATED, HUBS_CREATED,
+          SCHEMA_TYPES_ACTIVE, RICH_RESULTS_LIVE, IMPRESSIONS, CTR,
+          TOPICAL_AUTHORITY_SCORE, CONFIDENCE_SCORE_AVG, NOTES
+
+          Manter um registro contínuo desde o início do projeto.
+          Esse log é a base para:
+          - Comparações período a período
+          - Relatórios para stakeholders
+          - Decisões de expansão de topical coverage
+          - Evidência do ROI do schema implementation
+
+        output:
+          file: "historical_data_log.csv"
+          append: true
+
+        time_estimate: "10 min (parte do monthly review)"
+
+      - id: s6_4
+        name: "Quarterly Rediagnóstico"
+        frequency: "A cada 3 meses"
+        agent: "@schema-chief"
+        command: "Reiniciar wf-schema-audit"
+        prompt: |
+          A cada trimestre, executar um novo wf-schema-audit completo.
+
+          MOTIVAÇÕES:
+          1. O site publicou novo conteúdo → novas entidades e clusters
+          2. Google mudou requisitos de rich results
+          3. Concorrentes melhoraram schema → comparar
+          4. Wikidata adicionou Q-IDs para entidades que antes eram NOT_FOUND
+          5. Conteúdo antigo pode ter schema desatualizado
+
+          DIFERENÇA DO AUDIT INICIAL:
+          - Baseline já existe → focar no DELTA
+          - Compara score atual vs score do audit anterior
+          - Identifica regressões e novas oportunidades
+          - Atualiza master entity table com novidades
+
+        output:
+          file: "quarterly_rediagnosis_{quarter}_{year}.md"
+
+        time_estimate: "2-4h (novo wf-schema-audit)"
+
+# ─────────────────────────────────────────────
+# OUTPUTS
+# ─────────────────────────────────────────────
+
+outputs:
+  initial:
+    - name: "validation_report.md"
+      location: "docs/validation_report.md"
+      timing: "24h após deploy"
+
+    - name: "gsc_baseline.yaml"
+      location: "data/gsc_baseline.yaml"
+      timing: "72h após deploy"
+
+    - name: "ab_tracking_log.md"
+      location: "docs/ab_tracking_log.md"
+      timing: "Imediato após deploy"
+
+    - name: "crawl_status.yaml"
+      location: "data/crawl_status.yaml"
+      timing: "7 dias após deploy"
+
+  ongoing:
+    - name: "weekly_log.md"
+      location: "docs/weekly_log.md"
+      frequency: "Semanal"
+
+    - name: "monthly_review_{year}{month}.md"
+      location: "docs/reviews/"
+      frequency: "Mensal"
+
+    - name: "historical_data_log.csv"
+      location: "data/historical_data_log.csv"
+      frequency: "Mensal (append)"
+
+    - name: "quarterly_rediagnosis_{quarter}_{year}.md"
+      location: "docs/quarterly/"
+      frequency: "Trimestral"
+
+# ─────────────────────────────────────────────
+# MONITORING SLA
+# ─────────────────────────────────────────────
+
+monitoring_sla:
+  rich_results_error:
+    severity: "CRITICAL"
+    response: "Corrigir em 48h"
+    action: "@tech-seo-engineer *validate + @schema-architect *fix"
+
+  gsc_critical_error:
+    severity: "CRITICAL"
+    response: "Investigar em 24h, corrigir em 48h"
+    action: "@tech-seo-engineer *audit-gsc"
+
+  gsc_warning:
+    severity: "MODERATE"
+    response: "Corrigir na próxima sprint (máx 2 semanas)"
+
+  entity_hub_404:
+    severity: "HIGH"
+    response: "Criar página ou redirect imediatamente"
+    action: "Checar se unpublished acidentalmente"
+
+  metrics_regression_ctr:
+    severity: "HIGH"
+    response: "Investigar em 24h — comparar antes/depois do schema"
+    action: "Se correlacionado com deploy: executar rollback parcial"
+
+  metrics_regression_impressions:
+    severity: "HIGH"
+    response: "Investigar em 48h"
+    action: "@koray-semantic *diagnose comparação"
+
+  rich_result_disappeared:
+    severity: "CRITICAL"
+    response: "Investigar imediatamente"
+    action: "Rich Results Test na URL + checar GSC errors + logs"
+
+  wikidata_entity_updated:
+    severity: "LOW"
+    response: "Atualizar sameAs na próxima sprint"
+    action: "Verificar Q-IDs mensalmente"
+
+# ─────────────────────────────────────────────
+# QUALITY GATES
+# ─────────────────────────────────────────────
+
+quality_gates:
+  - gate: QG_VAL_01
+    check: "Rich Results Test PASS >= 80% das 20 URLs testadas"
+    blocking: true
+    timing: "24h após deploy"
+    fail_action: "Corrigir FAILs antes de fechar a fase"
+
+  - gate: QG_VAL_02
+    check: "Zero erros bloqueantes novos no GSC"
+    blocking: true
+    timing: "72h após deploy"
+    fail_action: "Identificar + corrigir em 48h"
+
+  - gate: QG_VAL_03
+    check: "A/B baseline registrado com hipóteses específicas"
+    blocking: true
+    timing: "Imediato"
+    fail_action: "Não é possível medir ROI sem baseline"
+
+  - gate: QG_VAL_04
+    check: "Entity hubs P1 indexados e retornando HTTP 200"
+    blocking: true
+    timing: "7 dias após deploy"
+    fail_action: "Submeter URLs para indexação via GSC URL Inspection"
+
+  - gate: QG_VAL_05
+    check: "Weekly check realizado nas últimas 7 dias"
+    blocking: false
+    timing: "Ongoing"
+    fail_action: "Retomar monitoramento"
+
+  - gate: QG_VAL_06
+    check: "CWV não degradou após deploy (PageSpeed Insights)"
+    blocking: true
+    timing: "24h após deploy"
+    fail_action: "Investigar impacto do schema no LCP/CLS"
+
+  - gate: QG_VAL_07
+    check: "Nenhum schema injetado via JavaScript puro (SSR obrigatório)"
+    blocking: true
+    timing: "Validação inicial"
+    fail_action: "Implementar SSR para o schema"
+
+# ─────────────────────────────────────────────
+# AGENT ROUTING
+# ─────────────────────────────────────────────
+
+agent_routing:
+  orchestration: "@schema-chief"
+  phase_5_rich_results: "@tech-seo-engineer *validate-url"
+  phase_5_schema_validator: "@tech-seo-engineer *schema-validate"
+  phase_5_gsc: "@tech-seo-engineer *audit-gsc"
+  phase_5_crawl: "@tech-seo-engineer *crawl-logs"
+  phase_5_hypothesis: "@koray-semantic *ab-baseline"
+  phase_6_weekly: "@tech-seo-engineer (check)"
+  phase_6_monthly: "@koray-semantic *ab-review"
+  phase_6_historical: "@koray-semantic"
+  phase_6_quarterly: "@schema-chief → reiniciar wf-schema-audit"

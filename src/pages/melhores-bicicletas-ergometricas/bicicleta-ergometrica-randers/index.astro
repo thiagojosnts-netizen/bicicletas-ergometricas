@@ -1,0 +1,116 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Bicicleta Ergométrica Randers', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-randers/' },
+];
+
+const faqItems = [
+  {
+    question: 'A Randers é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Randers é uma das marcas mais vendidas no Brasil no segmento de equipamentos de exercício de entrada e intermediário. Seus modelos oferecem resistência magnética, boa durabilidade estrutural e assistência técnica disponível nas principais capitais brasileiras. A relação custo-benefício é considerada boa para uso domiciliar regular.',
+  },
+  {
+    question: 'Qual é o melhor modelo de bicicleta ergométrica Randers?',
+    answer: 'O modelo Randers BRF-1800 é considerado o melhor custo-benefício da linha com 16 níveis de resistência magnética, suporte de 120 kg, monitor de frequência cardíaca por sensor de mão e 12 programas automáticos. O BRF-1200 é uma opção mais acessível com 12 níveis e suporte de 100 kg para usuários de peso menor.',
+  },
+  {
+    question: 'Randers BRF-1800 tem bluetooth?',
+    answer: 'Não, o modelo BRF-1800 da Randers não possui conectividade bluetooth. Para integração com aplicativos de treino, consulte os modelos da linha Premium da Randers ou busque marcas como Kikos e Athletic que incluem bluetooth nos modelos intermediários.',
+  },
+];
+
+const imagem = await fetchBikeImage("exercise bike home workout");
+---
+
+<Layout
+  title="Bicicleta Ergométrica Randers: Análise Completa dos Melhores Modelos"
+  description="Análise técnica dos modelos de bicicleta ergométrica Randers no Brasil: BRF-800, BRF-1200 e BRF-1800. Especificações, preço, peso suportado e para qual perfil cada modelo se aplica."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-02"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Randers: Análise Completa dos Modelos BRF</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Randers</strong> é uma das marcas mais populares no Brasil no segmento de entrada e intermediário, com modelos que oferecem <strong>resistência magnética</strong>, <strong>8 a 16 níveis de carga</strong> e <strong>peso suportado de 90 a 120 kg</strong>. Os preços variam de <strong>R$ 800 a R$ 2.200</strong>, com o modelo <strong>BRF-1800</strong> sendo o mais equilibrado da linha para uso domiciliar regular de 3 a 5 sessões semanais.
+      </p>
+
+      <p>
+        A <strong>Randers</strong> é uma empresa brasileira com produção e distribuição focadas no mercado nacional. Seus equipamentos de exercício, incluindo esteiras, elípticos e bicicletas ergométricas, são projetados para o perfil de usuário brasileiro, com garantia de 1 a 2 anos dependendo do modelo e rede de assistência técnica nas principais regiões do país.
+      </p>
+
+      <h2>Comparativo dos modelos Randers</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Níveis</th>
+            <th>Peso suportado</th>
+            <th>Programas</th>
+            <th>Preço aprox.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>BRF-800</strong></td><td>8</td><td>90 kg</td><td>5</td><td>R$ 800-R$ 1.000</td></tr>
+          <tr><td><strong>BRF-1200</strong></td><td>12</td><td>100 kg</td><td>8</td><td>R$ 1.100-R$ 1.400</td></tr>
+          <tr><td><strong>BRF-1800</strong></td><td>16</td><td>120 kg</td><td>12</td><td>R$ 1.600-R$ 2.200</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para quem é recomendado cada modelo</h2>
+
+      <p>O <strong>BRF-800</strong> é adequado para usuários com até 70 kg que vão treinar 1 a 2 vezes por semana em intensidade leve a moderada.</p>
+      <p>O <strong>BRF-1200</strong> atende bem usuários com até 80 kg que treinam 3 a 4 vezes por semana.</p>
+      <p>O <strong>BRF-1800</strong> é a opção mais completa da linha: suporta usuários de até 95 kg com margem de segurança, com 16 níveis e 12 programas automáticos.</p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Avaliação geral da Randers:</strong> Para uso domiciliar regular sem requisitos de conectividade bluetooth, a Randers oferece bom custo-benefício. Para usuários que precisam de integração com aplicativos ou suporte acima de 120 kg, outras marcas podem ser mais adequadas.
+        </p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Randers BRF-1800",
+          description: "16 níveis de resistência magnética, 12 programas automáticos e suporte até 120 kg. Melhor custo-benefício da linha para uso domiciliar regular.",
+          price: "R$ 1.600 – R$ 2.200",
+          rating: 4.2,
+          reviewCount: 3120,
+          badge: "Melhor Custo-Benefício",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Randers BRF-1800",
+          features: [
+            "16 níveis de resistência magnética",
+            "12 programas automáticos",
+            "Suporte até 120 kg",
+            "Monitor cardíaco por sensor de mão",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Para comparar com outras marcas, veja a <a href="/melhores-bicicletas-ergometricas/">análise completa das melhores bicicletas ergométricas</a>. Para entender qual faixa de preço se aplica ao seu perfil, consulte o <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Randers" />
+</Layout>

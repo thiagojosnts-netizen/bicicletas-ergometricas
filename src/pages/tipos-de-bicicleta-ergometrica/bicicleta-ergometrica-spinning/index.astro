@@ -1,0 +1,129 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta de Spinning', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que é bicicleta de spinning?',
+    answer: 'A bicicleta de spinning é um tipo de bicicleta ergométrica com volante de inércia pesado (entre 6 e 22 kg), que cria uma resistência fluida semelhante ao pedalamento em estrada. O quadro é mais robusto, a posição é mais agressiva e ela permite treinos de alta intensidade, simulação de subidas e sprints. É o equipamento padrão de aulas de ciclismo indoor.',
+  },
+  {
+    question: 'Bicicleta de spinning serve para casa?',
+    answer: 'Sim. Existem modelos de spinning para uso domiciliar com volante de 8 a 14 kg, resistência magnética silenciosa e dimensões compactas. Para apartamentos, modelos magnéticos são os mais adequados por gerar menos ruído e vibração. O investimento mínimo para um bom modelo doméstico é de R$ 1.500 a R$ 2.000.',
+  },
+  {
+    question: 'Qual é a diferença entre spinning e bicicleta ergométrica comum?',
+    answer: 'A principal diferença é o volante de inércia: o da spinning é mais pesado (6 a 22 kg contra 3 a 8 kg da vertical comum), criando maior momentum e pedalagem mais fluida. A posição da spinning é mais inclinada para frente, como uma bicicleta de estrada. A spinning permite sprints e simulação de terrenos que a ergométrica vertical não oferece.',
+  },
+  {
+    question: 'Bicicleta de spinning emagrece mais que a ergométrica vertical?',
+    answer: 'Em intensidade equivalente, a bicicleta de spinning permite cargas mais altas e treinos mais intensos, o que resulta em maior gasto calórico por sessão. Uma aula de spinning de 45 minutos consome entre 400 e 600 kcal, enquanto 45 minutos na ergométrica vertical em intensidade moderada consomem entre 300 e 450 kcal. O resultado depende da intensidade real do treino.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta de Spinning: Como Funciona, Melhores Modelos e Treinos"
+  description="Guia completo sobre bicicleta de spinning: o que é, diferença para a ergométrica comum, como usar em casa, melhores modelos no Brasil e programas de treino HIIT e ciclismo indoor."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-18"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta de Spinning: Alta Intensidade e Performance em Casa</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta de spinning</strong> é caracterizada pelo <strong>volante de inércia pesado</strong> (6 a 22 kg), posição mais agressiva e resistência que simula o pedalamento em terrenos variados. Permite treinos de alta intensidade com gasto calórico de <strong>400 a 600 kcal por sessão de 45 minutos</strong>. No Brasil, os melhores modelos para uso domiciliar custam entre <strong>R$ 1.500 e R$ 4.000</strong> e utilizam resistência magnética para operação silenciosa.
+      </p>
+
+      <p>
+        A <strong>bicicleta de spinning</strong> surgiu como o equipamento padrão de aulas de ciclismo indoor e gradualmente migrou para o mercado domiciliar. Sua principal vantagem é a possibilidade de treinos de alta intensidade intervalada (HIIT) com controle preciso da resistência, o que a torna superior para objetivos de performance e emagrecimento acelerado em comparação à bicicleta ergométrica vertical convencional.
+      </p>
+
+      <h2>O Volante de Inércia: o Diferencial da Spinning</h2>
+
+      <p>
+        O volante de inércia é o componente que define a bicicleta de spinning. Nos modelos de entrada, ele pesa entre 6 e 8 kg; nos intermediários, entre 10 e 14 kg; nos profissionais, entre 16 e 22 kg. Quanto mais pesado o volante, maior o momentum de pedalagem e maior a sensação de continuidade similar ao ciclismo de estrada. Volantes mais pesados também absorvem melhor as variações de cadência, tornando o treino mais fluido.
+      </p>
+
+      <h2>Tipos de Resistência na Spinning</h2>
+
+      <ul>
+        <li><strong>Resistência por atrito:</strong> pastilha de feltro ou couro que pressiona fisicamente o volante. Controle analógico por botão. Mais barulhenta e com desgaste ao longo do tempo. Presente em modelos de entrada.</li>
+        <li><strong>Resistência magnética:</strong> eletroímãs que criam campo de força sem contato físico. Silenciosa, precisa e sem desgaste mecânico. Recomendada para uso doméstico e noturno. Presente nos melhores modelos para casa.</li>
+      </ul>
+
+      <h2>Posição e Regulagem na Bicicleta de Spinning</h2>
+
+      <p>
+        A posição na spinning é mais agressiva do que na ergométrica convencional. O guidão fica posicionado na altura do selim ou levemente abaixo, o que exige maior ativação do core e dos músculos estabilizadores do tronco. Ajuste o selim em altura (quadril quando em pé ao lado) e, nos modelos que permitem, em profundidade (cotovelo na ponta do selim com os dedos alcançando o guidão). O guidão também tem regulagem de altura e profundidade.
+      </p>
+
+      <h2>Programa de Treino HIIT em 20 Minutos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Duração</th>
+            <th>Intensidade</th>
+            <th>Cadência sugerida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aquecimento</td>
+            <td>3 min</td>
+            <td>50-60% FCmax</td>
+            <td>70-80 RPM</td>
+          </tr>
+          <tr>
+            <td>Sprint</td>
+            <td>30 seg</td>
+            <td>85-95% FCmax</td>
+            <td>100-120 RPM</td>
+          </tr>
+          <tr>
+            <td>Recuperação ativa</td>
+            <td>60 seg</td>
+            <td>50-60% FCmax</td>
+            <td>60-70 RPM</td>
+          </tr>
+          <tr>
+            <td>Repetições</td>
+            <td>12x ciclos</td>
+            <td>Variável</td>
+            <td>Alternado</td>
+          </tr>
+          <tr>
+            <td>Desaquecimento</td>
+            <td>3 min</td>
+            <td>40-50% FCmax</td>
+            <td>60 RPM</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Para iniciantes:</strong> A spinning é recomendada para usuários com ao menos 4 semanas de experiência prévia em bicicleta ergométrica convencional. O impacto articular é baixo, mas a intensidade pode ser excessiva para quem nunca treinou. Comece com sessões de 20 a 25 minutos em intensidade moderada antes de progressão para HIIT.
+        </p>
+      </div>
+
+      <p>
+        Para comparar com outros tipos, veja o <a href="/tipos-de-bicicleta-ergometrica/">guia completo dos tipos de bicicleta ergométrica</a>. Para estruturar treinos com frequência cardíaca correta, consulte o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia de frequência cardíaca na bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta de Spinning" />
+</Layout>

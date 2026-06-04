@@ -1,0 +1,109 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Technogym', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-technogym/' },
+];
+
+const faqItems = [
+  {
+    question: 'Vale a pena comprar bicicleta ergométrica Technogym?',
+    answer: 'Depende do objetivo e do orçamento. A Technogym oferece a mais alta qualidade de engenharia, durabilidade superior para uso intensivo e conectividade digital avançada via plataforma Mywellness. Para uso domiciliar regular, o custo (acima de R$ 8.000) raramente se justifica em comparação a modelos premium de marcas nacionais como Wellness e Athletic na faixa de R$ 2.500 a R$ 3.500.',
+  },
+  {
+    question: 'O que é a plataforma Mywellness da Technogym?',
+    answer: 'Mywellness é o ecossistema digital da Technogym que integra equipamentos, aplicativo e personal trainers virtuais em uma plataforma única. Permite acompanhar dados de treino em tempo real, compartilhar com profissionais de saúde remotamente e acessar programas de treino personalizados.',
+  },
+  {
+    question: 'Qual é o modelo de bicicleta ergométrica mais barato da Technogym?',
+    answer: 'O modelo de entrada mais acessível da Technogym no Brasil é o Excite Bike, disponível por volta de R$ 8.000 a R$ 12.000 dependendo da configuração e do revendedor.',
+  },
+];
+
+const imagem = await fetchBikeImage("professional gym equipment cycling");
+---
+
+<Layout
+  title="Bicicleta Ergométrica Technogym: Excite Bike e Mycycling para Alta Exigência"
+  description="Análise da bicicleta ergométrica Technogym: modelos Excite Bike e Mycycling, plataforma Mywellness, preço no Brasil e quando o investimento premium se justifica."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-07"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Technogym: O padrão premium do ciclismo indoor</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Technogym</strong> é a referência de qualidade máxima no mercado global, com modelos como <strong>Excite Bike</strong> e <strong>Mycycling</strong> que oferecem resistência eletromagnética contínua, plataforma digital <strong>Mywellness</strong> e durabilidade de uso intensivo em academia. Os preços no Brasil partem de <strong>R$ 8.000</strong>, justificando o investimento apenas para academias ou usuários de alta exigência profissional.
+      </p>
+
+      <p>
+        A <strong>Technogym</strong> é a marca italiana que equipa as Olimpíadas e as principais academias profissionais do mundo. Seus equipamentos são projetados para milhares de horas de uso sem redução de desempenho.
+      </p>
+
+      <h2>Modelos Technogym para ciclismo indoor</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Resistência</th>
+            <th>Conectividade</th>
+            <th>Uso ideal</th>
+            <th>Preço estimado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Excite Bike</strong></td><td>Eletromagnética</td><td>Mywellness + WiFi</td><td>Academia/semiprofissional</td><td>R$ 8.000-R$ 14.000</td></tr>
+          <tr><td><strong>Mycycling</strong></td><td>Eletromagnética</td><td>ANT+, BLE, WiFi</td><td>Alta performance/cycling</td><td>R$ 12.000-R$ 22.000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Alternativa para usuários exigentes:</strong> Para quem busca qualidade próxima da Technogym sem o preço, os modelos <strong>Wellness Health Bike Premium</strong> e <strong>Athletic Bike Pro</strong> (R$ 3.500-R$ 4.000) oferecem boa parte dos benefícios a um quarto do preço.
+        </p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Technogym Excite Bike",
+          description: "Resistência eletromagnética contínua, plataforma Mywellness com WiFi e padrão de academia profissional. Para uso semiprofissional e academias.",
+          price: "R$ 8.000 – R$ 14.000",
+          rating: 4.8,
+          reviewCount: 214,
+          badge: "Premium Profissional",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Technogym Excite Bike",
+          features: [
+            "Resistência eletromagnética contínua",
+            "Plataforma Mywellness + WiFi",
+            "Padrão Olímpico",
+            "Vida útil para uso intensivo",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Para o comparativo completo, acesse a <a href="/melhores-bicicletas-ergometricas/">análise das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Technogym" />
+</Layout>

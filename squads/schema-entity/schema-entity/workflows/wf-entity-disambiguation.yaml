@@ -1,0 +1,638 @@
+workflow:
+  id: wf-entity-disambiguation
+  name: "Entity Disambiguation Strategy"
+  version: "2.0"
+  purpose: "Fase 3: Estratégia completa de desambiguação — sameAs, @id, entity hubs, bidirectional links"
+  orchestrator: "@schema-chief"
+  requires: ["wf-schema-audit outputs"]
+  estimated_duration: "2-3 horas"
+  next_workflow: wf-schema-implementation
+
+# ─────────────────────────────────────────────
+# INPUTS
+# ─────────────────────────────────────────────
+
+inputs:
+  required:
+    - name: master_entity_table_draft
+      type: file
+      path: "data/master_entity_table_draft.csv"
+      description: "Output da Fase 2 de wf-schema-audit"
+
+    - name: entity_priority_matrix
+      type: file
+      path: "data/entity_priority_matrix.csv"
+      description: "Entidades ranqueadas por prioridade"
+
+    - name: audit_report
+      type: file
+      path: "docs/audit-report.md"
+      description: "Relatório de auditoria da Fase 1-2"
+
+  optional:
+    - name: site_url
+      type: url
+      description: "URL base do site (para verificações contextuais)"
+
+    - name: cms_type
+      type: enum
+      values: [wordpress, nextjs, astro, shopify, webflow, html, custom]
+      description: "CMS do site — impacta recomendação de padrão @id"
+
+# ─────────────────────────────────────────────
+# PHASES
+# ─────────────────────────────────────────────
+
+phases:
+
+  # ══════════════════════════════════════════
+  # FASE 3A — PADRÕES E ESTRATÉGIA BASE
+  # ══════════════════════════════════════════
+
+  - id: phase_3a_patterns
+    name: "FASE 3A: PADRÕES DE @ID E sameAs"
+    purpose: "Definir padrões consistentes de @id e estratégia sameAs para todo o site"
+    agent: "@schema-architect + @entity-disambiguator"
+    duration: "30-45 min"
+
+    steps:
+      - id: s3a_1
+        name: "Definir Padrão @id por Tipo de Entidade"
+        agent: "@schema-architect"
+        command: "*id-pattern {domain}"
+        prompt: |
+          Definir o padrão canônico de @id para cada tipo de entidade no site {domain}.
+
+          PRINCÍPIO FUNDAMENTAL (Jarno van Driel):
+          "@id é a identidade — deve ser único, permanente, dereferenceable.
+           Não pode ser uma URL que pode mudar. Use fragmentos (#) para entidades
+           que vivem dentro de uma URL, URLs completas para entity hubs."
+
+          PADRÕES RECOMENDADOS:
+          ```
+          Organization:   {domain}/#organization
+          WebSite:        {domain}/#website
+          WebPage:        {page_url}#webpage
+          Article:        {article_url}#article
+          BlogPosting:    {post_url}#blogposting
+          Person (autor): {domain}/autor/{slug}/#person
+          Person (hub):   {domain}/pessoas/{slug}/#person
+          Product:        {product_url}#product
+          LocalBusiness:  {domain}/#localbusiness
+          Service:        {service_url}#service
+          FAQPage:        {page_url}#faqpage
+          BreadcrumbList: {page_url}#breadcrumb
+          Entity Hub:     {domain}/entidades/{slug}/#entity
+          Course:         {course_url}#course
+          Event:          {event_url}#event
+          ```
+
+          REGRAS:
+          1. NUNCA usar @id com parâmetros query (?utm=, &page=)
+          2. NUNCA usar @id com anchors de seção que podem mudar (#secao-1)
+          3. SEMPRE usar URL canônica (mesma do canonical tag)
+          4. Para entidades sem página própria: fragmento na URL mais relevante
+          5. Para entity hubs: URL própria completa (sem fragmento)
+
+          ADAPTAR para o CMS específico:
+          - WordPress: @id é a URL permanlink canônica
+          - Next.js: @id é o caminho da rota canônica
+          - Shopify: @id é a URL /products/{handle}
+
+        output:
+          file: "id_pattern_guide.md"
+          template: |
+            # Padrão @id — {domain}
+            **CMS:** {cms_type}
+            **Data:** {ISO8601}
+
+            ## Padrões Definidos
+
+            | Tipo de Entidade | Padrão @id | Exemplo |
+            |-----------------|-----------|---------|
+            | Organization | {domain}/#organization | https://site.com/#organization |
+            | WebSite | {domain}/#website | https://site.com/#website |
+            | Person (autor) | {domain}/autor/{slug}/#person | ... |
+            | Article | {article_url}#article | ... |
+            | Entity Hub | {domain}/entidades/{slug}/#entity | ... |
+
+            ## Regras de Implementação
+            1. {regra específica do CMS}
+            2. {regra de canonical}
+            3. {regra de fragmento vs URL completa}
+
+            ## Exemplos de @graph com @id corretos
+            ```json
+            {exemplo JSON-LD com @graph e @ids corretos}
+            ```
+
+        time_estimate: "15 min"
+
+      - id: s3a_2
+        name: "Estratégia sameAs por Categoria de Entidade"
+        agent: "@entity-disambiguator"
+        command: "*sameas-strategy"
+        prompt: |
+          Definir a estratégia de sameAs para cada categoria de entidade.
+
+          DECISION TREE — QUANDO USAR sameAs:
+
+          ```
+          A entidade tem Q-ID verificado no Wikidata?
+          ├── SIM → Adicionar wikidata sameAs obrigatoriamente
+          │         └── Tem artigo Wikipedia PT? → Adicionar pt.wikipedia sameAs
+          │         └── Tem artigo Wikipedia EN? → Adicionar en.wikipedia sameAs
+          └── NÃO → É a Central Entity do site?
+                    ├── SIM → Criar Wikidata item se não existir OU documentar ausência
+                    └── NÃO → Não adicionar sameAs (deixar sem)
+          ```
+
+          ESTRATÉGIAS POR TIPO:
+
+          ESTRATÉGIA A — sameAs Externo Apenas:
+            Quando: Entidade conhecida globalmente sem necessidade de hub interno
+            Exemplos: Amazon, Google, Brasil, São Paulo, Nobel
+            Schema:
+              ```json
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q{id}",
+                "https://pt.wikipedia.org/wiki/{artigo}"
+              ]
+              ```
+
+          ESTRATÉGIA B — @id Interno Apenas:
+            Quando: Entidade proprietária sem equivalente Wikidata
+            Exemplos: Produto exclusivo da marca, serviço próprio, blog interno
+            Schema:
+              ```json
+              "@id": "{domain}/entidades/{slug}/#entity"
+              ```
+
+          ESTRATÉGIA C — @id Interno + sameAs Externo (IDEAL para Central Entity):
+            Quando: Central Entity do site COM Q-ID verificado
+            Exemplos: Nome da empresa (se famosa), serviço principal (se tem Q-ID)
+            Schema:
+              ```json
+              "@id": "{domain}/#organization",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q{id}",
+                "https://pt.wikipedia.org/wiki/{artigo}",
+                "https://www.linkedin.com/company/{slug}",
+                "https://www.instagram.com/{handle}"
+              ]
+              ```
+
+          ESTRATÉGIA D — Skip:
+            Quando: Entidade mencionada 1-2x, genérica, sem valor para KG
+            Exemplos: "pesquisa", "estudo", "mercado"
+            Ação: Sem @id, sem sameAs — apenas texto
+
+          CLASSIFICAR cada entidade do Top 20 em A, B, C ou D.
+
+        output:
+          file: "sameas_strategy.yaml"
+          format: |
+            entities:
+              - name: ""
+                qid: ""
+                strategy: "A|B|C|D"
+                sameas_urls: []
+                internal_id: ""
+                rationale: ""
+
+        time_estimate: "20 min"
+
+  # ══════════════════════════════════════════
+  # FASE 3B — RESOLUÇÃO DE AMBIGUIDADES
+  # ══════════════════════════════════════════
+
+  - id: phase_3b_disambiguation
+    name: "FASE 3B: RESOLUÇÃO DE HOMÓGRAFOS E AMBIGUIDADES"
+    purpose: "Resolver todas as entidades ambíguas com estratégia clara"
+    agent: "@entity-disambiguator"
+    duration: "30-60 min"
+
+    steps:
+      - id: s3b_1
+        name: "Identificar e Catalogar Homógrafos"
+        agent: "@entity-disambiguator"
+        command: "*detect-homographs"
+        prompt: |
+          Revisar a entity list para detectar homógrafos (entidades com mesmo nome
+          mas significados diferentes) e entidades ambíguas.
+
+          TIPOS COMUNS DE AMBIGUIDADE:
+
+          TIPO 1 — Nomes próprios compartilhados:
+            Exemplo: "Santos" → Santos FC (Q170174) ou cidade Santos (Q180911)?
+            Solução: Analisar contexto no site, selecionar Q-ID correto
+
+          TIPO 2 — Termos técnicos com múltiplos Q-IDs:
+            Exemplo: "SEO" → múltiplos Q-IDs possíveis
+            Solução: Usar o Q-ID mais específico para o contexto do site
+
+          TIPO 3 — Marca com mesmo nome de categoria:
+            Exemplo: "Apple" → empresa ou fruta?
+            Solução: Contexto resolve → Apple a empresa (Q312)
+
+          TIPO 4 — Siglas ambíguas:
+            Exemplo: "ML" → Machine Learning ou Mercado Livre?
+            Solução: Verificar contexto no site
+
+          PROCESSO POR ENTIDADE AMBÍGUA:
+          1. Documentar o contexto de uso no site (em quais páginas, como é usado)
+          2. Listar Q-ID candidatos com descrição
+          3. Selecionar o Q-ID correto baseado no contexto
+          4. Verificar P31 do Q-ID selecionado
+          5. Registrar decisão e rationale na tabela
+
+        output:
+          file: "homograph_resolution.yaml"
+          format: |
+            resolved:
+              - entity_name: ""
+                ambiguity_type: "1|2|3|4"
+                candidates:
+                  - qid: ""
+                    description: ""
+                selected_qid: ""
+                selection_rationale: ""
+                context_in_site: ""
+
+            unresolved:
+              - entity_name: ""
+                reason: ""
+                requires_human: true
+
+        time_estimate: "20 min"
+
+      - id: s3b_2
+        name: "Confidence Score Final por Entidade"
+        agent: "@entity-disambiguator"
+        command: "*confidence-score"
+        prompt: |
+          Calcular o Confidence Score definitivo para as top 20 entidades.
+          Método Jason Barnard — Kalicube Framework:
+
+          COMPONENTES DO CONFIDENCE SCORE (0-100):
+
+          TIER 1 — FONTES PRIMÁRIAS (max 60pts):
+            □ Wikidata Q-ID verificado: +20pts
+            □ Wikipedia artigo PT: +20pts
+            □ Wikipedia artigo EN (se sem PT): +15pts
+            □ Crunchbase (para empresas): +10pts
+            □ CNPJ.biz ou equivalente oficial BR: +10pts
+            (cap em 60pts mesmo que some mais)
+
+          TIER 2 — FONTES SECUNDÁRIAS (max 20pts):
+            □ Google Business Profile verificado: +10pts
+            □ LinkedIn Company Page: +5pts
+            □ Instagram/Facebook Business verificado: +5pts
+            □ Portal de notícias autoritativo: +5pts
+            (cap em 20pts)
+
+          SITE PRÓPRIO (max 20pts):
+            □ Organization schema com @id: +5pts
+            □ sameAs correto implementado: +5pts
+            □ Knowledge Panel aparece na SERP: +10pts
+
+          CLASSIFICAÇÃO:
+            80-100: HIGH — Entidade bem estabelecida no KG
+            50-79:  MEDIUM — Presente mas incompleta
+            20-49:  LOW — Pouca presença no KG
+            0-19:   VERY LOW — Quase inexistente
+
+        output:
+          file: "confidence_scores.csv"
+          columns: "entity_name | confidence_score | classification | tier1_sources | tier2_sources | site_signals | priority_action"
+
+        time_estimate: "20 min"
+
+  # ══════════════════════════════════════════
+  # FASE 3C — ENTITY HUB ARCHITECTURE
+  # ══════════════════════════════════════════
+
+  - id: phase_3c_hubs
+    name: "FASE 3C: ENTITY HUB ARCHITECTURE"
+    purpose: "Planejar a estrutura completa de entity hubs e bidirectional linking"
+    agent: "@entity-disambiguator + @koray-semantic"
+    duration: "45-60 min"
+
+    steps:
+      - id: s3c_1
+        name: "Critérios de Decisão — Hub vs Sem Hub"
+        agent: "@entity-disambiguator"
+        prompt: |
+          Para cada entidade do Top 20, aplicar critérios de decisão:
+
+          CRIAR ENTITY HUB SE:
+          ✅ É a Central Entity do site OU Central Entity de um cluster principal
+          ✅ É mencionada em >= 10 páginas diferentes
+          ✅ Tem Confidence Score MEDIUM ou HIGH (>= 50)
+          ✅ Tem Q-ID Wikidata verificado
+          ✅ O tópico tem potencial de linkar >= 5 spokes existentes
+          ✅ É Person (autor) com >= 5 artigos publicados
+
+          NÃO CRIAR HUB SE:
+          ❌ Entidade genérica sem relação central com o site
+          ❌ Mencionada em <= 2 páginas
+          ❌ Sem Q-ID verificável e sem presença externa
+          ❌ Tópico já coberto por hub existente (seria duplicata)
+          ❌ sameAs externo é suficiente (ex: Amazon → link para Wikipedia)
+
+          PRIORIDADE DE CRIAÇÃO:
+            P1: Central Entity do site
+            P2: Central Entities de clusters principais
+            P3: Persons (autores/especialistas citados frequentemente)
+            P4: Produtos/Serviços proprietários sem hub
+
+        output:
+          file: "hub_decision.yaml"
+          format: |
+            hubs_to_create:
+              - entity_name: ""
+                priority: "P1|P2|P3|P4"
+                rationale: ""
+                estimated_spoke_count: 0
+            skip_hub:
+              - entity_name: ""
+                rationale: ""
+
+        time_estimate: "15 min"
+
+      - id: s3c_2
+        name: "Entity Hub Specifications"
+        agent: "@entity-disambiguator"
+        command: "*plan-hub para cada entidade aprovada"
+        prompt: |
+          Para CADA entidade aprovada para hub, gerar especificação completa:
+
+          ESTRUTURA DE CADA ENTITY HUB:
+
+          URL PATTERN:
+            Person:       {domain}/autores/{slug}/
+            Organization: {domain}/sobre/ ou {domain}/empresa/{slug}/
+            Topic/Concept:{domain}/topicos/{slug}/
+            Product:      {domain}/produtos/{slug}/
+            Place:        {domain}/localidades/{slug}/
+
+          SCHEMA DO HUB:
+            ```json
+            {
+              "@context": "https://schema.org",
+              "@type": "{tipo_correto}",
+              "@id": "{domain}/{path}/#entity",
+              "name": "{nome oficial}",
+              "description": "{descrição 150-200 caracteres}",
+              "url": "{hub_url}",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/{Q-ID}",
+                "{wikipedia_url}"
+              ],
+              "mainEntityOfPage": "{hub_url}",
+              "hasPart": [
+                "{spoke_url_1}",
+                "{spoke_url_2}"
+              ]
+            }
+            ```
+
+          CONTEÚDO MÍNIMO DO HUB:
+            H1: {Nome oficial da entidade}
+            Parágrafo 1: Definição clara e objetiva (AEO-ready, 2-3 frases)
+            Parágrafo 2: Relevância para {nicho do site}
+            Parágrafo 3: Relações com outras entidades
+            Seção "Artigos Relacionados": lista de todos os spokes com link
+
+          BIDIRECTIONAL PLAN:
+            Hub → Spokes: hasPart array no schema + seção editorial de links
+            Spokes → Hub: "about": {"@id": "{hub @id}"} + link textual editorial
+
+        output:
+          file: "entity_hubs_plan.md"
+          template: |
+            # Entity Hub Architecture — {domain}
+
+            ## Hubs a Criar ({N} total)
+
+            ### Hub {N}: {entity_name} [{priority}]
+            **URL:** {hub_url}
+            **@id:** {domain}/{path}/#entity
+            **@type:** {schema_type}
+            **Q-ID:** {wikidata_qid}
+            **sameAs:**
+              - {wikidata_url}
+              - {wikipedia_url}
+            **Spokes identificados:** {N} URLs
+            **Schema snippet:**
+            ```json
+            {json snippet}
+            ```
+            **Conteúdo mínimo:** {outline}
+            **Bidirectional plan:** {instrução específica}
+
+            ---
+
+        time_estimate: "25 min"
+
+      - id: s3c_3
+        name: "Validation by @koray-semantic"
+        agent: "@koray-semantic"
+        command: "*validate-hierarchy"
+        prompt: |
+          Revisar a arquitetura de entity hubs planejada.
+
+          PERGUNTAS DE VALIDAÇÃO KORAY:
+          □ Os entity hubs são genuinamente Central Entities no contexto semântico?
+          □ A hierarquia Hub → Spoke reflete a estrutura de tópico → sub-tópico?
+          □ Os bidirectional links vão fortalecer o Semantic Content Network?
+          □ Existe hipótese testável de melhoria de SERP com esta arquitetura?
+          □ A quantidade de hubs é proporcional à autoridade atual do site?
+             (site novo com DA baixo não deveria ter 20 hubs)
+
+          RECOMENDAÇÃO FINAL:
+            APPROVED: Prosseguir para implementação
+            APPROVED_WITH_NOTES: Prosseguir com modificações menores
+            NEEDS_REVISION: Revisar número/prioridade de hubs antes de prosseguir
+
+        output:
+          file: "hierarchy_validation_final.yaml"
+
+        time_estimate: "10 min"
+
+  # ══════════════════════════════════════════
+  # FASE 3D — MASTER ENTITY TABLE FINAL
+  # ══════════════════════════════════════════
+
+  - id: phase_3d_master_table
+    name: "FASE 3D: MASTER ENTITY TABLE — FINAL"
+    purpose: "Consolidar toda a estratégia em um documento mestre único"
+    agent: "@entity-disambiguator"
+    duration: "15-20 min"
+
+    steps:
+      - id: s3d_1
+        name: "Master Entity Table — Versão Final"
+        agent: "@entity-disambiguator"
+        command: "*build-table final"
+        prompt: |
+          Consolidar TODOS os outputs das fases 3A-3C em master_entity_table_final.csv.
+
+          COLUNAS OBRIGATÓRIAS:
+          entity_name | entity_type | priority | cluster | wikidata_qid |
+          wikidata_url | wikipedia_pt_url | wikipedia_en_url |
+          confidence_score | confidence_classification |
+          sameas_strategy (A/B/C/D) | sameas_urls |
+          hub_url_planned | hub_schema_type | hub_@id |
+          bidirectional_plan | implementation_order | status
+
+          STATUS VALUES:
+            pending: Não implementado ainda
+            in_progress: Em implementação
+            implemented: Já tem schema e/ou hub
+            verified: Implementado + validado no Rich Results Test
+
+          IMPLEMENTATION ORDER:
+            Ordenar por: priority (P1 primeiro) + confidence_score (HIGH primeiro)
+            Resultado: lista de ações na ordem que devem ser executadas
+
+        output:
+          file: "master_entity_table_final.csv"
+
+        time_estimate: "15 min"
+
+      - id: s3d_2
+        name: "Disambiguation Strategy Document"
+        agent: "@entity-disambiguator"
+        prompt: |
+          Gerar o documento consolidado de estratégia de desambiguação.
+
+        output:
+          file: "disambiguation-strategy.md"
+          template: |
+            # Estratégia de Desambiguação — {domain}
+            **Data:** {ISO8601}
+            **Agente:** @entity-disambiguator
+
+            ## 1. Padrão @id (ver id_pattern_guide.md)
+            Resumo: {2 linhas sobre o padrão escolhido}
+
+            ## 2. sameAs por Entidade
+            | Entidade | Q-ID | Estratégia | sameAs URLs |
+            |----------|------|-----------|-------------|
+            {tabela completa}
+
+            ## 3. Entity Hubs a Criar
+            | Hub | URL | Prioridade | Spokes | @id |
+            |----|-----|-----------|--------|-----|
+            {tabela}
+
+            ## 4. Homógrafos Resolvidos
+            {lista de homógrafos + decisão tomada}
+
+            ## 5. Confidence Scores
+            | Entidade | Score | Classificação | Ação Prioritária |
+            |---------|-------|--------------|-----------------|
+            {top 10 entidades}
+
+            ## 6. Hipóteses A/B Testáveis
+            - Hipótese 1: {implementar X deve resultar em Y no SERP}
+            - Hipótese 2: {entity hub para Z deve aumentar CTR em cluster W}
+            - Hipótese 3: {sameAs com Wikidata deve aumentar Confidence Score}
+
+            ## 7. Roadmap de Implementação
+            {prioridades P1/P2/P3 extraídas da master entity table}
+
+        time_estimate: "10 min"
+
+# ─────────────────────────────────────────────
+# OUTPUTS
+# ─────────────────────────────────────────────
+
+outputs:
+  primary:
+    - name: "disambiguation-strategy.md"
+      location: "docs/disambiguation-strategy.md"
+
+    - name: "master_entity_table_final.csv"
+      location: "data/master_entity_table_final.csv"
+
+    - name: "entity_hubs_plan.md"
+      location: "docs/entity_hubs_plan.md"
+
+    - name: "id_pattern_guide.md"
+      location: "docs/id_pattern_guide.md"
+
+  secondary:
+    - name: "sameas_strategy.yaml"
+    - name: "homograph_resolution.yaml"
+    - name: "confidence_scores.csv"
+    - name: "hub_decision.yaml"
+    - name: "hierarchy_validation_final.yaml"
+
+# ─────────────────────────────────────────────
+# QUALITY GATES
+# ─────────────────────────────────────────────
+
+quality_gates:
+  - gate: QG_DISAM_01
+    check: "Todas as top 20 entidades têm estratégia definida (A/B/C/D)"
+    blocking: true
+    fail_action: "Completar tabela antes de prosseguir"
+
+  - gate: QG_DISAM_02
+    check: "Zero Q-IDs não verificados na tabela final (todos são verified ou NOT_FOUND documentado)"
+    blocking: true
+    fail_action: "Verificar cada Q-ID pendente ou marcar como NOT_FOUND com rationale"
+
+  - gate: QG_DISAM_03
+    check: "Entity hubs aprovados têm URL slug, @type e @id definidos"
+    blocking: true
+    fail_action: "Completar especificação antes de passar para implementação"
+
+  - gate: QG_DISAM_04
+    check: "@koray-semantic aprovou hierarquia semântica da estratégia"
+    blocking: true
+    fail_action: "Revisar hub plan e resubmeter para validação"
+
+  - gate: QG_DISAM_05
+    check: "Padrão @id documentado em id_pattern_guide.md"
+    blocking: true
+    fail_action: "Criar documento antes de qualquer implementação"
+
+  - gate: QG_DISAM_06
+    check: "Confidence Score calculado para todas as top 20 entidades"
+    blocking: false
+    fail_action: "Prosseguir, documentar pendências"
+
+  - gate: QG_DISAM_07
+    check: "Homógrafos resolvidos ou documentados como REQUIRES_HUMAN"
+    blocking: true
+    fail_action: "Escalar entidades REQUIRES_HUMAN para revisão do usuário"
+
+# ─────────────────────────────────────────────
+# VETO CONDITIONS
+# ─────────────────────────────────────────────
+
+veto_conditions:
+  - "Estratégia aprovada sem validação de @koray-semantic: VETO"
+  - "sameAs com URL não-canônica ou redirecionada: VETO — corrigir antes"
+  - "Q-ID atribuído sem verificação de P31: VETO — verificar obrigatoriamente"
+  - "Entity hub planejado sem Q-ID verificado: VETO — hub precisa de âncora no KG"
+  - "Implementação iniciada antes de CP3 PASS: VETO"
+
+# ─────────────────────────────────────────────
+# AGENT ROUTING
+# ─────────────────────────────────────────────
+
+agent_routing:
+  orchestration: "@schema-chief"
+  phase_3a_id_patterns: "@schema-architect *id-pattern"
+  phase_3a_sameas: "@entity-disambiguator *sameas-strategy"
+  phase_3b_homographs: "@entity-disambiguator *detect-homographs"
+  phase_3b_confidence: "@entity-disambiguator *confidence-score"
+  phase_3c_hub_criteria: "@entity-disambiguator"
+  phase_3c_hub_specs: "@entity-disambiguator *plan-hub"
+  phase_3c_validation: "@koray-semantic *validate-hierarchy"
+  phase_3d_table: "@entity-disambiguator *build-table"
+  phase_3d_strategy_doc: "@entity-disambiguator"

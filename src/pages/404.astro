@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Página não encontrada"
+  description="A página que você procura não existe ou foi movida. Explore nosso guia completo de bicicletas ergométricas."
+  noindex={true}
+>
+  <section class="section" aria-labelledby="error-heading">
+    <div class="container" style="max-width:600px;text-align:center;padding-top:4rem;padding-bottom:4rem;">
+      <p style="font-size:5rem;font-weight:800;color:var(--token-brand);margin:0 0 1rem;line-height:1;">404</p>
+      <h1 id="error-heading" style="margin-bottom:1rem;">Página não encontrada</h1>
+      <p style="margin-bottom:2rem;">
+        A página que você procura não existe ou foi movida. Use os links abaixo para continuar navegando.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+        <a href="/" class="btn-primary">Ir para a página inicial</a>
+        <a href="/melhores-bicicletas-ergometricas/" class="btn-primary" style="background:var(--c-gray-200);color:var(--token-text-primary);">
+          Ver melhores modelos
+        </a>
+      </div>
+
+      <div style="margin-top:3rem;text-align:left;">
+        <p style="font-weight:600;color:var(--token-text-primary);margin-bottom:1rem;">Navegue pelas categorias:</p>
+        <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.5rem;">
+          <li><a href="/tipos-de-bicicleta-ergometrica/">Tipos de Bicicleta Ergométrica</a></li>
+          <li><a href="/como-escolher-bicicleta-ergometrica/">Como Escolher</a></li>
+          <li><a href="/melhores-bicicletas-ergometricas/">Melhores Modelos</a></li>
+          <li><a href="/beneficios-bicicleta-ergometrica/">Benefícios</a></li>
+          <li><a href="/como-usar-bicicleta-ergometrica/">Como Usar</a></li>
+          <li><a href="/preco-bicicleta-ergometrica/">Preço</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Amazon', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/' },
+];
+
+const faqItems = [
+  {
+    question: 'Vale a pena comprar bicicleta ergométrica na Amazon Brasil?',
+    answer: 'Sim. A Amazon Brasil oferece vantagens importantes: política de devolução de 30 dias sem burocracia, entrega rápida via Prime para membros, atendimento ao cliente centralizado e garantia contra defeito de fabricação. Para bicicletas ergométricas, a Amazon frequentemente pratica preços competitivos, especialmente durante o Prime Day e Black Friday.',
+  },
+  {
+    question: 'A bicicleta ergométrica da Amazon vem montada?',
+    answer: 'Não. A bicicleta ergométrica chega desmontada em caixa, com ferramentas e manual de instruções. A montagem leva de 30 a 90 minutos dependendo do modelo e da experiência do usuário. Algumas cidades oferecem serviço de montagem da própria Amazon ou de terceiros por valor adicional, que pode ser adicionado no checkout.',
+  },
+  {
+    question: 'Amazon Prime faz diferença na compra de bicicleta ergométrica?',
+    answer: 'Sim para frete e velocidade de entrega. Membros Amazon Prime têm frete grátis na maioria dos modelos vendidos pela própria Amazon, o que representa economia de R$ 50 a R$ 150 em relação ao frete padrão. A entrega também é mais rápida (1 a 2 dias úteis em grandes centros vs 5 a 10 dias sem Prime). O custo mensal do Prime se paga rapidamente em uma única compra de equipamento fitness.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica na Amazon: Vantagens, Devolução e Como Comprar"
+  description="Como comprar bicicleta ergométrica na Amazon Brasil com segurança: política de devolução, vantagens do Prime, como identificar vendedores confiáveis e quando a Amazon oferece os melhores preços."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-25"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica na Amazon: Guia Completo de Compra</h1>
+
+      <p class="summarization">
+        Comprar <strong>bicicleta ergométrica na Amazon Brasil</strong> oferece vantagens como <strong>devolução simplificada em 30 dias</strong>, <strong>frete grátis com Prime</strong> e <strong>garantia centralizada</strong> que facilita acionamento em caso de defeito. Os melhores preços aparecem durante o <strong>Amazon Prime Day</strong> (julho) e <strong>Black Friday</strong> (novembro), com descontos de <strong>20 a 40%</strong> nos modelos mais vendidos.
+      </p>
+
+      <p>
+        A <strong>Amazon Brasil</strong> é uma das plataformas mais confiáveis para compra de equipamentos de exercício de grande porte, como bicicletas ergométricas. A logística própria da Amazon garante rastreamento em tempo real e a política de devolução em 30 dias é uma das mais simples do mercado, tornando a compra de alto valor menos arriscada.
+      </p>
+
+      <h2>Vendedor Amazon vs Marketplace Amazon</h2>
+
+      <p>
+        Na Amazon, o produto pode ser vendido pela própria Amazon (identificado como "vendido e entregue pela Amazon") ou por vendedores terceiros usando a plataforma Amazon Marketplace. Para bicicletas ergométricas, prefira sempre produtos vendidos pela Amazon ou por vendedores com nota 4.5 ou mais e pelo menos 100 avaliações. Produtos no Fulfillment by Amazon (FBA) também têm a logística gerenciada pela Amazon, mesmo sendo de vendedores terceiros.
+      </p>
+
+      <h2>Vantagens exclusivas da Amazon para equipamentos fitness</h2>
+
+      <ul>
+        <li><strong>Devolução em 30 dias:</strong> para produtos com defeito ou que não correspondem à descrição, sem necessidade de justificativa extensa</li>
+        <li><strong>Rastreamento em tempo real:</strong> acompanhe a entrega da bicicleta desde o centro de distribuição até a sua porta</li>
+        <li><strong>Garantia pela Amazon:</strong> em caso de defeito, a Amazon facilita o contato com o fabricante</li>
+        <li><strong>Histórico de preços:</strong> use ferramentas como Keepa para ver o histórico de preços e identificar o momento certo de comprar</li>
+        <li><strong>Parcelamento no cartão:</strong> parcelamento em até 12 vezes sem juros em muitos modelos com cartões parceiros</li>
+      </ul>
+
+      <h2>Melhores datas para comprar na Amazon</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Desconto médio</th>
+            <th>Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Prime Day (julho)</td><td>25-40%</td><td>Exclusivo para membros Prime</td></tr>
+          <tr><td>Black Friday (novembro)</td><td>20-35%</td><td>Maior volume de ofertas</td></tr>
+          <tr><td>Cyber Monday (novembro)</td><td>15-30%</td><td>Logo após Black Friday</td></tr>
+          <tr><td>Dia do consumidor (15/3)</td><td>10-20%</td><td>Menor desconto, mas sem concorrência de demanda</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Dica de timing:</strong> Adicione a bicicleta desejada na lista de desejos da Amazon. A plataforma notifica automaticamente quando o preço cai. Monitore por 2 a 3 semanas antes de decidir para ter uma referência do preço habitual versus o preço em promoção.
+        </p>
+      </div>
+
+      <p>
+        Compare com as opções no <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/">Mercado Livre</a> antes de fechar. Para ver quais modelos valem mais a pena, acesse a <a href="/melhores-bicicletas-ergometricas/">análise das melhores bicicletas ergométricas</a>.
+      </p>
+
+      <a href="#comprar" class="btn-cta" style="display:inline-flex;margin-top:1rem;">
+        Ver bicicletas na Amazon Brasil
+      </a>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre compra na Amazon" />
+</Layout>

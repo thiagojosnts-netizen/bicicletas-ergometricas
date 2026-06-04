@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const slug = post.id.replace(/\.md$/, '');
+
+const breadcrumbs = [
+  { name: 'Blog', url: '/blog/' },
+  { name: post.data.title, url: `/blog/${slug}/` },
+];
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  breadcrumbs={breadcrumbs}
+  datePublished={post.data.datePublished}
+  dateModified={post.data.dateModified ?? post.data.datePublished}
+  faqItems={[]}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <article class="section" aria-labelledby="post-heading">
+    <div class="container prose-container">
+      <header style="margin-bottom:2rem;">
+        <div class="blog-card-meta" style="margin-bottom:1rem;">
+          <time datetime={post.data.datePublished}>
+            {new Date(post.data.datePublished).toLocaleDateString('pt-BR', {
+              day: '2-digit', month: 'long', year: 'numeric'
+            })}
+          </time>
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="blog-tags">
+              {post.data.tags.map(tag => (
+                <span class="blog-tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        <h1 id="post-heading">{post.data.title}</h1>
+        <p style="font-size:1.125rem;color:var(--token-text-secondary);">{post.data.description}</p>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--token-border);">
+        <a href="/blog/" class="btn-primary" style="font-size:0.875rem;">
+          ← Voltar ao blog
+        </a>
+      </footer>
+    </div>
+  </article>
+</Layout>

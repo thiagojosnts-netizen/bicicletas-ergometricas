@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'Política de Privacidade', url: '/politica-de-privacidade/' },
+];
+---
+
+<Layout
+  title="Política de Privacidade"
+  description="Política de privacidade do BicicletasErgometricas.com: como coletamos, usamos e protegemos seus dados."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-01-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:800px;">
+      <h1 id="page-heading">Política de Privacidade</h1>
+      <p style="color:var(--token-text-subtle);font-size:0.875rem;margin-bottom:2rem;">Última atualização: 1 de janeiro de 2026</p>
+
+      <h2>1. Quem somos</h2>
+      <p>
+        O <strong>BicicletasErgometricas.com</strong> é um portal de conteúdo especializado em bicicletas ergométricas no Brasil. Publicamos análises, comparativos e guias de compra e uso. Podemos receber comissão de afiliados quando você adquire produtos através dos links deste site, sem custo adicional para você.
+      </p>
+
+      <h2>2. Dados que coletamos</h2>
+      <p>Não coletamos dados pessoais identificáveis diretamente. Os seguintes serviços de terceiros podem coletar dados técnicos anonimizados:</p>
+      <ul>
+        <li><strong>Google Analytics</strong> (se ativo): endereço IP anonimizado, páginas visitadas, tempo de sessão, dispositivo e navegador.</li>
+        <li><strong>Cookies de sessão</strong>: necessários para o funcionamento básico do site.</li>
+        <li><strong>Redes de afiliados</strong> (ex.: Amazon Associates): ao clicar em links de afiliado, você é redirecionado para a plataforma parceira, que aplica sua própria política de privacidade.</li>
+      </ul>
+
+      <h2>3. Uso dos dados</h2>
+      <p>Os dados técnicos coletados são utilizados exclusivamente para:</p>
+      <ul>
+        <li>Análise de desempenho e melhoria do conteúdo do site</li>
+        <li>Identificação de erros técnicos</li>
+        <li>Compreensão do comportamento de navegação de forma agregada e anônima</li>
+      </ul>
+
+      <h2>4. Cookies</h2>
+      <p>
+        Este site pode utilizar cookies de desempenho (Google Analytics) e cookies de afiliados (Amazon Associates e outras redes). Você pode desativar os cookies nas configurações do seu navegador, mas isso pode afetar a experiência de navegação.
+      </p>
+
+      <h2>5. Links de afiliados</h2>
+      <p>
+        Este site participa do Programa de Afiliados da Amazon e de outras redes de afiliados. Os links de compra identificados como "Ver preço" ou semelhantes podem gerar comissão para o portal quando uma compra é realizada. Isso não eleva o preço pago pelo consumidor.
+      </p>
+
+      <h2>6. Seus direitos (LGPD)</h2>
+      <p>
+        Nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem direito a solicitar acesso, correção, exclusão ou portabilidade de dados pessoais eventualmente coletados. Para exercer esses direitos, entre em contato pelo e-mail indicado abaixo.
+      </p>
+
+      <h2>7. Alterações nesta política</h2>
+      <p>
+        Esta política pode ser atualizada periodicamente. Recomendamos que você a revise com regularidade. A data da última atualização é sempre indicada no topo desta página.
+      </p>
+
+      <h2>8. Contato</h2>
+      <p>
+        Para dúvidas sobre privacidade ou proteção de dados, entre em contato: <strong>contato@bicicletasergometricas.com</strong>
+      </p>
+    </div>
+  </section>
+</Layout>

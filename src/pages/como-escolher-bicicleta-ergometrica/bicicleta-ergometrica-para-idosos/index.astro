@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Para Idosos', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-idosos/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica é segura para idosos?',
+    answer: 'Sim, quando o modelo escolhido é adequado ao perfil do usuário e a intensidade é ajustada corretamente. A bicicleta ergométrica é um dos exercícios mais seguros para idosos por ser de baixo impacto, sem risco de queda durante o exercício e com intensidade facilmente controlada. A bicicleta horizontal ou recumbente é a mais indicada para usuários acima de 70 anos.',
+  },
+  {
+    question: 'Qual tipo de bicicleta ergométrica é melhor para idosos?',
+    answer: 'A bicicleta ergométrica horizontal ou recumbente é a mais indicada para idosos por oferecer: assento com encosto (sem necessidade de equilíbrio), pedais à frente do corpo (menor esforço de entrada e saída), menor carga articular nos joelhos e operação simples do painel. A bicicleta vertical também pode ser usada se o idoso tiver bom equilíbrio e não tiver restrições articulares.',
+  },
+  {
+    question: 'Idosos com marcapasso podem usar bicicleta ergométrica?',
+    answer: 'Sim, geralmente. O exercício aeróbico moderado é indicado para a maioria dos usuários com marcapasso. Porém, é essencial consultar o cardiologista antes de iniciar, pois alguns marcapassos respondem a sensores de aceleração e podem ajustar a frequência cardíaca durante o exercício. O médico também deve definir a frequência cardíaca máxima permitida para o treino.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Idosos: Segurança, Conforto e Modelo Ideal"
+  description="Guia completo de bicicleta ergométrica para idosos: qual tipo escolher, critérios de segurança, intensidade recomendada, modelos com encosto e como usar com segurança acima de 60 anos."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-26"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para Idosos: Segurança, Conforto e Como Escolher</h1>
+
+      <p class="summarization">
+        A melhor <strong>bicicleta ergométrica para idosos</strong> é a <strong>horizontal ou recumbente</strong>, com assento com encosto, entrada e saída facilitadas, painel intuitivo e resistência baixa ajustável. Idosos acima de <strong>65 anos</strong> se beneficiam de sessões de <strong>20 a 30 minutos</strong>, entre <strong>3 e 5 vezes por semana</strong>, com frequência cardíaca entre <strong>50% e 65% da FCmax</strong>. Sempre com liberação médica para início do programa.
+      </p>
+
+      <p>
+        A bicicleta ergométrica é uma das modalidades de exercício mais recomendadas pela geriatria moderna, exatamente por reunir três qualidades fundamentais para o exercício em idosos: baixo impacto articular, controle preciso de intensidade e ausência de risco de queda durante a prática. A escolha do tipo certo e o ajuste correto da intensidade são os dois fatores que determinam a segurança e a eficiência do treino.
+      </p>
+
+      <h2>Critérios de Segurança na Escolha</h2>
+
+      <ul>
+        <li><strong>Assento com encosto:</strong> elimina a necessidade de equilíbrio e suporta a coluna durante o treino</li>
+        <li><strong>Entrada facilitada:</strong> o assento deve ficar na altura adequada para que o usuário se sente sem esforço excessivo</li>
+        <li><strong>Painel simples:</strong> poucos botões, números grandes e operação intuitiva reduzem a frustração e o risco de erro</li>
+        <li><strong>Guidão de segurança:</strong> apoio firme para mãos durante a entrada e saída</li>
+        <li><strong>Rodízios de transporte:</strong> permitem mover o equipamento sem esforço físico</li>
+        <li><strong>Peso suportado adequado:</strong> verifique o limite considerando o peso do usuário</li>
+      </ul>
+
+      <h2>Intensidade Recomendada para Idosos</h2>
+
+      <p>
+        Para usuários acima de 65 anos sem experiência recente em exercício, a progressão recomendada é: começar com <strong>15 minutos a 50-55% da FCmax</strong>, aumentar 5 minutos por semana até chegar a 30 minutos, e só então aumentar gradualmente a intensidade para 60-65% da FCmax. A frequência de 3 a 5 sessões semanais é ideal para manutenção da mobilidade e saúde cardiovascular.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Obrigatório antes de começar:</strong> Consulta médica com avaliação cardiológica básica (eletrocardiograma de repouso) e orientação sobre a frequência cardíaca máxima permitida para o treino. Para idosos com hipertensão, diabetes ou doenças cardiovasculares, a liberação médica é essencial.
+        </p>
+      </div>
+
+      <p>
+        Para entender os benefícios específicos do exercício aeróbico para idosos, veja o <a href="/beneficios-bicicleta-ergometrica/">guia de benefícios da bicicleta ergométrica</a>. Para o comparativo completo dos tipos, acesse <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">bicicleta ergométrica recumbente</a>, o modelo mais adequado para esse perfil.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para Idosos" />
+</Layout>

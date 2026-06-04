@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Treino para Iniciantes', url: '/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/' },
+];
+
+const faqItems = [
+  {
+    question: 'Como começar a usar bicicleta ergométrica do zero?',
+    answer: 'Comece com sessões de 15 a 20 minutos em resistência baixa (níveis 1 a 3) com frequência de 3 vezes por semana. O foco nas primeiras duas semanas é manter a postura correta e o ritmo de pedalagem constante, não a intensidade. Aumente 5 minutos por sessão a cada semana e inclua o 4º dia de treino somente após completar 4 semanas de forma consistente.',
+  },
+  {
+    question: 'Qual resistência usar na bicicleta ergométrica para iniciantes?',
+    answer: 'Para iniciantes, comece nos níveis 1 a 3 de resistência (em uma escala de 8 a 16 níveis). A resistência ideal é aquela em que você consegue manter uma conversa com poucas palavras por vez (zona de esforço moderado). Se consegue falar frases inteiras facilmente, aumente 1 nível; se não consegue falar nada, diminua 1 nível.',
+  },
+  {
+    question: 'É normal sentir dor ao começar na bicicleta ergométrica?',
+    answer: 'Dor muscular leve (DOMS) nos músculos da coxa e panturrilha é normal nas primeiras 1 a 3 semanas de treino, especialmente se você estava sedentário. Essa dor é parte da adaptação muscular ao novo estímulo. Dor articular (no joelho, quadril ou tornozelo), dor aguda durante o treino ou dor que persiste além de 72 horas não são normais e exigem revisão da regulagem ou consulta médica.',
+  },
+];
+---
+
+<Layout
+  title="Treino na Bicicleta Ergométrica para Iniciantes: Programa de 4 Semanas"
+  description="Programa completo de treino na bicicleta ergométrica para iniciantes: quanto tempo pedalar, qual resistência usar, como progredir nas primeiras 4 semanas e erros mais comuns a evitar."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-19"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Treino na Bicicleta Ergométrica para Iniciantes: Programa de 4 Semanas</h1>
+
+      <p class="summarization">
+        O programa ideal para <strong>iniciantes na bicicleta ergométrica</strong> começa com <strong>3 sessões semanais de 15 a 20 minutos</strong> em <strong>resistência baixa</strong> (níveis 1–3) e progride gradualmente para <strong>4 sessões de 40 minutos</strong> ao final de 4 semanas. O foco inicial é na adaptação muscular e cardiovascular, não na intensidade máxima. A <strong>postura correta</strong> e a <strong>regulagem do selim</strong> devem ser verificadas antes da primeira sessão.
+      </p>
+
+      <p>
+        Começar na bicicleta ergométrica da forma correta é a diferença entre criar um hábito sustentável e desistir nas primeiras semanas por dor ou exaustão. O erro mais comum de iniciantes é exagerar na intensidade nas primeiras sessões, o que causa desconforto muscular excessivo e desmotivação. A progressão gradual é o princípio fundamental do treinamento aeróbico para qualquer nível.
+      </p>
+
+      <h2>Antes de Começar: Preparação Essencial</h2>
+
+      <ol>
+        <li><strong>Regulagem do selim:</strong> ajuste para que o joelho fique com 25–35 graus de flexão no ponto mais baixo do pedal</li>
+        <li><strong>Regulagem do guidão:</strong> na altura em que os cotovelos fiquem levemente flexionados</li>
+        <li><strong>Calçado adequado:</strong> tênis fechado com sola firme; evite chinelos ou barefoot</li>
+        <li><strong>Hidratação:</strong> beba água antes, durante (a cada 15 minutos) e após o treino</li>
+        <li><strong>Aquecimento:</strong> 3 a 5 minutos em resistência 1 com cadência baixa antes de começar a sessão principal</li>
+      </ol>
+
+      <h2>Programa de 4 Semanas para Iniciantes</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Sessões</th>
+            <th>Duração</th>
+            <th>Resistência</th>
+            <th>Cadência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>3x</td><td>15–20 min</td><td>Níveis 1–3</td><td>60–70 RPM</td></tr>
+          <tr><td><strong>2</strong></td><td>3x</td><td>20–25 min</td><td>Níveis 2–4</td><td>65–75 RPM</td></tr>
+          <tr><td><strong>3</strong></td><td>4x</td><td>25–30 min</td><td>Níveis 3–5</td><td>70–80 RPM</td></tr>
+          <tr><td><strong>4</strong></td><td>4x</td><td>30–40 min</td><td>Níveis 4–6</td><td>70–85 RPM</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Como Monitorar a Intensidade sem Sensor de FC</h2>
+
+      <p>
+        Sem monitor de frequência cardíaca, use a <strong>Escala de Percepção de Esforço de Borg (modificada de 1 a 10)</strong>: para iniciantes, mantenha entre 3 e 5 (esforço moderado, consegue falar em frases curtas, não em parágrafos). Abaixo de 3 é muito leve para produzir adaptação; acima de 7 é muito intenso para iniciantes manterem por mais de 10 a 15 minutos.
+      </p>
+
+      <h2>Erros Comuns de Iniciantes e Como Evitar</h2>
+
+      <ul>
+        <li><strong>Selim muito baixo:</strong> causa dor patelofemoral; eleve o selim</li>
+        <li><strong>Resistência muito alta desde o início:</strong> aumenta risco de lesão; comece leve e progrida</li>
+        <li><strong>Apoiar o peso nos braços:</strong> reduz trabalho do core e sobrecarrega punhos; segure o guidão levemente</li>
+        <li><strong>Não hidratar:</strong> prejudica desempenho e recuperação; beba 200 ml a cada 15 minutos</li>
+        <li><strong>Treinar com dor articular:</strong> sinal de regulagem incorreta ou sobrecarga; corrija a regulagem antes de continuar</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Dica de adesão:</strong> Nos primeiros 30 dias, priorize consistência sobre intensidade. Três sessões regulares por semana, mesmo que curtas, produzem mais adaptação fisiológica do que sessões irregulares de alta intensidade com dias de ausência.
+        </p>
+      </div>
+
+      <p>
+        Para evoluir após as 4 primeiras semanas, acesse o <a href="/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/">protocolo de emagrecimento com periodização</a> ou o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia de frequência cardíaca</a> para treinar com zonas de intensidade.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Treino de Iniciante" />
+</Layout>

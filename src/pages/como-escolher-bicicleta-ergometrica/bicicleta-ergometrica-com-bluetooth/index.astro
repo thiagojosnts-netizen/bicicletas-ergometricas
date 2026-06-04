@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Com Bluetooth', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-bluetooth/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que faz o bluetooth na bicicleta ergométrica?',
+    answer: 'O bluetooth na bicicleta ergométrica permite a comunicação com smartphones e tablets, sincronizando dados como frequência cardíaca, velocidade, distância, calorias e cadência com aplicativos de treino ou saúde. Alguns modelos avançados com bluetooth também permitem controle da resistência diretamente pelo aplicativo, sem precisar mexer no painel da bicicleta.',
+  },
+  {
+    question: 'Quais aplicativos são compatíveis com bicicleta ergométrica com bluetooth?',
+    answer: 'Os principais aplicativos compatíveis com bicicletas ergométricas brasileiras via bluetooth são: Kinomap, FitShow, VirZOOM e os aplicativos proprietários das marcas (como Kikos App ou Randers Connect). Para protocolos de ciclismo indoor avançados como Zwift ou TrainerRoad, verifique a compatibilidade ANT+ ou FE-C do modelo antes de comprar.',
+  },
+  {
+    question: 'Bluetooth e ANT+ são a mesma coisa?',
+    answer: 'Não. Bluetooth é um protocolo de comunicação de curto alcance para conectar dispositivos (como smartphone e bicicleta). ANT+ é um protocolo especializado em esportes que permite comunicação simultânea com múltiplos dispositivos (como cinta torácica, GPS e monitor de potência). Para uso com aplicativos simples, bluetooth é suficiente. Para ciclismo indoor sério com Zwift, ANT+ ou FE-C é o mais recomendado.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica com Bluetooth: Conectividade e Aplicativos de Treino"
+  description="Como funciona o bluetooth na bicicleta ergométrica, quais aplicativos são compatíveis, diferença entre bluetooth e ANT+, e quais modelos oferecem conectividade real no Brasil."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-24"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica com Bluetooth: Conectividade Real ou Recurso de Marketing</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica com bluetooth</strong> sincroniza dados de treino (frequência cardíaca, calorias, cadência e distância) com aplicativos de saúde no smartphone. Os modelos brasileiros com bluetooth real partem de <strong>R$ 1.400</strong> e são compatíveis com aplicativos como <strong>Kinomap</strong>, <strong>FitShow</strong> e plataformas de saúde da Apple e Google. Para ciclismo indoor avançado com Zwift, verifique a compatibilidade com o protocolo <strong>FE-C ou ANT+</strong>.
+      </p>
+
+      <p>
+        O bluetooth em bicicletas ergométricas serve para transferir dados do equipamento para um dispositivo externo, como smartphone ou tablet. Isso permite acompanhar a evolução do treino em gráficos, comparar sessões ao longo do tempo e integrar os dados de exercício com plataformas de saúde mais completas do que o painel da própria bicicleta oferece.
+      </p>
+
+      <h2>O que o Bluetooth Permite Fazer na Prática</h2>
+
+      <ul>
+        <li><strong>Monitoramento de frequência cardíaca:</strong> transmissão dos dados do sensor da bicicleta para o app</li>
+        <li><strong>Histórico de treinos:</strong> registro de todas as sessões com gráficos de evolução</li>
+        <li><strong>Controle remoto da resistência:</strong> em modelos avançados, o app gerencia a carga automaticamente</li>
+        <li><strong>Integração com Apple Health e Google Fit:</strong> para registro unificado de atividade física</li>
+        <li><strong>Aulas virtuais:</strong> em plataformas como Kinomap, que simulam rotas reais em vídeo</li>
+      </ul>
+
+      <h2>Bluetooth vs ANT+: Quando Cada Um Importa</h2>
+
+      <p>
+        Para uso domiciliar simples com acompanhamento de dados pelo smartphone, bluetooth Low Energy (BLE) é suficiente e presente na maioria dos modelos com conectividade. Para usuários que querem usar Zwift ou TrainerRoad com controle de resistência automático durante simulações de percurso, o protocolo necessário é FE-C (Fitness Equipment Control), disponível apenas em modelos mais avançados e geralmente com custo acima de R$ 3.000.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Verificar antes de comprar:</strong> A presença do ícone de bluetooth no painel não garante compatibilidade com todos os aplicativos. Verifique na descrição técnica do produto quais protocolos estão presentes (BLE, ANT+, FE-C) e quais aplicativos são homologados pelo fabricante.
+        </p>
+      </div>
+
+      <p>
+        Volte ao <a href="/como-escolher-bicicleta-ergometrica/">guia de como escolher bicicleta ergométrica</a> para avaliar os demais critérios. Para programas de treino, veja o <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-programas/">guia de programas automáticos</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica com Bluetooth" />
+</Layout>

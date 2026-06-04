@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /admin/
+
+# Sitemaps
+Sitemap: https://www.caminhaobr.com.br/sitemap.xml
+
+# Crawl-delay para bots agressivos
+User-agent: SemrushBot
+Crawl-delay: 10
+User-agent: AhrefsBot
+Crawl-delay: 10
+User-agent: MJ12bot
+Crawl-delay: 30

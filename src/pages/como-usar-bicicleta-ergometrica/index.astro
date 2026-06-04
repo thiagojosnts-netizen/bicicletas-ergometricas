@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergometrica', url: '/como-usar-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Como usar a bicicleta ergometrica corretamente?',
+    answer: 'Para usar corretamente: ajuste o selim na altura em que o joelho fica levemente flexionado no ponto mais baixo do pedal (angulo de 25 a 35 graus), mantenha o tronco ereto com leve inclinacao para frente, segure o guidao sem apoiar o peso sobre os bracos e pedale com movimento circular completo, usando toda a amplitude do tornozelo.',
+  },
+  {
+    question: 'Quanto tempo usar a bicicleta ergometrica por dia?',
+    answer: 'Para iniciantes, 20 a 30 minutos por sessao sao suficientes nas primeiras duas semanas. Usuarios intermediarios devem progredir para 40 a 60 minutos. O ideal para saude cardiovascular sao 150 minutos semanais de intensidade moderada, distribúidos em pelo menos 3 sessoes. Para emagrecimento, 45 a 60 minutos com 4 a 5 sessoes semanais maximizam o deficit calorico.',
+  },
+  {
+    question: 'Como regular a altura do selim da bicicleta ergometrica?',
+    answer: 'Posicione-se ao lado da bicicleta e ajuste o selim na altura do quadril. Sente-se e coloque o pe na posicao mais baixa do pedal: o joelho deve ficar com 25 a 35 graus de flexao. Se o joelho ficar completamente estendido, o selim esta alto demais; se ficar com mais de 90 graus de flexao, esta baixo demais.',
+  },
+  {
+    question: 'Qual deve ser a frequencia cardiaca durante o uso da bicicleta ergometrica?',
+    answer: 'Para queima de gordura, mantenha a frequencia cardiaca entre 65% e 75% da FCmax (FCmax = 220 menos a idade). Para condicionamento cardiovascular, trabalhe entre 75% e 85% da FCmax. Para iniciantes ou usuarios com condicoes de saude, limite-se a 60% a 70% da FCmax e aumente gradualmente ao longo das semanas.',
+  },
+  {
+    question: 'Como montar a bicicleta ergometrica?',
+    answer: 'A maioria dos modelos chega com 70% a 90% montada. Os passos principais sao: fixar o guidao ao quadro (2 a 4 parafusos), instalar os pedais (pedal direito em sentido horario, esquerdo em anti-horario), ajustar o selim na altura e fixar o painel eletronico ao suporte. O processo leva entre 30 e 60 minutos com as ferramentas fornecidas.',
+  },
+];
+
+const subpages = [
+  {
+    href: '/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/',
+    title: 'Regulagem da Bicicleta Ergometrica',
+    desc: 'Passo a passo para ajustar selim, guidao e pedais na posicao correta para o seu biomecanismo de pedalagem.',
+  },
+  {
+    href: '/como-usar-bicicleta-ergometrica/tempo-ideal-na-bicicleta-ergometrica/',
+    title: 'Tempo Ideal na Bicicleta Ergometrica',
+    desc: 'Quanto tempo pedalar por dia, quantas vezes por semana e como progredir a duracao ao longo do tempo.',
+  },
+  {
+    href: '/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/',
+    title: 'Treino para Iniciantes',
+    desc: 'Programa de 4 semanas para quem nunca usou bicicleta ergometrica: progressao de carga, duracao e intensidade.',
+  },
+  {
+    href: '/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/',
+    title: 'Frequencia Cardiaca na Bicicleta Ergometrica',
+    desc: 'Como calcular as zonas de frequencia cardiaca e treinar na intensidade certa para cada objetivo.',
+  },
+  {
+    href: '/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/',
+    title: 'Protocolo de Emagrecimento',
+    desc: 'Programa estruturado de 8 semanas combinando intervalar e continuo para maximizar a queima de gordura.',
+  },
+];
+---
+
+<Layout
+  title="Como Usar Bicicleta Ergometrica: Regulagem, Treino e Frequencia Cardiaca"
+  description="Guia completo sobre como usar bicicleta ergometrica: regulagem correta de selim e guidao, quanto tempo pedalar, zonas de frequencia cardiaca e programas de treino para iniciantes e avancados."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2024-02-15"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+      <h1 id="page-heading">Como Usar Bicicleta Ergometrica: Guia Completo de Regulagem e Treino</h1>
+
+      <p class="summarization">
+        Para usar a <strong>bicicleta ergometrica</strong> corretamente, ajuste o selim na altura em que o joelho fique com <strong>25 a 35 graus de flexao</strong> no ponto mais baixo do pedal, mantenha o tronco ereto e pedale em ritmo constante. O tempo ideal e de <strong>30 a 60 minutos</strong>, de 3 a 5 vezes por semana, com frequencia cardiaca entre <strong>65% e 85% da FCmax</strong> conforme o objetivo.
+      </p>
+
+      <p>
+        A bicicleta ergometrica e um equipamento que entrega resultados quando usada de forma tecnicamente correta. Erros de regulagem, postura inadequada ou intensidade mal calibrada reduzem a eficiencia do treino e podem causar desconforto nas articulacoes, coluna ou musculos ao longo do tempo.
+      </p>
+
+      <h2>Passo 1: Regulagem do Selim</h2>
+
+      <p>
+        A altura do selim e o ajuste mais critico. Fique de pe ao lado da bicicleta e posicione o selim na altura do quadril. Ao sentar e colocar o pe no ponto mais baixo do pedal (posicao de 6 horas no relogio), o joelho deve permanecer com <strong>25 a 35 graus de flexao</strong>. Abaixo disso, o selim esta alto; acima disso, esta baixo e aumenta o risco de dor patelofemoral.
+      </p>
+
+      <p>
+        Para regulagem completa de selim, guidao e pedais, veja o <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">guia detalhado de regulagem de bicicleta ergometrica</a>.
+      </p>
+
+      <h2>Passo 2: Postura Correta durante o Treino</h2>
+
+      <p>
+        Mantenha o tronco levemente inclinado para frente, com os ombros relaxados e os cotovelos levemente flexionados. O guidao deve ser segurado com firmeza, mas sem apoiar o peso corporal sobre os bracos: o suporte vem do core e dos membros inferiores. Evite curvar excessivamente a lombar ou elevar os ombros em direcao as orelhas.
+      </p>
+
+      <h2>Passo 3: Calibragem da Intensidade</h2>
+
+      <p>
+        A intensidade correta depende do objetivo. Para <strong>queima de gordura</strong>, pedale a 65-75% da frequencia cardiaca maxima (FCmax = 220 menos a idade) por 40 a 60 minutos continuos. Para <strong>condicionamento cardiovascular</strong>, trabalhe entre 75-85% da FCmax. Para <strong>HIIT</strong> (Alta Intensidade Intervalada), alterne 30 segundos a 90-95% da FCmax com 60 segundos de recuperacao ativa a 50-60%.
+      </p>
+
+      <p>
+        Confira o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia completo sobre frequencia cardiaca na bicicleta ergometrica</a> com tabela de zonas por faixa etaria.
+      </p>
+
+      <h2>Quanto Tempo Usar por Sessao</h2>
+
+      <p>
+        Para iniciantes absolutos, comece com <strong>15 a 20 minutos</strong> de pedalagem continua a intensidade baixa (50-60% da FCmax). Progride para 30 minutos na segunda semana e para 40 a 45 minutos na quarta semana. Usuarios com experiencia previa em exercicio podem comecar diretamente com 30 minutos e atingir 60 minutos em duas a tres semanas.
+      </p>
+
+      <p>
+        Para o programa completo de progressao, acesse o <a href="/como-usar-bicicleta-ergometrica/tempo-ideal-na-bicicleta-ergometrica/">guia de tempo ideal na bicicleta ergometrica</a>.
+      </p>
+
+      <h2>Programa de Treino para Iniciantes: 4 Semanas</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Duracao</th>
+            <th>Intensidade (FCmax)</th>
+            <th>Frequencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>20 min</td>
+            <td>50-60%</td>
+            <td>3x/semana</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>30 min</td>
+            <td>55-65%</td>
+            <td>3x/semana</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>35 min</td>
+            <td>60-70%</td>
+            <td>4x/semana</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>40-45 min</td>
+            <td>65-75%</td>
+            <td>4x/semana</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Regra de segurança:</strong> Pare o treino imediatamente se sentir dor no peito, tontura, falta de ar desproporcional ao esforco ou formigamento nos bracos. Esses sinais podem indicar resposta cardiovascular inadequada e requerem avaliacao medica antes de retomar.
+        </p>
+      </div>
+
+      <h2>Guias Especificos de Treino</h2>
+      <div class="cards-grid">
+        {subpages.map(sub => (
+          <article class="card">
+            <h3 style="margin-bottom:0.5rem;">
+              <a href={sub.href} style="text-decoration:none;color:var(--token-text-primary);">{sub.title}</a>
+            </h3>
+            <p style="font-size:0.9375rem;">{sub.desc}</p>
+            <a href={sub.href} class="btn-primary" style="font-size:0.875rem;margin-top:0.5rem;">Ler guia</a>
+          </article>
+        ))}
+      </div>
+
+      <p style="margin-top:2rem;">
+        Confira tambem os <a href="/beneficios-bicicleta-ergometrica/">beneficios comprovados da bicicleta ergometrica</a> e os <a href="/tipos-de-bicicleta-ergometrica/">tipos de bicicleta ergometrica</a> disponiveis para encontrar o modelo ideal para o seu treino.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Como Usar Bicicleta Ergometrica" />
+</Layout>

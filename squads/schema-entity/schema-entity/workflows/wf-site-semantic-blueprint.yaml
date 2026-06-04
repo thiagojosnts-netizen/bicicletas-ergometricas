@@ -1,0 +1,1124 @@
+id: wf-site-semantic-blueprint
+name: Site Semantic Blueprint
+version: "2.0"
+description: >-
+  Workflow completo de visão MACRO → MICRO para qualquer site.
+  Entrega um blueprint semântico executável: arquitetura de entidades,
+  mapa de rich snippets, schema por tipo de página, e plano de implementação
+  priorizado por impacto no SERP. Input: URL do site. Output: blueprint completo.
+  Integra com SEO AI God squad quando relatório disponível.
+
+trigger: "@schema-chief *blueprint {domain}"
+entry_agent: schema-chief
+estimated_duration: "4-8 horas"
+version_history:
+  - version: "1.0"
+    date: "2026-03-01"
+    changes: "Versão inicial — 4 fases"
+  - version: "2.0"
+    date: "2026-05-14"
+    changes: "Expansão para 6 fases, prompts detalhados, handoffs, decision trees, templates"
+
+# ─────────────────────────────────────────────
+# INPUTS
+# ─────────────────────────────────────────────
+
+inputs:
+  required:
+    - name: domain
+      type: string
+      description: "URL do site (ex: https://site.com)"
+      example: "https://majuli-joias.com.br"
+
+    - name: sitemap_url
+      type: string
+      description: "URL do sitemap XML"
+      example: "https://majuli-joias.com.br/sitemap.xml"
+      note: "Se não fornecido, tentar {domain}/sitemap.xml e {domain}/sitemap_index.xml"
+
+  optional:
+    - name: seoaigod_report
+      type: file_path
+      description: "Relatório do SEO AI God squad (se disponível)"
+      format: "markdown"
+      enriches: ["phase_1", "phase_2", "phase_6"]
+
+    - name: cms_type
+      type: enum
+      values: [wordpress, nextjs, astro, shopify, webflow, html, vue, svelte, wix, custom]
+      description: "CMS ou stack do site"
+      used_by: ["phase_5", "phase_6"]
+
+    - name: priority_urls
+      type: list
+      description: "Lista de URLs prioritárias para análise micro"
+      max_items: 20
+      used_by: ["phase_4"]
+
+    - name: gsc_export
+      type: file_path
+      description: "Export CSV do Google Search Console (opcional, enriquece fase 4)"
+      format: "csv"
+
+    - name: mode
+      type: enum
+      values: [full, quick, micro-only, macro-only]
+      default: "full"
+      description: >-
+        full = todas as 6 fases (default)
+        quick = fases 1-3 + blueprint sumário
+        micro-only = apenas fase 4 para URLs fornecidas
+        macro-only = apenas fases 1-2
+
+# ─────────────────────────────────────────────
+# OUTPUTS
+# ─────────────────────────────────────────────
+
+outputs:
+  primary:
+    - name: site-semantic-blueprint.md
+      description: "Documento mestre — referência completa do projeto semântico"
+
+    - name: entity-architecture.csv
+      description: "Master entity table com Q-IDs, tipos, sameAs e prioridade"
+      columns: [entity_name, entity_type, wikidata_qid, confidence_score, priority, cluster, hub_url, sameAs_wikipedia, sameAs_linkedin, corroboration_tier, status]
+
+    - name: rich-snippets-opportunity-map.md
+      description: "Mapa de oportunidades por tipo de página e snippet"
+
+    - name: schema-implementation-plan.md
+      description: "Plano de implementação com priorização P1/P2/P3 e agente responsável"
+
+  secondary:
+    - name: content-schema-brief-template.md
+      description: "Template reutilizável de brief de conteúdo schema-first"
+
+    - name: url-micro-audit-report.yaml
+      description: "Scores e gaps das top 10 URLs auditadas"
+
+    - name: entity-hub-architecture.md
+      description: "Estrutura de entity hubs por cluster"
+
+# ─────────────────────────────────────────────
+# PRE-FLIGHT CHECKS
+# ─────────────────────────────────────────────
+
+pre_flight:
+  agent: schema-chief
+  checks:
+    - id: PF-01
+      check: "Sitemap acessível"
+      action: "curl -sI {sitemap_url} — verificar HTTP 200"
+      fallback: "Tentar {domain}/sitemap.xml, {domain}/sitemap_index.xml, {domain}/robots.txt"
+      block_if_fail: false
+      note: "Se sitemap inacessível, usar top 50 URLs do GSC export ou crawl manual"
+
+    - id: PF-02
+      check: "Homepage carrega corretamente"
+      action: "curl -s {domain} — verificar conteúdo HTML"
+      block_if_fail: true
+
+    - id: PF-03
+      check: "Schema existente detectado"
+      action: "curl -s {domain} | grep 'application/ld+json'"
+      result_tag: "has_existing_schema"
+      note: "Resultado usado na fase 1 para baseline"
+
+    - id: PF-04
+      check: "CMS identificado"
+      action: "Detectar via HTML patterns (wp-content = WordPress, _next = Next.js, etc.)"
+      result_tag: "detected_cms"
+      note: "Sobrepõe cms_type se não fornecido"
+
+    - id: PF-05
+      check: "SEO AI God report disponível"
+      action: "Verificar se seoaigod_report foi fornecido como input"
+      result_tag: "has_seoaigod"
+      note: "Se disponível, @semantic-content-architect usa *seoaigod-bridge na fase 1"
+
+# ─────────────────────────────────────────────
+# PHASES
+# ─────────────────────────────────────────────
+
+phases:
+
+  # ══════════════════════════════════════════
+  # FASE 1 — MACRO DISCOVERY
+  # ══════════════════════════════════════════
+
+  phase_1:
+    id: "P1"
+    name: "Macro Discovery — Identidade & Arquitetura"
+    agent: semantic-content-architect
+    command: "*macro-audit {domain}"
+    estimated_duration: "60-90 minutos"
+    requires: "pre_flight PASS"
+
+    context_prompt: |
+      Você está executando o Macro Discovery de {domain}.
+      Seu objetivo é entender a identidade semântica global do site e sua arquitetura de clusters.
+      Se seoaigod_report estiver disponível, use @semantic-content-architect *seoaigod-bridge
+      para extrair insights e traduzi-los em ações de schema antes de prosseguir.
+
+    steps:
+      - id: P1-S1
+        name: "SEO AI God Bridge (condicional)"
+        condition: "has_seoaigod == true"
+        action: "*seoaigod-bridge {seoaigod_report}"
+        extract:
+          - "Diagnostic insights de @sukuna (autoridade topical)"
+          - "Gaps semânticos identificados por @megumi"
+          - "Oportunidades de rich results de @yuta"
+          - "Análise de entidades de @nanami"
+        output: "seoaigod-bridge-summary.md"
+        time_estimate: "15 min"
+
+      - id: P1-S2
+        name: "Central Entity Identification"
+        action: |
+          1. Buscar no Google: "{nome_da_marca}" — Knowledge Panel aparece?
+          2. Verificar: tipo correto (Organization / Person / LocalBusiness / Brand)?
+          3. Verificar: sameAs links visíveis no KP?
+          4. curl -s {domain} | python -c "
+               import sys, json, re
+               html = sys.stdin.read()
+               schemas = re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', html, re.S)
+               for s in schemas:
+                   try: print(json.dumps(json.loads(s), indent=2))
+                   except: pass
+             "
+          5. Identificar @type principal e @id da organização
+        output: "central_entity.json"
+        format: |
+          {
+            "entity_name": "",
+            "entity_type": "Organization|Person|LocalBusiness|Brand",
+            "wikidata_qid": "Q... ou NOT_FOUND",
+            "knowledge_panel": "exists|absent|incorrect",
+            "confidence_score": "low|medium|high",
+            "current_org_schema": "complete|partial|absent",
+            "current_website_schema": "implemented|absent",
+            "homepage_schema_types": []
+          }
+        time_estimate: "20 min"
+
+      - id: P1-S3
+        name: "Cluster Architecture Mapping"
+        action: |
+          1. Fazer parse do sitemap XML:
+             curl -s {sitemap_url} | grep '<loc>' | sed 's/.*<loc>//' | sed 's/<\/loc>//'
+          2. Identificar padrões de URL que revelam clusters:
+             /categoria/ → cluster de conteúdo
+             /produto/ | /shop/ → cluster e-commerce
+             /servico/ | /service/ → cluster de serviços
+             /blog/{tema}/ → sub-cluster temático
+             /guia/ | /tutorial/ → cluster educacional
+             /autor/ | /team/ → cluster de pessoas (E-E-A-T)
+          3. Para cada cluster identificado:
+             □ Hub URL existe? (URL pai do cluster)
+             □ Hub tem schema próprio?
+             □ Spokes têm link para hub?
+             □ Hub lista spokes?
+          4. Estimar topical coverage por cluster (% de sub-tópicos cobertos)
+        output: "cluster_map.json"
+        format: |
+          {
+            "clusters": [
+              {
+                "name": "",
+                "hub_url": "",
+                "url_pattern": "",
+                "spoke_count": 0,
+                "hub_has_schema": false,
+                "bidirectional_links": false,
+                "topical_coverage_estimate": "low|medium|high",
+                "schema_opportunity": []
+              }
+            ]
+          }
+        time_estimate: "25 min"
+
+      - id: P1-S4
+        name: "Schema Baseline Inventory"
+        action: |
+          Amostrar top 30 URLs (por tráfego GSC ou primeiras do sitemap):
+          Para cada URL:
+          1. Extrair todos os blocos application/ld+json
+          2. Identificar @type(s) presentes
+          3. Verificar propriedades obrigatórias
+          4. Score 0-100 por URL
+          Resultado: CSV com colunas url,schema_types,required_props_ok,score,status
+        output: "schema-baseline.csv"
+        time_estimate: "20 min"
+
+      - id: P1-S5
+        name: "Confidence Score & Knowledge Panel Report"
+        action: |
+          Calcular Confidence Score da Central Entity (método Jason Barnard):
+          - Fontes T1 verificadas: Wikidata, Wikipedia, Crunchbase → +30 cada (max 90)
+          - Fontes T2 verificadas: Google Business Profile, LinkedIn → +10 cada (max 20)
+          - Knowledge Panel status: exists=+20, absent=0, incorrect=-10
+          - Schema @id correto no site: +10
+          - Total: 0-100
+        output: "entity_confidence.json"
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: "CP1"
+      name: "Macro Discovery Complete"
+      required_outputs: ["central_entity.json", "cluster_map.json", "schema-baseline.csv"]
+      decision:
+        pass: "Prosseguir para Fase 2"
+        fail: "Documentar bloqueios e aguardar input do usuário"
+      fail_conditions:
+        - "Nenhuma Central Entity identificável"
+        - "Sitemap retorna 0 URLs"
+
+    handoff_to: entity-disambiguator
+    handoff_data:
+      - central_entity.json
+      - cluster_map.json
+      - schema-baseline.csv
+      - seoaigod-bridge-summary.md (se existir)
+
+  # ══════════════════════════════════════════
+  # FASE 2 — ENTITY ARCHITECTURE
+  # ══════════════════════════════════════════
+
+  phase_2:
+    id: "P2"
+    name: "Entity Architecture — Mapeamento Completo"
+    agent: entity-disambiguator
+    command: "*inventory {domain}"
+    estimated_duration: "60-90 minutos"
+    requires: "phase_1 PASS"
+
+    context_prompt: |
+      Você recebeu os outputs da Fase 1 de @semantic-content-architect.
+      Sua missão: construir a arquitetura completa de entidades do site {domain}.
+      Central Entity já identificada em central_entity.json.
+      Foco agora: entidades secundárias, Q-IDs, entity hubs, bidirectional links.
+
+    steps:
+      - id: P2-S1
+        name: "Entity Extraction — NLP + Manual"
+        action: |
+          1. Analisar top 10 páginas mais importantes (home + hubs dos clusters)
+          2. Extrair entidades nomeadas por tipo:
+             - Pessoas (Person): fundadores, autores, celebridades mencionadas
+             - Organizações (Organization): marcas, parceiros, concorrentes citados
+             - Lugares (Place): cidades, regiões, países relevantes
+             - Produtos (Product): produtos principais com nome de marca
+             - Conceitos (Thing): termos de domínio específicos do nicho
+          3. Listar por frequência de menção + relevância temática
+        output: "entity-raw-list.csv"
+        columns: [entity_name, entity_type, mention_count, source_pages, relevance_score]
+        time_estimate: "20 min"
+
+      - id: P2-S2
+        name: "Priority Scoring & Top 20 Selection"
+        action: |
+          Para cada entidade, calcular Priority Score:
+          - Mention frequency: peso 30%
+          - Topical relevance: peso 30%
+          - Wikidata availability probability: peso 20%
+          - E-E-A-T signal value: peso 20%
+          Selecionar Top 20 para mapeamento Wikidata
+          Central Entity é sempre #1 independente de score
+        output: "priority-entities.csv"
+        time_estimate: "10 min"
+
+      - id: P2-S3
+        name: "Wikidata Q-ID Mapping"
+        action: |
+          Para cada entidade no Top 20, executar SPARQL:
+          SELECT ?item ?itemLabel ?description WHERE {
+            ?item wdt:P31 wd:Q5 .
+            ?item rdfs:label "{entity_name}"@pt .
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "pt,en" . }
+          } LIMIT 5
+
+          Para organizações:
+          SELECT ?item ?itemLabel ?website WHERE {
+            ?item wdt:P856 ?website .
+            FILTER(CONTAINS(STR(?website), "{domain_name}"))
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "pt,en" . }
+          }
+
+          Registrar: Q-ID encontrado | NOT_FOUND | AMBIGUOUS
+          Para AMBIGUOUS: listar opções e marcar para revisão humana
+        output: "wikidata-mapping.csv"
+        time_estimate: "30 min"
+
+      - id: P2-S4
+        name: "Entity Hub Architecture Plan"
+        action: |
+          Para cada cluster mapeado na Fase 1:
+          1. Identificar entidade âncora do cluster (entidade principal de que o cluster trata)
+          2. Definir Hub URL pattern (/{cluster}/ ou existente)
+          3. Planejar schema do hub:
+             - Article/BlogPosting se cluster editorial
+             - CollectionPage se cluster de produtos/serviços
+             - LocalBusiness se cluster local
+             - Person se cluster de autor
+          4. Planejar bidirectional links:
+             Hub → Spokes: hasPart array com URLs dos spokes
+             Spokes → Hub: about → hub @id
+          5. Planejar sameAs na hub: Q-ID da entidade âncora
+        output: "entity-hub-architecture.md"
+        format: |
+          # Entity Hub Architecture — {domain}
+
+          ## Hub 1: {cluster_name}
+          **Hub URL:** {hub_url}
+          **Entidade âncora:** {entity} ({Q-ID})
+          **Schema type:** {type}
+          **@id:** {domain}#{slug}#entity
+          **sameAs:** [{wikidata_url}]
+          **hasPart:** [{spoke_url_1}, {spoke_url_2}, ...]
+          **Spokes devem ter:** about → {hub_@id}
+
+          ---
+        time_estimate: "20 min"
+
+      - id: P2-S5
+        name: "Master Entity Table — Final"
+        action: |
+          Consolidar entity-raw-list + wikidata-mapping + priority em:
+          master-entity-table.csv com colunas:
+          entity_name | entity_type | priority | cluster | wikidata_qid |
+          confidence_score | hub_url | sameAs_wikipedia | sameAs_linkedin |
+          corroboration_tier1 | corroboration_tier2 | entity_hub_planned |
+          schema_type | status
+        output: "master-entity-table.csv"
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: "CP2"
+      name: "Entity Architecture Complete"
+      required_outputs: ["master-entity-table.csv", "entity-hub-architecture.md"]
+      quality_check:
+        - "Central Entity tem Q-ID ou documentado como NOT_FOUND com razão"
+        - "Min 10 entidades mapeadas"
+        - "Min 1 entity hub planejado por cluster principal"
+      decision:
+        pass: "Prosseguir para Fase 3"
+        human_review: "Se >50% das top entities sem Q-ID → pausar e reportar ao usuário"
+
+    handoff_to: rich-snippets-master
+    handoff_data:
+      - master-entity-table.csv
+      - entity-hub-architecture.md
+      - cluster_map.json
+
+  # ══════════════════════════════════════════
+  # FASE 3 — RICH SNIPPETS OPPORTUNITY MAP
+  # ══════════════════════════════════════════
+
+  phase_3:
+    id: "P3"
+    name: "Rich Snippets Opportunity Map"
+    agent: rich-snippets-master
+    command: "*map-site {domain}"
+    estimated_duration: "45-60 minutos"
+    requires: "phase_2 PASS"
+
+    context_prompt: |
+      Você recebeu o mapa de clusters e a master entity table do site {domain}.
+      Sua missão: identificar TODOS os rich results aplicáveis ao site,
+      priorizá-los por impacto × esforço, e mapear quais tipos de página
+      precisam de qual tipo de schema. Seja exaustivo — não deixe nenhuma
+      oportunidade de SERP real estate na mesa.
+
+    steps:
+      - id: P3-S1
+        name: "Site Type Classification"
+        action: |
+          Classificar o site em um ou mais tipos:
+          [ ] Blog/Editorial — Article, FAQPage, HowTo, Speakable
+          [ ] E-commerce — Product, Offer, AggregateRating, ItemList
+          [ ] Local Business — LocalBusiness, Service, Review
+          [ ] SaaS/Software — SoftwareApplication, FAQPage, HowTo
+          [ ] Educacional — Course, LearningVideo, HowTo
+          [ ] Agregador/Diretório — ItemList, LocalBusiness
+          [ ] Notícias — NewsArticle, Speakable, ClaimReview
+          [ ] Podcast — PodcastSeries, PodcastEpisode
+          [ ] Receitas — Recipe
+          [ ] Imóveis/Hospedagem — LodgingBusiness
+          [ ] Jobs — JobPosting
+          [ ] Eventos — Event
+          Múltiplos tipos podem se aplicar.
+        output: "site_type_classification.yaml"
+        time_estimate: "5 min"
+
+      - id: P3-S2
+        name: "Page Type × Rich Result Matrix"
+        action: |
+          Para cada tipo de página no site, mapear rich results aplicáveis:
+
+          FOUNDATION (toda página):
+            - WebSite + SearchAction (homepage)
+            - Organization/Person (homepage + sobre)
+            - BreadcrumbList (todas internas)
+
+          ARTIGOS / BLOG:
+            - Article / BlogPosting / NewsArticle (obrigatório)
+            - FAQPage (se tem seção FAQ)
+            - HowTo (se tem steps)
+            - Speakable (se tem parágrafos de resposta direta)
+            - Author/Person (link para página de autor)
+
+          PRODUTOS:
+            - Product + Offer (obrigatório)
+            - AggregateRating (se tem reviews)
+            - Review (reviews individuais)
+            - ItemList (páginas de categoria)
+            - ShippingDetails, ReturnPolicy
+
+          LOCAL BUSINESS:
+            - LocalBusiness (todas as páginas do negócio)
+            - openingHoursSpecification
+            - geo (latitude/longitude)
+            - Review + AggregateRating
+
+          CURSOS / EDUCAÇÃO:
+            - Course + CourseInstance
+            - LearningVideo (se tem vídeo explicativo)
+            - HowTo (tutoriais)
+
+          RECEITAS:
+            - Recipe completa (todos os campos)
+            - NutritionInformation
+
+          EVENTOS:
+            - Event (offline ou VirtualLocation)
+            - Performer (se tem artistas/palestrantes)
+
+          VÍDEOS:
+            - VideoObject (toda página com vídeo principal)
+            - Clip (seções do vídeo para timestamp rich results)
+
+          PODCASTS:
+            - PodcastSeries (página do podcast)
+            - PodcastEpisode (cada episódio)
+
+          JOBS:
+            - JobPosting (toda vaga)
+
+          SOFTWARE:
+            - SoftwareApplication (página do produto/app)
+
+          DATASETS:
+            - Dataset (se publica dados)
+
+          VERIFICAÇÃO DE FATOS:
+            - ClaimReview (fact-checks)
+
+          CONTEÚDO PAGO:
+            - Paywalled structured data
+
+        output: "page-type-snippet-matrix.yaml"
+        time_estimate: "15 min"
+
+      - id: P3-S3
+        name: "Opportunity Prioritization — Impact × Effort Matrix"
+        action: |
+          Para cada oportunidade identificada, calcular:
+
+          IMPACT SCORE (1-10):
+            - Volume de páginas elegíveis × 0.3
+            - CTR lift esperado (estimativa por tipo de snippet) × 0.4
+            - Competitividade das queries × 0.3
+
+          EFFORT SCORE (1-10, menor = mais fácil):
+            - Dados disponíveis no site? (sim = mais fácil)
+            - CMS suporta? (sim = mais fácil)
+            - Agente responsável: @schema-architect (templates prontos = fácil)
+
+          PRIORIDADE:
+            - P1 (Quick Win): Impact >= 7 AND Effort <= 3
+            - P2 (High Value): Impact >= 7 AND Effort 4-6
+            - P3 (Long Term): Impact < 7 OR Effort > 6
+
+          CATEGORIAS ESPECIAIS:
+            - "Already Implemented" — tem schema, precisa de melhoria
+            - "Missing Mandatory" — tipo de página sem schema algum
+            - "Revenue Impact" — Product/Service sem rich snippet = $ perdido
+
+        output: "opportunity-priority-matrix.yaml"
+        time_estimate: "15 min"
+
+      - id: P3-S4
+        name: "Sitewide Foundation Check"
+        action: |
+          Verificar implementação da base que toda página precisa:
+          □ Organization schema na homepage?
+          □ WebSite + SearchAction na homepage?
+          □ BreadcrumbList em todas as URLs internas?
+          □ Author/Person schema nas páginas de autor?
+          □ datePublished em todos os artigos?
+
+          Resultado: foundation_status.yaml com checklist
+        output: "foundation_status.yaml"
+        time_estimate: "10 min"
+
+      - id: P3-S5
+        name: "Rich Snippets Opportunity Report"
+        action: |
+          Compilar rich-snippets-opportunity-map.md com:
+          - Resumo executivo: N oportunidades, P1/P2/P3 breakdown
+          - Quick wins (pode implementar hoje)
+          - Tabela completa de oportunidades
+          - Foundation gaps
+          - ROI estimado por categoria
+        output: "rich-snippets-opportunity-map.md"
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: "CP3"
+      name: "Rich Snippets Map Complete"
+      required_outputs: ["rich-snippets-opportunity-map.md", "opportunity-priority-matrix.yaml"]
+      quality_check:
+        - "Min 5 oportunidades identificadas"
+        - "Foundation status verificada"
+        - "Pelo menos 1 quick win identificado"
+
+    handoff_to: semantic-content-architect
+    handoff_data:
+      - rich-snippets-opportunity-map.md
+      - opportunity-priority-matrix.yaml
+      - page-type-snippet-matrix.yaml
+      - foundation_status.yaml
+
+  # ══════════════════════════════════════════
+  # FASE 4 — MICRO AUDIT
+  # ══════════════════════════════════════════
+
+  phase_4:
+    id: "P4"
+    name: "Micro Audit — Top URLs Prioritárias"
+    agent: semantic-content-architect
+    command: "*micro-audit {url} para cada URL selecionada"
+    estimated_duration: "90-120 minutos"
+    requires: "phase_3 PASS"
+
+    context_prompt: |
+      Você vai executar uma anatomia semântica detalhada das URLs mais importantes do site {domain}.
+      Use os outputs das Fases 1-3 como contexto.
+      O resultado é um score 0-100 por URL + lista priorizada de ações.
+
+    url_selection:
+      strategy: |
+        Selecionar top 10 URLs por:
+        1. Tráfego orgânico mais alto (se GSC disponível)
+        2. Maior oportunidade de rich snippet (Fase 3)
+        3. Pages que representam cada cluster principal
+        4. Homepage sempre incluída
+        5. Priority_urls do input (se fornecido)
+      max_urls: 10
+
+    steps:
+      - id: P4-S1
+        name: "URL Selection & Prioritization"
+        action: |
+          1. Se GSC export disponível: ordenar por Clicks desc
+          2. Cruzar com opportunity-priority-matrix: URLs com P1 sobem
+          3. Garantir representação de cada cluster
+          4. Sempre incluir homepage
+          5. Resultado: lista de 10 URLs com justificativa de seleção
+        output: "selected-urls.yaml"
+        time_estimate: "10 min"
+
+      - id: P4-S2
+        name: "Micro Audit por URL (×10)"
+        action: |
+          Para CADA URL da lista, executar anatomia completa:
+
+          LAYER 1 — CONTENT ANALYSIS:
+            □ Tipo de página identificado (Article/Product/FAQ/How-To/Landing)
+            □ Central Entity da página identificada
+            □ Entidades secundárias mencionadas
+            □ Intenção de busca primária (informacional/navegacional/transacional)
+            □ Sub-tópicos cobertos
+            □ Dados estruturados presentes no conteúdo (tabelas, listas, steps, FAQ)
+            □ Parágrafos de resposta direta (AEO-ready)
+
+          LAYER 2 — CURRENT SCHEMA:
+            □ Tipos de schema implementados
+            □ Propriedades obrigatórias: presentes / ausentes
+            □ @id correto e consistente?
+            □ author linkado para Person schema?
+            □ datePublished e dateModified presentes?
+            □ publisher → Organization @id?
+            □ Erros de sintaxe (checar via Rich Results Test se possível)
+
+          LAYER 3 — OPPORTUNITIES:
+            □ Rich results possíveis não implementados
+            □ Entidades sem sameAs
+            □ Cluster hub não referenciado (falta about → hub)
+            □ BreadcrumbList ausente
+            □ Speakable não implementado (se tem parágrafos de resposta)
+            □ Author/E-E-A-T gaps
+
+          LAYER 4 — ENTITIES:
+            □ Central Entity da página tem @id proprietário?
+            □ Entidades mencionadas têm sameAs?
+            □ Página é spoke de algum hub?
+            □ Falta hasPart nesta página se for hub?
+
+          SCORE CALCULATION:
+            Foundation (40%):
+              - Schema type correto: 10pts
+              - Propriedades obrigatórias: 15pts
+              - BreadcrumbList: 5pts
+              - Publisher/Author: 10pts
+            Entity (30%):
+              - Central Entity com @id: 10pts
+              - sameAs relevantes: 10pts
+              - Cluster connection (about/hasPart): 10pts
+            Rich Results (20%):
+              - Rich results possíveis implementados: 20pts
+            AEO (10%):
+              - Speakable: 5pts
+              - FAQPage para AI: 5pts
+
+        output: "micro-audit-{slug}.yaml"
+        repeat_for: "each URL in selected-urls.yaml"
+        time_estimate: "10-12 min por URL"
+
+      - id: P4-S3
+        name: "URL Scores Consolidation"
+        action: |
+          Compilar todos os micro-audits em:
+          url-scores.csv: url | score | status | top_3_gaps | rich_result_opportunity | priority
+          url-micro-audit-report.yaml: scores + análise agregada
+        output: ["url-scores.csv", "url-micro-audit-report.yaml"]
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: "CP4"
+      name: "Micro Audit Complete"
+      required_outputs: ["url-scores.csv", "url-micro-audit-report.yaml"]
+      quality_check:
+        - "Min 5 URLs auditadas (de 10 planejadas)"
+        - "Score calculado para cada URL auditada"
+        - "Gaps documentados com ação específica"
+
+    handoff_to: schema-chief
+    handoff_data:
+      - url-scores.csv
+      - url-micro-audit-report.yaml
+      - selected-urls.yaml
+
+  # ══════════════════════════════════════════
+  # FASE 5 — IMPLEMENTATION BLUEPRINT
+  # ══════════════════════════════════════════
+
+  phase_5:
+    id: "P5"
+    name: "Implementation Blueprint — Plano de Ação Priorizado"
+    agent: schema-chief
+    estimated_duration: "60-90 minutos"
+    requires: "phase_4 PASS"
+
+    context_prompt: |
+      Você é o Schema Chief. Todas as fases anteriores estão completas.
+      Sua missão agora é consolidar TUDO em um blueprint executável.
+      O plano deve ser específico (agente, comando, tempo estimado, output esperado)
+      e priorizado por impacto real no SERP e na receita do site.
+
+    steps:
+      - id: P5-S1
+        name: "Consolidação de Todos os Outputs"
+        action: |
+          Ler e consolidar:
+          - Phase 1: central_entity.json + cluster_map.json + schema-baseline.csv
+          - Phase 2: master-entity-table.csv + entity-hub-architecture.md
+          - Phase 3: opportunity-priority-matrix.yaml + foundation_status.yaml
+          - Phase 4: url-scores.csv + url-micro-audit-report.yaml
+          Criar: project-summary.yaml com métricas agregadas
+        output: "project-summary.yaml"
+        format: |
+          site: {domain}
+          analysis_date: {ISO8601}
+          central_entity: {name} | Q-ID: {qid}
+          confidence_score: {score}
+          total_clusters: N
+          total_entities_mapped: N
+          avg_schema_score: X/100
+          rich_result_opportunities: N
+          p1_quick_wins: N
+          p2_high_value: N
+          estimated_total_effort_hours: N
+        time_estimate: "15 min"
+
+      - id: P5-S2
+        name: "Implementation Plan — P1/P2/P3"
+        action: |
+          Gerar plano de implementação com 3 horizontes temporais:
+
+          P1 — ESTA SEMANA (Quick Wins, 2h ou menos cada):
+            Para cada ação P1:
+            - Ação: descrição exata do que fazer
+            - Agente: @{agente} *{comando}
+            - URL/escopo: {urls afetadas ou "todas as páginas"}
+            - Template pronto em: {arquivo se existir}
+            - Impacto estimado: {rich result + CTR lift esperado}
+            - Tempo estimado: {horas}
+
+          P2 — ESTE MÊS (Alta Prioridade Estratégica):
+            Mesma estrutura do P1.
+            Foco: entity hubs, bidirectional links, E-E-A-T completo.
+
+          P3 — ESTE TRIMESTRE (Expansão Sistemática):
+            Mesma estrutura.
+            Foco: cobertura completa de todos os clusters, rich results avançados.
+
+          P4 — CONTÍNUO (Monitoramento e Iteração):
+            - GSC: monitorar erros semanalmente via @tech-seo-engineer
+            - A/B: testar hipóteses de schema via @koray-semantic
+            - Update: atualizar entidades quando dados Wikidata mudarem
+
+        output: "schema-implementation-plan.md"
+        time_estimate: "30 min"
+
+      - id: P5-S3
+        name: "CMS-Specific Format Decision"
+        action: |
+          Baseado no cms_type detectado/fornecido, definir formato de implementação:
+
+          WordPress:
+            - @multiformat-engineer *output wordpress
+            - Usar SchemaEntityManager PHP class
+            - Hook: wp_head ou plugin RankMath/Yoast override
+
+          Next.js App Router:
+            - @multiformat-engineer *output nextjs
+            - generateMetadata() + JsonLd component
+            - Localizar em: app/{route}/page.tsx
+
+          Astro:
+            - @multiformat-engineer *output astro
+            - SchemaGraph.astro component
+            - Usar content collections frontmatter
+
+          Shopify:
+            - @multiformat-engineer *output shopify
+            - Liquid snippets + metafields
+
+          HTML puro:
+            - JSON-LD direto no <head>
+            - Considerar Microdata se <head> inacessível
+
+        output: "cms-implementation-guide.md"
+        time_estimate: "15 min"
+
+      - id: P5-S4
+        name: "Templates Prontos por Tipo de Página"
+        action: |
+          Para os top 3 tipos de página mais comuns no site:
+          Gerar template JSON-LD completo e pronto para usar:
+          - Variáveis em {MAIÚSCULAS} para substituição
+          - Todas as propriedades P1 (obrigatórias) preenchidas
+          - Propriedades P2 (recomendadas) comentadas como opcionais
+          - Validação: instrução de como testar (Rich Results Test URL)
+        output: "ready-to-use-templates.md"
+        time_estimate: "20 min"
+
+    checkpoint:
+      id: "CP5"
+      name: "Implementation Blueprint Complete"
+      required_outputs: ["schema-implementation-plan.md", "ready-to-use-templates.md"]
+      quality_check:
+        - "Plano tem pelo menos 3 ações P1"
+        - "Cada ação tem agente, comando e tempo estimado"
+        - "Templates têm todas as propriedades obrigatórias"
+        - "CMS-specific guidance incluída"
+
+    handoff_to: semantic-content-architect
+    handoff_data:
+      - schema-implementation-plan.md
+      - ready-to-use-templates.md
+      - project-summary.yaml
+
+  # ══════════════════════════════════════════
+  # FASE 6 — CONTENT SCHEMA BRIEF TEMPLATE
+  # ══════════════════════════════════════════
+
+  phase_6:
+    id: "P6"
+    name: "Content Schema Brief Template — Schema-First para Novos Conteúdos"
+    agent: semantic-content-architect
+    command: "*schema-brief template {domain}"
+    estimated_duration: "30-45 minutos"
+    requires: "phase_5 PASS"
+
+    context_prompt: |
+      Fase final do blueprint. Sua missão: criar um template reutilizável de brief
+      de conteúdo que garanta que todo novo conteúdo criado para {domain} já nasce
+      com o schema correto definido — antes que uma palavra seja escrita.
+      O template deve ser adaptado ao site específico (clusters, entidades, CMS).
+
+    steps:
+      - id: P6-S1
+        name: "Brief Template Base"
+        action: |
+          Criar content-schema-brief-template.md com:
+
+          SEÇÃO A — IDENTIDADE DO CONTEÚDO:
+            Tipo de página: [Article|FAQPage|HowTo|Product|Course|Event]
+            Cluster: [qual dos clusters do site?]
+            Hub URL: [qual é o hub deste cluster?]
+            Relação com hub: spoke | novo hub | hub update
+
+          SEÇÃO B — SCHEMA PRÉ-DEFINIDO:
+            Schema types a implementar: [lista pelo menos 2]
+            @type principal:
+            @id proposto: {domain}/{slug}#entity
+            Propriedades obrigatórias que o conteúdo DEVE incluir:
+              (ex: Se FAQPage → conteúdo deve ter H2 com Q&A explícitas)
+              (ex: Se HowTo → conteúdo deve ter steps numerados)
+            Snippet esperado: [qual rich result vai aparecer no SERP]
+
+          SEÇÃO C — ENTITY STRATEGY:
+            Central Entity desta página:
+            Entidades secundárias a mencionar:
+            sameAs que o conteúdo deve referenciar:
+            Cluster hub a linkar (primeira menção):
+            Spokes a linkar como "artigos relacionados":
+
+          SEÇÃO D — AEO CHECKLIST:
+            □ Parágrafo de resposta direta no início (AI Overviews ready)
+            □ Pergunta(s) do FAQ content com resposta concisa (<50 palavras)
+            □ Definição da Central Entity no primeiro parágrafo
+            □ Dados verificáveis com fonte citada
+
+          SEÇÃO E — E-E-A-T CHECKLIST:
+            □ Autor com Person schema e página de autor linkada
+            □ datePublished e dateReviewed presentes
+            □ Fontes externas autoritativas linkadas
+            □ Credenciais do autor mencionadas no conteúdo
+
+          SEÇÃO F — MEDIA REQUIREMENTS:
+            □ Imagem principal: alt text semântico com entidade no texto
+            □ ImageObject schema preenchido
+            □ Se tutorial/recipe: imagens de cada step
+            □ Se tem vídeo: VideoObject schema pronto
+
+        output: "content-schema-brief-template.md"
+        time_estimate: "20 min"
+
+      - id: P6-S2
+        name: "Cluster-Specific Brief Variants"
+        action: |
+          Para cada cluster principal identificado na Fase 1,
+          criar uma variação do brief com campos pré-preenchidos:
+          - Hub URL já definida
+          - Cluster entities pré-listadas (do master-entity-table.csv)
+          - Schema type já definido para aquele cluster
+          - Quick schema preview JSON com {VARIÁVEIS} para substituição
+        output: "brief-variants/{cluster_slug}-brief.md"
+        repeat_for: "each cluster in cluster_map.json"
+        time_estimate: "5 min por cluster"
+
+      - id: P6-S3
+        name: "Final Blueprint Document Assembly"
+        action: |
+          Montar site-semantic-blueprint.md — documento mestre:
+
+          # Site Semantic Blueprint — {domain}
+          **Data:** {ISO8601} | **Versão:** 2.0
+          **Analisado por:** schema-entity squad — 6 agentes
+
+          ## Executive Summary
+          Score atual: X/100
+          Oportunidades: N rich results (P1: N | P2: N | P3: N)
+          Estimated ROI: Alto/Médio/Baixo
+          Próximo passo imediato: {ação P1 mais simples}
+
+          ## 1. Identidade Semântica
+          {Central Entity, Q-ID, Knowledge Panel status, Confidence Score}
+
+          ## 2. Arquitetura de Clusters
+          {Tabela de clusters com hub, schema, bidirectional status}
+
+          ## 3. Mapa de Entidades
+          {Link para master-entity-table.csv + highlight top 5}
+
+          ## 4. Oportunidades de Rich Snippets
+          {Link para rich-snippets-opportunity-map.md + P1 quick wins}
+
+          ## 5. Scores por URL
+          {Tabela das 10 URLs auditadas com score + top gap}
+
+          ## 6. Plano de Implementação
+          {Link para schema-implementation-plan.md + P1 actions}
+
+          ## 7. Templates Prontos
+          {Link para ready-to-use-templates.md + CMS guide}
+
+          ## 8. Brief Template para Novos Conteúdos
+          {Link para content-schema-brief-template.md}
+
+          ## Métricas do Projeto
+          {project-summary.yaml rendered como tabela}
+
+        output: "site-semantic-blueprint.md"
+        time_estimate: "15 min"
+
+    checkpoint:
+      id: "CP6"
+      name: "Blueprint Complete — All Deliverables Ready"
+      required_outputs:
+        - "site-semantic-blueprint.md"
+        - "content-schema-brief-template.md"
+      validation:
+        - "Blueprint referencia todos os outputs das fases 1-5"
+        - "Brief template tem todas as 6 seções"
+        - "Executive Summary preenchido com métricas reais"
+
+# ─────────────────────────────────────────────
+# QUALITY GATES
+# ─────────────────────────────────────────────
+
+quality_gates:
+  - id: QG-BLUEPRINT-01
+    phase: 1
+    description: "Central Entity identificada e documentada com confidence_score"
+    required: true
+    fail_action: "Pausar, reportar ao usuário: nenhuma entity identificável"
+
+  - id: QG-BLUEPRINT-02
+    phase: 2
+    description: "Min 10 entidades mapeadas na master entity table"
+    required: true
+    fail_action: "Continuar com o que foi encontrado, documentar limitation"
+
+  - id: QG-BLUEPRINT-03
+    phase: 3
+    description: "Min 5 oportunidades de rich snippets mapeadas"
+    required: true
+    fail_action: "Investigar: site pode ser muito simples ou novo"
+
+  - id: QG-BLUEPRINT-04
+    phase: 4
+    description: "Score calculado para min 5 URLs prioritárias"
+    required: true
+    fail_action: "Se <5 URLs, documentar escopo limitado"
+
+  - id: QG-BLUEPRINT-05
+    phase: 5
+    description: "Plano tem min 3 ações P1 com agente e tempo estimado"
+    required: true
+    fail_action: "Revisar fases 1-4: gaps insuficientes identificados"
+
+  - id: QG-BLUEPRINT-06
+    phase: 6
+    description: "site-semantic-blueprint.md gerado com todas as 8 seções"
+    required: true
+    fail_action: "Completar seções ausentes antes de entregar"
+
+  - id: QG-BLUEPRINT-07
+    phase: "any"
+    description: "Nenhum dado fabricado — apenas o que foi extraído do site real"
+    required: true
+    fail_action: "BLOCK — Article IV (No Invention) da Constitution"
+
+# ─────────────────────────────────────────────
+# VETO CONDITIONS
+# ─────────────────────────────────────────────
+
+veto_conditions:
+  - condition: "Site sem sitemap E sem acesso a lista de URLs alternativa"
+    action: "Solicitar ao usuário: export GSC ou lista manual de URLs"
+    block: false
+
+  - condition: "Homepage retorna erro HTTP 5xx"
+    action: "BLOCK — site inacessível, abortar até resolução"
+    block: true
+
+  - condition: "Nenhuma entidade identificável em nenhuma das top páginas"
+    action: "Reportar: site pode ser muito genérico — revisar topical focus primeiro"
+    block: false
+
+  - condition: "Rich Results Test retorna erro de validação em >80% da amostra"
+    action: "Priorizar @tech-seo-engineer *validate antes de fase de implementação"
+    block: false
+
+# ─────────────────────────────────────────────
+# MODE VARIANTS
+# ─────────────────────────────────────────────
+
+mode_variants:
+  full:
+    phases: [1, 2, 3, 4, 5, 6]
+    outputs: all
+    time: "4-8 horas"
+
+  quick:
+    phases: [1, 3, 5]
+    outputs: ["site-semantic-blueprint.md", "rich-snippets-opportunity-map.md", "schema-implementation-plan.md"]
+    time: "1-2 horas"
+    note: "Sem entity table, sem micro audit. Visão macro + plano de ação."
+
+  macro-only:
+    phases: [1, 2]
+    outputs: ["central_entity.json", "cluster_map.json", "master-entity-table.csv", "entity-hub-architecture.md"]
+    time: "2-3 horas"
+
+  micro-only:
+    phases: [4]
+    requires: "priority_urls input obrigatório"
+    outputs: ["url-scores.csv", "url-micro-audit-report.yaml"]
+    time: "30-60 minutos"
+    note: "Usa phases 1-3 context se disponível de sessão anterior"
+
+# ─────────────────────────────────────────────
+# INTEGRATION
+# ─────────────────────────────────────────────
+
+integrations:
+  seoaigod:
+    when: "seoaigod_report provided"
+    phase: 1
+    bridge_command: "@semantic-content-architect *seoaigod-bridge"
+    enriches:
+      - "Central Entity diagnosis"
+      - "Topical authority gaps"
+      - "Koray framework alignment"
+
+  wf-schema-audit:
+    note: "wf-site-semantic-blueprint substitui as fases 1-2 de wf-schema-audit"
+    compatibility: "Outputs são compatíveis — podem ser passados para wf-entity-disambiguation"
+
+  wf-schema-implementation:
+    note: "Fase 5 desta blueprint alimenta diretamente wf-schema-implementation"
+    handoff: "schema-implementation-plan.md → wf-schema-implementation inputs"
+
+# ─────────────────────────────────────────────
+# AGENT ROUTING SUMMARY
+# ─────────────────────────────────────────────
+
+agent_routing:
+  "schema-chief": "Coordenação geral + Fase 5 (blueprint consolidation)"
+  "semantic-content-architect": "Fase 1 (macro), Fase 4 (micro), Fase 6 (brief)"
+  "entity-disambiguator": "Fase 2 (entity mapping + Q-IDs)"
+  "rich-snippets-master": "Fase 3 (opportunity map)"
+  "tech-seo-engineer": "Consulta pontual: validação, scores, GSC"
+  "kg-engineer": "Consulta pontual: SPARQL queries, NLP extraction"
+  "schema-architect": "Fase 5 step 4 (templates JSON-LD)"
+  "multiformat-engineer": "Fase 5 step 3 (CMS-specific output)"
+
+# ─────────────────────────────────────────────
+# FINAL OUTPUT CHECKLIST
+# ─────────────────────────────────────────────
+
+final_checklist:
+  - "[ ] site-semantic-blueprint.md — documento mestre completo"
+  - "[ ] entity-architecture.csv / master-entity-table.csv — entidades mapeadas"
+  - "[ ] rich-snippets-opportunity-map.md — oportunidades priorizadas"
+  - "[ ] schema-implementation-plan.md — plano P1/P2/P3 com agentes"
+  - "[ ] content-schema-brief-template.md — template reutilizável"
+  - "[ ] url-micro-audit-report.yaml — scores das top URLs"
+  - "[ ] ready-to-use-templates.md — JSON-LD prontos por tipo de página"
+  - "[ ] project-summary.yaml — métricas do projeto para tracking"

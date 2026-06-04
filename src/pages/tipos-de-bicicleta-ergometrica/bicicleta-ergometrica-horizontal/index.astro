@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica Horizontal', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que é a bicicleta ergométrica horizontal?',
+    answer: 'A bicicleta ergométrica horizontal é o modelo com assento que possui encosto completo e pedais posicionados à frente do corpo, no mesmo plano do quadril. Essa configuração distribui o peso nas costas e reduz significativamente a carga sobre os joelhos e a coluna lombar, sendo indicada para usuários com restrições articulares ou em reabilitação.',
+  },
+  {
+    question: 'A bicicleta horizontal é boa para artrose de joelho?',
+    answer: 'Sim. A bicicleta horizontal é uma das modalidades de exercício mais indicadas para artrose de joelho porque o movimento de pedalagem de baixo impacto promove produção de líquido sinovial sem sobrecarregar a cartilagem articular. O ângulo de pedalagem, com joelhos menos flexionados do que na vertical, também reduz o estresse patelofemoral.',
+  },
+  {
+    question: 'Bicicleta horizontal ocupa muito espaço?',
+    answer: 'Sim, mais do que a vertical. A bicicleta ergométrica horizontal tipicamente ocupa entre 100 e 160 cm de comprimento por 60 a 75 cm de largura. É um equipamento de base maior, mas ainda assim cabe em quartos medianos ou salas de exercício residenciais.',
+  },
+  {
+    question: 'A bicicleta horizontal é mais cara que a vertical?',
+    answer: 'Geralmente sim. Pelo mesmo nível de qualidade, a horizontal custa de 20% a 40% mais do que a vertical, devido à estrutura mais complexa com encosto e à menor demanda de mercado. O preço de modelos horizontais de qualidade começa em torno de R$ 1.800 a R$ 2.200.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Horizontal: Menor Impacto, Maior Conforto"
+  description="Guia da bicicleta ergométrica horizontal: como funciona, benefícios para joelhos e coluna, diferenças para a vertical, modelos disponíveis no Brasil e critérios de compra."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-17"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Horizontal: Conforto e Baixo Impacto Articular</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica horizontal</strong> tem assento com encosto e pedais posicionados à frente do corpo, reduzindo o impacto articular nos <strong>joelhos e coluna</strong> em comparação aos modelos verticais. Ocupa entre <strong>100 e 160 cm de comprimento</strong> e é indicada para <strong>idosos</strong>, pessoas em <strong>reabilitação articular</strong> e usuários com <strong>sobrepeso</strong>. Os modelos com resistência magnética partem de aproximadamente <strong>R$ 1.800</strong> no mercado brasileiro.
+      </p>
+
+      <p>
+        A <strong>bicicleta ergométrica horizontal</strong> é a escolha técnica correta quando o usuário tem restrições articulares, dor lombar ou precisa de maior estabilidade durante o exercício. O encosto transforma completamente a dinâmica do treino, tornando-o acessível para perfis que não conseguem manter a posição ereta por longos períodos.
+      </p>
+
+      <h2>Como Funciona a Bicicleta Ergométrica Horizontal</h2>
+
+      <p>
+        O mecanismo de pedalagem é idêntico ao da bicicleta vertical: volante de inércia conectado aos pedais com sistema de resistência (magnética nos melhores modelos). A diferença fundamental está na geometria do quadro, que posiciona o assento mais para trás e mais baixo, com os pedais na frente do corpo em vez de embaixo.
+      </p>
+
+      <p>
+        Essa configuração faz com que o quadríceps e os glúteos trabalhem em um ângulo diferente do da bicicleta vertical, com menor ativação do core e da musculatura posterior da coxa. Para reabilitação, isso representa uma vantagem, pois o esforço pode ser mais controlado.
+      </p>
+
+      <h2>Para quem a Bicicleta Horizontal é Indicada</h2>
+
+      <ul>
+        <li><strong>Usuários com artrose de joelho:</strong> o movimento de baixo impacto promove nutrição da cartilagem sem sobrecarga</li>
+        <li><strong>Pessoas com dor lombar crônica:</strong> o encosto suporta a coluna vertebral durante o exercício</li>
+        <li><strong>Idosos:</strong> maior estabilidade e facilidade de entrada e saída do equipamento</li>
+        <li><strong>Usuários com sobrepeso:</strong> distribui melhor o peso corporal, reduzindo pressão sobre o selim</li>
+        <li><strong>Reabilitação pós-cirúrgica:</strong> frequentemente prescrita por fisioterapeutas em protocolos de recuperação</li>
+      </ul>
+
+      <h2>Diferenças em Relação à Bicicleta Vertical</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Horizontal</th>
+            <th>Vertical</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Postura</td>
+            <td>Recostada, encosto apoiado</td>
+            <td>Ereta, sem encosto</td>
+          </tr>
+          <tr>
+            <td>Impacto articular</td>
+            <td>Baixo</td>
+            <td>Moderado</td>
+          </tr>
+          <tr>
+            <td>Espaço ocupado</td>
+            <td>100-160 cm comprimento</td>
+            <td>60-120 cm comprimento</td>
+          </tr>
+          <tr>
+            <td>Preço (entrada)</td>
+            <td>A partir de R$ 1.800</td>
+            <td>A partir de R$ 700</td>
+          </tr>
+          <tr>
+            <td>Ativação do core</td>
+            <td>Baixa</td>
+            <td>Moderada</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Indicação clínica:</strong> Para usuários com diagnóstico de artrose de joelho grau II ou superior, a bicicleta ergométrica horizontal é geralmente prescrita como exercício de manutenção de mobilidade articular. Sempre consulte um fisioterapeuta ou ortopedista para ajustar a resistência e o tempo de uso ao seu estádio clínico.
+        </p>
+      </div>
+
+      <p>
+        Para ver os benefícios completos para joelhos comprometidos, acesse o <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-joelho/">guia de bicicleta ergométrica para joelho</a>. Para comparar com outros tipos, volte ao <a href="/tipos-de-bicicleta-ergometrica/">guia completo dos tipos de bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica Horizontal" />
+</Layout>

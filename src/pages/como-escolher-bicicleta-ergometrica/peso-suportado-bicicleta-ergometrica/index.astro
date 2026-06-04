@@ -1,0 +1,87 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Peso Suportado', url: '/como-escolher-bicicleta-ergometrica/peso-suportado-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'O peso suportado da bicicleta ergométrica é importante?',
+    answer: 'Sim, é um dos critérios mais importantes. Usar um equipamento próximo ao limite de peso declarado reduz a vida útil da estrutura, aumenta vibrações durante o uso e pode representar risco de segurança. Recomenda-se uma margem de pelo menos 20% entre o peso do usuário e o limite do equipamento.',
+  },
+  {
+    question: 'O que acontece se ultrapassar o peso limite da bicicleta ergométrica?',
+    answer: 'Ultrapassar o limite de peso pode causar: deformação da estrutura de aço do quadro, falha dos parafusos de sustentação do selim, dano ao sistema de resistência e risco de queda por colapso estrutural. Além disso, a garantia é invalidada automaticamente se o equipamento for usado acima do limite declarado pelo fabricante.',
+  },
+  {
+    question: 'Existe bicicleta ergométrica para pessoas acima de 120 kg?',
+    answer: 'Sim. Existem modelos com peso suportado de 130, 150 e até 180 kg. Marcas como Athletic, Wellness e equipamentos semiprofissionais oferecem modelos específicos para usuários com sobrepeso. O preço geralmente começa em R$ 2.000 a R$ 3.500 para modelos com suporte acima de 130 kg.',
+  },
+];
+---
+
+<Layout
+  title="Peso Suportado da Bicicleta Ergométrica: Como Calcular o Mínimo Seguro"
+  description="Como calcular o peso suportado mínimo necessário na bicicleta ergométrica, tabela por categoria de usuário e o que acontece ao usar acima do limite. Critérios de segurança para a compra certa."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-22"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Peso Suportado da Bicicleta Ergométrica: Como Calcular o Mínimo Seguro</h1>
+
+      <p class="summarization">
+        O <strong>peso suportado da bicicleta ergométrica</strong> deve ser pelo menos <strong>20% superior ao peso do usuário</strong> para garantir segurança e durabilidade estrutural. Para 80 kg, o mínimo recomendado é 96 kg (prefira 100 kg ou mais). Modelos abaixo de <strong>90 kg de suporte</strong> são adequados apenas para usuários com até <strong>70 kg</strong> em uso ocasional.
+      </p>
+
+      <p>
+        O peso suportado é um dado declarado pelo fabricante com base em testes de carga estática e dinâmica realizados em laboratório. Usar o equipamento acima do limite declarado invalida a garantia e representa risco real de falha estrutural ao longo do tempo. A regra dos 20% de margem existe porque o peso dinâmico durante o pedalamento, especialmente em sprints, pode ser 10 a 20% superior ao peso estático do usuário.
+      </p>
+
+      <h2>Tabela de Peso Suportado por Perfil de Usuário</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peso do usuário</th>
+            <th>Mínimo recomendado</th>
+            <th>Ideal para durabilidade</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Até 65 kg</td><td>78 kg</td><td>90-100 kg</td><td>R$ 700-R$ 1.200</td></tr>
+          <tr><td>65-80 kg</td><td>96 kg</td><td>100-110 kg</td><td>R$ 1.000-R$ 1.800</td></tr>
+          <tr><td>80-100 kg</td><td>120 kg</td><td>120-130 kg</td><td>R$ 1.500-R$ 2.500</td></tr>
+          <tr><td>100-120 kg</td><td>144 kg</td><td>150+ kg</td><td>R$ 2.500-R$ 4.000</td></tr>
+          <tr><td>Acima de 120 kg</td><td>Consultar fabricante</td><td>180+ kg</td><td>R$ 3.500+</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Como Identificar a Qualidade Estrutural</h2>
+
+      <p>
+        Além do limite declarado, observe o peso do próprio equipamento: modelos mais pesados (acima de 25 kg) geralmente têm estrutura de aço com espessura maior, o que garante maior rigidez e menor vibração durante o uso. Modelos leves (abaixo de 18 kg) tendem a ter tubos de aço mais finos, adequados apenas para usuários mais leves e uso menos intenso.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Dica prática:</strong> Se você e duas ou mais pessoas usarão a bicicleta, calcule o peso suportado com base no usuário mais pesado do grupo. O equipamento deve ser seguro para todos os usuários previstos.
+        </p>
+      </div>
+
+      <p>
+        Volte ao <a href="/como-escolher-bicicleta-ergometrica/">guia completo de como escolher bicicleta ergométrica</a> para avaliar os demais critérios de compra além do peso suportado.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Peso Suportado" />
+</Layout>

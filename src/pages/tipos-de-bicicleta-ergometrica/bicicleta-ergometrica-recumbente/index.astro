@@ -1,0 +1,85 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica Recumbente', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que é bicicleta ergométrica recumbente?',
+    answer: 'A bicicleta ergométrica recumbente é o modelo com assento reclinado entre 30 e 45 graus, encosto completo para a coluna vertebral e pedais posicionados à frente do corpo. Essa configuração distribui o peso corporal pelas costas e pelo quadril, reduzindo ao máximo a pressão sobre joelhos e coluna lombar.',
+  },
+  {
+    question: 'Bicicleta recumbente é boa para quem tem hérnia de disco?',
+    answer: 'Sim, geralmente é a opção mais segura entre as bicicletas ergométricas para usuários com hérnia de disco lombar. O encosto reclinado suporta a coluna em posição neutra, evitando flexão excessiva da lombar durante o exercício. Recomenda-se avaliação fisioterapêutica para definir a resistência e duração adequadas para cada caso.',
+  },
+  {
+    question: 'Qual é a diferença entre recumbente e horizontal?',
+    answer: 'Apesar de parecidas, a bicicleta horizontal tem o assento mais vertical (apenas o encosto) e o ângulo de pedalagem é mais direto. A recumbente tem o assento mais reclinado (entre 30 e 45 graus), o que reduz ainda mais a pressão sobre a coluna e os joelhos. A recumbente oferece maior conforto, mas ocupa mais espaço e custa mais.',
+  },
+  {
+    question: 'Bicicleta ergométrica recumbente é indicada para idosos?',
+    answer: 'Sim, é frequentemente recomendada para usuários acima de 65 anos. O assento baixo e estável facilita a entrada e saída sem risco de queda; o encosto completo suporta a coluna; e a posição dos pedais à frente do corpo reduz o esforço de equilíbrio e a carga articular durante o pedal.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Recumbente: Conforto Máximo para Coluna e Joelhos"
+  description="Guia completo da bicicleta ergométrica recumbente: o que é, benefícios para coluna e joelhos, diferença para a horizontal, indicações clínicas e melhores modelos no Brasil."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-19"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Recumbente: Conforto e Segurança para Coluna e Joelhos</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica recumbente</strong> tem assento reclinado entre <strong>30 e 45 graus</strong> e encosto completo, distribuindo o peso corporal pelas costas e eliminando a pressão sobre joelhos e coluna lombar. É a opção mais indicada para <strong>idosos</strong>, pessoas com <strong>hérnia de disco</strong>, <strong>artrose avançada</strong> ou em <strong>reabilitação pós-cirúrgica</strong>. No Brasil, os modelos partem de aproximadamente <strong>R$ 2.200</strong>.
+      </p>
+
+      <p>
+        A <strong>bicicleta ergométrica recumbente</strong> representa o máximo de conforto e segurança entre os equipamentos de pedalagem indoor. Ela foi desenvolvida como alternativa de exercício cardiovascular para usuários que não conseguem manter a postura ereta ou semi-ereta exigida pelos modelos vertical e horizontal. Sua configuração reclinada não compromete a eficiência do exercício aeróbico, mas torna o treino muito mais acessível para perfis com limitações físicas.
+      </p>
+
+      <h2>Configuração Anatômica da Recumbente</h2>
+
+      <p>
+        O assento da recumbente é mais largo e acolchoado do que o das demais bicicletas, suportando adequadamente o ischion (osso do quadril) e parte das coxas. O ângulo de reclinação entre 30 e 45 graus mantém a coluna vertebral em posição neutra ou levemente apoiada, sem necessidade de ativação intensa dos músculos paravertebrais para manutenção da postura.
+      </p>
+
+      <p>
+        Os pedais ficam posicionados à frente do corpo, com o joelho em ângulo de máxima flexão de 80 a 90 graus no ponto mais próximo, o que é significativamente menor do que na bicicleta vertical (onde o joelho pode chegar a 100 a 110 graus de flexão no ponto mais alto do pedal).
+      </p>
+
+      <h2>Para quem a Recumbente é Indicada</h2>
+
+      <ul>
+        <li><strong>Idosos acima de 70 anos:</strong> a entrada e saída do equipamento é simples e sem risco de queda</li>
+        <li><strong>Usuários com hérnia de disco:</strong> posição neutra da coluna elimina compressão dos discos intervertebrais</li>
+        <li><strong>Artrose grave de joelho:</strong> menor flexão articular do que em qualquer outro modelo</li>
+        <li><strong>Reabilitação pós-cirúrgica:</strong> usada em protocolos de fisioterapia para cirurgias de joelho e quadril</li>
+        <li><strong>Fibromialgia e dores crônicas:</strong> conforto do assento e posição reclinada reduzem estimulação de pontos de tensão</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Importante:</strong> Apesar do maior conforto, a bicicleta recumbente não é menos eficaz do ponto de vista cardiovascular. Estudos comparativos mostram que o gasto calórico em intensidade moderada é equivalente ao da bicicleta vertical para usuários com condicionamento físico similar.
+        </p>
+      </div>
+
+      <p>
+        Veja também o <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-coluna/">guia de bicicleta ergométrica para coluna</a> com orientações específicas para usuários com dor lombar crônica. Para entender todas as opções de tipo, acesse o <a href="/tipos-de-bicicleta-ergometrica/">comparativo completo dos tipos de bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica Recumbente" />
+</Layout>

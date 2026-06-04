@@ -1,0 +1,456 @@
+/* ================================================================
+   CaminhãoBR — Design Tokens (WebMotors-inspired)
+
+   Este arquivo é a "source of truth" do design system.
+   Pode ser importado em qualquer página adicional do projeto.
+
+   Filosofia: Marketplace Limpo + Profissional
+   Paleta: Light mode primário / Dark mode opcional
+   Tipografia: Inter (display e corpo)
+   ================================================================ */
+
+/* ================================================================
+   ESCALA DE CORES — Paleta completa
+   ================================================================ */
+:root {
+  /* ── Neutros claros ──────────────────────────────────────────── */
+  --c-gray-50:  #F8F9FA;  /* fundo principal light */
+  --c-gray-100: #F1F3F5;  /* fundo secundário */
+  --c-gray-200: #E8E8E8;  /* border sutil */
+  --c-gray-300: #D0D0D0;  /* border forte */
+  --c-gray-400: #9CA3AF;  /* texto sutil */
+  --c-gray-500: #6B7A8D;  /* texto muted */
+  --c-gray-600: #4B5563;  /* texto médio */
+  --c-gray-700: #374151;  /* texto escuro */
+  --c-gray-800: #1F2937;  /* texto muito escuro */
+  --c-gray-900: #1A1A2E;  /* texto principal */
+  --c-white:    #FFFFFF;  /* branco puro */
+
+  /* ── Navy (seções escuras) ───────────────────────────────────── */
+  --c-navy-900: #1E2030;
+  --c-navy-800: #2B2D42;  /* NAVY BRAND */
+  --c-navy-700: #3D3F5C;
+  --c-navy-600: #4F5175;
+
+  /* ── Primário — Vermelho WebMotors ───────────────────────────── */
+  --c-red-900: #A8001A;   /* hover dark */
+  --c-red-700: #C4001F;   /* hover */
+  --c-red-500: #E4002B;   /* PRIMARY BRAND */
+  --c-red-300: #FF4D6A;   /* lighter */
+  --c-red-100: #FFB3C0;   /* very light */
+  --c-red-50:  #FEF2F2;   /* background tint */
+
+  /* ── Amarelo ─────────────────────────────────────────────────── */
+  --c-yellow-700: #B45309;
+  --c-yellow-500: #F59E0B;  /* YELLOW BRAND */
+  --c-yellow-300: #FCD34D;
+  --c-yellow-50:  #FFFBEB;
+
+  /* ── Verde ───────────────────────────────────────────────────── */
+  --c-green-700: #047857;
+  --c-green-500: #10B981;  /* GREEN BRAND */
+  --c-green-300: #6EE7B7;
+  --c-green-50:  #ECFDF5;
+
+  /* ── Semânticas ──────────────────────────────────────────────── */
+  --c-success: #10B981;
+  --c-warning: #F59E0B;
+  --c-error:   #E4002B;
+  --c-info:    #3B82F6;
+
+  /* ================================================================
+     TOKENS SEMÂNTICOS — Mapeados para componentes
+     ================================================================ */
+
+  /* Fundo */
+  --token-bg:           var(--c-gray-50);
+  --token-bg-secondary: var(--c-white);
+  --token-surface:      var(--c-white);
+  --token-surface-hover:var(--c-gray-100);
+
+  /* Borda */
+  --token-border:       var(--c-gray-200);
+  --token-border-strong:var(--c-gray-300);
+  --token-border-brand: var(--c-red-500);
+
+  /* Texto */
+  --token-text-primary: var(--c-gray-900);
+  --token-text-secondary: var(--c-gray-500);
+  --token-text-subtle:  var(--c-gray-400);
+  --token-text-inverse: var(--c-white);
+
+  /* Marca */
+  --token-brand:        var(--c-red-500);
+  --token-brand-hover:  var(--c-red-700);
+  --token-brand-dark:   var(--c-red-900);
+  --token-brand-light:  var(--c-red-50);
+  --token-accent:       var(--c-yellow-500);
+  --token-accent-hover: var(--c-yellow-700);
+  --token-cta:          var(--c-green-500);
+  --token-cta-hover:    var(--c-green-700);
+  --token-navy:         var(--c-navy-800);
+  --token-navy-light:   var(--c-navy-700);
+
+  /* ================================================================
+     TIPOGRAFIA TOKENS
+     ================================================================ */
+
+  /* Fontes */
+  --token-font-display: 'Inter', system-ui, sans-serif;
+  --token-font-body:    'Inter', system-ui, sans-serif;
+  --token-font-mono:    'Courier New', 'Consolas', monospace;
+
+  /* Tamanhos */
+  --token-text-xs:   0.75rem;    /* 12px */
+  --token-text-sm:   0.875rem;   /* 14px */
+  --token-text-base: 1rem;       /* 16px */
+  --token-text-lg:   1.125rem;   /* 18px */
+  --token-text-xl:   1.25rem;    /* 20px */
+  --token-text-2xl:  1.5rem;     /* 24px */
+  --token-text-3xl:  1.875rem;   /* 30px */
+  --token-text-4xl:  2.25rem;    /* 36px */
+  --token-text-5xl:  3rem;       /* 48px */
+  --token-text-6xl:  3.75rem;    /* 60px */
+  --token-text-7xl:  4.5rem;     /* 72px */
+
+  /* Pesos */
+  --token-weight-normal:   400;
+  --token-weight-medium:   500;
+  --token-weight-semibold: 600;
+  --token-weight-bold:     700;
+  --token-weight-black:    800;
+
+  /* Espaçamento entre letras */
+  --token-tracking-tight:    -0.03em;
+  --token-tracking-tighter:  -0.02em;
+  --token-tracking-normal:   0em;
+  --token-tracking-wide:     0.02em;
+  --token-tracking-wider:    0.04em;
+  --token-tracking-widest:   0.08em;
+
+  /* Line heights */
+  --token-leading-tight:  1.1;
+  --token-leading-snug:   1.3;
+  --token-leading-normal: 1.5;
+  --token-leading-relaxed:1.6;
+  --token-leading-loose:  1.8;
+
+  /* ================================================================
+     ESPAÇAMENTO (escala 4px)
+     ================================================================ */
+  --token-space-0:    0;
+  --token-space-1:    0.25rem;  /* 4px */
+  --token-space-2:    0.5rem;   /* 8px */
+  --token-space-3:    0.75rem;  /* 12px */
+  --token-space-4:    1rem;     /* 16px */
+  --token-space-5:    1.25rem;  /* 20px */
+  --token-space-6:    1.5rem;   /* 24px */
+  --token-space-8:    2rem;     /* 32px */
+  --token-space-10:   2.5rem;   /* 40px */
+  --token-space-12:   3rem;     /* 48px */
+  --token-space-16:   4rem;     /* 64px */
+  --token-space-20:   5rem;     /* 80px */
+  --token-space-24:   6rem;     /* 96px */
+  --token-space-32:   8rem;     /* 128px */
+  --token-space-40:   10rem;    /* 160px */
+  --token-space-48:   12rem;    /* 192px */
+
+  /* ================================================================
+     GEOMETRIA — Marketplace clean
+     ================================================================ */
+  --token-radius:        8px;   /* radius padrão */
+  --token-radius-sm:     4px;
+  --token-radius-md:     8px;
+  --token-radius-lg:     12px;
+  --token-radius-xl:     16px;
+  --token-radius-full:   9999px;
+  --token-border-sm:     1px;
+  --token-border-base:   1px;
+  --token-border-heavy:  2px;
+
+  /* ================================================================
+     SOMBRAS SUAVES
+     ================================================================ */
+  --token-shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+  --token-shadow-md:     0 2px 8px rgba(0,0,0,0.08);
+  --token-shadow-lg:     0 4px 16px rgba(0,0,0,0.12);
+  --token-shadow-xl:     0 8px 32px rgba(0,0,0,0.16);
+  --token-shadow-hover:  0 8px 24px rgba(228,0,43,0.15);
+
+  /* Aliases para compatibilidade */
+  --token-shadow-brutal-orange: var(--token-shadow-md);
+  --token-shadow-brutal-yellow: 0 4px 16px rgba(245,158,11,0.15);
+  --token-shadow-brutal-black:  var(--token-shadow-lg);
+  --token-shadow-brutal-white:  var(--token-shadow-md);
+  --token-shadow-brutal-sm:     var(--token-shadow-sm);
+  --token-shadow-brutal-lg:     var(--token-shadow-xl);
+
+  /* ================================================================
+     TRANSIÇÕES
+     ================================================================ */
+  --token-ease-brutal:  cubic-bezier(0.4, 0, 0.2, 1);
+  --token-ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --token-ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --token-ease-out:     cubic-bezier(0, 0, 0.2, 1);
+
+  --token-duration-fast:   150ms;
+  --token-duration-base:   200ms;
+  --token-duration-slow:   300ms;
+  --token-duration-slower: 500ms;
+
+  /* ================================================================
+     Z-INDEX LAYERS
+     ================================================================ */
+  --token-z-below:   -1;
+  --token-z-base:     0;
+  --token-z-raised:   10;
+  --token-z-dropdown: 50;
+  --token-z-sticky:   80;
+  --token-z-navbar:   100;
+  --token-z-modal:    200;
+  --token-z-toast:    300;
+  --token-z-max:      9999;
+
+  /* ================================================================
+     BREAKPOINTS (referência — usar em @media queries)
+     ================================================================ */
+  /* --bp-sm:  480px  — mobile  */
+  /* --bp-md:  768px  — tablet  */
+  /* --bp-lg: 1024px  — desktop */
+  /* --bp-xl: 1280px  — large   */
+  /* --bp-2xl:1440px  — xlarge  */
+
+  /* ================================================================
+     LAYOUT
+     ================================================================ */
+  --token-container-max:   1280px;
+  --token-container-sm:    640px;
+  --token-container-md:    768px;
+  --token-container-lg:    1024px;
+  --token-navbar-height:   64px;
+  --token-sidebar-width:   280px;
+
+  /* ================================================================
+     COMPONENTES — Valores padronizados
+     ================================================================ */
+
+  /* Botões */
+  --token-btn-padding-x:    var(--token-space-6);
+  --token-btn-padding-y:    var(--token-space-3);
+  --token-btn-padding-x-sm: var(--token-space-4);
+  --token-btn-padding-y-sm: var(--token-space-2);
+  --token-btn-padding-x-lg: var(--token-space-10);
+  --token-btn-padding-y-lg: var(--token-space-4);
+  --token-btn-font-size:    var(--token-text-sm);
+  --token-btn-font-weight:  var(--token-weight-bold);
+  --token-btn-height:       44px;
+  --token-btn-height-lg:    56px;
+  --token-btn-radius:       var(--token-radius-md);
+
+  /* Inputs */
+  --token-input-height:     44px;
+  --token-input-height-lg:  56px;
+  --token-input-padding-x:  var(--token-space-4);
+  --token-input-font-size:  var(--token-text-base);
+  --token-input-bg:         var(--token-surface);
+  --token-input-border:     var(--token-border);
+  --token-input-radius:     var(--token-radius-md);
+
+  /* Cards */
+  --token-card-border:      var(--token-border-base) solid var(--token-border);
+  --token-card-padding:     var(--token-space-5);
+  --token-card-padding-lg:  var(--token-space-8);
+  --token-card-radius:      var(--token-radius-lg);
+
+  /* Grid */
+  --token-grid-cols-default: repeat(auto-fill, minmax(280px, 1fr));
+  --token-grid-gap:         var(--token-space-6);
+}
+
+/* ================================================================
+   TEMA ESCURO (opcional — não é o padrão)
+   ================================================================ */
+[data-theme="dark"] {
+  --token-bg:           #0F1117;
+  --token-bg-secondary: #1A1D27;
+  --token-surface:      #1E2130;
+  --token-surface-hover:#252840;
+  --token-border:       #2E3347;
+  --token-border-strong:#404563;
+  --token-text-primary: #F1F2F6;
+  --token-text-secondary:#8892A4;
+  --token-text-subtle:  #5C6478;
+  --token-text-inverse: #1A1A2E;
+  --token-shadow-brutal-white: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+/* ================================================================
+   CLASSES UTILITÁRIAS — Design Tokens
+   ================================================================ */
+
+/* Tipografia utilitária */
+.text-display {
+  font-family: var(--token-font-display);
+  font-weight: var(--token-weight-bold);
+  letter-spacing: var(--token-tracking-tight);
+  line-height: var(--token-leading-tight);
+}
+
+.text-body {
+  font-family: var(--token-font-body);
+  font-weight: var(--token-weight-normal);
+  line-height: var(--token-leading-relaxed);
+}
+
+.text-label {
+  font-family: var(--token-font-display);
+  font-size: var(--token-text-xs);
+  font-weight: var(--token-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--token-tracking-widest);
+}
+
+/* Cores de texto */
+.text-brand    { color: var(--token-brand); }
+.text-accent   { color: var(--token-accent); }
+.text-muted    { color: var(--token-text-secondary); }
+.text-subtle   { color: var(--token-text-subtle); }
+
+/* Fundo */
+.bg-base       { background-color: var(--token-bg); }
+.bg-secondary  { background-color: var(--token-bg-secondary); }
+.bg-surface    { background-color: var(--token-surface); }
+.bg-brand      { background-color: var(--token-brand); }
+.bg-accent     { background-color: var(--token-accent); }
+.bg-navy       { background-color: var(--token-navy); }
+
+/* Bordas */
+.border-base   { border: var(--token-border-base) solid var(--token-border); }
+.border-brand  { border: var(--token-border-base) solid var(--token-border-brand); }
+.border-heavy  { border: var(--token-border-heavy) solid var(--token-border-strong); }
+
+/* Sombras */
+.shadow-sm    { box-shadow: var(--token-shadow-sm); }
+.shadow-md    { box-shadow: var(--token-shadow-md); }
+.shadow-lg    { box-shadow: var(--token-shadow-lg); }
+
+/* ================================================================
+   COMPONENTES REUTILIZÁVEIS — Snippets de referência
+   ================================================================ */
+
+/*
+BOTÃO PRIMÁRIO — uso:
+  <button class="cbr-btn cbr-btn--primary">Ver mais</button>
+*/
+.cbr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--token-space-2);
+  padding: var(--token-btn-padding-y) var(--token-btn-padding-x);
+  height: var(--token-btn-height);
+  font-family: var(--token-font-display);
+  font-size: var(--token-btn-font-size);
+  font-weight: var(--token-btn-font-weight);
+  border: 1px solid transparent;
+  border-radius: var(--token-btn-radius);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--token-duration-base) var(--token-ease-brutal),
+    color var(--token-duration-base) var(--token-ease-brutal),
+    box-shadow var(--token-duration-base) var(--token-ease-brutal),
+    transform var(--token-duration-fast) var(--token-ease-brutal);
+}
+
+.cbr-btn--primary {
+  background: var(--token-brand);
+  color: #FFFFFF;
+  border-color: var(--token-brand);
+}
+.cbr-btn--primary:hover {
+  background: var(--token-brand-hover);
+  border-color: var(--token-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--token-shadow-hover);
+}
+
+.cbr-btn--secondary {
+  background: var(--token-navy);
+  color: #FFFFFF;
+  border-color: var(--token-navy);
+}
+.cbr-btn--secondary:hover {
+  background: var(--token-navy-light);
+  transform: translateY(-1px);
+}
+
+.cbr-btn--outline {
+  background: transparent;
+  color: var(--token-brand);
+  border-color: var(--token-brand);
+  border-width: 2px;
+}
+.cbr-btn--outline:hover {
+  background: var(--token-brand-light);
+}
+
+/*
+CARD PADRÃO — uso:
+  <div class="cbr-card"> ... </div>
+*/
+.cbr-card {
+  background: var(--token-surface);
+  border: var(--token-border-base) solid var(--token-border);
+  border-radius: var(--token-card-radius);
+  padding: var(--token-card-padding);
+  box-shadow: var(--token-shadow-sm);
+  transition:
+    transform var(--token-duration-base) var(--token-ease-brutal),
+    box-shadow var(--token-duration-base) var(--token-ease-brutal);
+}
+
+.cbr-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--token-shadow-lg);
+}
+
+/*
+BADGE — uso:
+  <span class="cbr-badge cbr-badge--novo">NOVO</span>
+*/
+.cbr-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px var(--token-space-3);
+  font-family: var(--token-font-display);
+  font-size: var(--token-text-xs);
+  font-weight: var(--token-weight-semibold);
+  border-radius: var(--token-radius-full);
+}
+
+.cbr-badge--default {
+  background: #F3F4F6;
+  color: var(--token-text-secondary);
+}
+
+.cbr-badge--brand {
+  background: var(--token-brand-light);
+  color: var(--token-brand);
+}
+
+.cbr-badge--novo {
+  background: var(--c-green-50);
+  color: #065F46;
+}
+
+.cbr-badge--usado {
+  background: #F3F4F6;
+  color: var(--token-text-secondary);
+}
+
+.cbr-badge--dark {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+}

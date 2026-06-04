@@ -1,0 +1,700 @@
+workflow:
+  id: wf-schema-audit
+  name: "Schema Audit & Entity Mapping"
+  version: "2.0"
+  purpose: "Fases 1-2: Discovery completo de schema existente + mapeamento de entidades"
+  orchestrator: "@schema-chief"
+  estimated_duration: "2-4 horas"
+  next_workflow: wf-entity-disambiguation
+
+# ─────────────────────────────────────────────
+# INPUTS
+# ─────────────────────────────────────────────
+
+inputs:
+  required:
+    - name: site_url
+      type: url
+      description: "URL base do site (ex: https://meusite.com)"
+      example: "https://majuli-joias.com.br"
+
+    - name: sitemap_url
+      type: url
+      description: "URL do sitemap.xml"
+      fallback: "Tentar {site_url}/sitemap.xml e /sitemap_index.xml e /robots.txt"
+
+  optional:
+    - name: gsc_access
+      type: boolean
+      default: false
+      description: "Acesso ao Google Search Console disponível?"
+      note: "Se true, usar export de tráfego para priorizar URLs"
+
+    - name: sample_size
+      type: integer
+      default: 50
+      description: "Número de URLs para auditoria inicial"
+      min: 20
+      max: 200
+
+    - name: gsc_export_path
+      type: file_path
+      description: "Path para CSV export do GSC (Performance report)"
+      columns_expected: [Landing Page, Clicks, Impressions, CTR, Position]
+
+    - name: focus_cluster
+      type: string
+      description: "Cluster específico para focar (ex: /blog/, /produtos/)"
+      note: "Se fornecido, amostra é concentrada neste cluster"
+
+# ─────────────────────────────────────────────
+# PRE-FLIGHT
+# ─────────────────────────────────────────────
+
+pre_flight:
+  agent: "@schema-chief"
+  actions:
+    - "Verificar {site_url} retorna HTTP 200"
+    - "Tentar acessar {sitemap_url} — registrar resultado"
+    - "Detectar CMS via padrões HTML (wp-content, _next, __astro, etc.)"
+    - "Verificar se robots.txt bloqueia algum crawler relevante"
+    - "Checar se homepage tem schema application/ld+json visível"
+  output: "preflight_report.yaml"
+  block_if: "site_url retorna 5xx ou timeout"
+
+# ─────────────────────────────────────────────
+# PHASES
+# ─────────────────────────────────────────────
+
+phases:
+
+  # ══════════════════════════════════════════
+  # FASE 1 — DISCOVERY
+  # ══════════════════════════════════════════
+
+  - id: phase_1_discovery
+    name: "FASE 1: DISCOVERY"
+    purpose: "Crawl e inventário completo do schema existente"
+    agents: ["@koray-semantic", "@tech-seo-engineer"]
+    duration: "60-90 min"
+
+    steps:
+      - id: s1_1
+        name: "Diagnóstico Semântico Inicial"
+        agent: "@koray-semantic"
+        command: "*diagnose {site_url}"
+        prompt: |
+          Analisar o site {site_url} com o framework dos 7 Pillars de Koray:
+
+          PILLAR 1 — TOPICAL AUTHORITY:
+            □ O site tem autoridade em um tópico central claro?
+            □ Qual é a Central Entity do site?
+            □ O site responde queries suficientes do tópico para ser autoridade?
+
+          PILLAR 2 — TOPICAL MAP:
+            □ Existe um mapa claro de tópico → sub-tópico → micro-tópico?
+            □ Identificar clusters via estrutura de URL + menu
+            □ Lacunas: quais sub-tópicos o site NÃO cobre?
+
+          PILLAR 3 — ATTRIBUTE-CONNECTION NETWORK:
+            □ O site conecta atributos da Central Entity explicitamente?
+            □ Ex: marca → produtos → ingredientes → benefícios
+
+          PILLAR 4 — INFORMATION GAIN:
+            □ O conteúdo adiciona perspectiva única ou é apenas re-hash?
+            □ Existe dado proprietário, estudo ou caso real?
+
+          PILLAR 5 — SEMANTIC CONTENT NETWORKS:
+            □ Cluster hubs existem? (páginas que são o "centro" do sub-tópico)
+            □ Spokes linkam de/para os hubs?
+
+          PILLAR 6 — HISTORICAL DATA:
+            □ Conteúdo é atualizado regularmente?
+            □ dateModified está sendo atualizado no schema?
+
+          PILLAR 7 — QUERY CHAIN MAPPING:
+            □ Qual é a sequência de queries que um usuário faria?
+            □ O site cobre toda a chain ou apenas uma parte?
+
+          OUTPUT ESPERADO:
+          - central_entity: {nome + tipo}
+          - clusters: [{nome, hub_url_estimado, coverage_score_1_10, gap_count}]
+          - topical_authority_score: 1-10
+          - top_3_gaps: [str, str, str]
+          - recommended_focus_cluster: {nome}
+
+        output:
+          file: "semantic-diagnosis.yaml"
+          format: |
+            central_entity:
+              name: ""
+              type: "Organization|Person|Brand|Topic"
+            clusters:
+              - name: ""
+                hub_url_estimated: ""
+                coverage_score: 0
+                gap_count: 0
+            topical_authority_score: 0
+            top_3_gaps: []
+            recommended_focus_cluster: ""
+
+        time_estimate: "25 min"
+
+      - id: s1_2
+        name: "Inventário de Schema Existente"
+        agent: "@tech-seo-engineer"
+        command: "*audit-schema {site_url}"
+        prompt: |
+          Executar inventário de schema em {sample_size} URLs:
+
+          EXTRAÇÃO:
+          Para cada URL da amostra:
+          1. Fazer request HTTP e obter HTML
+          2. Extrair todos os blocos <script type="application/ld+json">
+          3. Parse JSON de cada bloco
+          4. Registrar: @type(s), @id(s), propriedades presentes
+          5. Verificar via Rich Results Test (amostra de 10)
+
+          SCRIPT DE EXTRAÇÃO:
+          ```python
+          import requests, json, re, csv
+          from urllib.request import urlopen
+          from xml.etree import ElementTree
+
+          def extract_schema(url):
+              try:
+                  r = requests.get(url, timeout=10, headers={'User-Agent': 'Mozilla/5.0'})
+                  schemas = re.findall(
+                      r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>',
+                      r.text, re.S
+                  )
+                  result = []
+                  for s in schemas:
+                      try:
+                          data = json.loads(s.strip())
+                          result.append(data)
+                      except json.JSONDecodeError:
+                          result.append({"error": "invalid_json", "raw": s[:100]})
+                  return result
+              except Exception as e:
+                  return [{"error": str(e)}]
+
+          def get_urls_from_sitemap(sitemap_url, limit=50):
+              try:
+                  resp = urlopen(sitemap_url, timeout=10)
+                  tree = ElementTree.parse(resp)
+                  ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+                  urls = [loc.text for loc in tree.findall('.//sm:loc', ns)]
+                  return urls[:limit]
+              except:
+                  return []
+
+          urls = get_urls_from_sitemap("{sitemap_url}", {sample_size})
+          results = []
+          for url in urls:
+              schemas = extract_schema(url)
+              types = []
+              for s in schemas:
+                  if isinstance(s, dict):
+                      if '@type' in s:
+                          types.append(s['@type'])
+                      if '@graph' in s:
+                          for node in s['@graph']:
+                              if '@type' in node:
+                                  types.append(node['@type'])
+              results.append({
+                  'url': url,
+                  'schema_types': ','.join(types) if types else 'NONE',
+                  'schema_count': len([s for s in schemas if 'error' not in s]),
+                  'has_error': any('error' in s for s in schemas)
+              })
+
+          with open('schema_inventory.csv', 'w', newline='', encoding='utf-8') as f:
+              writer = csv.DictWriter(f, fieldnames=['url','schema_types','schema_count','has_error'])
+              writer.writeheader()
+              writer.writerows(results)
+          ```
+
+          ANÁLISE DO INVENTÁRIO:
+          - % de URLs sem schema algum
+          - Tipos mais comuns
+          - Tipos completamente ausentes para o tipo de site
+          - URLs com JSON inválido
+          - Padrão: organization em todas? Breadcrumb nas internas?
+
+        output:
+          files:
+            - "schema_inventory.csv: url | schema_types | schema_count | has_error"
+            - "schema_summary.yaml: estatísticas agregadas"
+
+        time_estimate: "30 min"
+
+      - id: s1_3
+        name: "Score por Página"
+        agent: "@tech-seo-engineer"
+        command: "*score-page para amostra representativa"
+        prompt: |
+          Calcular score 0-100 para uma amostra de 20 URLs (4 de cada tipo de página):
+
+          RUBRICA DE SCORE:
+          Foundation (40pts total):
+            - Schema type correto para o tipo de página: 10pts
+            - Propriedades obrigatórias presentes (todas): 15pts
+            - @id proprietário na entidade principal: 5pts
+            - BreadcrumbList (para URLs internas): 5pts
+            - publisher/author linkado: 5pts
+
+          Entity (30pts total):
+            - Central Entity identificada com @id: 10pts
+            - sameAs com Q-ID Wikidata: 10pts
+            - Cluster connection (about → hub ou hasPart): 10pts
+
+          Rich Results (20pts total):
+            - Rich result mais óbvio para tipo de página implementado: 10pts
+            - Propriedades recomendadas do rich result presentes: 10pts
+
+          AEO (10pts total):
+            - Speakable: 5pts
+            - FAQPage (se tem FAQ content): 5pts
+
+          STATUS:
+            - PASS: >= 70
+            - WARN: 40-69
+            - FAIL: < 40
+
+        output:
+          file: "score_report.csv"
+          columns: "url | score | status | top_issue_1 | top_issue_2 | top_issue_3 | rich_result_missing"
+
+        time_estimate: "20 min"
+
+      - id: s1_4
+        name: "Foundation Schema Check"
+        agent: "@tech-seo-engineer"
+        prompt: |
+          Verificar implementação da base necessária em TODAS as páginas:
+
+          CHECKLIST FOUNDATION:
+          □ Organization schema na homepage?
+            - @id presente? (deve ser {domain}/#organization)
+            - name, url, logo com width/height?
+            - sameAs com Wikidata + LinkedIn?
+
+          □ WebSite schema na homepage?
+            - @id presente? (deve ser {domain}/#website)
+            - potentialAction → SearchAction implementado?
+
+          □ BreadcrumbList em todas as URLs internas?
+            - listItem com position e item corretos?
+
+          □ @id da Organization referenciado em Article.publisher?
+          □ @id da Person (autor) referenciado em Article.author?
+          □ datePublished E dateModified em todos os artigos?
+          □ Schema presente em view-source (não apenas após JS)?
+
+        output:
+          file: "foundation_check.yaml"
+          format: |
+            organization_schema: present|absent|partial
+            website_schema: present|absent
+            breadcrumb_sitewide: yes|no|partial
+            author_schema_linked: yes|no
+            dates_present: yes|no
+            ssr_verified: yes|no
+
+        time_estimate: "15 min"
+
+    checkpoint:
+      id: CP_PHASE_1
+      name: "Discovery Complete"
+      blocking: true
+      required_outputs:
+        - semantic-diagnosis.yaml
+        - schema_inventory.csv
+        - score_report.csv
+        - foundation_check.yaml
+      criteria:
+        - "Diagnóstico semântico: Central Entity identificada"
+        - "Inventário: >= {sample_size} URLs analisadas"
+        - "Scores: >= 20 URLs com score calculado"
+        - "Foundation check: concluído"
+      on_fail: |
+        Se sitemap inacessível: usar top 50 da GSC export ou crawl manual
+        Se < 30 URLs acessíveis: documentar limitação, prosseguir com o que tem
+        Se CMS bloqueia extração: documentar e usar Rich Results Test manualmente
+
+    handoff_to: entity-disambiguator
+    handoff_summary:
+      include:
+        - central_entity (nome + tipo estimado)
+        - cluster_count
+        - topical_authority_score
+        - urls_auditadas
+        - avg_schema_score
+        - top_3_schema_gaps
+
+  # ══════════════════════════════════════════
+  # FASE 2 — ENTITY MAPPING
+  # ══════════════════════════════════════════
+
+  - id: phase_2_mapping
+    name: "FASE 2: ENTITY MAPPING"
+    purpose: "Mapear todas as entidades do site para Wikidata + entity hub plan"
+    agents: ["@entity-disambiguator", "@koray-semantic", "@kg-engineer"]
+    duration: "60-90 min"
+    requires: "phase_1_discovery PASS"
+
+    steps:
+      - id: s2_1
+        name: "Extração de Entidades — NLP + Manual"
+        agent: "@entity-disambiguator"
+        command: "*inventory {site_url}"
+        prompt: |
+          Extrair TODAS as entidades nomeadas do site {site_url}.
+
+          ABORDAGEM 1 — NLP AUTOMATIZADO:
+          Usar @kg-engineer *extract-entities com script spaCy:
+          ```python
+          import spacy, requests, re
+          from collections import Counter
+
+          nlp = spacy.load("pt_core_news_lg")
+
+          def extract_entities_from_url(url):
+              try:
+                  r = requests.get(url, timeout=10)
+                  text = re.sub(r'<[^>]+>', ' ', r.text)
+                  text = re.sub(r'\s+', ' ', text).strip()
+                  doc = nlp(text[:10000])
+                  return [(ent.text.strip(), ent.label_) for ent in doc.ents
+                          if len(ent.text.strip()) > 2]
+              except:
+                  return []
+          ```
+
+          ABORDAGEM 2 — MANUAL (para homepages e hubs):
+          Para cada cluster hub:
+          - Ler conteúdo e identificar:
+            PESSOAS: fundadores, autores, celebridades, especialistas
+            ORGANIZAÇÕES: marcas, parceiros, concorrentes citados
+            LUGARES: cidades, regiões, locais específicos
+            PRODUTOS: produtos/serviços com nome de marca
+            CONCEITOS: termos técnicos de domínio (provável tipo: Thing)
+
+          CONSOLIDAÇÃO:
+          Remover duplicatas, normalizar nomes, agrupar variações
+          (ex: "SP" = "São Paulo" = Q174)
+
+        output:
+          file: "entity_raw_list.csv"
+          columns: "entity_name | entity_type | mention_count | source_pages | raw_label_nlp"
+
+        time_estimate: "20 min"
+
+      - id: s2_2
+        name: "Priorização de Entidades"
+        agent: "@koray-semantic"
+        command: "*prioritize-entities"
+        prompt: |
+          Calcular Priority Score para cada entidade extraída:
+
+          CRITÉRIOS DE PRIORIZAÇÃO:
+          1. É Central Entity do site ou de um cluster? → peso 40%
+             - Central Entity do site: score 10/10
+             - Central Entity de cluster: score 8/10
+             - Entidade secundária importante: score 5/10
+             - Menção periférica: score 1-3/10
+
+          2. Frequência de menção no site → peso 20%
+             - Mencionada em >= 10 páginas: 10/10
+             - 5-9 páginas: 7/10
+             - 2-4 páginas: 4/10
+             - 1 página: 1/10
+
+          3. Ambiguidade / Risco de confusão → peso 20%
+             - Alta ambiguidade (nome genérico ou compartilhado): 10/10 PRIORIDADE
+             - Média: 5/10
+             - Baixa (nome único): 2/10
+
+          4. Wikidata Q-ID disponível → peso 20%
+             - Q-ID óbvio (organização conhecida): 10/10
+             - Possível mas incerto: 5/10
+             - Improvável (entidade muito específica/local): 1/10
+
+          TOP 20: Selecionar as 20 com maior Priority Score
+          Central Entity do site: sempre #1, independente do score
+
+        output:
+          file: "entity_priority_matrix.csv"
+          columns: "entity_name | priority_score | rank | entity_type | action_recommended"
+          action_values: ["disambiguate_wikidata", "create_hub", "sameas_only", "skip"]
+
+        time_estimate: "15 min"
+
+      - id: s2_3
+        name: "Mapeamento Wikidata — Top 20"
+        agent: "@entity-disambiguator"
+        command: "*find-qid para cada entidade prioritária"
+        prompt: |
+          Para CADA entidade no Top 20, executar busca de Q-ID:
+
+          MÉTODO 1 — SPARQL (para organizações via website):
+          ```sparql
+          SELECT ?item ?itemLabel ?description WHERE {
+            ?item wdt:P856 ?website .
+            FILTER(CONTAINS(STR(?website), "{domain_keyword}"))
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "pt,en" . }
+          } LIMIT 5
+          ```
+
+          MÉTODO 2 — SPARQL (para pessoas):
+          ```sparql
+          SELECT ?item ?itemLabel ?description ?birthDate WHERE {
+            ?item wdt:P31 wd:Q5 .
+            ?item rdfs:label "{entity_name}"@pt .
+            OPTIONAL { ?item wdt:P569 ?birthDate . }
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "pt,en" . }
+          } LIMIT 5
+          ```
+
+          MÉTODO 3 — BUSCA MANUAL (Wikidata.org search):
+          Para entidades sem resultado SPARQL direto
+
+          REGISTRO POR ENTIDADE:
+          - QID_FOUND: registrar Q-ID verificado
+          - NOT_FOUND: documentar por que não encontrado
+          - AMBIGUOUS: listar opções, marcar para revisão humana
+          - SKIP: entidade não merece mapeamento (muito genérica)
+
+          VERIFICAÇÃO DO Q-ID:
+          Para cada Q-ID encontrado:
+          □ P31 (instance of) bate com o tipo esperado?
+          □ P856 (official website) aponta para o domínio do site?
+          □ Descrição em PT/EN condiz com o contexto de uso no site?
+
+        output:
+          file: "wikidata_mapping.csv"
+          columns: "entity_name | wikidata_qid | wikidata_url | wikipedia_pt_url | status | verified_by | notes"
+
+        time_estimate: "30 min"
+
+      - id: s2_4
+        name: "Enriquecimento Automático via API"
+        agent: "@kg-engineer"
+        command: "*enrich-entities"
+        prompt: |
+          Enriquecer a tabela de entidades com dados das APIs:
+
+          WIKIDATA API:
+          Para cada Q-ID verificado:
+          ```python
+          import requests
+
+          def get_wikidata_entity(qid, lang='pt'):
+              url = f"https://www.wikidata.org/wiki/Special:EntityData/{qid}.json"
+              r = requests.get(url, timeout=10)
+              data = r.json()['entities'][qid]
+              labels = data.get('labels', {})
+              descriptions = data.get('descriptions', {})
+              sitelinks = data.get('sitelinks', {})
+              return {
+                  'label_pt': labels.get('pt', {}).get('value', ''),
+                  'label_en': labels.get('en', {}).get('value', ''),
+                  'description_pt': descriptions.get('pt', {}).get('value', ''),
+                  'wikipedia_pt': sitelinks.get('ptwiki', {}).get('url', ''),
+                  'wikipedia_en': sitelinks.get('enwiki', {}).get('url', ''),
+              }
+          ```
+
+          SAÍDA ENRIQUECIDA:
+          Para cada entidade: nome_oficial | Q-ID | Wikipedia PT | Wikipedia EN |
+          sameAs_wikidata | sameAs_wikipedia | sameAs_additional
+
+        output:
+          file: "master_entity_table_draft.csv"
+          columns: >
+            entity_name | entity_type | priority_score | wikidata_qid |
+            wikidata_url | wikipedia_pt_url | wikipedia_en_url |
+            sameAs_wikidata | sameAs_wikipedia | corroboration_tier |
+            hub_recommended | hub_url_planned | schema_type | status
+
+        time_estimate: "15 min"
+
+      - id: s2_5
+        name: "Validação Semântica da Hierarquia"
+        agent: "@koray-semantic"
+        command: "*validate-hierarchy"
+        prompt: |
+          Revisar o mapeamento de entidades sob a ótica da Topical Authority:
+
+          PERGUNTAS DE VALIDAÇÃO:
+          □ A Central Entity do site está corretamente identificada?
+          □ Os clusters semânticos refletem a hierarquia de entidades?
+          □ Há entidades importantes FALTANDO na lista?
+          □ Há entidades na lista que são irrelevantes e devem ser removidas?
+          □ As relações entre entidades estão corretas?
+             (Ex: produto → marca → categoria correta)
+          □ A hierarquia de entity hubs faz sentido para o Semantic Content Network?
+
+          KORAY'S HIERARCHY TEST:
+          Central Entity → é o tópico principal que define autoridade?
+          Cluster Entities → cada uma define um sub-tópico claro?
+          Spoke Entities → cada uma resolve uma query específica?
+
+        output:
+          file: "hierarchy_validation.yaml"
+          format: |
+            approved: true|false
+            central_entity_confirmed: ""
+            entities_to_add: []
+            entities_to_remove: []
+            hierarchy_corrections: []
+            notes: ""
+
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: CP_PHASE_2
+      name: "Entity Mapping Complete"
+      blocking: true
+      required_outputs:
+        - entity_raw_list.csv
+        - entity_priority_matrix.csv
+        - wikidata_mapping.csv
+        - master_entity_table_draft.csv
+        - hierarchy_validation.yaml
+      criteria:
+        - "master_entity_table_draft gerado com >= 15 entidades"
+        - "Top 20 entidades têm Q-ID ou NOT_FOUND documentado"
+        - "Hierarquia aprovada por @koray-semantic"
+        - "Central Entity confirmada"
+      on_fail:
+        human_review_if: ">50% das top entities sem Q-ID"
+        action: "Pausar e reportar ao usuário antes de prosseguir"
+
+# ─────────────────────────────────────────────
+# OUTPUTS
+# ─────────────────────────────────────────────
+
+outputs:
+  primary:
+    - name: "audit-report.md"
+      location: "docs/audit-report.md"
+      template: |
+        # Schema Audit Report — {site_url}
+        **Data:** {ISO8601}
+        **Auditores:** @koray-semantic + @tech-seo-engineer + @entity-disambiguator
+
+        ## Executive Summary
+        - URLs auditadas: {N}
+        - Schema score médio: {X}/100
+        - Central Entity: {nome} ({tipo})
+        - Topical Authority Score: {X}/10
+        - Entidades mapeadas: {N}
+        - Rich results ausentes: {N oportunidades}
+
+        ## 1. Diagnóstico Semântico
+        {semantic-diagnosis.yaml rendered}
+
+        ## 2. Schema Inventory
+        {schema_summary.yaml: estatísticas}
+        {schema_inventory.csv: top issues}
+
+        ## 3. Score por Página
+        {score_report.csv: top 20 URLs + average}
+
+        ## 4. Foundation Check
+        {foundation_check.yaml rendered}
+
+        ## 5. Entity Map
+        {master_entity_table_draft.csv: top 10}
+
+        ## 6. Gaps & Oportunidades
+        - Gap crítico 1: {descrição}
+        - Gap crítico 2: {descrição}
+        - Gap crítico 3: {descrição}
+
+        ## Próximos Passos
+        → Executar wf-entity-disambiguation
+        → Focus: {recommended_focus_cluster}
+
+    - name: "schema_inventory.csv"
+      location: "data/schema_inventory.csv"
+
+    - name: "master_entity_table_draft.csv"
+      location: "data/master_entity_table_draft.csv"
+
+    - name: "entity_priority_matrix.csv"
+      location: "data/entity_priority_matrix.csv"
+
+  secondary:
+    - name: "semantic-diagnosis.yaml"
+    - name: "score_report.csv"
+    - name: "foundation_check.yaml"
+    - name: "hierarchy_validation.yaml"
+    - name: "wikidata_mapping.csv"
+
+# ─────────────────────────────────────────────
+# QUALITY GATES
+# ─────────────────────────────────────────────
+
+quality_gates:
+  - gate: QG_AUDIT_01
+    check: "Amostra >= 30 URLs auditadas"
+    blocking: true
+    fail_action: "Expandir amostra ou reduzir sample_size com justificativa"
+
+  - gate: QG_AUDIT_02
+    check: "Central Entity definida e confirmada por @koray-semantic"
+    blocking: true
+    fail_action: "Não prosseguir sem Central Entity clara"
+
+  - gate: QG_AUDIT_03
+    check: "Master entity table draft com >= 15 entidades mapeadas"
+    blocking: true
+    fail_action: "Verificar se extração NLP funcionou corretamente"
+
+  - gate: QG_AUDIT_04
+    check: "Score calculado para >= 20 URLs"
+    blocking: false
+    fail_action: "Documentar limitação, prosseguir"
+
+  - gate: QG_AUDIT_05
+    check: "Foundation check completo (todos os 7 critérios verificados)"
+    blocking: false
+    fail_action: "Prosseguir, anotar foundation como priority P1"
+
+  - gate: QG_AUDIT_06
+    check: "Hierarquia semântica validada por @koray-semantic"
+    blocking: true
+    fail_action: "Revisar entity list antes de prosseguir para disambiguation"
+
+  - gate: QG_AUDIT_07
+    check: "Nenhum dado inventado — apenas schema extraído do site real"
+    blocking: true
+    fail_action: "BLOCK — Article IV Constitution (No Invention)"
+
+# ─────────────────────────────────────────────
+# AGENT ROUTING
+# ─────────────────────────────────────────────
+
+agent_routing:
+  orchestration: "@schema-chief"
+  phase_1_diagnosis: "@koray-semantic *diagnose"
+  phase_1_inventory: "@tech-seo-engineer *audit-schema"
+  phase_1_scoring: "@tech-seo-engineer *score-page"
+  phase_1_foundation: "@tech-seo-engineer (manual check)"
+  phase_2_extraction: "@entity-disambiguator *inventory"
+  phase_2_prioritization: "@koray-semantic *prioritize-entities"
+  phase_2_wikidata: "@entity-disambiguator *find-qid"
+  phase_2_enrichment: "@kg-engineer *enrich-entities"
+  phase_2_validation: "@koray-semantic *validate-hierarchy"
+
+# ─────────────────────────────────────────────
+# INTEGRATION
+# ─────────────────────────────────────────────
+
+integration:
+  next: "wf-entity-disambiguation (usa master_entity_table_draft.csv)"
+  blueprint: "wf-site-semantic-blueprint inclui estas fases 1-2 internamente"
+  standalone: "Pode ser executado isolado — produz audit-report.md como deliverable"

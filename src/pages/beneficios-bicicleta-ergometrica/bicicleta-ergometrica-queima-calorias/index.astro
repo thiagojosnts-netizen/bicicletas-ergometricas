@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Queima de Calorias', url: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quantas calorias a bicicleta ergométrica queima em 30 minutos?',
+    answer: 'Em intensidade moderada (65-70% da FCmax), uma pessoa de 70 kg queima aproximadamente 245 kcal em 30 minutos. Em alta intensidade (80-85% da FCmax), o gasto sobe para cerca de 310 kcal. Esses valores são estimativas baseadas em equivalentes metabólicos (METs) e variam conforme o nível de condicionamento do usuário.',
+  },
+  {
+    question: 'O display da bicicleta ergométrica mostra as calorias corretas?',
+    answer: 'Não necessariamente. Os displays de bicicletas ergométricas calculam as calorias com base em algoritmos simplificados que geralmente não consideram o peso real do usuário, o nível de condicionamento físico nem a composição corporal. Os valores exibidos tendem a superestimar o gasto real em 15 a 30%. Para estimativas mais precisas, use aplicativos que integram dados de frequência cardíaca.',
+  },
+  {
+    question: 'HIIT ou exercício contínuo queima mais calorias na bicicleta?',
+    answer: 'O HIIT queima mais calorias por minuto de exercício e gera maior elevação do metabolismo pós-exercício (EPOC), que pode resultar em gasto adicional de 50 a 100 kcal nas horas seguintes ao treino. O exercício contínuo de longa duração pode superar o HIIT em gasto total quando a sessão é muito mais longa. Para a maioria dos usuários, combinar ambos ao longo da semana otimiza os resultados.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Queima de Calorias: Tabela Completa por Peso e Intensidade"
+  description="Tabela completa de queima de calorias na bicicleta ergométrica por peso corporal e intensidade de treino. Como calcular o gasto real, diferença entre HIIT e contínuo e por que o display pode estar errado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica e Queima de Calorias: Tabela Completa e Como Calcular</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> queima entre <strong>250 e 600 kcal por hora</strong>, dependendo do peso corporal, da intensidade e do tipo de treino. Em intensidade moderada (65-75% FCmax), o gasto médio é de <strong>350 a 450 kcal/hora</strong> para um usuário de 70 kg. O HIIT pode elevar esse valor para <strong>500 a 700 kcal/hora</strong> e ainda gerar <strong>EPOC</strong> (consumo extra de oxigênio pós-exercício) nas horas seguintes.
+      </p>
+
+      <p>
+        O gasto calórico na bicicleta ergométrica é determinado por três fatores principais: <strong>peso corporal</strong> (usuários mais pesados gastam mais energia para o mesmo esforço), <strong>intensidade do treino</strong> (medida pela frequência cardíaca ou pela percepção subjetiva de esforço) e <strong>duração da sessão</strong>. O nível de condicionamento também influencia: pessoas mais condicionadas tendem a gastar menos energia para a mesma carga de trabalho.
+      </p>
+
+      <h2>Tabela de Gasto Calórico por Peso e Intensidade</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peso</th>
+            <th>Baixa intensidade (45 min)</th>
+            <th>Moderada (45 min)</th>
+            <th>Alta intensidade (45 min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>55 kg</td><td>200 kcal</td><td>280 kcal</td><td>370 kcal</td></tr>
+          <tr><td>65 kg</td><td>235 kcal</td><td>330 kcal</td><td>435 kcal</td></tr>
+          <tr><td>75 kg</td><td>270 kcal</td><td>380 kcal</td><td>500 kcal</td></tr>
+          <tr><td>85 kg</td><td>305 kcal</td><td>430 kcal</td><td>565 kcal</td></tr>
+          <tr><td>95 kg</td><td>345 kcal</td><td>485 kcal</td><td>635 kcal</td></tr>
+          <tr><td>105 kg</td><td>380 kcal</td><td>535 kcal</td><td>700 kcal</td></tr>
+        </tbody>
+      </table>
+
+      <h2>EPOC: O Gasto Extra Após o Treino</h2>
+
+      <p>
+        O <strong>EPOC (Excess Post-exercise Oxygen Consumption)</strong> é o aumento do metabolismo que ocorre após o exercício, especialmente após treinos de alta intensidade. Após uma sessão de HIIT na bicicleta ergométrica, o metabolismo permanece elevado por 12 a 24 horas, resultando em gasto adicional de 50 a 150 kcal. Esse efeito é significativamente menor após treinos contínuos de baixa a moderada intensidade.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Por que o display superestima:</strong> A maioria das bicicletas ergométricas calcula calorias usando o peso padrão de 70 kg (ou sem considerar o peso real) e intensidade estimada pela resistência configurada, sem dados de frequência cardíaca real. Para estimativas mais precisas, insira seu peso real no painel (se permitido) e use um monitor de frequência cardíaca externo.
+        </p>
+      </div>
+
+      <p>
+        Para aplicar esses dados em um protocolo de emagrecimento estruturado, acesse <a href="/beneficios-bicicleta-ergometrica/emagrecer-com-bicicleta-ergometrica/">emagrecer com bicicleta ergométrica</a>. Para o protocolo completo de HIIT, veja <a href="/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/">protocolo de emagrecimento com bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Queima de Calorias na Bicicleta Ergométrica" />
+</Layout>

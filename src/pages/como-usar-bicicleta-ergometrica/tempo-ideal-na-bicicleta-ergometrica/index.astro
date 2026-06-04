@@ -1,0 +1,87 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Tempo Ideal', url: '/como-usar-bicicleta-ergometrica/tempo-ideal-na-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quanto tempo usar bicicleta ergométrica por dia?',
+    answer: 'Para saúde cardiovascular geral, 30 minutos por sessão em intensidade moderada são suficientes, conforme diretrizes da OMS de 150 minutos semanais de exercício aeróbico. Para emagrecimento, sessões de 40 a 60 minutos maximizam o gasto calórico total. Iniciantes devem começar com 20 minutos e progredir gradualmente.',
+  },
+  {
+    question: 'Posso usar bicicleta ergométrica todos os dias?',
+    answer: 'Sim, para usuários condicionados e desde que a intensidade seja moderada a baixa pelo menos 2 dias por semana. Para iniciantes, o recomendado é 3 a 4 dias com 1 a 2 dias de descanso entre sessões de maior intensidade, para permitir recuperação muscular adequada. O exercício diário de baixa intensidade é seguro para a maioria dos adultos saudáveis.',
+  },
+  {
+    question: 'Qual é o melhor horário para pedalar na bicicleta ergométrica?',
+    answer: 'O melhor horário é aquele em que você consegue manter consistência ao longo das semanas. Fisiologicamente, o desempenho de força e resistência tende a ser levemente superior no período da tarde (14h–18h), quando a temperatura corporal é mais alta. Treinos matinais em jejum também são eficazes para emagrecimento, mas a diferença no resultado final é pequena em comparação à consistência de horário.',
+  },
+];
+---
+
+<Layout
+  title="Tempo Ideal na Bicicleta Ergométrica: Quanto Pedalar por Dia e por Semana"
+  description="Quanto tempo usar bicicleta ergométrica para diferentes objetivos: saúde cardiovascular, emagrecimento e condicionamento. Programa de progressão por semana e como evitar excessos."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-18"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Tempo Ideal na Bicicleta Ergométrica: Guia Completo por Objetivo</h1>
+
+      <p class="summarization">
+        O <strong>tempo ideal na bicicleta ergométrica</strong> varia conforme o objetivo: <strong>20 a 30 minutos</strong> para saúde cardiovascular básica (3x/semana), <strong>40 a 60 minutos</strong> para emagrecimento efetivo (4–5x/semana) e <strong>60 a 90 minutos</strong> para condicionamento de resistência aeróbica. <strong>Iniciantes</strong> devem começar com <strong>15 a 20 minutos</strong> e progressão semanal de 5 minutos até atingir o volume alvo.
+      </p>
+
+      <p>
+        A questão de quanto tempo pedalar não tem uma resposta universal porque depende do objetivo, do nível atual de condicionamento físico e da disponibilidade de tempo. O princípio mais importante é a progressão gradual: aumentar volume ou intensidade de forma muito rápida aumenta o risco de lesões e de abandono do programa por fadiga excessiva.
+      </p>
+
+      <h2>Tempo Recomendado por Objetivo</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Duração por sessão</th>
+            <th>Frequência semanal</th>
+            <th>Total semanal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Saúde e qualidade de vida</td><td>30 min</td><td>3–4x</td><td>90–120 min</td></tr>
+          <tr><td>Controle de peso</td><td>40–45 min</td><td>4x</td><td>160–180 min</td></tr>
+          <tr><td>Emagrecimento efetivo</td><td>45–60 min</td><td>4–5x</td><td>180–300 min</td></tr>
+          <tr><td>Condicionamento aeróbico</td><td>60–90 min</td><td>4–5x</td><td>240–450 min</td></tr>
+          <tr><td>Reabilitação</td><td>15–25 min</td><td>3–5x</td><td>45–125 min</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Progressão para Iniciantes: 6 Semanas</h2>
+
+      <p>
+        Semana 1: 15 minutos, 3x/semana, baixa intensidade. Semana 2: 20 minutos, 3x/semana. Semana 3: 25 minutos, 3–4x/semana. Semana 4: 30 minutos, 4x/semana. Semana 5: 35–40 minutos, 4x/semana. Semana 6: 40–45 minutos, 4–5x/semana. A cada semana, aumente apenas uma variável (duração ou frequência), nunca ambas simultaneamente.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Sinal de sobretreino:</strong> Se sentir fadiga persistente (não apenas muscular) por mais de 48 horas após o treino, perda de motivação, queda de desempenho ou dificuldade para dormir, reduza o volume em 20 a 30% por uma semana antes de retomar a progressão.
+        </p>
+      </div>
+
+      <p>
+        Para estruturar treinos com controle de intensidade correto, veja o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia de frequência cardíaca na bicicleta ergométrica</a>. Para o programa completo de iniciante, acesse <a href="/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/">treino para iniciantes</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Tempo na Bicicleta Ergométrica" />
+</Layout>

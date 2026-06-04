@@ -1,0 +1,76 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Custo-Benefício', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual bicicleta ergométrica tem o melhor custo-benefício em 2026?',
+    answer: 'Na faixa de R$ 1.200 a R$ 2.000, o melhor custo-benefício é disputado entre Randers BRF-1800 (melhor preço), Kikos FB 180i (melhor com bluetooth) e Moviment BEX-2300 (melhor garantia). Para usuários acima de 90 kg ou com uso mais intensivo, o Athletic Bike Advanced (R$ 2.000-R$ 2.800) oferece a melhor relação entre durabilidade e investimento.',
+  },
+  {
+    question: 'Como comparar o custo-benefício de duas bicicletas ergométricas?',
+    answer: 'Compare os seguintes fatores em ordem de importância: tipo de resistência (magnética é superior), peso suportado em relação ao usuário, número de níveis de resistência, duração da garantia, disponibilidade de peças de reposição e assistência técnica na sua cidade. Só depois disso compare o preço. O modelo mais caro pode ter melhor custo-benefício real.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Custo-Benefício: Análise Técnica por Faixa de Preço"
+  description="Análise de custo-benefício de bicicletas ergométricas no Brasil por faixa de preço. Como comparar modelos corretamente e quais especificações justificam o investimento extra."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-23"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Custo-Benefício: Como Comparar e Escolher Certo</h1>
+
+      <p class="summarization">
+        O melhor <strong>custo-benefício em bicicleta ergométrica</strong> está na faixa de <strong>R$ 1.200 a R$ 2.500</strong>, onde resistência magnética de qualidade, 12 a 16 níveis e suporte de 100 a 120 kg estão disponíveis a preço razoável. Modelos abaixo de R$ 1.000 raramente oferecem durabilidade para uso regular; acima de R$ 3.000, os recursos extras raramente justificam o custo para uso domiciliar.
+      </p>
+
+      <p>
+        Custo-benefício é uma equação que considera qualidade das especificações, durabilidade prevista e preço de aquisição. Um modelo de R$ 1.800 com vida útil de 5 anos tem custo anual de R$ 360. Um de R$ 900 com vida útil de 18 meses tem custo anual de R$ 720. O modelo mais caro entrega melhor custo-benefício real.
+      </p>
+
+      <h2>Especificações que justificam pagar mais</h2>
+
+      <ul>
+        <li><strong>Resistência magnética:</strong> justifica pagar R$ 300-R$ 500 a mais em relação à resistência mecânica</li>
+        <li><strong>Suporte de 120 kg vs 90 kg:</strong> para usuários acima de 80 kg, essa diferença é fundamental para segurança</li>
+        <li><strong>Garantia de 2 anos:</strong> indica confiança do fabricante na durabilidade; vale o custo adicional</li>
+        <li><strong>16 níveis vs 8 níveis:</strong> permite progressão de treino por mais tempo sem esgotar o equipamento</li>
+        <li><strong>Bluetooth real:</strong> vale para usuários que vão integrar a aplicativos de treino</li>
+      </ul>
+
+      <h2>Especificações que não justificam pagar mais</h2>
+
+      <ul>
+        <li>Telas coloridas grandes sem dados adicionais relevantes</li>
+        <li>Mais de 20 programas de treino (a maioria dos usuários usa 3 a 5 no máximo)</li>
+        <li>Suporte para tablet integrado ao guidão (pode ser substituído por suporte universal de R$ 30)</li>
+        <li>Ventilador integrado ao painel (ineficaz, pode ser substituído por ventilador portátil)</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Cálculo prático:</strong> Antes de comprar, pergunte ao vendedor a vida útil estimada do equipamento para o seu perfil de uso. Divida o preço por essa estimativa de anos. Compare o custo anual entre modelos, não apenas o preço de etiqueta.
+        </p>
+      </div>
+
+      <p>
+        Para ver os melhores modelos por marca, acesse a <a href="/melhores-bicicletas-ergometricas/">análise completa das melhores bicicletas ergométricas</a>. Para opções econômicas, veja <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">bicicleta ergométrica barata até R$ 1.200</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre custo-benefício" />
+</Layout>

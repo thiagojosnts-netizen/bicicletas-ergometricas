@@ -1,0 +1,343 @@
+# Workflow: Content Collections Setup
+# Orchestrator: astro-chief → @astro:ben-holmes (primary)
+# Version: 1.0.0
+# Purpose: Design and implement Content Collections with Zod schemas, loaders
+#          (glob/file/custom), cross-collection references, and type-safe queries.
+
+workflow:
+  id: wf-content-collections-setup
+  name: "Content Collections Setup"
+  version: "1.0.0"
+  squad: astro
+  orchestrator: astro-chief
+  primary_agent: ben-holmes
+
+  total_phases: 5
+  estimated_duration: "30-90 minutes"
+
+  quality_standard: |
+    Collections are:
+    - Defined in src/content.config.ts (Astro 5+)
+    - Every field has a Zod validator
+    - Type-safe queries (getCollection returns typed entries)
+    - References use `reference()` where cross-collection links exist
+    - Drafts filtered centrally via helper
+    - Loaders match content source (glob for local, custom for CMS)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 0: MODEL
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_0_model:
+  name: "Model the content"
+  duration: "10-15 min"
+  agent: ben-holmes
+  mode: interactive
+
+  questions:
+    - "What types of content do you have? (blog, docs, case studies, authors, etc.)"
+    - "Where does each type live? (local files, CMS, both)"
+    - "What format? (.md, .mdx, .json, .yaml, mix)"
+    - "What fields does each have? (brainstorm all frontmatter fields)"
+    - "Do any types reference each other? (post has author, project has related projects)"
+    - "Are there drafts? (unpublished content visible in dev only)"
+    - "Localization? (multiple languages)"
+
+  outputs:
+    content_model:
+      collections:
+        - name: "blog"
+          source: "local | cms | both"
+          format: "md | mdx | json"
+          fields:
+            - {name: title, type: string, required: true}
+            - {name: description, type: string, required: true, max_length: 160}
+            - {name: pubDate, type: date, required: true}
+            - {name: author, type: reference('authors'), required: true}
+            - {name: tags, type: string[], default: []}
+            - {name: heroImage, type: {src:string, alt:string}, optional: true}
+            - {name: draft, type: boolean, default: false}
+        - name: "authors"
+          source: "local"
+          format: "json"
+          fields:
+            - {name: id, type: string, required: true}
+            - {name: name, type: string, required: true}
+            - {name: bio, type: string, required: true}
+            - {name: avatar, type: string, optional: true}
+
+      references:
+        - from: "blog.author"
+          to: "authors"
+          cardinality: "one-to-one"
+
+  checkpoint_criteria:
+    - "All content types listed"
+    - "All fields identified per type"
+    - "References mapped"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 1: SCHEMA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_1_schema:
+  name: "Write content.config.ts"
+  duration: "10-15 min"
+  agent: ben-holmes
+  mode: autonomous
+  applies_heuristic: AS_BH_001
+
+  steps:
+    - id: create_config
+      action: "Create src/content.config.ts"
+      template: "templates/content-config-tmpl.ts"
+      includes:
+        - "import { defineCollection, reference, z } from 'astro:content'"
+        - "import { glob, file } from 'astro/loaders'"
+        - "defineCollection for each type"
+        - "export const collections = { ... }"
+
+    - id: choose_loader
+      per_collection: true
+      rules:
+        - "If source is local .md/.mdx/.json files → use `glob`"
+        - "If source is one JSON file with array/record of entries → use `file`"
+        - "If source is remote API/CMS → write custom loader (phase 3)"
+      applies_heuristic: AS_BH_004
+
+    - id: write_schema
+      requirements:
+        - "Every field has a Zod type"
+        - "Required fields are not `.optional()`"
+        - "Optional fields have `.optional()` or `.default(...)`"
+        - "Dates use `z.coerce.date()` (accepts strings and Date objects)"
+        - "URLs use `z.string().url()`"
+        - "Images use `image()` helper (from astro:content) for local image asset resolution"
+
+    - id: add_references
+      for_each_reference:
+        - "Use `reference('targetCollection')` as the type"
+        - "Field value in content = the id of the target entry"
+
+  outputs:
+    - "src/content.config.ts"
+
+  checkpoint_criteria:
+    - "File parses (no TS errors)"
+    - "`npx astro sync` succeeds"
+    - "TypeScript types generated in .astro/types.d.ts"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 2: CONTENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_2_content:
+  name: "Create sample content"
+  duration: "10-20 min"
+  mode: autonomous_with_verification
+
+  steps:
+    - id: create_content_folders
+      action: "Create src/content/{collection}/ for each collection"
+
+    - id: create_samples
+      action: "Create 2-3 sample entries per collection"
+      verify: "Each sample validates against the schema"
+
+    - id: validate_build
+      command: "npx astro sync"
+      on_error:
+        - "Read the Zod error message — it points to the field"
+        - "Fix the content OR adjust the schema (be honest about which is wrong)"
+
+    - id: verify_types_in_ide
+      action: "Open a page file, type `await getCollection('blog')` — IDE should autocomplete data fields"
+      if_no_types: "Schema not wired correctly — re-run `npx astro sync`"
+
+  checkpoint_criteria:
+    - "All collections have sample entries"
+    - "All samples validate"
+    - "TypeScript autocomplete works for entry.data.*"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 3: CUSTOM LOADERS (IF CMS)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_3_custom_loaders:
+  name: "Custom loaders for remote content"
+  duration: "30-60 min"
+  agent: ben-holmes
+  mode: autonomous
+  skip_if: "no collection uses remote source"
+  applies_heuristic: AS_BH_004
+
+  per_remote_collection:
+    - id: implement_loader
+      action: "Write Loader function"
+      signature: |
+        function myLoader(): Loader {
+          return {
+            name: 'my-loader',
+            load: async ({ store, logger, meta }) => {
+              // fetch from API
+              // for each entry: store.set({ id, data, rendered: { html } })
+            },
+          };
+        }
+
+    - id: handle_incremental
+      optional: true
+      implementation: |
+        Use `meta.get('lastModified')` to track sync state.
+        Only fetch changed entries since last build.
+
+    - id: handle_errors
+      requirement: "Loader must handle network failures gracefully (log + skip, don't crash build)"
+
+    - id: env_vars
+      action: "Store CMS tokens in .env (not committed)"
+      naming: "Use SECRET_ prefix for server-only (never exposed to client)"
+      access: "import.meta.env.SECRET_CMS_TOKEN"
+
+  outputs:
+    - "Custom loader function in content.config.ts"
+    - ".env with CMS credentials"
+    - ".env.example with placeholder values (committed)"
+
+  checkpoint_criteria:
+    - "Loader fetches and populates store"
+    - "Error handling implemented"
+    - "Environment variables documented"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 4: QUERIES + PAGES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_4_queries:
+  name: "Implement queries + pages"
+  duration: "20-40 min"
+  mode: autonomous
+
+  tasks:
+    - task: "Create utility helpers in src/utils/content.ts"
+      content: |
+        import { getCollection } from 'astro:content';
+
+        // Filter drafts in production only
+        export const getPublishedPosts = () =>
+          getCollection('blog', ({ data }) =>
+            import.meta.env.PROD ? !data.draft : true
+          );
+
+        // Sort by pubDate descending
+        export const sortByDate = (posts: Awaited<ReturnType<typeof getPublishedPosts>>) =>
+          posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    - task: "Create list page (index for collection)"
+      template: |
+        // src/pages/blog/index.astro
+        ---
+        import { getPublishedPosts, sortByDate } from '../../utils/content';
+        const posts = sortByDate(await getPublishedPosts());
+        ---
+        <ul>
+          {posts.map(post => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              <time>{post.data.pubDate.toDateString()}</time>
+            </li>
+          ))}
+        </ul>
+
+    - task: "Create detail page (dynamic route)"
+      template: |
+        // src/pages/blog/[...slug].astro
+        ---
+        import { getEntry } from 'astro:content';
+        import { getPublishedPosts } from '../../utils/content';
+
+        export async function getStaticPaths() {
+          const posts = await getPublishedPosts();
+          return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+        }
+
+        const { post } = Astro.props;
+        const { Content } = await post.render();
+        const author = await getEntry(post.data.author);
+        ---
+        <article>
+          <h1>{post.data.title}</h1>
+          <p>By {author.data.name}</p>
+          <Content />
+        </article>
+
+    - task: "Create derivative pages (tags, categories)"
+      example: "src/pages/tags/[tag].astro — unique tags extracted from posts"
+
+  checkpoint_criteria:
+    - "List page renders posts"
+    - "Detail page renders individual post"
+    - "References resolve (author name appears)"
+    - "Draft filtering works (drafts visible in dev, hidden in prod build)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 5: VALIDATE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_5_validate:
+  name: "Final validation"
+  duration: "10-15 min"
+  mode: autonomous
+
+  checks:
+    - "`npx astro check` passes (no TS errors)"
+    - "`npm run build` succeeds"
+    - "`npm run preview` serves the built site"
+    - "All routes render correctly"
+    - "IDE autocomplete works for entry.data.* in page files"
+    - "Draft posts hidden in production build"
+
+  handoffs_if_needed:
+    - handoff: "@astro:john-otander"
+      when: "MDX content needs plugin configuration"
+
+    - handoff: "@astro:matt-kane"
+      when: "Content has images, need <Image>/<Picture> setup"
+
+    - handoff: "@astro:matthew-phillips"
+      when: "Build error in custom loader or Vite-related"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_outputs:
+  deliverables:
+    - "src/content.config.ts"
+    - "src/content/{collection}/ folders with entries"
+    - "src/utils/content.ts (helpers)"
+    - "src/pages/{collection}/ routes"
+    - ".env.example (if custom loaders)"
+
+  capabilities_delivered:
+    - "Type-safe content queries"
+    - "Build-time validation of frontmatter"
+    - "Cross-collection references"
+    - "Draft filtering"
+    - "Custom loaders for CMS (if configured)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEURISTICS REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+heuristics_applied:
+  - AS_BH_001: "Collection setup flow"
+  - AS_BH_002: "Relational content via reference()"
+  - AS_BH_003: "Draft filtering pattern"
+  - AS_BH_004: "CMS loader pattern"
+  - AS_BH_005: "Collections vs Astro DB distinction"
+
+metadata:
+  created: "2026-04-18"
+  squad: astro
+  version: "1.0.0"

@@ -1,0 +1,85 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Para Joelho', url: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-joelho/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica machuca o joelho?',
+    answer: 'Não, quando usada com regulagem correta. O movimento cíclico de baixo impacto não sobrecarrega a articulação patelofemoral quando o selim está na altura certa. Problemas surgem quando o selim está muito baixo (joelho em flexão excessiva acima de 90 graus) ou muito alto (extensão completa que provoca basculamento do quadril).',
+  },
+  {
+    question: 'Bicicleta ergométrica é indicada para quem tem artrose no joelho?',
+    answer: 'Sim, geralmente é uma das modalidades de exercício mais recomendadas para artrose de joelho. O movimento cíclico promove a nutrição da cartilagem via líquido sinovial sem o impacto mecânico da caminhada ou corrida. Para artrose grave (grau III ou IV), consulte um ortopedista antes de iniciar, pois pode ser necessário ajustar a amplitude de movimento dos pedais.',
+  },
+  {
+    question: 'Qual tipo de bicicleta ergométrica é melhor para o joelho?',
+    answer: 'Para joelhos comprometidos, a bicicleta ergométrica horizontal ou recumbente é a mais indicada: o assento apoiado reduz a carga axial sobre o joelho, o ângulo de pedalagem é mais suave e a amplitude de flexão articular é menor. A bicicleta vertical também pode ser usada com ajuste cuidadoso do selim.',
+  },
+  {
+    question: 'Posso usar bicicleta ergométrica depois de cirurgia de joelho?',
+    answer: 'Depende do tipo de cirurgia e da fase da reabilitação. Após artroscopia de menisco, a bicicleta ergométrica é frequentemente incluída nas primeiras semanas de fisioterapia, com resistência muito baixa. Após reconstrução do ligamento cruzado anterior, geralmente só é liberada após 4 a 8 semanas de reabilitação, dependendo do protocolo do cirurgião.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Joelho: Benefícios, Cuidados e Melhor Tipo"
+  description="Como a bicicleta ergométrica beneficia o joelho: artrose, lesão de menisco, condromalácia e reabilitação pós-cirúrgica. Qual tipo de bicicleta escolher e como regular corretamente para proteger a articulação."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-13"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para Joelho: Benefícios, Cuidados e Regulagem Correta</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> é um dos exercícios mais indicados para joelhos comprometidos por combinar <strong>movimento de baixo impacto</strong>, <strong>nutrição da cartilagem</strong> via produção de líquido sinovial e <strong>fortalecimento dos músculos periarticulares</strong> sem sobrecarregar a articulação. O selim deve ser ajustado para manter o joelho com <strong>25 a 35 graus de flexão</strong> no ponto mais baixo do pedal. Para artrose e lesões articulares, a <strong>bicicleta horizontal ou recumbente</strong> é a mais recomendada.
+      </p>
+
+      <p>
+        O joelho é a articulação mais complexa do corpo humano e uma das mais afetadas por doenças degenerativas e lesões relacionadas ao exercício e ao sedentarismo. A bicicleta ergométrica representa um dos poucos exercícios aeróbicos que combina eficiência cardiovascular com impacto mecânico mínimo sobre a articulação, tornando-a uma ferramenta clínica de alto valor em protocolos de reabilitação e manutenção da saúde articular.
+      </p>
+
+      <h2>Como a Bicicleta Ergométrica Protege o Joelho</h2>
+
+      <p>
+        O movimento cíclico da pedalagem produz <strong>líquido sinovial</strong>, o fluido que nutre a cartilagem articular do joelho. A cartilagem não possui vasos sanguíneos próprios e depende dessa produção mecânica de sinovial para se manter hidratada e nutrida. O sedentarismo reduz essa produção, acelerando a degeneração cartilaginosa; o exercício aeróbico de baixo impacto a estimula de forma controlada.
+      </p>
+
+      <p>
+        Além disso, a pedalagem regular fortalece os <strong>músculos do quadríceps e dos isquiotibiais</strong>, que funcionam como amortecedores naturais da articulação patelofemoral. Um quadríceps mais forte reduz a carga sobre a cartilagem em atividades cotidianas como subir escadas, sentar e levantar.
+      </p>
+
+      <h2>Regulagem Correta do Selim para Joelhos Comprometidos</h2>
+
+      <ul>
+        <li><strong>Altura do selim:</strong> joelho com 25 a 35 graus de flexão no ponto mais baixo do pedal</li>
+        <li><strong>Resistência inicial:</strong> comece com resistência muito baixa (níveis 1 a 3) e aumente gradualmente</li>
+        <li><strong>Duração inicial:</strong> 15 a 20 minutos por sessão nas primeiras duas semanas</li>
+        <li><strong>Cadência:</strong> pedale em cadência mais alta com resistência baixa, em vez de cadência baixa com resistência alta (reduz carga articular)</li>
+        <li><strong>Movimento dos pés:</strong> evite dobrar os tornozelos em ângulo agudo; mantenha os pés paralelos ao solo durante o pedal</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Sinal de alerta:</strong> Se sentir dor anterior no joelho (logo abaixo da rótula) durante ou após o treino, reduza a resistência e eleve o selim levemente. Dor acima de 3 em uma escala de 10 indica que a carga está excessiva para o estágio atual da articulação. Consulte um fisioterapeuta para revisão do protocolo.
+        </p>
+      </div>
+
+      <p>
+        Para escolher o melhor modelo para joelhos comprometidos, veja <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/">bicicleta ergométrica horizontal</a> e <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">bicicleta ergométrica recumbente</a>. Para entender como pedalar corretamente, acesse o <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">guia de regulagem da bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para Joelho" />
+</Layout>

@@ -1,0 +1,131 @@
+---
+// Template: Custom Picture Component with Art Direction
+// Purpose: Different images per viewport + automatic format fallback (AVIF → WebP → original)
+// Author: matt-kane
+// Usage: <ResponsivePicture mobile={mobileImg} desktop={desktopImg} alt="..." />
+
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  mobile: ImageMetadata;        // Portrait/narrow crop for mobile
+  desktop: ImageMetadata;       // Landscape/wide crop for desktop
+  alt: string;                  // Required for a11y
+  mobileBreakpoint?: number;    // When to switch (default 768)
+  eager?: boolean;              // LCP image? default false (lazy)
+  class?: string;
+}
+
+const {
+  mobile,
+  desktop,
+  alt,
+  mobileBreakpoint = 768,
+  eager = false,
+  class: className = '',
+} = Astro.props;
+
+// Generate responsive variants for each image + format
+const mobileAvif = await getImage({
+  src: mobile,
+  format: 'avif',
+  widths: [400, 800],
+});
+const mobileWebp = await getImage({
+  src: mobile,
+  format: 'webp',
+  widths: [400, 800],
+});
+const desktopAvif = await getImage({
+  src: desktop,
+  format: 'avif',
+  widths: [960, 1280, 1920],
+});
+const desktopWebp = await getImage({
+  src: desktop,
+  format: 'webp',
+  widths: [960, 1280, 1920],
+});
+
+// Fallback uses the best non-modern format (desktop original)
+const fallback = await getImage({
+  src: desktop,
+  format: (desktop.format ?? 'jpg') as 'jpg' | 'png',
+  width: 1920,
+});
+---
+
+<picture class={className}>
+  <!-- Desktop: AVIF (best compression) -->
+  <source
+    media={`(min-width: ${mobileBreakpoint}px)`}
+    type="image/avif"
+    srcset={desktopAvif.srcSet.attribute}
+    sizes="100vw"
+  />
+  <!-- Desktop: WebP (for Safari <16.4) -->
+  <source
+    media={`(min-width: ${mobileBreakpoint}px)`}
+    type="image/webp"
+    srcset={desktopWebp.srcSet.attribute}
+    sizes="100vw"
+  />
+  <!-- Mobile: AVIF -->
+  <source
+    media={`(max-width: ${mobileBreakpoint - 1}px)`}
+    type="image/avif"
+    srcset={mobileAvif.srcSet.attribute}
+    sizes="100vw"
+  />
+  <!-- Mobile: WebP -->
+  <source
+    media={`(max-width: ${mobileBreakpoint - 1}px)`}
+    type="image/webp"
+    srcset={mobileWebp.srcSet.attribute}
+    sizes="100vw"
+  />
+  <!-- Ultimate fallback: original format (covers very old browsers) -->
+  <img
+    src={fallback.src}
+    alt={alt}
+    width={fallback.attributes.width}
+    height={fallback.attributes.height}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding={eager ? 'sync' : 'async'}
+  />
+</picture>
+
+<style>
+  picture {
+    display: block;
+    width: 100%;
+  }
+  picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+
+<!--
+Usage example:
+
+---
+import ResponsivePicture from '../components/ResponsivePicture.astro';
+import heroMobile from '../assets/hero-mobile.jpg';    // e.g., 800x1200
+import heroDesktop from '../assets/hero-desktop.jpg';  // e.g., 1920x900
+---
+
+<ResponsivePicture
+  mobile={heroMobile}
+  desktop={heroDesktop}
+  alt="Team collaborating at laptops"
+  eager
+/>
+
+Notes:
+- Use `eager` for LCP (above-the-fold) images. Also preload in layout head.
+- For same image with no art direction, use <Image layout="constrained"> instead.
+- For simple format fallback, use <Picture formats={['avif', 'webp']}> (built-in).
+-->

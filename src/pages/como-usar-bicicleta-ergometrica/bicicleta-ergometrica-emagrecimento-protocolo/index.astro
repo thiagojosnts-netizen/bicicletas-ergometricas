@@ -1,0 +1,96 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Protocolo de Emagrecimento', url: '/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual é o melhor protocolo de treino para emagrecer na bicicleta ergométrica?',
+    answer: 'O protocolo mais eficaz combina 3 sessões contínuas de 45 a 60 minutos na Zona 2 (65–75% FCmax) com 2 sessões de HIIT de 25 minutos por semana. Essa combinação maximiza o gasto calórico semanal e cria o efeito EPOC das sessões de alta intensidade, resultando em maior queima de gordura ao longo das 24 horas seguintes ao treino.',
+  },
+  {
+    question: 'HIIT na bicicleta ergométrica funciona para emagrecer?',
+    answer: 'Sim. O HIIT (High-Intensity Interval Training) na bicicleta ergométrica é comprovadamente eficaz para redução de gordura corporal, especialmente gordura abdominal visceral. Meta-análise publicada no British Journal of Sports Medicine (2019) com mais de 2.000 participantes mostrou que o HIIT reduziu gordura corporal em média 28% mais do que o exercício contínuo de mesma duração.',
+  },
+  {
+    question: 'Posso fazer HIIT na bicicleta ergométrica todo dia?',
+    answer: 'Não é recomendado. O HIIT é um estímulo de alta intensidade que requer 48 horas de recuperação para restaurar os estoques de glicogênio e permitir adaptação muscular. Mais de 2 a 3 sessões de HIIT por semana aumenta o risco de sobretreino e lesões por uso excessivo. Os dias restantes devem ser de exercício contínuo em intensidade moderada ou descanso.',
+  },
+];
+---
+
+<Layout
+  title="Protocolo de Emagrecimento com Bicicleta Ergométrica: 8 Semanas Estruturadas"
+  description="Protocolo completo de emagrecimento com bicicleta ergométrica: programa de 8 semanas combinando HIIT e exercício contínuo, gasto calórico semanal e como progredir a intensidade com segurança."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-21"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Protocolo de Emagrecimento com Bicicleta Ergométrica: 8 Semanas</h1>
+
+      <p class="summarization">
+        O <strong>protocolo de emagrecimento com bicicleta ergométrica</strong> mais eficaz combina <strong>3 sessões contínuas</strong> (45–60 min, Zona 2) com <strong>2 sessões de HIIT</strong> (20–25 min) por semana, totalizando <strong>1.500 a 2.500 kcal de gasto semanal</strong> via exercício. Em 8 semanas com déficit alimentar de 300 kcal/dia, a perda estimada é de <strong>3 a 5 kg de gordura corporal</strong>. A progressão é feita aumentando duração e intensidade a cada 2 semanas.
+      </p>
+
+      <p>
+        Um protocolo de emagrecimento estruturado é superior ao treino aleatório porque garante progressão de sobrecarga, variação de estímulo e controle do volume semanal. A combinação de treino contínuo (para alto volume de gasto calórico) e HIIT (para elevação do metabolismo pós-treino) é respaldada por evidências científicas como a estratégia mais eficaz para redução de gordura corporal.
+      </p>
+
+      <h2>Protocolo de 8 Semanas: Distribuição Semanal</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Contínuo (3x)</th>
+            <th>HIIT (2x)</th>
+            <th>Gasto semanal estimado (70 kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1–2</td><td>30 min, Zona 2</td><td>15 min HIIT básico</td><td>900–1.100 kcal</td></tr>
+          <tr><td>3–4</td><td>40 min, Zona 2</td><td>20 min HIIT</td><td>1.200–1.500 kcal</td></tr>
+          <tr><td>5–6</td><td>50 min, Zona 2–3</td><td>20 min HIIT avançado</td><td>1.600–2.000 kcal</td></tr>
+          <tr><td>7–8</td><td>60 min, Zona 2–3</td><td>25 min HIIT avançado</td><td>2.000–2.500 kcal</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Estrutura das Sessões de HIIT</h2>
+
+      <p>
+        <strong>HIIT básico (semanas 1–4):</strong> 3 min aquecimento, 6 ciclos de 30 seg a 85–90% FCmax com 90 seg de recuperação a 50–60%, 3 min desaquecimento. Total: 15 a 18 minutos.
+      </p>
+
+      <p>
+        <strong>HIIT avançado (semanas 5–8):</strong> 3 min aquecimento, 8 a 10 ciclos de 30 seg a 90–95% FCmax com 60 seg de recuperação, 3 min desaquecimento. Total: 18 a 23 minutos.
+      </p>
+
+      <h2>O Papel do Déficit Calórico Alimentar</h2>
+
+      <p>
+        O exercício cria apenas parte do déficit calórico necessário. Para perder 1 kg de gordura, é preciso um déficit acumulado de aproximadamente 7.700 kcal. Com 2.000 kcal de gasto semanal via exercício e déficit alimentar de 300 kcal/dia (2.100 kcal/semana), o déficit total seria de cerca de 4.100 kcal por semana, resultando em perda de 0,5 kg por semana ou 4 kg em 8 semanas.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Acompanhamento de resultados:</strong> Meça o peso e a circunferência abdominal no mesmo horário, uma vez por semana (de preferência na manhã em jejum). Não avalie dia a dia, pois a retenção hídrica mascara resultados reais. O progresso real é visível em janelas de 2 a 3 semanas.
+        </p>
+      </div>
+
+      <p>
+        Para entender o gasto calórico em detalhes, acesse <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/">tabela de queima de calorias por peso e intensidade</a>. Para o guia de frequência cardíaca nas zonas de treino, veja <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">frequência cardíaca na bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Protocolo de Emagrecimento" />
+</Layout>

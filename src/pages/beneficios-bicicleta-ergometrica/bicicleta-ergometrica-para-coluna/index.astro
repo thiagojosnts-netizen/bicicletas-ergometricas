@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Para Coluna', url: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-coluna/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica faz mal para a coluna?',
+    answer: 'Não, quando usada com postura e regulagem corretas. O problema surge quando o selim está muito baixo (causando hiperlordose lombar pelo esforço de pedalagem), quando o guidão está muito baixo (causando flexão excessiva da coluna torácica) ou quando o usuário pedala com o tronco curvado durante muito tempo. Com regulagem adequada, a bicicleta ergométrica é benéfica para a coluna.',
+  },
+  {
+    question: 'Posso usar bicicleta ergométrica com hérnia de disco?',
+    answer: 'Depende do tipo e localização da hérnia. Hérnia de disco lombar em fase aguda (com dor irradiada para a perna) geralmente não permite uso. Em fase crônica ou de manutenção, a bicicleta ergométrica horizontal ou recumbente geralmente é permitida e até recomendada, pois fortalece a musculatura paravertebral sem comprimir os discos. Sempre com orientação fisioterapêutica.',
+  },
+  {
+    question: 'Qual tipo de bicicleta ergométrica é melhor para a coluna?',
+    answer: 'A bicicleta recumbente é a mais indicada para usuários com problemas de coluna, pois o assento reclinado mantém a coluna em posição neutra sem necessidade de musculatura de suporte ativa. A bicicleta horizontal (com encosto) é a segunda melhor opção. A bicicleta vertical pode ser usada com guidão em posição mais alta para evitar flexão excessiva.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Coluna: Benefícios, Cuidados e Postura Correta"
+  description="Como usar bicicleta ergométrica com segurança para quem tem hérnia de disco, escoliose ou dor lombar crônica. Postura correta, modelo ideal e quando evitar o uso."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-15"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para Coluna: Como Usar com Segurança e Eficiência</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> pode ser usada com segurança por pessoas com <strong>hérnia de disco</strong>, <strong>escoliose</strong> e <strong>dor lombar crônica</strong> quando o modelo e a regulagem são corretos. A <strong>bicicleta recumbente</strong> é a mais indicada para problemas de coluna, por manter a coluna vertebral em posição neutra com encosto completo. Na bicicleta vertical, ajuste o guidão para posição mais alta e evite se curvar durante o pedalamento.
+      </p>
+
+      <p>
+        A coluna vertebral é uma estrutura dinâmica que se beneficia de exercício regular para manutenção da musculatura de suporte e da nutrição dos discos intervertebrais. Ao contrário do que muitos acreditam, o repouso prolongado agrava a maioria dos problemas de coluna por enfraquecimento da musculatura paravertebral. A bicicleta ergométrica representa um exercício seguro que fortalece essa musculatura sem comprimir a coluna verticalmente.
+      </p>
+
+      <h2>Postura Correta na Bicicleta Ergométrica para Proteger a Coluna</h2>
+
+      <ul>
+        <li><strong>Tronco:</strong> mantenha a curvatura natural da coluna, com leve inclinação para frente a partir dos quadris, não da lombar</li>
+        <li><strong>Guidão:</strong> ajuste para uma altura que permita os cotovelos levemente flexionados sem hunching dos ombros</li>
+        <li><strong>Selim:</strong> posicione para que o joelho fique levemente flexionado no ponto mais baixo, sem extensão completa que cause basculamento do quadril</li>
+        <li><strong>Core ativado:</strong> contraia levemente os músculos abdominais durante o pedalamento para reduzir a carga sobre a lombar</li>
+        <li><strong>Evite:</strong> posição de head forward (cabeça à frente dos ombros) e rotação lateral do tronco durante o pedalamento</li>
+      </ul>
+
+      <h2>Quando Evitar a Bicicleta Ergométrica</h2>
+
+      <p>
+        Evite o uso em: hérnia de disco em fase aguda com irradiação de dor para membros inferiores; estenose de canal vertebral com claudicação neurogênica em crise; fratura vertebral recente não consolidada; e infecção ou tumor vertebral ativo. Em todas essas condições, a liberação médica e fisioterapêutica é obrigatória antes de retomar qualquer exercício.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Recomendação clínica:</strong> Para usuários com dor lombar crônica sem causa específica, estudos mostram que o exercício aeróbico regular (incluindo bicicleta ergométrica) reduz a intensidade da dor em 30 a 50% após 8 semanas de prática regular. O efeito analgésico é mediado pela liberação de endorfinas e pela melhora da irrigação dos tecidos periarticulares.
+        </p>
+      </div>
+
+      <p>
+        Para o modelo mais indicado para coluna, veja <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">bicicleta ergométrica recumbente</a>. Para o guia de regulagem completo, acesse <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">como regular a bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para Coluna" />
+</Layout>

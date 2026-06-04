@@ -1,0 +1,317 @@
+# Workflow: Integrations Setup
+# Orchestrator: astro-chief → @astro:nate-moore (primary)
+# Version: 1.0.0
+# Purpose: Add and configure Astro integrations (UI frameworks, adapters, MDX,
+#          Tailwind, sitemap, etc.) in the right order with runtime compatibility.
+
+workflow:
+  id: wf-integrations-setup
+  name: "Integrations Setup"
+  version: "1.0.0"
+  squad: astro
+  orchestrator: astro-chief
+  primary_agent: nate-moore
+
+  total_phases: 4
+  estimated_duration: "30-60 minutes (depends on # of integrations)"
+
+  quality_standard: |
+    - All integrations installed via `npx astro add` (preferred) or explicit `npm install`
+    - Adapter chosen FIRST, then integrations compatible with its runtime
+    - First-party (@astrojs/*) preferred over community when available
+    - Integration ordering in astro.config.mjs respects dependencies
+    - No redundant UI frameworks (one framework unless specific reason)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 0: ASSESS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_0_assess:
+  name: "Assess needs"
+  duration: "5-10 min"
+  agent: nate-moore
+  mode: interactive
+
+  questions:
+    - "Where are you deploying? (Cloudflare / Vercel / Netlify / Node VPS / static)"
+    - "Do you need SSR or hybrid rendering?"
+    - "Which UI frameworks does the team use? (if any)"
+    - "Content format? (markdown, MDX, both)"
+    - "Styling approach? (Tailwind, scoped CSS, CSS Modules, Sass)"
+    - "Need SEO features? (sitemap, RSS)"
+    - "Auth? Analytics? Forms? (each may need specific integrations)"
+
+  outputs:
+    needs:
+      - adapter: "cloudflare | vercel | netlify | node | static"
+      - output_mode: "static | server | hybrid"
+      - ui_frameworks: "[preact | react | vue | svelte | solid | lit]"
+      - content_integrations: "[mdx]"
+      - style_integrations: "[tailwind]"
+      - utility_integrations: "[sitemap, rss, partytown]"
+      - ecosystem_integrations: "[clerk, sentry, analytics]"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 1: ADAPTER FIRST
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_1_adapter:
+  name: "Install + configure adapter"
+  duration: "10-15 min"
+  agent: nate-moore
+  mode: autonomous
+  applies_heuristic: AS_NM_002
+
+  steps:
+    - id: install_adapter
+      command_by_target:
+        cloudflare: "npx astro add cloudflare"
+        vercel: "npx astro add vercel"
+        netlify: "npx astro add netlify"
+        node: "npx astro add node"
+        static: "skip (no adapter needed)"
+
+    - id: configure_output_mode
+      options:
+        static: "output: 'static' — everything prerendered"
+        server: "output: 'server' — everything SSR"
+        hybrid: "output: 'static' + some routes export const prerender = false"
+      default: "static (most sites)"
+
+    - id: adapter_specific_config
+      cloudflare:
+        - "Set prerenderEnvironment: 'node' if using sharp at build time"
+        - "Configure platformProxy for local dev parity with workerd"
+      vercel:
+        - "Choose webAnalytics: { enabled: true } if using Vercel Analytics"
+        - "Configure imageService if using Vercel Image Optimization"
+      netlify:
+        - "Edge functions require `edgeMiddleware: true`"
+      node:
+        - "mode: 'standalone' (VPS) or 'middleware' (Express integration)"
+
+    - id: verify_adapter_runtime_compatibility
+      check: "Does chosen adapter runtime support all planned integrations?"
+      warnings:
+        - "Cloudflare workerd does NOT support: sharp, fs at runtime, many Node native modules"
+        - "Vercel Edge does NOT support: sharp, some Node APIs"
+      applies_heuristic: AS_MP_005
+
+  checkpoint_criteria:
+    - "Adapter installed"
+    - "astro.config.mjs has adapter key"
+    - "Output mode chosen and set"
+    - "Runtime constraints documented for team"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 2: UI FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_2_ui_frameworks:
+  name: "UI framework integrations"
+  duration: "10-15 min"
+  agent: nate-moore + jason-miller (consulted)
+  mode: autonomous
+  applies_heuristic: AS_NM_001
+
+  steps:
+    - id: justify_framework_need
+      handoff: "@astro:jason-miller"
+      question: "Do you ACTUALLY need a UI framework? Many Astro sites are 100% .astro."
+      if_no_islands_needed: "Skip this phase — use <script> tags and Web Components"
+
+    - id: pick_framework
+      decision_by:
+        team_expertise: "Use what team knows (biggest productivity factor)"
+        bundle_criticality:
+          tight: "Preact (3kb) or Solid (7kb)"
+          normal: "React, Vue, or Svelte"
+        ecosystem_needs:
+          needs_mui_chakra: "React (those libs don't work with Preact natively)"
+          needs_headless_ui: "React (Radix UI), Vue (Headless UI), Svelte (Bits UI)"
+
+    - id: install
+      command: "npx astro add {framework}"
+      example: "npx astro add preact"
+
+    - id: verify_one_framework
+      rule: "Warn if multiple frameworks installed"
+      reason: "Each framework = separate runtime bundle. Pick one unless specific reason."
+
+  checkpoint_criteria:
+    - "Framework installed (or explicit 'none — .astro only')"
+    - "jsxImportSource correct in tsconfig.json (if Preact)"
+    - "Sample island created and renders"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 3: CONTENT + STYLING + UTILITY INTEGRATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_3_supporting:
+  name: "Content, styling, utility integrations"
+  duration: "15-25 min"
+  agent: nate-moore
+  mode: autonomous
+  applies_heuristic: AS_NM_003
+
+  install_order:
+    description: "Integration order in astro.config.mjs matters — declare in this sequence:"
+
+  category_1_content:
+    - integration: "@astrojs/mdx"
+      command: "npx astro add mdx"
+      handoff_for_config: "@astro:john-otander"
+      when: "Using .mdx files for content"
+
+  category_2_ui_framework:
+    already_handled: "Phase 2"
+
+  category_3_styling:
+    - integration: "@astrojs/tailwind"
+      command: "npx astro add tailwind"
+      handoff_for_config: "@astro:harry-roberts"
+      when: "Team uses Tailwind"
+      critical_config:
+        content: "Must include all file types: astro, html, js, jsx, md, mdx, ts, tsx, vue, svelte"
+
+  category_4_utility:
+    - integration: "@astrojs/sitemap"
+      command: "npx astro add sitemap"
+      config: "Set `site` in astro.config.mjs for sitemap URLs"
+      when: "Public site with multiple pages"
+
+    - integration: "@astrojs/rss"
+      command: "npm install @astrojs/rss"
+      pattern: "Create src/pages/rss.xml.ts endpoint"
+      when: "Blog or content site"
+
+    - integration: "@astrojs/partytown"
+      command: "npx astro add partytown"
+      purpose: "Move third-party scripts (analytics, tags) to Web Worker"
+      caveat: "Can be complex — evaluate need before adding"
+
+  category_5_ecosystem:
+    auth:
+      options:
+        - {provider: "Clerk", install: "npm install @clerk/astro", maintained_by: "Clerk"}
+        - {provider: "Auth.js", install: "npm install @auth/astro", maintained_by: "community"}
+        - {provider: "Lucia", install: "npm install lucia", maintained_by: "community"}
+      applies_heuristic: "AS_NM_004 (no @astrojs/auth exists — use provider SDK)"
+
+    observability:
+      options:
+        - {name: "Sentry", install: "npm install @sentry/astro", purpose: "Error tracking"}
+        - {name: "Better Stack", purpose: "Uptime + logs"}
+
+    cms:
+      options:
+        - {name: "Storyblok", install: "npm install @storyblok/astro"}
+        - {name: "Sanity", install: "npm install @sanity/astro"}
+        - {name: "Contentful", install: "community loaders"}
+
+  ordering_in_config:
+    template: |
+      import { defineConfig } from 'astro/config';
+      import cloudflare from '@astrojs/cloudflare';     // 1. adapter (always last in "integrations" but set separately)
+      import mdx from '@astrojs/mdx';                    // 2. content transforms first
+      import preact from '@astrojs/preact';              // 3. UI framework (so can be used in MDX)
+      import tailwind from '@astrojs/tailwind';          // 4. styling
+      import sitemap from '@astrojs/sitemap';            // 5. post-build utilities
+
+      export default defineConfig({
+        adapter: cloudflare(),
+        site: 'https://example.com',
+        integrations: [
+          mdx(),
+          preact(),
+          tailwind(),
+          sitemap(),
+        ],
+      });
+
+  checkpoint_criteria:
+    - "All needed integrations installed"
+    - "Ordering respects dependencies"
+    - "Config validates (`npx astro check`)"
+    - "Dev server starts without errors"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 4: VALIDATE INTEGRATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_4_validate:
+  name: "Validate integrations working"
+  duration: "10-15 min"
+  mode: autonomous
+
+  checks:
+    - check: "Build succeeds"
+      command: "npm run build"
+
+    - check: "All integration features work"
+      per_integration:
+        mdx: "Create .mdx file, verify it renders + imports components"
+        tailwind: "Add class to a component, verify it styles"
+        preact/react/etc: "Create interactive island, verify it hydrates"
+        sitemap: "Check dist/sitemap-index.xml exists after build"
+        rss: "Visit /rss.xml in preview, verify XML valid"
+
+    - check: "Adapter runtime compatibility"
+      on_target_platform: "Deploy to a preview environment, verify no runtime errors"
+
+    - check: "Bundle impact acceptable"
+      handoff: "@astro:jason-miller"
+      command: "npm run build with visualizer"
+      verify: "No unexpected framework duplicates or bloat"
+
+  handoffs_if_issues:
+    build_error:
+      handoff: "@astro:matthew-phillips"
+      context: "Pass stack trace, astro.config.mjs, package.json"
+
+    adapter_runtime_error:
+      handoff: "@astro:matthew-phillips"
+      applies_heuristic: AS_MP_005
+
+    css_not_applying:
+      handoff: "@astro:harry-roberts"
+      check: "Tailwind content array, CSS coverage"
+
+    mdx_issues:
+      handoff: "@astro:john-otander"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_outputs:
+  deliverables:
+    - "Updated astro.config.mjs with all integrations"
+    - "Updated package.json with new deps"
+    - "Adapter-specific config files (if any)"
+    - "Sample verifications (MDX file, interactive island, Tailwind-styled component)"
+
+  capabilities_delivered:
+    - "SSR/hybrid rendering via adapter"
+    - "UI framework for interactive islands"
+    - "Content in MDX (if applicable)"
+    - "Tailwind or chosen styling (if applicable)"
+    - "Sitemap + RSS (if SEO-enabled)"
+    - "Ecosystem integrations (auth, CMS, observability)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEURISTICS REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+heuristics_applied:
+  - AS_NM_001: "UI framework choice"
+  - AS_NM_002: "Adapter selection"
+  - AS_NM_003: "Integration ordering"
+  - AS_NM_004: "Custom vs out-of-box"
+  - AS_NM_005: "Multi-framework cost warning"
+  - AS_MP_005: "Adapter runtime compatibility"
+
+metadata:
+  created: "2026-04-18"
+  squad: astro
+  version: "1.0.0"

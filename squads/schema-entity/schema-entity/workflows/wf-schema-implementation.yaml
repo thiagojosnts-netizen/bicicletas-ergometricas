@@ -1,0 +1,721 @@
+workflow:
+  id: wf-schema-implementation
+  name: "Schema Implementation"
+  version: "2.0"
+  purpose: "Fase 4: Implementação JSON-LD + entity hubs + bidirectional links — do template ao deploy"
+  orchestrator: "@schema-chief"
+  requires: ["wf-entity-disambiguation outputs"]
+  estimated_duration: "3-6 horas"
+  next_workflow: wf-validation-pipeline
+
+# ─────────────────────────────────────────────
+# INPUTS
+# ─────────────────────────────────────────────
+
+inputs:
+  required:
+    - name: master_entity_table_final
+      type: file
+      path: "data/master_entity_table_final.csv"
+
+    - name: disambiguation_strategy
+      type: file
+      path: "docs/disambiguation-strategy.md"
+
+    - name: id_pattern_guide
+      type: file
+      path: "docs/id_pattern_guide.md"
+
+    - name: entity_hubs_plan
+      type: file
+      path: "docs/entity_hubs_plan.md"
+
+  optional:
+    - name: cms_type
+      type: enum
+      values: [wordpress, nextjs, astro, shopify, webflow, vue, svelte, html, custom]
+      description: "CMS para determinar método de injeção"
+
+    - name: staging_url
+      type: url
+      description: "URL do ambiente de staging para testes pré-deploy"
+
+    - name: deploy_to_production
+      type: boolean
+      default: false
+      description: "Se false, gera templates mas não injeta"
+
+# ─────────────────────────────────────────────
+# PRE-IMPLEMENTATION CHECKLIST
+# ─────────────────────────────────────────────
+
+pre_implementation:
+  agent: "@schema-chief"
+  required_confirmations:
+    - "Disambiguation strategy aprovada por @koray-semantic: SIM/NÃO"
+    - "id_pattern_guide.md existe e está documentado: SIM/NÃO"
+    - "master_entity_table_final.csv com todos Q-IDs verificados: SIM/NÃO"
+    - "Staging environment disponível para testes: SIM/NÃO"
+    - "Rollback plan definido: SIM/NÃO"
+  block_if_no: ["disambiguation strategy aprovada", "id_pattern_guide existe"]
+
+# ─────────────────────────────────────────────
+# PHASES
+# ─────────────────────────────────────────────
+
+phases:
+
+  # ══════════════════════════════════════════
+  # FASE 4A — JSON-LD TEMPLATES
+  # ══════════════════════════════════════════
+
+  - id: phase_4a_templates
+    name: "FASE 4A: JSON-LD TEMPLATES"
+    purpose: "Criar templates reutilizáveis por tipo de página"
+    agent: "@schema-architect"
+    duration: "60-90 min"
+
+    steps:
+      - id: s4a_1
+        name: "Identificar Todos os Tipos de Página do Site"
+        agent: "@schema-architect"
+        prompt: |
+          Baseado no schema_inventory.csv e cluster_map.json da Fase 1,
+          listar TODOS os tipos de página distintos que o site possui.
+
+          TIPOS COMUNS:
+          [ ] Homepage — Organization + WebSite + SearchAction
+          [ ] Blog post / Artigo — Article ou BlogPosting
+          [ ] Notícia — NewsArticle
+          [ ] Página de FAQ — FAQPage (standalone)
+          [ ] Tutorial / How-to — HowTo
+          [ ] Página de produto — Product + Offer + AggregateRating
+          [ ] Categoria de produto — ItemList
+          [ ] Página de autor / Sobre — Person
+          [ ] Página de contato — LocalBusiness (se negócio local)
+          [ ] Página de serviço — Service
+          [ ] Evento — Event
+          [ ] Curso — Course + CourseInstance
+          [ ] Vídeo — VideoObject
+          [ ] Receita — Recipe
+          [ ] Podcast — PodcastSeries / PodcastEpisode
+          [ ] Job posting — JobPosting
+          [ ] Dataset — Dataset
+          [ ] Landing page genérica — WebPage
+
+          Para cada tipo identificado: contar quantas URLs existem no sitemap.
+
+        output:
+          file: "page_types_inventory.yaml"
+
+        time_estimate: "10 min"
+
+      - id: s4a_2
+        name: "Templates JSON-LD por Tipo de Página"
+        agent: "@schema-architect"
+        command: "*template para cada tipo"
+        prompt: |
+          Para CADA tipo de página do site, criar template JSON-LD completo.
+
+          PRINCÍPIOS (Jarno van Driel):
+          1. Sempre usar @graph para agrupar todas as entidades de uma URL
+          2. Todas as entidades principais têm @id
+          3. Entities se cross-referenciam via @id (não duplicam dados)
+          4. Distinguir: o que schema.org suporta vs o que Google usa para rich results
+          5. Não adicionar propriedades que Google ignora para obter "schema limpo"
+
+          TEMPLATE PADRÃO — ARTIGO (exemplo de estrutura):
+          ```json
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": "{page_url}#webpage",
+                "url": "{page_url}",
+                "name": "{SEO_TITLE}",
+                "description": "{META_DESCRIPTION}",
+                "isPartOf": { "@id": "{domain}/#website" },
+                "about": { "@id": "{hub_entity_@id}" },
+                "breadcrumb": { "@id": "{page_url}#breadcrumb" },
+                "inLanguage": "pt-BR",
+                "potentialAction": [{
+                  "@type": "ReadAction",
+                  "target": ["{page_url}"]
+                }]
+              },
+              {
+                "@type": "Article",
+                "@id": "{page_url}#article",
+                "isPartOf": { "@id": "{page_url}#webpage" },
+                "author": { "@id": "{domain}/autor/{slug}/#person" },
+                "headline": "{H1}",
+                "description": "{FIRST_PARAGRAPH_150CHARS}",
+                "datePublished": "{ISO8601_DATE}",
+                "dateModified": "{ISO8601_DATE}",
+                "mainEntityOfPage": { "@id": "{page_url}#webpage" },
+                "publisher": { "@id": "{domain}/#organization" },
+                "image": {
+                  "@type": "ImageObject",
+                  "@id": "{page_url}#primaryimage",
+                  "inLanguage": "pt-BR",
+                  "url": "{IMAGE_URL}",
+                  "contentUrl": "{IMAGE_URL}",
+                  "width": 1200,
+                  "height": 630,
+                  "caption": "{IMAGE_CAPTION}"
+                },
+                "keywords": ["{KW1}", "{KW2}", "{KW3}"]
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "{page_url}#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{domain}/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "{CLUSTER_NAME}",
+                    "item": "{CLUSTER_URL}"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "{PAGE_TITLE}",
+                    "item": "{page_url}"
+                  }
+                ]
+              },
+              {
+                "@type": "Person",
+                "@id": "{domain}/autor/{slug}/#person",
+                "name": "{AUTHOR_NAME}",
+                "url": "{AUTHOR_PAGE_URL}",
+                "image": {
+                  "@type": "ImageObject",
+                  "inLanguage": "pt-BR",
+                  "url": "{AUTHOR_IMAGE_URL}"
+                },
+                "sameAs": ["{AUTHOR_LINKEDIN}", "{AUTHOR_WIKIDATA_IF_EXISTS}"]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "{domain}/#website",
+                "url": "{domain}/",
+                "name": "{SITE_NAME}",
+                "description": "{SITE_DESCRIPTION}",
+                "publisher": { "@id": "{domain}/#organization" },
+                "inLanguage": "pt-BR"
+              },
+              {
+                "@type": "Organization",
+                "@id": "{domain}/#organization",
+                "name": "{ORG_NAME}",
+                "url": "{domain}/",
+                "logo": {
+                  "@type": "ImageObject",
+                  "inLanguage": "pt-BR",
+                  "url": "{LOGO_URL}",
+                  "contentUrl": "{LOGO_URL}",
+                  "width": 512,
+                  "height": 512,
+                  "caption": "{ORG_NAME}"
+                },
+                "image": { "@id": "{LOGO_URL}" },
+                "sameAs": [
+                  "https://www.wikidata.org/wiki/{Q-ID}",
+                  "https://www.linkedin.com/company/{slug}"
+                ]
+              }
+            ]
+          }
+          ```
+
+          CRIAR TEMPLATES PARA CADA TIPO IDENTIFICADO.
+          Cada template em arquivo separado: templates/jsonld/{type}.json
+
+        output:
+          location: "templates/jsonld/"
+          files_created: "Um arquivo por tipo de página"
+          naming: "{type}.json (ex: article.json, product.json, homepage.json)"
+
+        time_estimate: "40 min"
+
+      - id: s4a_3
+        name: "Connected Schema Chain Verification"
+        agent: "@schema-architect"
+        command: "*connect-entities"
+        prompt: |
+          Verificar que a cadeia de referências via @id está completa e sem lacunas.
+
+          CHAIN OBRIGATÓRIA:
+          Article.author → @id do Person
+          Article.publisher → @id da Organization
+          Article.isPartOf → @id do WebPage
+          WebPage.isPartOf → @id do WebSite
+          WebSite.publisher → @id da Organization
+          Person.worksFor → @id da Organization (se aplicável)
+          WebPage.about → @id da Central Entity do cluster
+
+          VERIFICAÇÃO:
+          Para cada template criado:
+          □ Todas as referências @id resolvem para um nó dentro do @graph?
+          □ Nenhuma entidade é definida 2x no mesmo @graph?
+          □ @id da Organization é idêntico em TODOS os templates?
+          □ @id da WebSite é idêntico em TODOS os templates?
+
+          ANTI-PATTERNS A EVITAR:
+          ❌ author: { "name": "João" } — sem @id
+          ❌ publisher: { "@type": "Organization", "name": "Empresa" } — duplicado em cada página
+          ❌ "url" e "@id" diferentes para a mesma entidade
+          ❌ Dois @type no mesmo nó sem usar [] quando semanticamente correto
+
+        output:
+          file: "connected_chain_validation.yaml"
+
+        time_estimate: "15 min"
+
+    checkpoint:
+      id: CP_4A
+      name: "Templates Complete"
+      blocking: true
+      criteria:
+        - "Templates criados para TODOS os tipos de página identificados"
+        - "Todos os templates têm @graph com @ids"
+        - "Connected chain validada sem lacunas"
+        - "Templates JSON válido (parseable)"
+      on_fail: "Corrigir template específico antes de prosseguir"
+
+  # ══════════════════════════════════════════
+  # FASE 4B — ENTITY HUBS
+  # ══════════════════════════════════════════
+
+  - id: phase_4b_entity_hubs
+    name: "FASE 4B: ENTITY HUBS — CRIAÇÃO"
+    purpose: "Criar páginas de entity hub para Central Entities prioritárias"
+    agent: "@entity-disambiguator + @kg-engineer"
+    duration: "60-120 min"
+
+    steps:
+      - id: s4b_1
+        name: "Criar Conteúdo dos Entity Hubs"
+        agent: "@entity-disambiguator"
+        command: "*build-hub"
+        prompt: |
+          Para CADA hub aprovado em entity_hubs_plan.md, criar o conteúdo.
+
+          ESTRUTURA DE CONTEÚDO (schema-first — definir schema ANTES de escrever):
+
+          1. DEFINIR O SCHEMA PRIMEIRO:
+             @type + @id + sameAs + hasPart (lista de spokes que vão linkar para cá)
+
+          2. ESCREVER O CONTEÚDO COM BASE NO SCHEMA:
+             H1: {Nome oficial exato do @name no schema}
+             Parágrafo 1 (AEO-ready, 2-3 frases):
+               "X é [definição objetiva]. [Contexto de por que é relevante para o nicho].
+               [Principal atributo ou característica]."
+             Parágrafo 2: Relevância para o domínio do site (máx 150 palavras)
+             Parágrafo 3: Relações com outras entidades (mencionar com links)
+             H2: Artigos sobre {Nome}
+               [Lista de todos os spokes com anchor text semântico]
+
+          3. SCHEMA DO HUB:
+             Incluir no <head> da página — JSON-LD completo conforme template
+             Incluir hasPart com URLs de todos os spokes identificados
+
+          NOTA: Se o site usa CMS onde criar páginas requer ação do usuário,
+          gerar o brief de conteúdo e o schema — não criar a página diretamente.
+
+        output:
+          location: "docs/entity-hubs/"
+          files: "Uma especificação por hub: {entity-slug}-hub-spec.md"
+          format: |
+            # Entity Hub Spec — {entity_name}
+            **URL:** {hub_url}
+            **Status:** draft|published
+
+            ## Schema JSON-LD
+            ```json
+            {schema completo}
+            ```
+
+            ## Conteúdo
+            {outline + texto sugerido}
+
+            ## Bidirectional Links
+            ### Spokes para adicionar link para este hub:
+            | Spoke URL | Anchor text | Posição no texto |
+            |-----------|-------------|-----------------|
+            {lista}
+
+        time_estimate: "20-30 min por hub"
+
+      - id: s4b_2
+        name: "Bidirectional Linking — Spokes → Hubs"
+        agent: "@entity-disambiguator"
+        command: "*bidirectional"
+        prompt: |
+          Para cada entity hub criado, implementar os links bidirecionais.
+
+          HUB → SPOKES (já feito via hasPart no schema + seção editorial):
+          ✅ hasPart array no schema do hub com URLs dos spokes
+          ✅ Seção "Artigos sobre {entidade}" no conteúdo do hub
+
+          SPOKES → HUB (ação principal desta etapa):
+          Para cada spoke identificado:
+
+          SCHEMA DO SPOKE (adicionar/atualizar):
+          ```json
+          {
+            "@type": "WebPage",
+            "@id": "{spoke_url}#webpage",
+            "about": {
+              "@id": "{hub_@id}"
+            }
+          }
+          ```
+
+          LINK EDITORIAL NO SPOKE:
+          1. Identificar a PRIMEIRA menção da entidade no texto do spoke
+          2. Adicionar link interno para o hub com anchor text = nome da entidade
+          3. Não repetir o link em cada menção — apenas a primeira
+
+          TRACKING:
+          Para cada spoke modificado, registrar:
+          - URL do spoke
+          - Hub para o qual foi linkado
+          - Schema atualizado? (SIM/NÃO)
+          - Link editorial adicionado? (SIM/NÃO)
+          - Método de atualização (CMS manual / deploy via script)
+
+        output:
+          file: "bidirectional_tracking.csv"
+          columns: "spoke_url | hub_entity | hub_url | schema_updated | editorial_link_added | method | date"
+
+        time_estimate: "30-60 min"
+
+    checkpoint:
+      id: CP_4B
+      name: "Entity Hubs Complete"
+      blocking: true
+      criteria:
+        - "P1 hubs têm spec completa com schema e conteúdo"
+        - "Bidirectional links documentados no tracking CSV"
+        - "hasPart correto nos schemas dos hubs"
+        - "about correto nos schemas dos spokes (pelo menos top 10)"
+      on_fail: "Priorizar hubs P1, documentar P2+ como pendentes"
+
+  # ══════════════════════════════════════════
+  # FASE 4C — CMS INJECTION
+  # ══════════════════════════════════════════
+
+  - id: phase_4c_injection
+    name: "FASE 4C: CMS INJECTION"
+    purpose: "Injetar JSON-LD no CMS — staging e produção"
+    agent: "@kg-engineer + @multiformat-engineer"
+    duration: "60-120 min"
+
+    steps:
+      - id: s4c_1
+        name: "Definir Método de Injeção por CMS"
+        agent: "@multiformat-engineer"
+        command: "*output {cms_type}"
+        prompt: |
+          Selecionar o método correto de injeção baseado no cms_type.
+
+          WORDPRESS:
+            Opção A (recomendada): Usar plugin SEO (RankMath/Yoast)
+              - Configurar Organization schema nas configurações globais
+              - Usar custom schema field por post para schemas específicos
+            Opção B: functions.php custom
+              ```php
+              add_action('wp_head', 'aiox_schema_inject');
+              function aiox_schema_inject() {
+                global $post;
+                $schema = get_post_meta($post->ID, '_schema_jsonld', true);
+                if ($schema) {
+                  echo '<script type="application/ld+json">' . $schema . '</script>';
+                }
+              }
+              ```
+            Opção C: Classe SchemaEntityManager (do @kg-engineer)
+
+          NEXT.JS APP ROUTER:
+            Componente JsonLd.tsx + generateMetadata()
+            Injetar via next/script com strategy="beforeInteractive"
+            Verificar SSR: schema deve aparecer no view-source
+
+          ASTRO:
+            SchemaGraph.astro component
+            Passar props via frontmatter ou content collections
+
+          SHOPIFY:
+            theme.liquid: Organization + WebSite (global)
+            product.liquid: Product schema
+            article.liquid: Article schema
+            Usar metafields para dados dinâmicos
+
+          WEBFLOW:
+            Injetar no Custom Code do projeto (global)
+            Usar embed element para schemas específicos de página
+            LIMITAÇÃO: Webflow não tem hook de template — schema manual por página
+
+          HTML PURO:
+            Inserir <script type="application/ld+json"> no <head>
+            Automatizar via build script se necessário
+
+        output:
+          file: "cms_injection_guide.md"
+
+        time_estimate: "15 min"
+
+      - id: s4c_2
+        name: "Validação Pre-Deploy — Staging"
+        agent: "@tech-seo-engineer"
+        command: "*validate-jsonld staging"
+        prompt: |
+          Antes de qualquer deploy para produção, validar TODOS os templates:
+
+          VALIDAÇÃO OBRIGATÓRIA (staging):
+
+          PASSO 1 — JSON Syntax:
+          ```bash
+          # Para cada arquivo JSON-LD:
+          python3 -c "import json,sys; json.load(sys.stdin)" < templates/jsonld/article.json
+          echo "JSON valid: $?"
+          ```
+
+          PASSO 2 — Rich Results Test (manual ou via API):
+          URL: https://search.google.com/test/rich-results
+          Para cada tipo de página: testar uma URL de staging
+          Resultado esperado: ELIGIBLE (verde)
+          Resultado aceitável: ELIGIBLE com warnings
+          Resultado BLOQUEANTE: ERROR (schema inválido)
+
+          PASSO 3 — Schema.org Validator:
+          URL: https://validator.schema.org
+          Para cada template: verificar zero erros (warnings são ok)
+
+          PASSO 4 — SSR Verification:
+          ```bash
+          curl -s {staging_url} | grep "application/ld+json" | wc -l
+          # Deve retornar > 0 (schema presente no HTML inicial, não via JS)
+          ```
+
+          PASSO 5 — Connected Chain Spot-Check:
+          Verificar manualmente em 1 URL de cada tipo:
+          □ Organization @id idêntico ao definido em id_pattern_guide?
+          □ Article.author referencia um @id que existe no @graph?
+          □ WebPage.isPartOf referencia WebSite @id?
+
+          RESULTADO:
+          Para cada template: PASS | WARN | FAIL
+          Listar todos os FAIL antes de prosseguir para produção
+
+        output:
+          file: "validation_pre_deploy.yaml"
+          format: |
+            validation_date: {ISO8601}
+            environment: staging
+            results:
+              - template: article.json
+                json_valid: true
+                rich_results_test: ELIGIBLE|ELIGIBLE_WITH_WARNINGS|ERROR
+                schema_validator: PASS|WARN|FAIL
+                ssr_verified: true|false
+                connected_chain: PASS|FAIL
+                overall: PASS|FAIL
+            block_deploy: true|false
+            blocking_issues: []
+
+        time_estimate: "20 min"
+
+      - id: s4c_3
+        name: "Deploy Plan — Produção"
+        agent: "@kg-engineer"
+        prompt: |
+          Com staging validado, planejar deploy para produção.
+
+          DEPLOY ORDER (do mais seguro para o mais arriscado):
+          1. Schema global/sitewide (Organization, WebSite) — afeta todas as páginas
+          2. Article/BlogPosting schema — afeta posts existentes
+          3. Entity hubs — criação de novas páginas
+          4. Product schema — se e-commerce, testar impacto em CWV
+
+          ROLLBACK PLAN (OBRIGATÓRIO antes de qualquer deploy):
+          Documentar como reverter cada mudança:
+          - WordPress: exportar backup do banco antes + desativar plugin custom
+          - Next.js: git revert do commit específico
+          - Shopify: usar versão anterior do tema salva
+
+          MONITORING PÓS-DEPLOY:
+          - Verificar GSC Structured Data report após 24h
+          - Checar CWV antes e depois (PageSpeed Insights)
+          - Monitorar Rich Results em staging por 48h antes de produção
+
+        output:
+          file: "rollback-guide.md"
+          template: |
+            # Rollback Guide — {domain}
+            **Preparado por:** @kg-engineer
+            **Data:** {ISO8601}
+
+            ## Se deploy causar problemas:
+
+            ### Rollback Global Schema (Organization + WebSite):
+            {instrução específica para o CMS}
+
+            ### Rollback Article Schema:
+            {instrução}
+
+            ### Rollback Entity Hubs:
+            {instrução — geralmente unpublish/delete de página}
+
+            ### Tempo estimado de rollback: {minutos}
+
+            ## Contato de emergência:
+            {quem chamar se algo der errado}
+
+        time_estimate: "15 min"
+
+      - id: s4c_4
+        name: "Injection Report"
+        agent: "@kg-engineer"
+        prompt: |
+          Após deploy, gerar relatório completo de implementação.
+
+        output:
+          file: "injection-report.md"
+          template: |
+            # Schema Injection Report — {domain}
+            **Data do deploy:** {ISO8601}
+            **Ambiente:** produção
+            **Agente:** @kg-engineer
+
+            ## O que foi implementado
+            | Tipo | Páginas afetadas | Método | Status |
+            |------|-----------------|--------|--------|
+            {linha por tipo de schema}
+
+            ## Entity Hubs criados
+            | Hub | URL | Status |
+            |----|-----|--------|
+            {linha por hub}
+
+            ## Bidirectional links
+            - Spokes atualizados com schema about: {N}
+            - Links editoriais adicionados: {N}
+
+            ## Issues encontradas
+            {lista de problemas e como foram resolvidos}
+
+            ## Próximos passos
+            → Executar wf-validation-pipeline
+            → Monitorar GSC em 24-72h
+            → Checar Rich Results Test em 48h
+
+        time_estimate: "10 min"
+
+    checkpoint:
+      id: CP_4C
+      name: "Injection Complete"
+      blocking: true
+      criteria:
+        - "validation_pre_deploy.yaml: block_deploy = false"
+        - "rollback-guide.md existe antes de qualquer deploy"
+        - "injection-report.md gerado após deploy"
+        - "CWV verificado pós-deploy"
+      veto_conditions:
+        - "Deploy para produção sem staging test: VETO ABSOLUTO"
+        - "Validation FAIL não resolvido antes de deploy: VETO"
+        - "Rollback plan não documentado: VETO"
+
+# ─────────────────────────────────────────────
+# OUTPUTS
+# ─────────────────────────────────────────────
+
+outputs:
+  primary:
+    - name: "jsonld-templates/"
+      location: "templates/jsonld/"
+      description: "Todos os templates JSON-LD por tipo de página"
+
+    - name: "entity-hubs/"
+      location: "docs/entity-hubs/"
+      description: "Specs completas de cada entity hub"
+
+    - name: "injection-report.md"
+      location: "docs/injection-report.md"
+
+    - name: "rollback-guide.md"
+      location: "docs/rollback-guide.md"
+
+  secondary:
+    - name: "connected_chain_validation.yaml"
+    - name: "bidirectional_tracking.csv"
+    - name: "validation_pre_deploy.yaml"
+    - name: "cms_injection_guide.md"
+    - name: "page_types_inventory.yaml"
+
+# ─────────────────────────────────────────────
+# QUALITY GATES
+# ─────────────────────────────────────────────
+
+quality_gates:
+  - gate: QG_IMPL_01
+    check: "Templates criados para todos os tipos de página do site"
+    blocking: true
+
+  - gate: QG_IMPL_02
+    check: "Todos os templates têm @id em entidades principais"
+    blocking: true
+    fail_action: "Revisar template específico — nenhum deploy sem @id"
+
+  - gate: QG_IMPL_03
+    check: "Entity hubs P1 e P2 criados com sameAs correto"
+    blocking: true
+    fail_action: "Pelo menos hubs P1 devem estar prontos"
+
+  - gate: QG_IMPL_04
+    check: "Rich Results Test: ELIGIBLE em >= 80% dos templates testados"
+    blocking: true
+    fail_action: "Corrigir schemas FAIL antes de prosseguir"
+
+  - gate: QG_IMPL_05
+    check: "SSR verification: schema presente em view-source (não apenas via JS)"
+    blocking: true
+    fail_action: "Verificar implementação — schema deve ser server-rendered"
+
+  - gate: QG_IMPL_06
+    check: "CWV não degradou pós-deploy (verificar PageSpeed Insights)"
+    blocking: true
+    fail_action: "Investigar impacto do schema no CLS/LCP antes de finalizar"
+
+  - gate: QG_IMPL_07
+    check: "Rollback plan documentado e testado em staging"
+    blocking: true
+
+  - gate: QG_IMPL_08
+    check: "Bidirectional links: pelo menos spokes dos hubs P1 atualizados"
+    blocking: false
+    fail_action: "Documentar pendências para sprint seguinte"
+
+# ─────────────────────────────────────────────
+# AGENT ROUTING
+# ─────────────────────────────────────────────
+
+agent_routing:
+  orchestration: "@schema-chief"
+  phase_4a_templates: "@schema-architect *template"
+  phase_4a_chain: "@schema-architect *connect-entities"
+  phase_4b_hubs: "@entity-disambiguator *build-hub"
+  phase_4b_bidirectional: "@entity-disambiguator *bidirectional"
+  phase_4c_format: "@multiformat-engineer *output {cms_type}"
+  phase_4c_validation: "@tech-seo-engineer *validate-jsonld"
+  phase_4c_injection: "@kg-engineer *inject-{cms_type}"
+  phase_4c_report: "@kg-engineer"

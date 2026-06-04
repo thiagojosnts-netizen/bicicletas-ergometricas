@@ -1,0 +1,196 @@
+name: greenfield-site
+version: "1.0.0"
+description: "Workflow completo para criar um site HTML5 semântico do zero"
+trigger: "Novo projeto de site sem codebase existente"
+
+# ── Integração com Design Squad ────────────────────────────────────────────
+design_integration:
+  entry_point: "Se recebendo de design-chief, começar em PHASE 2"
+  design_inputs_replace: "PHASE 1 elicitation quando specs já existem"
+
+phases:
+
+  # ── PHASE 0: BRIEF ─────────────────────────────────────────────────────
+  - id: phase-0-brief
+    name: "Brief & Discovery"
+    agent: html5-chief
+    checkpoint: GF-001
+    steps:
+      - "Coletar: tipo de site, objetivo, público-alvo, páginas necessárias"
+      - "Verificar se design-chief já entregou specs (pular para Phase 2 se sim)"
+      - "Definir escopo: quais templates serão criados"
+      - "Decidir: precisará de JavaScript? (Choso ativado ou não)"
+    output: project_brief.md
+    gate:
+      pass: "Brief completo, escopo definido"
+      fail: "Voltar para coletar informações faltantes"
+
+  # ── PHASE 1: DESIGN (opcional se vindo do design-chief) ────────────────
+  - id: phase-1-design
+    name: "Design Coordination"
+    agent: html5-chief
+    checkpoint: GF-002
+    optional: true
+    skip_if: "design_chief_handoff_received"
+    steps:
+      - "Acionar @design-chief com brief do projeto"
+      - "Aguardar: design tokens, component specs, brand guidelines"
+      - "Validar: tokens suficientes para implementação?"
+    output: design_handoff_received.yaml
+    gate:
+      pass: "Design tokens + specs recebidos"
+      fail: "Solicitar specs faltantes ao design-chief"
+
+  # ── PHASE 2: ARCHITECTURE ───────────────────────────────────────────────
+  - id: phase-2-architecture
+    name: "Site Architecture"
+    agent: kashimo
+    checkpoint: GF-003
+    steps:
+      - "Executar SAAP-001: Document Outline Planning"
+      - "Executar SAAP-002: Landmark Map"
+      - "Executar SAAP-003: Content Model"
+      - "Mapear componentes visuais (design) → elementos semânticos (HTML)"
+      - "Gerar Site Architecture Document (SAD)"
+      - "Criar routing plan para demais agentes"
+    output: site-architecture-document.md
+    gate:
+      pass: "SAD completo, routing definido, nenhum veto condition ativado"
+      fail_conditions:
+        - "Heading hierarchy impossível → reformular estrutura"
+        - "Sem landmark map → bloquear até definir"
+
+  # ── PHASE 3: SEMANTIC STRUCTURE ─────────────────────────────────────────
+  - id: phase-3-semantic
+    name: "HTML5 Semantic Implementation"
+    agent: hakari
+    checkpoint: GF-004
+    depends_on: phase-2-architecture
+    steps:
+      - "Implementar templates HTML5 com base no SAD"
+      - "Criar estrutura base para cada template (home, inner, listing, etc.)"
+      - "Implementar componentes: nav, cards, forms, accordions..."
+      - "Adicionar Schema.org JSON-LD para cada tipo de página"
+      - "Validar document outline em cada template"
+    output: "squads/html5/templates/*.html"
+    gate:
+      pass: "Todos templates implementados, outline válido, zero div-soup"
+      fail_conditions:
+        - "Heading hierarchy inválida → fix imediato"
+        - "Forms sem labels → bloquear até corrigir"
+
+  # ── PHASE 4: ACCESSIBILITY ──────────────────────────────────────────────
+  - id: phase-4-accessibility
+    name: "WCAG 2.1 AA Implementation"
+    agent: higuruma
+    checkpoint: GF-005
+    depends_on: phase-3-semantic
+    parallel_with: phase-5-css
+    steps:
+      - "Auditar ARIA em todos os componentes interativos"
+      - "Verificar contraste (4.5:1 texto normal, 3:1 texto grande)"
+      - "Implementar aria-live regions para conteúdo dinâmico"
+      - "Validar focus order em cada template"
+      - "Gerar accessibility report"
+    output: accessibility-report.md
+    gate:
+      pass: "Zero Critical/Serious violations"
+      fail: "BLOQUEADO — corrigir antes de continuar"
+
+  # ── PHASE 5: CSS ARCHITECTURE ───────────────────────────────────────────
+  - id: phase-5-css
+    name: "CSS Architecture"
+    agent: maki
+    checkpoint: GF-006
+    depends_on: phase-3-semantic
+    parallel_with: phase-4-accessibility
+    steps:
+      - "Converter design tokens em CSS custom properties"
+      - "Implementar sistema de layout (Grid, Flexbox, Compositions)"
+      - "Criar componentes CSS para cada HTML component"
+      - "Implementar dark mode (prefers-color-scheme)"
+      - "Implementar prefers-reduced-motion em todas as animações"
+      - "Auditar performance CSS (especificidade, redundância)"
+    output: "css/main.css, css/components/*.css"
+    gate:
+      pass: "CSS válido, sem !important, tokens documentados"
+      fail: "Revisar arquitetura CSS antes de prosseguir"
+
+  # ── PHASE 6: HEAD OPTIMIZATION ──────────────────────────────────────────
+  - id: phase-6-head
+    name: "SEO Meta & Head"
+    agent: uraume
+    checkpoint: GF-007
+    depends_on: phase-3-semantic
+    steps:
+      - "Implementar <head> completo para cada template"
+      - "Configurar Open Graph + Twitter Card"
+      - "Implementar JSON-LD específico por tipo de página"
+      - "Configurar resource hints (preconnect, preload)"
+      - "Implementar canonical strategy"
+      - "Adicionar favicon + PWA meta"
+    output: "head partials por template"
+    gate:
+      pass: "Rich Results Test: zero errors, performance hints presentes"
+      fail: "Corrigir structured data errors"
+
+  # ── PHASE 7: JS ENHANCEMENT (opcional) ──────────────────────────────────
+  - id: phase-7-js
+    name: "Progressive Enhancement"
+    agent: choso
+    checkpoint: GF-008
+    depends_on: [phase-3-semantic, phase-5-css]
+    optional: true
+    activate_if: "project_requires_js"
+    steps:
+      - "Identificar funcionalidades que precisam de JS enhancement"
+      - "Implementar Web Components para componentes dinâmicos"
+      - "Adicionar animações on-scroll com IntersectionObserver"
+      - "Implementar form enhancement (validação progressiva)"
+      - "Testar: tudo funciona sem JS?"
+    output: "js/main.js, js/components/*.js"
+    gate:
+      pass: "Site 100% funcional sem JS, JS apenas melhora"
+      fail: "JS está criando funcionalidade crítica → refatorar para HTML/CSS"
+
+  # ── PHASE 8: SCREEN READER QA ───────────────────────────────────────────
+  - id: phase-8-sr-qa
+    name: "Screen Reader Final QA"
+    agent: inumaki
+    checkpoint: GF-009
+    depends_on: [phase-4-accessibility, phase-6-head]
+    steps:
+      - "Auditar nomes acessíveis de todos os elementos interativos"
+      - "Verificar aria-live regions para conteúdo dinâmico"
+      - "Testar com NVDA protocol (heading nav, landmark nav, form nav)"
+      - "Verificar SVG/ícone accessibility"
+      - "Testar pronunciação de datas, moedas, abreviações"
+    output: screen-reader-report.md
+    gate:
+      pass: "Experiência auditiva equivalente à visual"
+      fail: "Corrigir issues antes de launch"
+
+  # ── PHASE 9: FINAL VALIDATION ────────────────────────────────────────────
+  - id: phase-9-validation
+    name: "Pre-Launch Validation"
+    agent: html5-chief
+    checkpoint: GF-010
+    depends_on: [phase-8-sr-qa, phase-7-js, phase-6-head]
+    steps:
+      - "Executar semantic-html-checklist.md"
+      - "Executar wcag-checklist.md"
+      - "Executar performance-checklist.md"
+      - "Compilar relatório final"
+      - "Enviar relatório de volta ao design-chief (visual QA)"
+    output: launch-readiness-report.md
+    gate:
+      pass: "Todos os checklists PASS, design-chief aprova visual QA"
+      fail: "Retornar ao agente responsável pela falha"
+
+outputs:
+  - "Site HTML5 completo com todas as pages/templates"
+  - "CSS architecture com design tokens"
+  - "Accessibility report (WCAG 2.1 AA)"
+  - "Screen reader report"
+  - "Launch readiness report"
+  - "Visual QA report para design-chief"

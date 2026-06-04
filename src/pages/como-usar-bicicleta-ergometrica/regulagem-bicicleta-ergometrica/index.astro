@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Regulagem', url: '/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Como regular a altura do selim da bicicleta ergométrica?',
+    answer: 'Fique de pé ao lado da bicicleta e posicione o selim na altura do quadril. Ao sentar e colocar o calcanhar no pedal na posição mais baixa (6 horas no relógio), a perna deve estar quase completamente estendida. Ao mudar para a postura de pedalagem normal (antepé no pedal), o joelho ficará com 25 a 35 graus de flexão no ponto mais baixo, que é o ângulo correto.',
+  },
+  {
+    question: 'O guidão da bicicleta ergométrica precisa ser ajustado?',
+    answer: 'Sim. O guidão deve estar na altura em que os cotovelos fiquem levemente flexionados ao segurar os punhos sem inclinar excessivamente o tronco. Para usuários com dor no pescoço ou nas costas, eleve o guidão; para posição mais agressiva como na spinning, abaixe-o. A maioria dos modelos tem ajuste de altura por pino de engate rápido.',
+  },
+  {
+    question: 'Como saber se a regulagem da bicicleta ergométrica está correta?',
+    answer: 'A regulagem está correta quando: (1) o joelho não ultrapassa 35 graus de flexão no ponto mais baixo do pedal; (2) o quadril não balança lateralmente durante o pedalamento; (3) não é necessário fazer força com os braços para se manter na bicicleta; (4) após 20 minutos de pedalagem, não há dor no joelho, coluna ou perineal.',
+  },
+];
+---
+
+<Layout
+  title="Como Regular a Bicicleta Ergométrica: Selim, Guidão e Pedais Passo a Passo"
+  description="Guia passo a passo de regulagem da bicicleta ergométrica: como ajustar a altura do selim, posição do guidão e postura correta dos pés nos pedais para pedalar com segurança e eficiência."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-17"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Como Regular a Bicicleta Ergométrica: Guia Passo a Passo</h1>
+
+      <p class="summarization">
+        A regulagem correta da <strong>bicicleta ergométrica</strong> é feita em três pontos: <strong>altura do selim</strong> (joelho com 25–35 graus de flexão no ponto mais baixo do pedal), <strong>altura do guidão</strong> (cotovelos levemente flexionados sem tensão nos ombros) e <strong>posição dos pés</strong> (antepé sobre o centro do pedal, não o calcanhar). Uma regulagem incorreta aumenta o risco de lesões e reduz a eficiência do treino.
+      </p>
+
+      <p>
+        A regulagem da bicicleta ergométrica é o primeiro passo antes de qualquer sessão de treino e deve ser revisada sempre que um novo usuário usar o equipamento. Três erros de regulagem são responsáveis pela maioria das queixas de dor em usuários de bicicleta ergométrica: selim muito baixo, guidão muito baixo e pés mal posicionados nos pedais.
+      </p>
+
+      <h2>Passo 1: Ajuste da Altura do Selim</h2>
+
+      <ol>
+        <li><strong>Posicione-se ao lado da bicicleta:</strong> fique em pé com o ombro alinhado ao selim</li>
+        <li><strong>Eleve ou abaixe o selim</strong> até que fique na altura do osso do quadril (trocânter maior)</li>
+        <li><strong>Sente-se e posicione os pés:</strong> coloque o calcanhar no pedal na posição de 6 horas; a perna deve estar quase completamente estendida</li>
+        <li><strong>Verifique na posição de pedalagem:</strong> ao mudar para o antepé no pedal (posição normal de pedalagem), o joelho deve ter 25 a 35 graus de flexão no ponto mais baixo</li>
+        <li><strong>Trave o selim:</strong> aperte o pino de engate ou a trava de ajuste firmemente</li>
+      </ol>
+
+      <h2>Passo 2: Ajuste do Guidão</h2>
+
+      <p>
+        O guidão deve estar na altura em que os braços fiquem levemente flexionados nos cotovelos (não completamente esticados) ao segurar os punhos. Os ombros devem ficar relaxados, sem encolher em direção às orelhas. Para usuários com dor cervical ou lombar, eleve o guidão até que a postura seja confortável sem tensão no pescoço.
+      </p>
+
+      <h2>Passo 3: Posição dos Pés nos Pedais</h2>
+
+      <p>
+        A parte da planta do pé que deve estar sobre o pedal é o <strong>antepé</strong> (base dos dedos, não o arco do pé nem o calcanhar). Essa posição permite usar os músculos da panturrilha para impulso adicional durante o pedalamento, aumentando a eficiência do movimento. Os pés devem estar paralelos ao solo, sem inclinação lateral (pronação ou supinação).
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Erro de regulagem</th>
+            <th>Consequência</th>
+            <th>Correção</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Selim muito baixo</td><td>Dor patelofemoral, esforço excessivo do quadríceps</td><td>Elevar selim para o nível do quadril</td></tr>
+          <tr><td>Selim muito alto</td><td>Basculamento do quadril, dor lombar, risco de queda</td><td>Abaixar selim até o joelho ter 25–35 graus</td></tr>
+          <tr><td>Guidão muito baixo</td><td>Hipercifose torácica, tensão no pescoço</td><td>Elevar guidão para posição confortável</td></tr>
+          <tr><td>Calcanhar no pedal</td><td>Menor eficiência, dor de panturrilha</td><td>Usar antepé sobre o centro do pedal</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Regra de verificação pós-regulagem:</strong> Pedale 5 minutos em resistência baixa logo após ajustar. Se sentir qualquer tensão assimétrica (maior em um lado), basculamento do quadril ou desconforto no joelho, revise a regulagem antes de continuar.
+        </p>
+      </div>
+
+      <p>
+        Com a regulagem correta, veja o <a href="/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/">programa de treino para iniciantes</a> para começar de forma estruturada.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Regulagem da Bicicleta Ergométrica" />
+</Layout>

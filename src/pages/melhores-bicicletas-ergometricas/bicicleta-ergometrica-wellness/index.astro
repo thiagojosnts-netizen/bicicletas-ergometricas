@@ -1,0 +1,106 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Wellness', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-wellness/' },
+];
+
+const faqItems = [
+  {
+    question: 'Wellness é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Wellness é uma marca brasileira de equipamentos de saúde e bem-estar com linha de bicicletas ergométricas focada em uso domiciliar e semiprofissional. Seus modelos Health Bike são conhecidos pelo acabamento de qualidade, pela tela digital completa e pelo suporte de peso elevado.',
+  },
+  {
+    question: 'Qual é o modelo mais vendido da Wellness?',
+    answer: 'O modelo Wellness Health Bike Pro é o mais popular da linha, com 20 níveis de resistência magnética, suporte de 130 kg, tela LCD ampla com 16 programas de treino e monitor de frequência cardíaca. Seu preço gira em torno de R$ 2.500 a R$ 3.200.',
+  },
+];
+
+const imagem = await fetchBikeImage("modern exercise bike home gym");
+---
+
+<Layout
+  title="Bicicleta Ergométrica Wellness: Health Bike e Modelos Premium"
+  description="Análise das bicicletas ergométricas Wellness no Brasil: linha Health Bike, especificações, preço, durabilidade e para qual perfil de usuário cada modelo é mais indicado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-06"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Wellness: Análise da Linha Health Bike</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Wellness</strong> pertence ao segmento premium domiciliar, com modelos Health Bike que oferecem <strong>16 a 20 níveis de resistência magnética</strong>, <strong>suporte de 120 a 150 kg</strong> e telas digitais amplas com <strong>16 a 24 programas</strong>. Os preços variam de <strong>R$ 2.000 a R$ 3.500</strong>, tornando-a uma escolha sólida para usuários que buscam qualidade acima da média sem chegar ao segmento profissional da Technogym.
+      </p>
+
+      <p>
+        A <strong>Wellness</strong> diferencia seus produtos pelo design industrial cuidado, pela ergonomia do assento e guidão e pela qualidade do painel digital, que oferece mais informações de treino do que os modelos concorrentes na mesma faixa de preço.
+      </p>
+
+      <h2>Linha Health Bike: comparativo</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Níveis</th>
+            <th>Peso suportado</th>
+            <th>Programas</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Health Bike Essential</strong></td><td>16</td><td>120 kg</td><td>12</td><td>R$ 2.000-R$ 2.500</td></tr>
+          <tr><td><strong>Health Bike Pro</strong></td><td>20</td><td>130 kg</td><td>16</td><td>R$ 2.500-R$ 3.200</td></tr>
+          <tr><td><strong>Health Bike Premium</strong></td><td>24</td><td>150 kg</td><td>24</td><td>R$ 3.200-R$ 3.800</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Para quem:</strong> A Wellness Health Bike Pro é indicada para usuários que querem qualidade superior sem pagar pelo nível profissional da Technogym. Ideal para usuários com peso entre 90 e 110 kg que treinam 4 a 5 vezes por semana.
+        </p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Wellness Health Bike Pro",
+          description: "20 níveis de resistência magnética, tela LCD ampla com 16 programas e suporte até 130 kg. Design premium com acabamento de academia para uso domiciliar intensivo.",
+          price: "R$ 2.500 – R$ 3.200",
+          rating: 4.5,
+          reviewCount: 531,
+          badge: "Premium Domiciliar",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Wellness Health Bike Pro",
+          features: [
+            "20 níveis de resistência magnética",
+            "Tela LCD ampla",
+            "16 programas de treino",
+            "Suporte até 130 kg",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare com o segmento profissional em <a href="/melhores-bicicletas-ergometricas/bicicleta-ergometrica-technogym/">bicicleta ergométrica Technogym</a> ou veja o <a href="/melhores-bicicletas-ergometricas/">comparativo completo das melhores marcas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Wellness" />
+</Layout>

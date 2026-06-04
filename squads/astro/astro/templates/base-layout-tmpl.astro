@@ -1,0 +1,201 @@
+---
+// Template: Base Layout
+// Purpose: Production-ready layout with SEO meta, font preload, optional ClientRouter
+// Author: Astro Squad (astro-chief + harry-roberts + sarah-rainsberger)
+// Usage: import in every page, wrap content with <BaseLayout>
+
+import { ClientRouter } from 'astro:transitions';
+import { getImage } from 'astro:assets';
+
+// ─── Props interface — rename to match your site ───
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: ImageMetadata;
+  noindex?: boolean;
+  canonical?: string;
+  heroImageForPreload?: ImageMetadata;
+}
+
+const {
+  title,
+  description = 'Default description — override per page',
+  ogImage,
+  noindex = false,
+  canonical = Astro.url.href,
+  heroImageForPreload,
+} = Astro.props;
+
+// Preload optimized hero image (LCP boost)
+let preloadImage;
+if (heroImageForPreload) {
+  preloadImage = await getImage({
+    src: heroImageForPreload,
+    width: 1200,
+    format: 'avif',
+  });
+}
+
+// Site-wide constants
+const SITE_NAME = 'Your Site Name';
+const SITE_URL = 'https://example.com';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character set + viewport (first in head) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title + description -->
+    <title>{title} — {SITE_NAME}</title>
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Robots (noindex opt-in per page) -->
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Preload critical hero image (if provided) -->
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImage.src}
+        fetchpriority="high"
+      />
+    )}
+
+    <!-- Preload critical font (woff2 subsetted) -->
+    <link
+      rel="preload"
+      href="/fonts/inter-variable-subset.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={`${SITE_URL}${ogImage.src}`} />}
+    <meta property="og:site_name" content={SITE_NAME} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={`${SITE_URL}${ogImage.src}`} />}
+
+    <!-- Generator meta (Astro convention) -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- RSS (if applicable) -->
+    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
+
+    <!-- Critical CSS (inline) -->
+    <style is:inline>
+      /* Minimal above-the-fold CSS — no external file needed */
+      :root {
+        --color-fg: #0f172a;
+        --color-bg: #ffffff;
+        --color-accent: #3b82f6;
+        --font-body: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+      }
+      @font-face {
+        font-family: 'Inter';
+        src: url('/fonts/inter-variable-subset.woff2') format('woff2-variations');
+        font-display: swap;
+        font-weight: 100 900;
+        size-adjust: 107%;
+      }
+      @font-face {
+        font-family: 'Inter Fallback';
+        src: local('Arial');
+        size-adjust: 107%;
+        ascent-override: 90%;
+        descent-override: 22%;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--color-fg);
+        background: var(--color-bg);
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        background: var(--color-fg);
+        color: var(--color-bg);
+        padding: 0.5rem 1rem;
+        z-index: 100;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+
+    <!-- View Transitions (remove if full page reloads preferred) -->
+    <ClientRouter />
+
+    <!-- Analytics: fires page_view on initial load AND ClientRouter nav -->
+    <!-- <script>
+      document.addEventListener('astro:page-load', () => {
+        if (window.plausible) window.plausible('pageview');
+        if (window.gtag) window.gtag('event', 'page_view', { page_path: location.pathname });
+      });
+    </script> -->
+
+    <!-- RUM (Web Vitals) for performance monitoring -->
+    <!-- <script type="module">
+      import { onCLS, onLCP, onINP } from 'https://unpkg.com/web-vitals@4?module';
+      const send = ({ name, value, id }) => {
+        navigator.sendBeacon('/api/rum', JSON.stringify({ name, value, id, url: location.pathname }));
+      };
+      onCLS(send);
+      onLCP(send);
+      onINP(send);
+    </script> -->
+  </head>
+
+  <body>
+    <!-- Skip-to-content (a11y) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header slot -->
+    <header>
+      <slot name="header">
+        <nav>
+          <a href="/">{SITE_NAME}</a>
+        </nav>
+      </slot>
+    </header>
+
+    <!-- Main content -->
+    <main id="main">
+      <slot />
+    </main>
+
+    <!-- Footer slot -->
+    <footer>
+      <slot name="footer">
+        <p>&copy; {new Date().getFullYear()} {SITE_NAME}</p>
+      </slot>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Para Hipertensão', url: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-hipertensao/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica pode ser usada por hipertensos?',
+    answer: 'Sim, o exercício aeróbico moderado em bicicleta ergométrica é recomendado para hipertensos como parte do tratamento não farmacológico da hipertensão arterial. A American Heart Association indica pelo menos 150 minutos semanais de exercício aeróbico moderado para controle da pressão arterial. Antes de começar, é obrigatória a avaliação cardiológica.',
+  },
+  {
+    question: 'Qual é a intensidade certa de treino para hipertensos?',
+    answer: 'Para hipertensos controlados, a intensidade recomendada é de 50% a 70% da frequência cardíaca máxima. Evite exercícios em alta intensidade (acima de 80% da FCmax) sem supervisão médica, pois podem causar picos de pressão arterial. Comece com sessões de 20 a 25 minutos e progrida gradualmente.',
+  },
+  {
+    question: 'A pressão arterial aumenta durante o treino na bicicleta?',
+    answer: 'Sim, a pressão sistólica aumenta durante o exercício aeróbico como resposta fisiológica normal. Em hipertensos, esse aumento pode ser mais acentuado. O valor crítico é a pressão sistólica acima de 220 mmHg ou diastólica acima de 110 mmHg durante o esforço, que exige interrupção imediata. Monitore a pressão antes e após o treino.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Hipertensão: Protocolo Seguro e Evidências"
+  description="Como usar bicicleta ergométrica com segurança para controle da hipertensão: intensidade recomendada, frequência semanal, o que monitorar e evidências científicas sobre o exercício aeróbico e pressão arterial."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-14"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para Hipertensão: Protocolo Seguro e Resultados Esperados</h1>
+
+      <p class="summarization">
+        O exercício aeróbico regular em <strong>bicicleta ergométrica</strong> reduz a pressão arterial sistólica em média <strong>5 a 8 mmHg</strong> em hipertensos após <strong>12 semanas</strong> de prática regular, conforme meta-análise publicada no British Journal of Sports Medicine (2019). O protocolo recomendado é de <strong>150 minutos semanais</strong> a <strong>50-70% da FCmax</strong>, sempre com avaliação cardiológica prévia e monitoramento da pressão antes e após cada sessão.
+      </p>
+
+      <p>
+        A <strong>hipertensão arterial sistêmica</strong> é uma das condições de saúde mais prevalentes no Brasil, afetando cerca de 36% dos adultos brasileiros. O exercício aeróbico moderado é uma das intervenções não farmacológicas mais eficazes para redução da pressão arterial, frequentemente permitindo redução ou ajuste da medicação sob supervisão médica.
+      </p>
+
+      <h2>Mecanismo de Redução da Pressão pelo Exercício</h2>
+
+      <p>
+        O exercício aeróbico regular reduz a pressão arterial por múltiplos mecanismos: diminui a resistência vascular periférica (os vasos sanguíneos ficam mais elásticos e responsivos), melhora a função endotelial (revestimento interno dos vasos) e reduz a atividade do sistema nervoso simpático em repouso. Esses efeitos são cumulativos e se manifestam após 4 a 8 semanas de prática regular.
+      </p>
+
+      <h2>Protocolo de Exercício para Hipertensos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>Duração</th>
+            <th>Intensidade (FCmax)</th>
+            <th>Frequência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1-2</td><td>20 min</td><td>50-55%</td><td>3x/semana</td></tr>
+          <tr><td>3-4</td><td>25 min</td><td>55-60%</td><td>3x/semana</td></tr>
+          <tr><td>5-8</td><td>30 min</td><td>60-65%</td><td>4x/semana</td></tr>
+          <tr><td>9-12</td><td>35-40 min</td><td>65-70%</td><td>4-5x/semana</td></tr>
+        </tbody>
+      </table>
+
+      <h2>O que Monitorar antes e depois de Cada Sessão</h2>
+
+      <ul>
+        <li><strong>Pressão pré-treino:</strong> não treinar com pressão sistólica acima de 160 mmHg sem consulta médica</li>
+        <li><strong>Frequência cardíaca:</strong> manter dentro da zona recomendada pelo médico</li>
+        <li><strong>Sintomas durante o treino:</strong> tontura, cefaleia, visão turva ou falta de ar intensa exigem interrupção</li>
+        <li><strong>Pressão pós-treino:</strong> hipotensão pós-exercício (queda acentuada) é normal, mas ficar sentado por 5 minutos antes de se levantar</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Obrigatório:</strong> Qualquer programa de exercício para hipertensos deve ser iniciado com avaliação cardiológica, incluindo eletrocardiograma de repouso e, idealmente, teste ergométrico para definir a frequência cardíaca máxima segura. Não inicie sem liberação médica formal.
+        </p>
+      </div>
+
+      <p>
+        Para ver todos os benefícios cardiovasculares da bicicleta ergométrica, acesse o <a href="/beneficios-bicicleta-ergometrica/">guia completo de benefícios</a>. Para aprender a pedalar com intensidade correta, veja o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia de frequência cardíaca</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para Hipertensão" />
+</Layout>

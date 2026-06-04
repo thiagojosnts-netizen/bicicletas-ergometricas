@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quais são os principais benefícios da bicicleta ergométrica?',
+    answer: 'Os principais benefícios são: melhora da saúde cardiovascular, queima calórica eficiente (300 a 500 kcal por sessão de 45 minutos), fortalecimento dos membros inferiores, baixo impacto articular em comparação à corrida, melhora do condicionamento respiratório e possibilidade de uso em reabilitação de joelhos e coluna.',
+  },
+  {
+    question: 'Quantas calorias a bicicleta ergométrica queima por hora?',
+    answer: 'Uma pessoa de 70 kg queima entre 350 e 450 kcal por hora em intensidade moderada. Em alta intensidade (spinning ou HIIT), o gasto pode chegar a 500 a 700 kcal por hora. O peso corporal, a resistência configurada e a frequência cardíaca são os fatores que mais influenciam o gasto energético.',
+  },
+  {
+    question: 'Bicicleta ergométrica faz mal ao joelho?',
+    answer: 'Não, quando usada com a regulagem correta. O selim deve estar na altura em que o joelho permanece levemente flexionado (ângulo de 25 a 35 graus) no ponto mais baixo do pedal. Usar o selim muito baixo, com o joelho em flexão acima de 90 graus, pode causar dor patelofemoral ao longo do tempo.',
+  },
+  {
+    question: 'Qual é o benefício da bicicleta ergométrica para quem tem hipertensão?',
+    answer: 'O exercício aeróbico regular em bicicleta ergométrica reduz a pressão arterial sistólica em média 5 a 8 mmHg em hipertensos, conforme meta-análise publicada no British Journal of Sports Medicine. O exercício deve ser de intensidade moderada, com frequência cardíaca entre 50% e 70% da FCmax, sob supervisão médica.',
+  },
+  {
+    question: 'Bicicleta ergométrica ajuda na saúde da coluna?',
+    answer: 'Sim, quando usada com postura correta e regulagem adequada. O fortalecimento dos músculos paravertebrais e dos isquiotibiais melhora o suporte da coluna lombar. Para pessoas com hérnia de disco ou escoliose, a bicicleta recumbente é a mais indicada por distribuir o peso nas costas sem sobrecarregar a lombar.',
+  },
+];
+
+const subpages = [
+  {
+    href: '/beneficios-bicicleta-ergometrica/emagrecer-com-bicicleta-ergometrica/',
+    title: 'Emagrecer com Bicicleta Ergométrica',
+    desc: 'Protocolo de emagrecimento, gasto calórico por intensidade e como combinar dieta e exercício para resultados reais.',
+  },
+  {
+    href: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-joelho/',
+    title: 'Bicicleta Ergométrica para Joelho',
+    desc: 'Como a pedalagem de baixo impacto beneficia articulações comprometidas e quais modelos são mais indicados para lesões de joelho.',
+  },
+  {
+    href: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-hipertensao/',
+    title: 'Bicicleta Ergométrica para Hipertensão',
+    desc: 'Protocolos de exercício aeróbico para controle da pressão arterial com evidência científica e orientações de intensidade.',
+  },
+  {
+    href: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-coluna/',
+    title: 'Bicicleta Ergométrica para Coluna',
+    desc: 'Como pedalar com hérnia de disco, escoliose ou dor lombar crônica: postura, regulagem e modelos recomendados.',
+  },
+  {
+    href: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/',
+    title: 'Bicicleta Ergométrica e Queima de Calorias',
+    desc: 'Tabela de gasto calórico por peso corporal, intensidade e duração da sessão para planejar seu déficit energético.',
+  },
+];
+---
+
+<Layout
+  title="Benefícios da Bicicleta Ergométrica: Saúde, Emagrecimento e Reabilitação"
+  description="Conheça os benefícios comprovados da bicicleta ergométrica: queima calórica, saúde cardiovascular, reabilitação de joelhos e coluna e controle da hipertensão. Evidências científicas e protocolos práticos."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-10"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+      <h1 id="page-heading">Benefícios da Bicicleta Ergométrica: Evidências Científicas e Aplicações Práticas</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> oferece benefícios documentados para <strong>saúde cardiovascular</strong>, <strong>emagrecimento</strong> (300 a 600 kcal por sessão), <strong>reabilitação articular</strong> e <strong>controle da hipertensão</strong>. O baixo impacto sobre articulações a torna adequada para todos os perfis de usuários, de iniciantes a pessoas em reabilitação clínica, quando usada com a regulagem e intensidade corretas.
+      </p>
+
+      <p>
+        A bicicleta ergométrica combina dois tipos de benefício: os <strong>agudos</strong>, percebidos em cada sessão (melhora do humor, aumento da energia, queima calórica imediata), e os <strong>crônicos</strong>, acumulados ao longo de semanas de prática regular (redução da pressão arterial, perda de gordura corporal, melhora da capacidade cardiorrespiratória).
+      </p>
+
+      <h2>Saúde Cardiovascular: O Principal Benefício</h2>
+
+      <p>
+        O exercício aeróbico regular em bicicleta ergométrica melhora o <strong>VO2max</strong> (consumo máximo de oxigênio), reduz a frequência cardíaca de repouso e aumenta a eficiência do coração. Segundo revisão sistemática publicada no European Journal of Preventive Cardiology, 12 semanas de treino aeróbico moderado reduzem o risco de eventos cardiovasculares em até 30% em populações sedentárias.
+      </p>
+
+      <p>
+        Para usuários com <strong>hipertensão</strong>, a bicicleta ergométrica é uma das ferramentas não farmacológicas mais eficazes. Veja o <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-hipertensao/">guia de uso para hipertensão</a> com protocolos de intensidade e frequência recomendados.
+      </p>
+
+      <h2>Emagrecimento e Queima Calórica</h2>
+
+      <p>
+        Uma sessão de 45 minutos em intensidade moderada (frequência cardíaca entre 65% e 75% da FCmax) consome entre 300 e 450 kcal para um usuário de 70 kg. Em alta intensidade, esse valor sobe para 500 a 600 kcal. A bicicleta ergométrica é mais eficiente para emagrecimento do que a caminhada, mas menos do que a corrida de alta intensidade, com a vantagem crucial do baixo impacto articular.
+      </p>
+
+      <p>
+        Consulte o <a href="/beneficios-bicicleta-ergometrica/emagrecer-com-bicicleta-ergometrica/">protocolo completo de emagrecimento com bicicleta ergométrica</a> e a <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/">tabela de gasto calórico por perfil de usuário</a>.
+      </p>
+
+      <h2>Reabilitação de Joelhos e Coluna</h2>
+
+      <p>
+        O movimento cíclico da bicicleta ergométrica promove a produção de líquido sinovial nas articulações do joelho sem impacto, o que favorece a nutrição da cartilagem e a redução da inflamação em quadros de artrose, condromalácia patelar e síndrome patelofemoral. Fisioterapeutas frequentemente incluem a bicicleta como exercício de fase aguda em protocolos de reabilitação pós-cirúrgica.
+      </p>
+
+      <p>
+        Para usuários com restrições de joelho, veja o <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-joelho/">guia da bicicleta ergométrica para joelhos comprometidos</a>. Para problemas de coluna, confira as <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-coluna/">recomendações de postura e modelo para usuários com dor lombar</a>.
+      </p>
+
+      <h2>Tabela de Benefícios por Perfil de Usuário</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Perfil</th>
+            <th>Benefício principal</th>
+            <th>Tipo recomendado</th>
+            <th>Frequência ideal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sedentário iniciante</td>
+            <td>Condicionamento básico, perda de peso</td>
+            <td>Vertical</td>
+            <td>3x/semana, 30 min</td>
+          </tr>
+          <tr>
+            <td>Com restrição de joelho</td>
+            <td>Reabilitação articular, mobilidade</td>
+            <td>Horizontal ou recumbente</td>
+            <td>4x/semana, 20-30 min</td>
+          </tr>
+          <tr>
+            <td>Hipertenso controlado</td>
+            <td>Redução da pressão, saúde vascular</td>
+            <td>Vertical ou horizontal</td>
+            <td>5x/semana, 30-40 min</td>
+          </tr>
+          <tr>
+            <td>Idoso ativo</td>
+            <td>Mobilidade, equilíbrio, energia</td>
+            <td>Recumbente</td>
+            <td>3-5x/semana, 20-30 min</td>
+          </tr>
+          <tr>
+            <td>Objetivo de emagrecimento</td>
+            <td>Déficit calórico, composição corporal</td>
+            <td>Vertical ou spinning</td>
+            <td>4-5x/semana, 45-60 min</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Evidência científica:</strong> Meta-análise com 5.861 participantes publicada no Journal of the American Medical Association (JAMA, 2020) demonstrou que o exercício aeróbico de 150 minutos semanais em intensidade moderada reduz a mortalidade por todas as causas em 33%, independente da modalidade praticada.
+        </p>
+      </div>
+
+      <h2>Explore os Benefícios em Detalhes</h2>
+      <div class="cards-grid">
+        {subpages.map(sub => (
+          <article class="card">
+            <h3 style="margin-bottom:0.5rem;">
+              <a href={sub.href} style="text-decoration:none;color:var(--token-text-primary);">{sub.title}</a>
+            </h3>
+            <p style="font-size:0.9375rem;">{sub.desc}</p>
+            <a href={sub.href} class="btn-primary" style="font-size:0.875rem;margin-top:0.5rem;">Ler guia</a>
+          </article>
+        ))}
+      </div>
+
+      <p style="margin-top:2rem;">
+        Depois de entender os benefícios, veja o <a href="/como-usar-bicicleta-ergometrica/">guia de como usar a bicicleta ergométrica corretamente</a> para aproveitar ao máximo cada sessão de treino.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Benefícios da Bicicleta Ergométrica" />
+</Layout>

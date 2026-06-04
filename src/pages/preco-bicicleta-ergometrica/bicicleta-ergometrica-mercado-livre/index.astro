@@ -1,0 +1,85 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Mercado Livre', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/' },
+];
+
+const faqItems = [
+  {
+    question: 'É seguro comprar bicicleta ergométrica no Mercado Livre?',
+    answer: 'Sim, quando você filtra por vendedores com reputação acima de 98%, preferência por Mercado Livre Full (entrega rápida com logística própria) e verifica se o vendedor é a loja oficial da marca ou revendedor autorizado. Evite vendedores com menos de 50 vendas ou reputação abaixo de 95%, pois o risco de problemas com garantia e assistência técnica aumenta.',
+  },
+  {
+    question: 'O Mercado Livre aceita devolução de bicicleta ergométrica?',
+    answer: 'Sim. O Mercado Livre tem política de devolução de 30 dias para produtos com defeito, conforme o Código de Defesa do Consumidor. Para produtos vendidos pelo Mercado Livre Full, o processo de devolução é mais simples. Para vendedores externos, a devolução pode ser mais burocrática e depende da política individual do vendedor.',
+  },
+  {
+    question: 'Tem bicicleta ergométrica falsa no Mercado Livre?',
+    answer: 'Sim, existem produtos que imitam marcas consolidadas com componentes inferiores. Para evitar: compre apenas de lojas oficiais ou revendedores verificados com badge de Loja Oficial; compare fotos do produto com o site oficial da marca; verifique se o número de série é válido no site do fabricante antes de aceitar a entrega.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica no Mercado Livre: Como Comprar com Segurança"
+  description="Como comprar bicicleta ergométrica no Mercado Livre com segurança: filtros certos, como avaliar vendedores, política de devolução e como evitar produtos falsificados ou de qualidade inferior."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-24"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica no Mercado Livre: Guia Seguro de Compra</h1>
+
+      <p class="summarization">
+        Comprar <strong>bicicleta ergométrica no Mercado Livre</strong> é seguro quando você filtra por <strong>vendedores com reputação acima de 98%</strong>, prioriza <strong>lojas oficiais das marcas</strong> e escolhe <strong>Mercado Livre Full</strong> (entrega em 24-48 horas com logística própria). Os melhores preços aparecem em datas como <strong>Black Friday</strong>, aniversário do ML e dia do consumidor, com descontos de <strong>15 a 35%</strong> sobre o preço normal.
+      </p>
+
+      <p>
+        O Mercado Livre é uma das principais plataformas de venda de bicicletas ergométricas no Brasil, com centenas de modelos de marcas nacionais e importadas. A plataforma oferece proteção ao comprador via garantia Mercado Livre e Mercado Pago, mas a qualidade da experiência de compra varia significativamente conforme o vendedor escolhido.
+      </p>
+
+      <h2>Como filtrar corretamente</h2>
+
+      <ol>
+        <li><strong>Busca inicial:</strong> pesquise "bicicleta ergométrica [marca]" em vez de apenas "bicicleta ergométrica" para resultados mais precisos</li>
+        <li><strong>Filtro de entrega:</strong> ative o filtro "Full" para garantir logística Mercado Livre com rastreamento confiável</li>
+        <li><strong>Reputação do vendedor:</strong> clique no nome do vendedor e verifique se a reputação é verde com mais de 98%</li>
+        <li><strong>Lojas oficiais:</strong> busque o badge "Loja Oficial" ao lado do nome do vendedor para garantia direta com a marca</li>
+        <li><strong>Perguntas:</strong> leia as perguntas anteriores de compradores e as respostas do vendedor para identificar problemas recorrentes</li>
+      </ol>
+
+      <h2>Sinais de alerta em anúncios</h2>
+
+      <ul>
+        <li>Preço muito abaixo do praticado por outros vendedores (mais de 30% menor sem promoção explícita)</li>
+        <li>Fotos genéricas sem número de série visível</li>
+        <li>Descrição vaga sem especificações técnicas detalhadas</li>
+        <li>Vendedor com menos de 100 vendas no Mercado Livre</li>
+        <li>Apenas uma foto do produto em fundo branco genérico</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Dica de timing:</strong> Ative o alerta de preço para o modelo desejado no Mercado Livre e aguarde. Os preços de bicicletas ergométricas caem 15 a 25% em média durante as campanhas de Black Friday, dia do consumidor (15 de março) e aniversário do Mercado Livre (agosto).
+        </p>
+      </div>
+
+      <p>
+        Compare com os preços na <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/">Amazon Brasil</a> antes de fechar a compra. Para o guia geral de preços, acesse <a href="/preco-bicicleta-ergometrica/">preço de bicicleta ergométrica no Brasil</a>.
+      </p>
+
+      <a href="#comprar" class="btn-cta" style="display:inline-flex;margin-top:1rem;">
+        Ver ofertas no Mercado Livre
+      </a>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre compra no Mercado Livre" />
+</Layout>

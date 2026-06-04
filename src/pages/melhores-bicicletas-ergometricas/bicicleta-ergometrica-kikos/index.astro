@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Kikos', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-kikos/' },
+];
+
+const faqItems = [
+  {
+    question: 'A Kikos é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Kikos é reconhecida no mercado brasileiro como uma marca de qualidade superior ao segmento de entrada, com design mais refinado, materiais mais robustos e recursos como bluetooth e programas de treino avançados. Seus modelos intermediários oferecem boa durabilidade para uso domiciliar intensivo.',
+  },
+  {
+    question: 'Qual é o modelo mais vendido da Kikos?',
+    answer: 'O modelo Kikos FB 180i é o mais popular da linha, com 16 níveis de resistência magnética, suporte de 110 kg, 16 programas de treino, monitor de frequência cardíaca e conectividade bluetooth. Seu preço gira em torno de R$ 1.700 a R$ 2.200, posicionando-o no segmento intermediário do mercado.',
+  },
+  {
+    question: 'A Kikos tem assistência técnica no Brasil?',
+    answer: 'Sim. A Kikos possui rede de assistência técnica nas principais capitais e regiões metropolitanas do Brasil. A garantia padrão é de 12 meses para peças e 3 meses para mão de obra, podendo ser estendida com contrato de manutenção em alguns pontos autorizados.',
+  },
+];
+
+// Busca imagem automaticamente no Pexels
+const imagem = await fetchBikeImage("exercise bike indoor magnetic");
+console.log("Pexels resultado:", imagem);
+---
+
+<Layout
+  title="Bicicleta Ergométrica Kikos: FB 180i e Modelos Premium Analisados"
+  description="Análise completa das bicicletas ergométricas Kikos: FB 180i, BIO-1800 e Premium 2200. Especificações técnicas, preço, bluetooth e para qual perfil de usuário cada modelo é mais indicado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-03"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Kikos: Análise dos Modelos FB 180i e Premium</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Kikos</strong> se posiciona no segmento intermediário e premium do mercado brasileiro, com modelos que incluem <strong>bluetooth</strong>, <strong>16 a 24 programas</strong> de treino e <strong>resistência magnética silenciosa</strong>. O modelo principal, <strong>FB 180i</strong>, custa entre <strong>R$ 1.700 e R$ 2.200</strong> e é uma das referências de custo-benefício para uso domiciliar intensivo com conectividade.
+      </p>
+
+      <p>
+        A <strong>Kikos</strong> é uma marca brasileira com mais de 20 anos de mercado em equipamentos fitness. Diferentemente de marcas de entrada, a Kikos investe em design, acabamento e recursos tecnológicos, tornando seus equipamentos mais atrativos para usuários que buscam algo mais do que a funcionalidade básica.
+      </p>
+
+      <h2>Modelos Kikos: especificações e preço</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Níveis</th>
+            <th>Programas</th>
+            <th>Bluetooth</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>BIO-800</strong></td><td>8</td><td>8</td><td>Não</td><td>100 kg</td><td>R$ 1.000-R$ 1.300</td></tr>
+          <tr><td><strong>FB 180i</strong></td><td>16</td><td>16</td><td>Sim (BLE)</td><td>110 kg</td><td>R$ 1.700-R$ 2.200</td></tr>
+          <tr><td><strong>Premium 2200</strong></td><td>24</td><td>32</td><td>Sim (BLE+ANT)</td><td>130 kg</td><td>R$ 2.800-R$ 3.500</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Diferenciais da Kikos em relação a concorrentes</h2>
+
+      <p>
+        A principal vantagem da Kikos sobre marcas como Randers e Moviment na mesma faixa de preço é a inclusão de bluetooth real (com compatibilidade com aplicativos como FitShow e Kinomap) nos modelos intermediários. O acabamento dos quadros e a qualidade do assento também são superiores ao padrão do segmento de entrada.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Melhor escolha:</strong> O modelo <strong>Kikos FB 180i</strong> é recomendado para usuários que buscam conectividade bluetooth, uso regular de 3 a 5 vezes por semana e peso corporal de até 88 kg (20% abaixo do limite de 110 kg). Para usuários mais pesados ou com maior frequência de uso, o Premium 2200 oferece maior margem de segurança estrutural.
+        </p>
+      </div>
+
+      <!-- Card de produto com link de afiliado -->
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Kikos FB 180i",
+          description: "16 níveis de resistência magnética silenciosa, bluetooth BLE, 16 programas de treino e monitor cardíaco. Ideal para uso domiciliar intensivo.",
+          price: "R$ 1.700 – R$ 2.200",
+          rating: 4.4,
+          reviewCount: 1843,
+          badge: "Mais Vendida",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Kikos FB 180i",
+          features: [
+            "16 níveis de resistência magnética",
+            "Bluetooth BLE + app FitShow",
+            "Suporte até 110 kg",
+            "16 programas de treino",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare com outros modelos na <a href="/melhores-bicicletas-ergometricas/">análise completa das melhores bicicletas ergométricas</a>. Para ver alternativas mais baratas, veja os <a href="/melhores-bicicletas-ergometricas/bicicleta-ergometrica-randers/">modelos Randers</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Kikos" />
+</Layout>

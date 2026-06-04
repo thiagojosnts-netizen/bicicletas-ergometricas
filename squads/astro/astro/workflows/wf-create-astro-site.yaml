@@ -1,0 +1,458 @@
+# Workflow: Create Astro Site (Greenfield)
+# Orchestrator: astro-chief
+# Version: 1.0.0
+# Purpose: Bootstrap a new, production-ready Astro site with optimal config, chosen
+#          adapter, core integrations, Content Collections scaffold, and performance
+#          budgets in place.
+
+workflow:
+  id: wf-create-astro-site
+  name: "Create Astro Site (Greenfield)"
+  version: "1.0.0"
+  squad: astro
+  orchestrator: astro-chief
+  mode: "interactive" # or "yolo" if all decisions are pre-answered
+
+  total_phases: 6
+  estimated_duration: "2-4 hours"
+
+  quality_standard: |
+    Site ships with:
+    - Lighthouse Performance >= 95 on mobile
+    - LCP < 2.5s, CLS < 0.1
+    - Zero client:load without justification
+    - All content images via <Image>/<Picture>
+    - Zod-validated Content Collections if site has content
+    - Adapter configured and deployable
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 0: DISCOVERY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_0_discovery:
+  name: "Discovery — what are we building?"
+  duration: "10-15 min"
+  agent: astro-chief
+  mode: interactive
+  checkpoint: AS_CS_0 # blocks phase 1 until answered
+
+  inputs:
+    required:
+      - project_type: "marketing | blog | docs | portfolio | e-commerce | other"
+      - interactivity_level: "none | light | moderate | heavy"
+      - content_source: "local_markdown | cms | both | none"
+      - target_host: "cloudflare | vercel | netlify | node_vps | static_only"
+
+    elicit: true
+    questions:
+      - "What kind of site is this? (marketing, blog, docs, portfolio, e-commerce, other)"
+      - "How interactive? (none → all static; light → nav toggle, forms; moderate → search, filters; heavy → app-like)"
+      - "Where does content come from? (local .md files, CMS, both, or no content)"
+      - "Where will you deploy? (Cloudflare Pages, Vercel, Netlify, self-hosted Node, or static host like S3)"
+      - "Is SEO important? (yes = we tune meta/sitemap/robots; no = skip that phase)"
+
+  steps:
+    - id: validate_fit
+      action: "Apply Fred Schott's heuristic AS_FS_001 (is Astro the right tool?)"
+      handoff: "@astro:fred-schott"
+      veto_conditions:
+        - "Project is app-like (dashboard, editor) AND team already on React → recommend Next.js, abort"
+      output:
+        recommendation: "proceed | reconsider | abort"
+        reasoning: "..."
+
+    - id: check_existing
+      action: "Check for existing package.json, astro.config, conflicting frameworks"
+      veto_conditions:
+        - "astro.config already exists → switch to wf-performance-audit or *upgrade-squad"
+
+  checkpoint_criteria:
+    - "Project type classified"
+    - "Host chosen (or explicit 'static only')"
+    - "Content source understood"
+    - "Fred Schott's validation passed (or user overrode)"
+
+  outputs:
+    phase_0_output:
+      project_type: "{chosen}"
+      interactivity: "{level}"
+      content_source: "{source}"
+      target_host: "{host}"
+      validation: "proceed"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 1: BOOTSTRAP
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_1_bootstrap:
+  name: "Bootstrap Astro project"
+  duration: "15-20 min"
+  agent: astro-chief
+  mode: autonomous
+  checkpoint: AS_CS_1
+
+  steps:
+    - id: init_project
+      action: "Scaffold Astro via create-astro"
+      command: |
+        npm create astro@latest {project-name} -- \
+          --template minimal \
+          --typescript strict \
+          --install \
+          --git \
+          --no-houston
+      output: "Fresh Astro project in ./{project-name}"
+
+    - id: configure_git
+      action: "Initialize git + .gitignore check"
+      verify:
+        - ".gitignore includes .astro/, dist/, node_modules/"
+        - "Initial commit created"
+
+    - id: choose_package_manager
+      action: "Confirm package manager (npm default, pnpm/bun/yarn if specified)"
+      handoff_if: "user prefers pnpm/bun/yarn"
+      command: "{pm} install"
+
+    - id: verify_dev_server
+      action: "Run `npm run dev` and verify localhost:4321 renders"
+      verify: "Homepage loads without errors"
+
+  checkpoint_criteria:
+    - "Astro project scaffolded"
+    - "Dev server runs"
+    - "Git initialized"
+    - "TypeScript strict mode enabled"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 2: ARCHITECTURE DECISIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_2_architecture:
+  name: "Architectural decisions"
+  duration: "20-30 min"
+  agent: astro-chief
+  mode: interactive
+  checkpoint: AS_CS_2
+
+  tasks:
+    - task: "Choose adapter"
+      handoff: "@astro:nate-moore"
+      applies_heuristic: AS_NM_002
+      outputs:
+        - adapter: "@astrojs/cloudflare | @astrojs/vercel | @astrojs/netlify | @astrojs/node | none (static)"
+        - output_mode: "static | server | hybrid"
+      command: "npx astro add {chosen-adapter}"
+
+    - task: "Choose UI framework (if interactivity > none)"
+      handoff: "@astro:jason-miller, then @astro:nate-moore for install"
+      applies_heuristic: AS_JM_005
+      outputs:
+        - framework: "preact | react | vue | svelte | solid | lit | none (.astro only)"
+      command: "npx astro add {framework}"
+      skip_if: "interactivity_level == none"
+
+    - task: "Configure TypeScript strict"
+      verify: "tsconfig.json extends 'astro/tsconfigs/strict'"
+
+    - task: "Add core integrations"
+      integrations_to_consider:
+        - "@astrojs/sitemap — always, if public site"
+        - "@astrojs/mdx — if content_source includes markdown"
+        - "@astrojs/tailwind — if team prefers Tailwind"
+      handoff: "@astro:nate-moore"
+      command: "npx astro add {integrations}"
+
+  checkpoint_criteria:
+    - "Adapter installed + configured"
+    - "UI framework chosen (or explicit 'none — .astro only')"
+    - "Output mode set (static/server/hybrid)"
+    - "astro.config.mjs validates (`npx astro check`)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 3: CONTENT MODEL
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_3_content_model:
+  name: "Content model + collections"
+  duration: "30-45 min"
+  agent: ben-holmes
+  mode: interactive
+  checkpoint: AS_CS_3
+  skip_if: "content_source == none"
+
+  steps:
+    - id: identify_collections
+      action: "Map content types to collections (blog, docs, authors, projects, etc.)"
+      outputs:
+        - collections: ["blog", "authors", ...]
+        - references: ["blog.author → authors", ...]
+
+    - id: create_content_config
+      action: "Write src/content.config.ts with defineCollection + Zod schemas"
+      handoff: "@astro:ben-holmes"
+      applies_heuristic: AS_BH_001
+      template: "templates/content-config-tmpl.ts"
+
+    - id: create_sample_content
+      action: "Create 2-3 sample entries per collection for testing"
+      verify: "Content renders in sample page"
+
+    - id: setup_mdx_if_needed
+      handoff: "@astro:john-otander"
+      skip_if: "collection pattern is only '*.md'"
+      command: "npx astro add mdx"
+
+  checkpoint_criteria:
+    - "content.config.ts exists with Zod schemas"
+    - "All collections have loaders defined"
+    - "Sample entries validate"
+    - "Query page renders data with type safety"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 4: LAYOUT + PAGES + ISLANDS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_4_layout_pages:
+  name: "Layout, pages, islands"
+  duration: "60-90 min"
+  agent: astro-chief
+  mode: autonomous_with_checkpoints
+
+  tasks:
+    - task: "Create BaseLayout with SEO + optional ClientRouter"
+      template: "templates/base-layout-tmpl.astro"
+      includes:
+        - "meta tags (title, description, canonical, og:*)"
+        - "favicon + manifest"
+        - "font preload (if custom fonts)"
+        - "optional ClientRouter from astro:transitions"
+        - "global critical styles"
+
+    - task: "Create index page"
+      priority: "use <Image> for hero (LCP), set loading=eager fetchpriority=high"
+      handoff: "@astro:matt-kane for image setup"
+
+    - task: "Create dynamic routes for collections"
+      pattern: "src/pages/blog/[...slug].astro"
+      example_code: |
+        export async function getStaticPaths() {
+          const posts = await getCollection('blog');
+          return posts.map(p => ({ params: { slug: p.id }, props: { post: p } }));
+        }
+
+    - task: "Decide client:* directives for interactive components"
+      handoff: "@astro:jason-miller"
+      applies_heuristic: AS_JM_001
+      default: "start with no directive, upgrade as needed"
+
+    - task: "Setup View Transitions (optional)"
+      handoff: "@astro:nate-moore or @astro:matthew-phillips"
+      command: "Add <ClientRouter /> to BaseLayout <head>"
+      skip_if: "site is static-only with no page-to-page nav"
+
+  checkpoint_criteria:
+    - "BaseLayout renders correctly"
+    - "All routes render (index, dynamic routes, static pages)"
+    - "No client:load without justification"
+    - "Content images use <Image> or <Picture>"
+    - "LCP image has loading='eager' + fetchpriority='high'"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 5: PERFORMANCE + SEO + A11Y PASS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_5_quality_pass:
+  name: "Performance + SEO + a11y pass"
+  duration: "30-45 min"
+  mode: autonomous_with_validation
+  checkpoint: AS_CS_5
+
+  parallel_tasks:
+    performance:
+      handoff: "@astro:addy-osmani"
+      command: "npm run build && npx lighthouse http://localhost:4321 --preset=experimental --view"
+      targets:
+        - lcp: "< 2.5s"
+        - inp: "< 200ms"
+        - cls: "< 0.1"
+        - lighthouse_performance: ">= 95"
+      on_fail:
+        - "Route to specialist based on failing metric"
+        - "Images → @astro:matt-kane"
+        - "CSS/fonts → @astro:harry-roberts"
+        - "JS → @astro:jason-miller"
+
+    seo:
+      checklist: "checklists/astro-seo-checklist.md"
+      required_items:
+        - "meta description on every page"
+        - "og:title, og:description, og:image"
+        - "canonical URL"
+        - "robots.txt (allow by default)"
+        - "sitemap.xml via @astrojs/sitemap"
+        - "structured data (JSON-LD) for articles if applicable"
+
+    a11y:
+      checklist: "checklists/astro-accessibility-checklist.md"
+      required_items:
+        - "all images have alt text"
+        - "color contrast >= 4.5:1 for body text"
+        - "keyboard navigation works"
+        - "form labels associated"
+        - "skip-to-content link in layouts"
+
+  checkpoint_criteria:
+    - "Lighthouse Performance >= 95"
+    - "LCP < 2.5s on mobile emulation"
+    - "CLS < 0.1"
+    - "SEO checklist passes"
+    - "A11y checklist passes"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHASE 6: DEPLOY + VERIFY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+phase_6_deploy:
+  name: "Deploy + verify in production"
+  duration: "15-30 min"
+  mode: interactive
+
+  steps:
+    - id: env_vars
+      action: "Set up environment variables in deploy target"
+      instructions:
+        cloudflare: "Dashboard → Pages → Project → Settings → Environment variables"
+        vercel: "Dashboard → Project → Settings → Environment Variables"
+        netlify: "Dashboard → Site → Site configuration → Environment variables"
+        node: "Set via .env loaded at runtime"
+
+    - id: connect_git
+      action: "Connect repo to host's deploy system"
+      instructions:
+        cloudflare: "Pages → Create project → Connect to Git → select repo"
+        vercel: "Import Project → Select repo"
+        netlify: "Add new site → Import from Git"
+
+    - id: verify_deploy
+      action: "Trigger first deploy, verify site loads"
+      checks:
+        - "Homepage loads"
+        - "Dynamic routes render"
+        - "Images serve correctly (AVIF/WebP in Network tab)"
+        - "No console errors"
+
+    - id: production_lighthouse
+      handoff: "@astro:addy-osmani"
+      action: "Run Lighthouse on production URL (not localhost)"
+      command: "npx lighthouse {production-url} --preset=experimental --view"
+      compare: "Should match or exceed local numbers"
+
+    - id: setup_analytics
+      optional: true
+      choices:
+        - "Plausible (privacy-friendly, $$)"
+        - "Fathom (privacy-friendly, $$)"
+        - "Google Analytics 4 (free, requires cookie consent)"
+        - "Cloudflare Analytics (free, privacy-friendly)"
+
+    - id: setup_rum
+      recommended: true
+      handoff: "@astro:addy-osmani"
+      action: "Add web-vitals library for Real User Monitoring"
+
+  checkpoint_criteria:
+    - "Site deployed to production URL"
+    - "Production Lighthouse matches local"
+    - "No console errors on production"
+    - "Analytics + RUM configured (if chosen)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+final_outputs:
+  deliverables:
+    - path: "./{project-name}/"
+      description: "Complete Astro project"
+    - path: "astro.config.mjs"
+      description: "Configured with adapter, integrations, image service"
+    - path: "src/content.config.ts"
+      description: "Content Collections with Zod schemas (if content)"
+    - path: "src/layouts/BaseLayout.astro"
+      description: "Layout with SEO + optional ClientRouter"
+    - path: "src/pages/"
+      description: "Routes (index + dynamic collection routes)"
+    - path: "README.md"
+      description: "Project docs (deploy instructions, dev setup)"
+
+  metrics_delivered:
+    - lighthouse_performance: ">= 95"
+    - lcp_mobile: "< 2.5s"
+    - cls: "< 0.1"
+    - total_js_gzipped: "< 70kb on landing"
+    - build_time: "recorded for future benchmarks"
+
+  handoffs_remaining:
+    - "@astro:addy-osmani — ongoing RUM monitoring"
+    - "@astro:ben-holmes — adding more collections"
+    - "@astro:sarah-rainsberger — writing team onboarding docs"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ERROR HANDLING
+# ═══════════════════════════════════════════════════════════════════════════════
+
+error_handling:
+  scaffolding_fails:
+    - "Check Node version (>=20)"
+    - "Check npm/pnpm/bun version"
+    - "Delete node_modules, retry `npm install`"
+    - "If persists: check create-astro@latest release notes"
+
+  adapter_install_fails:
+    - "Check adapter-Astro version compatibility"
+    - "Verify package is published (`npm view @astrojs/{adapter}`)"
+    - "Route to @astro:matthew-phillips"
+
+  build_fails_on_production_only:
+    - "Adapter runtime mismatch (Sharp on Cloudflare)"
+    - "Missing env vars"
+    - "Route to @astro:matthew-phillips (AS_MP_005)"
+
+  lighthouse_below_95:
+    - "Identify which metric failing"
+    - "Route to specialist: LCP → @addy-osmani, images → @matt-kane, JS → @jason-miller, CSS → @harry-roberts"
+    - "Iterate until >= 95 or explicit user accept lower bar"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEURISTICS REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+heuristics_applied:
+  - AS_FS_001: "Is Astro the right tool? (phase 0)"
+  - AS_NM_002: "Adapter choice (phase 2)"
+  - AS_JM_005: "UI framework choice (phase 2)"
+  - AS_BH_001: "Content Collection setup (phase 3)"
+  - AS_JM_001: "Client directive choice (phase 4)"
+  - AS_MK_003: "LCP image setup (phase 4 + phase 5)"
+  - AS_AO_001: "LCP diagnosis if fails (phase 5)"
+  - AS_HR_001: "Critical CSS if render-blocking (phase 5)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  created: "2026-04-18"
+  squad: astro
+  version: "1.0.0"
+  specialists_involved:
+    - astro-chief (orchestrator)
+    - fred-schott (phase 0 validation)
+    - nate-moore (phase 2 integrations)
+    - ben-holmes (phase 3 content)
+    - matt-kane (phase 4 images)
+    - jason-miller (phase 4 hydration audit)
+    - addy-osmani (phase 5 performance audit)
+    - harry-roberts (phase 5 CSS if needed)
+    - matthew-phillips (any build internals issue)

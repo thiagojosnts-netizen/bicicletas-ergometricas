@@ -1,0 +1,105 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Frequência Cardíaca', url: '/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Como calcular a frequência cardíaca máxima para treino?',
+    answer: 'A fórmula mais simples é FCmax = 220 − idade. Para uma pessoa de 40 anos, a FCmax estimada é 180 bpm. Essa fórmula tem margem de erro de ±10 a 12 bpm, o que é aceitável para uso geral. Para maior precisão, realize um teste ergoespirométrico com médico. Para hipertensos e pessoas com doenças cardiovasculares, a FCmax deve ser definida pelo cardiologista.',
+  },
+  {
+    question: 'Qual zona de frequência cardíaca queima mais gordura?',
+    answer: 'A zona de maior utilização percentual de gordura como combustível é entre 60% e 75% da FCmax. Nessa intensidade, aproximadamente 60 a 70% das calorias gastas vêm de gordura. Em intensidades acima de 80%, o percentual de gordura cai, mas o gasto calórico total é maior. Para emagrecimento, o déficit calórico total ao final do dia é mais importante do que a zona específica.',
+  },
+  {
+    question: 'O monitor de frequência cardíaca da bicicleta ergométrica é confiável?',
+    answer: 'Os sensores de frequência cardíaca por contato das mãos (handgrip) são razoavelmente precisos em repouso ou em exercícios de baixa intensidade, mas perdem precisão em movimentos mais rápidos ou quando as mãos estão suadas. Para maior precisão, use monitor de pulseira compatível (Garmin, Polar, Apple Watch) ou cinta torácica com protocolo ANT+ ou Bluetooth.',
+  },
+];
+---
+
+<Layout
+  title="Frequência Cardíaca na Bicicleta Ergométrica: Zonas, Cálculo e Como Monitorar"
+  description="Como calcular e monitorar a frequência cardíaca na bicicleta ergométrica: zonas de treino por objetivo, fórmula de FCmax por idade, tabela por faixa etária e qual monitor usar."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-20"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Frequência Cardíaca na Bicicleta Ergométrica: Zonas de Treino e Como Usar</h1>
+
+      <p class="summarization">
+        Treinar na <strong>frequência cardíaca correta</strong> na bicicleta ergométrica maximiza os resultados de cada sessão. A <strong>FCmax</strong> é calculada por <strong>220 menos a idade</strong>. As zonas de treino são: <strong>Zona 1 (50–60%)</strong> para recuperação e iniciantes, <strong>Zona 2 (60–70%)</strong> para queima de gordura, <strong>Zona 3 (70–80%)</strong> para condicionamento cardiovascular, <strong>Zona 4 (80–90%)</strong> para performance aeróbica e <strong>Zona 5 (90–100%)</strong> para alta intensidade anaeróbica.
+      </p>
+
+      <p>
+        O monitoramento da frequência cardíaca transforma o treino em bicicleta ergométrica de algo subjetivo em algo mensurável e progressivo. Sem controlar a frequência cardíaca, é difícil garantir que cada sessão está sendo realizada na intensidade correta para o objetivo previsto, o que pode resultar em treinos insuficientes ou excessivos.
+      </p>
+
+      <h2>Cálculo da FCmax e das Zonas de Treino</h2>
+
+      <p>
+        A fórmula de Karvonen (FCmax = 220 − idade) é amplamente usada por sua simplicidade. Para um usuário de 35 anos, a FCmax estimada é 185 bpm. As zonas de treino são percentuais dessa referência:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Zona</th>
+            <th>% FCmax</th>
+            <th>Objetivo</th>
+            <th>Percepção de esforço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Zona 1</strong></td><td>50–60%</td><td>Recuperação, iniciantes</td><td>Muito leve, conversa fácil</td></tr>
+          <tr><td><strong>Zona 2</strong></td><td>60–70%</td><td>Queima de gordura, base aeróbica</td><td>Leve, conversa em frases</td></tr>
+          <tr><td><strong>Zona 3</strong></td><td>70–80%</td><td>Condicionamento cardiovascular</td><td>Moderado, conversa em palavras</td></tr>
+          <tr><td><strong>Zona 4</strong></td><td>80–90%</td><td>Performance aeróbica, VO2max</td><td>Pesado, difícil conversar</td></tr>
+          <tr><td><strong>Zona 5</strong></td><td>90–100%</td><td>Alta intensidade anaeróbica</td><td>Máximo, impossível conversar</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Tabela de FCmax por Faixa Etária</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Idade</th>
+            <th>FCmax estimada</th>
+            <th>Zona 2 (gordura)</th>
+            <th>Zona 3 (cardio)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>20–25</td><td>195–200 bpm</td><td>117–140 bpm</td><td>137–160 bpm</td></tr>
+          <tr><td>30–35</td><td>185–190 bpm</td><td>111–133 bpm</td><td>130–152 bpm</td></tr>
+          <tr><td>40–45</td><td>175–180 bpm</td><td>105–126 bpm</td><td>123–144 bpm</td></tr>
+          <tr><td>50–55</td><td>165–170 bpm</td><td>99–119 bpm</td><td>116–136 bpm</td></tr>
+          <tr><td>60–65</td><td>155–160 bpm</td><td>93–112 bpm</td><td>109–128 bpm</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Para emagrecimento:</strong> Não fique preso ao mito da zona de queima de gordura. O déficit calórico total é mais importante do que a zona específica. Sessões na Zona 3 (70–80% FCmax) queimam mais calorias totais do que na Zona 2, mesmo que o percentual de gordura seja menor. Combinar sessões longas em Zona 2 com sessões curtas em Zona 4 (HIIT) é a estratégia mais eficaz para emagrecimento.
+        </p>
+      </div>
+
+      <p>
+        Para aplicar essas zonas em um protocolo estruturado, acesse <a href="/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/">protocolo de emagrecimento com bicicleta ergométrica</a>. Para entender quanto tempo treinar em cada zona, veja o <a href="/como-usar-bicicleta-ergometrica/tempo-ideal-na-bicicleta-ergometrica/">guia de tempo ideal</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Frequência Cardíaca na Bicicleta Ergométrica" />
+</Layout>

@@ -1,0 +1,97 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Emagrecer com Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/emagrecer-com-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica emagrece mesmo?',
+    answer: 'Sim, quando combinada com alimentação adequada para criar déficit calórico. Sozinha, a bicicleta ergométrica queima entre 300 e 600 kcal por sessão de 45 minutos, dependendo da intensidade e do peso do usuário. Para emagrecimento efetivo, o déficit calórico total (exercício mais dieta) deve ser de 300 a 500 kcal por dia, o que resulta em perda de 0,3 a 0,5 kg por semana.',
+  },
+  {
+    question: 'Quanto tempo de bicicleta ergométrica para emagrecer 5 kg?',
+    answer: 'Para perder 5 kg de forma segura (sem perda de massa muscular), o prazo realista é de 10 a 16 semanas com déficit calórico de 300 a 500 kcal diários. Com bicicleta ergométrica de 45 minutos, 4 vezes por semana, em intensidade moderada-alta, combinada com controle alimentar, esse resultado é plenamente alcançável.',
+  },
+  {
+    question: 'É melhor pedalar em jejum ou após comer para emagrecer?',
+    answer: 'A diferença de queima de gordura entre treino em jejum e pós-refeição é pequena ao longo do dia. A ciência indica que o total calórico consumido e queimado ao longo de 24 horas é mais determinante do que o momento do treino. Iniciantes devem priorizar o horário em que conseguem treinar com mais regularidade, seja em jejum ou não.',
+  },
+  {
+    question: 'A bicicleta ergométrica afina a cintura?',
+    answer: 'O exercício aeróbico regular reduz a gordura corporal de forma geral, incluindo a gordura visceral abdominal, mas não é possível selecionar onde o corpo perde gordura (spot reduction não existe). A redução da circunferência abdominal é um resultado do emagrecimento global, que ocorre com o déficit calórico mantido ao longo das semanas.',
+  },
+];
+---
+
+<Layout
+  title="Emagrecer com Bicicleta Ergométrica: Protocolo, Calorias e Resultados Reais"
+  description="Como usar a bicicleta ergométrica para emagrecer: quantas calorias queima, quanto tempo por dia, protocolo de 8 semanas e o que a ciência diz sobre a eficácia do exercício aeróbico para perda de peso."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-12"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Emagrecer com Bicicleta Ergométrica: Protocolo Baseado em Evidências</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> é uma das ferramentas mais eficazes para emagrecimento por combinar <strong>alto gasto calórico</strong> (300 a 600 kcal por sessão de 45 minutos), <strong>baixo impacto articular</strong> e <strong>progressão de intensidade</strong> acessível para todos os níveis. Para emagrecer de forma consistente, o protocolo recomendado é de <strong>4 a 5 sessões semanais</strong> de <strong>40 a 60 minutos</strong> com frequência cardíaca entre <strong>65% e 80% da FCmax</strong>, combinado com déficit calórico alimentar de 300 a 500 kcal/dia.
+      </p>
+
+      <p>
+        O emagrecimento com bicicleta ergométrica funciona por um princípio simples: o exercício aeróbico aumenta o gasto energético total, criando ou ampliando o déficit calórico necessário para que o organismo utilize as reservas de gordura como fonte de energia. A especificidade da bicicleta está na capacidade de manter o esforço por longos períodos sem o impacto articular que limita outras modalidades como a corrida.
+      </p>
+
+      <h2>Gasto Calórico por Perfil de Usuário</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peso corporal</th>
+            <th>Intensidade moderada (30 min)</th>
+            <th>Intensidade moderada (45 min)</th>
+            <th>Alta intensidade (30 min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>60 kg</td><td>210 kcal</td><td>315 kcal</td><td>290 kcal</td></tr>
+          <tr><td>70 kg</td><td>245 kcal</td><td>365 kcal</td><td>340 kcal</td></tr>
+          <tr><td>80 kg</td><td>280 kcal</td><td>420 kcal</td><td>390 kcal</td></tr>
+          <tr><td>90 kg</td><td>315 kcal</td><td>472 kcal</td><td>440 kcal</td></tr>
+          <tr><td>100 kg</td><td>350 kcal</td><td>525 kcal</td><td>490 kcal</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Protocolo de 8 Semanas para Emagrecimento</h2>
+
+      <p>
+        Semanas 1 a 2: 3 sessões semanais de 30 minutos a 60-65% da FCmax (fase de adaptação). Semanas 3 a 4: 4 sessões de 40 minutos a 65-70% da FCmax. Semanas 5 a 6: 4 sessões de 45 minutos com 1 sessão intervalar (HIIT de 25 minutos). Semanas 7 a 8: 5 sessões de 45 a 60 minutos, sendo 2 sessões intervalares e 3 contínuas em zona de queima de gordura.
+      </p>
+
+      <h2>Zona de Frequência Cardíaca para Queima de Gordura</h2>
+
+      <p>
+        A zona de queima de gordura (fat burning zone) é entre <strong>65% e 75% da FCmax</strong>. Nessa intensidade, o organismo utiliza predominantemente gordura como combustível. Em intensidades acima de 80%, o combustível passa a ser principalmente glicogênio muscular, o que resulta em maior gasto calórico total mas menor percentual proveniente de gordura. Para emagrecimento, o volume total de calorias gastas é mais importante do que a zona de queima. Veja o <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">guia completo de frequência cardíaca</a> para calcular as zonas corretas.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Importante:</strong> Bicicleta ergométrica sem controle alimentar não garante emagrecimento. O déficit calórico é o fator determinante. A bicicleta cria parte desse déficit; a alimentação precisa completar o restante. Uma sessão de 45 minutos pode ser compensada por um lanche de 400 kcal em menos de 10 minutos.
+        </p>
+      </div>
+
+      <p>
+        Consulte também o <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/">guia detalhado de queima de calorias na bicicleta ergométrica</a> e o <a href="/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/">protocolo estruturado de emagrecimento com periodização</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Emagrecer com Bicicleta Ergométrica" />
+</Layout>

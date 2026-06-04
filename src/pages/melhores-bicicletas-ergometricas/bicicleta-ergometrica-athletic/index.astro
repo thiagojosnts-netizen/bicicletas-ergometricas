@@ -1,0 +1,106 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Athletic', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-athletic/' },
+];
+
+const faqItems = [
+  {
+    question: 'Athletic é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Athletic é uma marca brasileira consolidada no segmento de equipamentos de academia e fitness domiciliar com mais de 15 anos de mercado. Seus modelos Advanced e Pro são reconhecidos pela robustez estrutural e pelos recursos avançados de monitoramento, posicionando-se acima das marcas de entrada.',
+  },
+  {
+    question: 'Qual é o diferencial da bicicleta ergométrica Athletic?',
+    answer: 'O diferencial da Athletic está na qualidade da estrutura de aço e no peso suportado acima da média. Modelos como o Bike Advanced suportam 130 kg com garantia de 2 anos para peças, o que é superior ao padrão de 12 meses oferecido por concorrentes na mesma faixa de preço.',
+  },
+];
+
+const imagem = await fetchBikeImage("stationary bike gym fitness");
+---
+
+<Layout
+  title="Bicicleta Ergométrica Athletic: Modelos Advanced e Pro Analisados"
+  description="Análise das bicicletas ergométricas Athletic no Brasil: modelos Bike Advanced e Pro, especificações técnicas, preço, peso suportado e comparativo com outras marcas do segmento."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Athletic: Análise dos Modelos Advanced e Pro</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Athletic</strong> se posiciona no segmento intermediário superior, com modelos que oferecem <strong>peso suportado de 120 a 150 kg</strong>, <strong>resistência magnética de qualidade</strong> e <strong>garantia de 2 anos</strong> para estrutura. Os preços variam de <strong>R$ 1.800 a R$ 3.500</strong>, tornando-a uma opção atrativa para usuários que buscam maior durabilidade e margem de segurança estrutural.
+      </p>
+
+      <p>
+        A <strong>Athletic</strong> é conhecida por construir equipamentos com maior margem de engenharia em relação ao limite declarado de peso, o que resulta em maior vida útil em uso regular. Para famílias com dois ou mais usuários de perfis de peso diferentes, essa margem estrutural é um diferencial importante.
+      </p>
+
+      <h2>Modelos Athletic para bicicleta ergométrica</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Níveis</th>
+            <th>Peso suportado</th>
+            <th>Garantia estrutura</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Bike Light</strong></td><td>8</td><td>100 kg</td><td>12 meses</td><td>R$ 1.200-R$ 1.600</td></tr>
+          <tr><td><strong>Bike Advanced</strong></td><td>16</td><td>130 kg</td><td>24 meses</td><td>R$ 2.000-R$ 2.800</td></tr>
+          <tr><td><strong>Bike Pro</strong></td><td>20</td><td>150 kg</td><td>24 meses</td><td>R$ 3.000-R$ 3.800</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Indicação:</strong> O <strong>Athletic Bike Advanced</strong> é a melhor opção para usuários com peso acima de 90 kg ou para famílias onde vários membros usarão o equipamento. A margem de 130 kg com garantia de 2 anos representa o melhor equilíbrio entre preço e durabilidade nessa categoria.
+        </p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Athletic Bike Advanced",
+          description: "16 níveis de resistência magnética, suporte até 130 kg e garantia de 2 anos para estrutura. Ideal para uso intensivo e famílias com múltiplos usuários.",
+          price: "R$ 2.000 – R$ 2.800",
+          rating: 4.3,
+          reviewCount: 987,
+          badge: "Alta Durabilidade",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Athletic Bike Advanced",
+          features: [
+            "16 níveis de resistência magnética",
+            "Suporte até 130 kg",
+            "Garantia 2 anos na estrutura",
+            "Monitor cardíaco integrado",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare com todas as marcas na <a href="/melhores-bicicletas-ergometricas/">análise completa das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Athletic" />
+</Layout>

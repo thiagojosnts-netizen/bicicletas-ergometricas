@@ -1,0 +1,171 @@
+# Astro Squad Configuration
+# Squad for building extremely performant, lightweight Astro sites
+# Based on real elite minds from the Astro ecosystem + web performance authorities
+
+pack:
+  name: astro
+  title: Astro Squad — Zero-JS by Default
+  version: 1.0.0
+  author: Kyoojin-san
+  description: >
+    Elite squad for building the fastest possible websites with Astro.
+    Covers Islands architecture, Content Collections, image optimization
+    (Picture/Image), MDX, API routes, View Transitions, adapters
+    (Cloudflare/Vercel/Netlify/Node), and Core Web Vitals mastery.
+  slash_prefix: astro
+  pattern_prefix: AS
+  created: "2026-04-18"
+  philosophy: "Zero JS by default. Ship HTML. Hydrate only islands."
+
+# AIOS / Squad Creator provenance
+provenance:
+  creator: squad-creator
+  workflow: wf-create-squad.yaml
+  created_via: aiox-master (Orion)
+  mode: quality
+  research_sources:
+    - "https://docs.astro.build/en/getting-started/"
+    - "https://astro.build/blog/"
+    - "Context7: /withastro/docs"
+    - "WebSearch: Astro core team 2026"
+
+# Research foundation
+research:
+  domain: "Astro web framework + modern web performance"
+  viability_score: 10/10
+  elite_minds_count: 10
+  tier_0_covered: true
+  frameworks_documented: true
+  recent_context:
+    - event: "Cloudflare acquired Astro"
+      date: "2026-01-16"
+      impact: "Cloudflare adapter becomes first-class; edge-first deployment paradigm"
+
+# Tier structure
+tiers:
+  orchestrator:
+    - astro-chief
+  tier_0_diagnosis:
+    - addy-osmani         # Performance diagnostics, Core Web Vitals
+  tier_1_masters:
+    - fred-schott         # Architecture, Islands philosophy
+    - matthew-phillips    # Framework internals, compile-time
+    - nate-moore          # Components, integrations architecture
+    - ben-holmes          # Content Collections, Astro DB
+  tier_2_systematizers:
+    - sarah-rainsberger   # Documentation methodology
+    - jason-miller        # Partial hydration, Preact, bundling
+  tier_3_specialists:
+    - harry-roberts       # CSS performance, critical CSS
+    - matt-kane           # Image service, responsive images
+    - john-otander        # MDX
+
+# Quality gates
+quality_gates:
+  agents:
+    threshold: SC_AGT_001
+    smoke_tests: 3
+    voice_dna_required: true
+    output_examples_min: 3
+  workflows:
+    phases_min: 3
+    checkpoints_per_phase: 1
+  tasks:
+    task_anatomy_fields: 8
+    executor_assigned: true
+  overall:
+    threshold: 8.0
+
+# Capabilities (what this squad can do)
+capabilities:
+  core:
+    - "Bootstrap new Astro projects with optimal config"
+    - "Migrate from Next.js / Gatsby / 11ty to Astro"
+    - "Setup Content Collections with Zod schemas + glob/file loaders"
+    - "Configure Islands architecture (client:load/idle/visible/media/only)"
+    - "Optimize images via <Image> and <Picture> (AVIF/WebP, layout, widths, sizes)"
+    - "Setup MDX with remark/rehype plugins + Shiki syntax highlighting"
+    - "Build API routes + dynamic endpoints + Astro Actions"
+    - "Integrate CMS (Storyblok, Sanity, Contentful, Strapi, headless WP)"
+    - "Configure View Transitions via ClientRouter"
+    - "Setup SSR adapters (Cloudflare, Vercel, Netlify, Node)"
+    - "Audit Core Web Vitals (LCP, INP, CLS) + fix"
+    - "Optimize CSS (critical CSS, scoped, design tokens)"
+    - "Optimize fonts (preload, font-display: swap, woff2 subsetting)"
+    - "Configure prefetch strategies"
+    - "Bundle analysis + reduction"
+
+  advanced:
+    - "Server Islands (partial SSR in static pages)"
+    - "Custom image services (Sharp, Squoosh, Cloudflare Images)"
+    - "Middleware for auth, i18n, analytics"
+    - "Edge deployment with Cloudflare Workers runtime"
+    - "ISR-style revalidation patterns"
+    - "Astro DB schema design + Drizzle queries"
+    - "Starlight documentation sites"
+
+# Data sources
+data_sources:
+  astro_docs:
+    active_source: context7
+    library_id: "/withastro/docs"
+  official_blog:
+    url: "https://astro.build/blog/"
+  github:
+    org: "withastro"
+    primary_repo: "astro"
+
+# Integrations with other squads
+squad_integrations:
+  - squad: seo (if exists)
+    pattern: "Delegate SEO audits to @seo after Astro build"
+  - squad: copy (if exists)
+    pattern: "Content generation → Astro Content Collections"
+
+# Activation
+activation:
+  orchestrator_command: "@astro-chief"
+  specialist_pattern: "@astro:{agent-id}"
+  examples:
+    - "@astro-chief"
+    - "@astro:fred-schott"
+    - "@astro:addy-osmani"
+    - "@astro:harry-roberts"
+
+# Commands prefix: *
+primary_commands:
+  - "*create-site"
+  - "*audit-performance"
+  - "*optimize-images"
+  - "*setup-content-collections"
+  - "*configure-islands"
+  - "*setup-mdx"
+  - "*integrate-cms"
+  - "*configure-adapter"
+  - "*audit-cwv"
+
+# Security
+security:
+  code_generation:
+    - "No eval() in generated code"
+    - "Sanitize Astro.props from user input in endpoints"
+    - "Use content.config.ts Zod schemas to validate all frontmatter"
+    - "Never expose API keys in client code (use import.meta.env.SECRET_*)"
+  dependencies:
+    - "Verify npm packages via socket.dev or npq before adding"
+    - "Prefer first-party @astrojs/* integrations over community when available"
+
+# Compatibility
+compatibility:
+  astro_version: ">=5.0.0"
+  node_version: ">=20.0.0"
+  package_managers: [npm, pnpm, bun, yarn]
+  adapters_supported:
+    - "@astrojs/cloudflare"
+    - "@astrojs/vercel"
+    - "@astrojs/netlify"
+    - "@astrojs/node"
+
+# ─────────────────────────────────────────────────────────────
+# END OF CONFIG
+# ─────────────────────────────────────────────────────────────

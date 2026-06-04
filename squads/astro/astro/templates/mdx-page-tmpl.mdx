@@ -1,0 +1,101 @@
+---
+title: "Your Post Title"
+description: "Meta description, max 160 chars for SEO."
+pubDate: 2026-04-18
+updatedDate: 2026-04-18
+author: jane              # references the `authors` collection
+tags:
+  - astro
+  - mdx
+  - example
+heroImage: ../../assets/posts/your-post-hero.jpg
+heroImageAlt: "Describe the hero image for a11y and SEO"
+draft: false
+relatedPosts:
+  - { collection: blog, id: another-post-slug }
+---
+
+import Callout from '../../components/Callout.astro';
+import Figure from '../../components/Figure.astro';
+import CodeDemo from '../../components/CodeDemo.astro';
+import { Image } from 'astro:assets';
+import diagram from '../../assets/posts/diagram.png';
+
+# {frontmatter.title}
+
+Intro paragraph. Three sentences max. State the problem, state who this is for,
+state what the reader will know by the end.
+
+<Callout type="info" title="Before you start">
+  This post assumes you have an Astro project set up. If not, run `npm create astro@latest`
+  to scaffold one.
+</Callout>
+
+## Why this matters
+
+Context — why is this topic worth reading about? What do most people get wrong?
+
+## The setup
+
+Show the setup code first, explain after.
+
+```ts title="src/lib/example.ts" {3-5} showLineNumbers
+export function example(input: string): string {
+  // highlighted lines 3-5
+  const result = input
+    .trim()
+    .toLowerCase();
+  return result;
+}
+```
+
+A brief explanation of what the code does, focusing on the non-obvious bits.
+
+## Advanced: interactive demo
+
+<CodeDemo src="/demos/example.html" height="400px" title="Live demo" />
+
+The demo above shows the behavior in practice. Notice how [specific observable behavior].
+
+## Visualizing
+
+<Figure
+  src={diagram}
+  alt="Architecture diagram showing data flow from input to output"
+  caption="Figure 1: Data flow through the example function."
+/>
+
+<Callout type="warning">
+  Don't forget to [important warning about a common mistake]. It's surprisingly
+  easy to [specific failure mode].
+</Callout>
+
+## Common questions
+
+### Can I do X?
+
+Yes, with caveat Y. See related post: [Another Topic](/blog/another-topic).
+
+### What about Z?
+
+Z is out of scope here — covered in [Z Deep Dive](/blog/z-deep-dive).
+
+## Try it yourself
+
+1. Clone the starter: `git clone https://github.com/you/starter`
+2. Run `npm install && npm run dev`
+3. Edit `src/lib/example.ts` per the snippet above
+4. Verify in browser
+
+## What's next
+
+- **If you want to go deeper**: [Topic B](/blog/topic-b)
+- **If you want to build on this**: [Tutorial: Project With Example](/tutorials/project)
+- **Reference**: [API docs for `example()`](/docs/api/example)
+
+---
+
+<aside>
+<strong>Found an issue?</strong> This post's source is at [github.com/you/site/blob/main/src/content/blog/your-post.mdx]().
+PRs welcome.
+</aside>

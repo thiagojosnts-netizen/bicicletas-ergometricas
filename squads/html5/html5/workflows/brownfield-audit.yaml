@@ -1,0 +1,109 @@
+name: brownfield-audit
+version: "1.0.0"
+description: "Auditoria completa de site HTML existente — do diagnóstico ao relatório executivo"
+trigger: "Site existente precisa de avaliação semântica/acessibilidade"
+
+phases:
+
+  - id: phase-0-intake
+    name: "Site Intake"
+    agent: html5-chief
+    checkpoint: BF-001
+    steps:
+      - "Receber URL ou codebase do site"
+      - "Identificar: CMS? Framework? Geração de HTML (SSR, SPA, static)?"
+      - "Calcular escopo: quantas páginas, quantos templates?"
+      - "Definir modo: auditoria completa vs. diagnóstico rápido"
+    output: audit-scope.md
+
+  - id: phase-1-cursed-energy
+    name: "Cursed Energy Scan"
+    agent: kashimo
+    checkpoint: BF-002
+    steps:
+      - "Executar SAAP-001 a SAAP-005 completo"
+      - "Calcular Cursed Energy Score total"
+      - "Classificar Grade atual (Grade 4 → Special Grade)"
+      - "Mapear Failure Mode (DIV-SOUP, GHOST-STRUCTURE, etc.)"
+      - "Gerar lista priorizada de problemas (Critical → Minor)"
+    output: cursed-energy-report.md
+    gate:
+      critical_blocker: "CE > 500 → recomendar Domain Expansion (rewrite completo)"
+      normal: "Prosseguir com audit sequencial"
+
+  - id: phase-2-semantic-audit
+    name: "Semantic Structure Audit"
+    agent: hakari
+    checkpoint: BF-003
+    depends_on: phase-1-cursed-energy
+    steps:
+      - "Auditar document outline de cada template"
+      - "Verificar uso correto de article/section/aside/nav"
+      - "Auditar formulários (labels, fieldsets, autocomplete)"
+      - "Verificar Schema.org presence e validade"
+      - "Gerar relatório de markup com Sukuna Fingers por violação"
+    output: semantic-audit-report.md
+
+  - id: phase-3-wcag-audit
+    name: "WCAG 2.1 AA Audit"
+    agent: higuruma
+    checkpoint: BF-004
+    depends_on: phase-1-cursed-energy
+    parallel_with: phase-2-semantic-audit
+    steps:
+      - "Executar HAP (Higuruma Audit Protocol) completo"
+      - "Auditar contraste de todas as combinações fg/bg"
+      - "Testar navegação por teclado"
+      - "Verificar ARIA patterns"
+      - "Emitir Deadly Sentencing (veredicto formal por violação)"
+    output: wcag-audit-report.md
+    gate:
+      critical: "Critical violations → BLOQUEADO até correção"
+
+  - id: phase-4-head-audit
+    name: "SEO & Head Audit"
+    agent: uraume
+    checkpoint: BF-005
+    depends_on: phase-1-cursed-energy
+    parallel_with: [phase-2-semantic-audit, phase-3-wcag-audit]
+    steps:
+      - "Auditar <head> de cada template"
+      - "Verificar og:image, canonical, robots"
+      - "Auditar Schema.org (Rich Results Test simulation)"
+      - "Verificar resource hints (performance)"
+      - "Auditar title/description (length, uniqueness, CTA)"
+    output: head-audit-report.md
+
+  - id: phase-5-sr-audit
+    name: "Screen Reader Audit"
+    agent: inumaki
+    checkpoint: BF-006
+    depends_on: [phase-2-semantic-audit, phase-3-wcag-audit]
+    steps:
+      - "Auditar nomes acessíveis de todos os interativos"
+      - "Verificar aria-live regions"
+      - "Simular NVDA navigation (H/D/K/B keys)"
+      - "Verificar SVG/ícone accessibility"
+    output: screen-reader-audit-report.md
+
+  - id: phase-6-executive-report
+    name: "Executive Report"
+    agent: html5-chief
+    checkpoint: BF-007
+    depends_on: [phase-5-sr-audit, phase-4-head-audit]
+    steps:
+      - "Compilar todos os relatórios parciais"
+      - "Calcular Grade final do site"
+      - "Calcular Total Sukuna Fingers"
+      - "Priorizar fixes: Critical → High → Medium → Low"
+      - "Estimar esforço de correção por issue"
+      - "Definir roadmap: o que fix para chegar ao Grade 1 vs Special Grade"
+    output: executive-audit-report.md
+
+outputs:
+  - cursed-energy-report.md
+  - semantic-audit-report.md
+  - wcag-audit-report.md (com Deadly Sentencing)
+  - head-audit-report.md
+  - screen-reader-audit-report.md
+  - executive-audit-report.md (compilado)

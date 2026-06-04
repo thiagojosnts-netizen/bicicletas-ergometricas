@@ -1,0 +1,116 @@
+name: html5
+version: "1.0.0"
+slash_prefix: "HTML5"
+title: "HTML5 Squad — Semantic Web Sorcerers"
+description: >
+  Eight cursed sorcerers specialized in semantic HTML5, accessibility, progressive enhancement,
+  and SEO-optimized markup. Works in tandem with the Design Squad (@design-chief) to receive
+  visual specs and translate them into pristine, standards-compliant HTML5 sites.
+  Zero JS frameworks required — progressive enhancement philosophy throughout.
+author: "AIOS Team"
+icon: "🏗️"
+type: specialist
+
+entry_agent: html5-chief
+
+independence: true
+independence_details: |
+  Completely self-contained — no database, no framework dependencies.
+  Core output is standards-compliant HTML5 + CSS + optional vanilla JS.
+  Integrates with Design Squad via design-chief handoff protocol.
+
+# ── Design Squad Integration ──────────────────────────────────────────────────
+integrations:
+  design_squad:
+    agent: design-chief
+    path: squads/design/agents/design-chief.md
+    handoff_trigger: "When visual design is complete and implementation begins"
+    receives_from_design:
+      - design_tokens (colors, spacing, typography)
+      - component_specs (visual hierarchy, layout)
+      - brand_guidelines (identity, tone)
+      - wireframes (structure reference)
+    returns_to_design:
+      - implemented_html (for visual QA)
+      - accessibility_report (WCAG compliance)
+      - performance_metrics (Core Web Vitals)
+    handoff_command: "*design-handoff"
+
+# ── Tier System ───────────────────────────────────────────────────────────────
+tier_system:
+  orchestrator:
+    description: "Routes requests, manages design-chief integration"
+    agent: html5-chief
+
+  tier_0_foundation:
+    description: "Diagnosis and architecture — first contact"
+    agents:
+      - kashimo    # Site Architecture Assessor
+
+  tier_1_masters:
+    description: "Primary execution experts"
+    agents:
+      - hakari     # HTML5 Semantic Master
+      - higuruma   # Accessibility / WCAG Enforcer
+
+  tier_2_specialists:
+    description: "Deep craft specialists"
+    agents:
+      - maki       # CSS Architecture (no-JS)
+      - choso      # Progressive Enhancement / JS Layer
+      - inumaki    # Screen Reader / Voice UX
+      - uraume     # SEO Meta / <head> Specialist
+
+  tier_3_product:
+    description: "Product specialist — SaaS & maintenance layer"
+    agents:
+      - mechamaru  # HTMLive CMS — SaaS site maintenance builder
+
+agents:
+  - html5-chief
+  - kashimo
+  - hakari
+  - higuruma
+  - maki
+  - choso
+  - inumaki
+  - uraume
+  - mechamaru
+
+tasks:
+  - semantic-audit
+  - create-semantic-structure
+  - wcag-audit
+  - implement-aria
+  - create-css-architecture
+  - progressive-enhancement
+  - seo-head-optimization
+  - performance-audit
+  - design-handoff-implementation
+  - create-component
+
+workflows:
+  - greenfield-site
+  - brownfield-audit
+  - design-to-html
+
+templates:
+  - semantic-page-tmpl
+  - component-tmpl
+  - head-tmpl
+
+checklists:
+  - semantic-html-checklist
+  - wcag-checklist
+  - performance-checklist
+  - pre-launch-checklist
+
+tags:
+  - html5
+  - semantic-web
+  - accessibility
+  - wcag
+  - progressive-enhancement
+  - css-architecture
+  - seo-markup
+  - no-framework

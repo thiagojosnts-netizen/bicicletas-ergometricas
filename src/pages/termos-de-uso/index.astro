@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'Termos de Uso', url: '/termos-de-uso/' },
+];
+---
+
+<Layout
+  title="Termos de Uso"
+  description="Termos de uso do BicicletasErgometricas.com: condições de navegação, responsabilidades e direitos sobre o conteúdo."
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-01-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:800px;">
+      <h1 id="page-heading">Termos de Uso</h1>
+      <p style="color:var(--token-text-subtle);font-size:0.875rem;margin-bottom:2rem;">Última atualização: 1 de janeiro de 2026</p>
+
+      <h2>1. Aceitação dos termos</h2>
+      <p>
+        Ao acessar e utilizar o <strong>BicicletasErgometricas.com</strong>, você concorda com estes Termos de Uso. Se não concordar com algum ponto, recomendamos não utilizar o site.
+      </p>
+
+      <h2>2. Natureza do conteúdo</h2>
+      <p>
+        O conteúdo deste portal tem caráter informativo e educacional. As análises, comparativos e recomendações são baseadas em critérios técnicos e pesquisa de mercado, mas não substituem orientação médica, fisioterapêutica ou profissional de educação física para casos específicos de saúde.
+      </p>
+
+      <h2>3. Precisão das informações</h2>
+      <p>
+        Buscamos manter as informações atualizadas e precisas. Porém, preços, especificações técnicas e disponibilidade de produtos estão sujeitos a alterações pelos fabricantes e revendedores. Sempre verifique as informações diretamente no site do vendedor antes de realizar uma compra.
+      </p>
+
+      <h2>4. Links de afiliados</h2>
+      <p>
+        Este site contém links de afiliados. Ao clicar em um link de produto e realizar uma compra, podemos receber uma comissão da plataforma parceira. Isso não representa custo adicional para você e não influencia nossas análises técnicas.
+      </p>
+
+      <h2>5. Propriedade intelectual</h2>
+      <p>
+        Todo o conteúdo deste site — incluindo textos, estrutura, organização e código — é de propriedade do BicicletasErgometricas.com. É proibida a reprodução total ou parcial sem autorização prévia por escrito.
+      </p>
+
+      <h2>6. Limitação de responsabilidade</h2>
+      <p>
+        O BicicletasErgometricas.com não se responsabiliza por danos decorrentes do uso incorreto de equipamentos de exercício, compras realizadas com base no conteúdo do site ou interrupções temporárias de acesso ao portal.
+      </p>
+
+      <h2>7. Modificações</h2>
+      <p>
+        Estes termos podem ser alterados a qualquer momento. As alterações entram em vigor imediatamente após a publicação. O uso continuado do site após as alterações implica aceitação dos novos termos.
+      </p>
+
+      <h2>8. Legislação aplicável</h2>
+      <p>
+        Estes termos são regidos pela legislação brasileira. Fica eleito o foro da Comarca de São Paulo — SP para resolução de eventuais litígios.
+      </p>
+    </div>
+  </section>
+</Layout>

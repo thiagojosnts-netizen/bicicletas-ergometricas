@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Com Programas de Treino', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-programas/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que são os programas de treino na bicicleta ergométrica?',
+    answer: 'Os programas de treino são sequências pré-configuradas de resistência que o painel aplica automaticamente ao longo da sessão. Cada programa define a intensidade de cada intervalo, simulando terrenos (plano, subida, intervalado) ou objetivos específicos como cardio, queima de gordura, recuperação ou teste de performance. O usuário escolhe o programa e o painel gerencia a resistência automaticamente.',
+  },
+  {
+    question: 'Quantos programas é o suficiente em uma bicicleta ergométrica?',
+    answer: 'Para uso domiciliar geral, 8 a 12 programas são suficientes. Usuários mais exigentes se beneficiam de 16 a 32 programas, que oferecem maior variedade de estímulos. Além dos programas pré-definidos, verifique se o modelo permite criar programas personalizados (user programs), o que é um diferencial importante.',
+  },
+  {
+    question: 'Bicicleta ergométrica com programas de treino é mais cara?',
+    answer: 'Não necessariamente muito mais cara. Modelos intermediários a partir de R$ 1.200 já vêm com 8 a 12 programas automáticos. Modelos com 24 a 32 programas e personalização avançada geralmente custam acima de R$ 1.800. A diferença de preço entre modelos com 8 e 16 programas é pequena comparada ao benefício de variedade de estímulos.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica com Programas de Treino: Como Funcionam e Quais Escolher"
+  description="Como funcionam os programas de treino em bicicletas ergométricas, quantos programas são necessários, quais tipos existem e como escolher o modelo certo para o seu objetivo de treino."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-01-23"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica com Programas de Treino: O que São e Como Usar</h1>
+
+      <p class="summarization">
+        Os <strong>programas de treino</strong> em bicicletas ergométricas são sequências automáticas de resistência pré-configuradas no painel, que simulam objetivos como <strong>queima de gordura</strong>, <strong>cardio</strong>, <strong>intervalado</strong> e <strong>recuperação</strong>. Modelos com <strong>8 a 12 programas</strong> atendem bem ao uso domiciliar geral. Modelos com <strong>16 a 32 programas</strong> e programas personalizáveis são ideais para usuários que buscam maior variedade de estímulos ao longo do tempo.
+      </p>
+
+      <p>
+        Os programas de treino automáticos resolvem um problema real para quem começa: a dificuldade de estruturar uma sessão de exercício sem experiência em periodização. Em vez de pedalar no mesmo ritmo durante toda a sessão (o que limita os resultados), o programa gerencia a resistência automaticamente, criando estímulos variados que melhoram a adaptação do organismo.
+      </p>
+
+      <h2>Tipos de Programas Mais Comuns</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo de programa</th>
+            <th>Objetivo</th>
+            <th>Duração típica</th>
+            <th>Intensidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Fat Burn (queima de gordura)</td><td>Emagrecimento</td><td>40-60 min</td><td>65-75% FCmax</td></tr>
+          <tr><td>Cardio</td><td>Condicionamento cardiovascular</td><td>30-45 min</td><td>75-85% FCmax</td></tr>
+          <tr><td>Interval Training</td><td>HIIT, performance</td><td>20-30 min</td><td>60-95% FCmax (alternado)</td></tr>
+          <tr><td>Hill (subida)</td><td>Força e resistência</td><td>30-40 min</td><td>70-85% FCmax</td></tr>
+          <tr><td>Recovery</td><td>Recuperação ativa</td><td>20-30 min</td><td>50-60% FCmax</td></tr>
+          <tr><td>Manual</td><td>Customização livre</td><td>Livre</td><td>Definida pelo usuário</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Programas Personalizados: o Diferencial</h2>
+
+      <p>
+        Modelos com <strong>user programs</strong> permitem que o usuário crie seus próprios perfis de resistência, definindo cada intervalo individualmente. Isso é especialmente útil para usuários que seguem programas estruturados de treinamento, como periodização linear ou ondulatória. Verifique se o modelo escolhido oferece pelo menos 2 slots de programas personalizados.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Para quem não sabe por onde começar:</strong> Comece com o programa Fat Burn nas primeiras 4 semanas de uso. Ele mantém a intensidade na zona de queima de gordura (65-75% da FCmax) automaticamente, sem necessidade de monitorar a resistência manualmente.
+        </p>
+      </div>
+
+      <p>
+        Para integrar os programas a aplicativos de treino, veja o <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-bluetooth/">guia de bicicleta ergométrica com bluetooth</a>. Para o guia completo de seleção, acesse <a href="/como-escolher-bicicleta-ergometrica/">como escolher bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Programas de Treino" />
+</Layout>

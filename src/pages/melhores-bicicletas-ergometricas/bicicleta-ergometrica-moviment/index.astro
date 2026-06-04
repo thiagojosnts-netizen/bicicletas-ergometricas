@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Moviment', url: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-moviment/' },
+];
+
+const faqItems = [
+  {
+    question: 'Moviment é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Moviment é uma das marcas mais reconhecidas no Brasil para equipamentos de exercício domiciliar, com linha BEX completa de bicicletas ergométricas verticais e horizontais. Seus modelos são conhecidos pela durabilidade da estrutura e pelo suporte pós-venda com peças de reposição disponíveis.',
+  },
+  {
+    question: 'Qual é a diferença entre Moviment BEX-1800 e BEX-2300?',
+    answer: 'O BEX-1800 tem 12 níveis de resistência magnética e suporte de 100 kg, adequado para uso moderado. O BEX-2300 tem 16 níveis, suporte de 120 kg, mais programas automáticos e acabamento superior. A diferença de preço é de aproximadamente R$ 500 a R$ 800, valendo o investimento para usuários acima de 80 kg ou com frequência acima de 4x/semana.',
+  },
+  {
+    question: 'Moviment tem loja física no Brasil?',
+    answer: 'A Moviment opera principalmente via e-commerce e revendedores autorizados. Não tem lojas físicas próprias na maioria das cidades, mas possui centros de assistência técnica e revendedores em várias capitais brasileiras.',
+  },
+];
+
+const imagem = await fetchBikeImage("indoor cycling bike vertical");
+---
+
+<Layout
+  title="Bicicleta Ergométrica Moviment: Linha BEX Completa Analisada"
+  description="Análise da linha de bicicletas ergométricas Moviment: modelos BEX-800, BEX-1800 e BEX-2300. Especificações, durabilidade, preço e comparativo para ajudar na melhor escolha."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-02-04"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Moviment: Análise da Linha BEX</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Moviment</strong> é produzida com foco na durabilidade estrutural, com linha BEX que oferece modelos de <strong>R$ 900 a R$ 2.500</strong> com resistência magnética, suporte de <strong>90 a 130 kg</strong> e entre <strong>8 e 16 níveis de carga</strong>. O modelo <strong>BEX-2300</strong> é o mais completo da linha para uso familiar intensivo, com garantia de 2 anos para estrutura.
+      </p>
+
+      <p>
+        A <strong>Moviment</strong> tem boa reputação no mercado brasileiro de equipamentos fitness domiciliar, especialmente pela durabilidade dos quadros de aço e pela disponibilidade de peças de reposição.
+      </p>
+
+      <h2>Linha BEX: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Resistência</th>
+            <th>Níveis</th>
+            <th>Peso suportado</th>
+            <th>Programas</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>BEX-800</strong></td><td>Magnética</td><td>8</td><td>90 kg</td><td>5</td><td>R$ 900-R$ 1.200</td></tr>
+          <tr><td><strong>BEX-1800</strong></td><td>Magnética</td><td>12</td><td>100 kg</td><td>8</td><td>R$ 1.400-R$ 1.800</td></tr>
+          <tr><td><strong>BEX-2300</strong></td><td>Magnética</td><td>16</td><td>120 kg</td><td>12</td><td>R$ 2.000-R$ 2.500</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Recomendação:</strong> O <strong>BEX-1800</strong> é o melhor custo-benefício da linha para usuários de até 80 kg com frequência de 3 a 4 sessões semanais. Para uso mais intensivo, o <strong>BEX-2300</strong> oferece margem estrutural superior sem sair do segmento acessível.
+        </p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Moviment BEX-2300",
+          description: "16 níveis de resistência magnética, 12 programas automáticos e suporte até 120 kg. Garantia de 2 anos na estrutura para uso familiar intensivo.",
+          price: "R$ 2.000 – R$ 2.500",
+          rating: 4.1,
+          reviewCount: 742,
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Moviment BEX-2300",
+          features: [
+            "16 níveis de resistência magnética",
+            "12 programas automáticos",
+            "Suporte até 120 kg",
+            "Garantia 2 anos na estrutura",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Veja o <a href="/melhores-bicicletas-ergometricas/">comparativo geral das melhores marcas</a> e o guia de <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">melhor custo-benefício por faixa de preço</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Moviment" />
+</Layout>

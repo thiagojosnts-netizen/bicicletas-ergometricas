@@ -1,0 +1,227 @@
+---
+const year = new Date().getFullYear();
+const silos = [
+  {
+    title: 'Como Escolher',
+    links: [
+      { href: '/como-escolher-bicicleta-ergometrica/', label: 'Guia de Escolha' },
+      { href: '/como-escolher-bicicleta-ergometrica/peso-suportado-bicicleta-ergometrica/', label: 'Peso Suportado' },
+      { href: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/', label: 'Para Apartamento' },
+      { href: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-idosos/', label: 'Para Idosos' },
+    ],
+  },
+  {
+    title: 'Melhores Modelos',
+    links: [
+      { href: '/melhores-bicicletas-ergometricas/', label: 'Melhores Modelos' },
+      { href: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-randers/', label: 'Randers' },
+      { href: '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-kikos/', label: 'Kikos' },
+      { href: '/melhores-bicicletas-ergometricas/melhor-custo-beneficio/', label: 'Custo-Benefício' },
+    ],
+  },
+  {
+    title: 'Uso e Preço',
+    links: [
+      { href: '/beneficios-bicicleta-ergometrica/', label: 'Benefícios' },
+      { href: '/como-usar-bicicleta-ergometrica/', label: 'Como Usar' },
+      { href: '/preco-bicicleta-ergometrica/', label: 'Preço' },
+      { href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/', label: 'Bicicleta Barata' },
+    ],
+  },
+  {
+    title: 'Blog',
+    links: [
+      { href: '/blog/', label: 'Todos os artigos' },
+      { href: '/blog/bicicleta-ergometrica-vs-esteira/', label: 'Bicicleta vs Esteira' },
+      { href: '/blog/como-montar-bicicleta-ergometrica/', label: 'Como Montar' },
+      { href: '/blog/erros-bicicleta-ergometrica/', label: '10 Erros Comuns' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+
+    <!-- TOP: logo + desc + nav -->
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <span>🚴</span>
+          <span>BicicletasErgometricas<strong>.com</strong></span>
+        </a>
+        <p>
+          Portal especializado em bicicletas ergométricas no Brasil. Comparativos, guias de uso, análises por perfil de usuário e recomendações de compra com base em critérios técnicos.
+        </p>
+        <a href="/melhores-bicicletas-ergometricas/" class="footer-cta">
+          Ver melhores modelos →
+        </a>
+      </div>
+
+      <div class="footer-nav">
+        {silos.map(silo => (
+          <div class="footer-col">
+            <h3>{silo.title}</h3>
+            <ul>
+              {silo.links.map(link => (
+                <li><a href={link.href}>{link.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- BOTTOM: copyright -->
+    <div class="footer-bottom">
+      <p>&copy; {year} BicicletasErgometricas.com. Todos os direitos reservados.</p>
+      <p>Site de comparação e afiliados. Preços e disponibilidade sujeitos a alteração.</p>
+      <p>
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        &nbsp;·&nbsp;
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--c-gray-900);
+    color: var(--c-gray-300);
+    padding: 4rem 0 0;
+    margin-top: 5rem;
+  }
+
+  /* TOP */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--c-gray-700);
+  }
+
+  /* BRAND */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-logo span:first-child { font-size: 1.25rem; }
+  .footer-logo strong { color: var(--c-green-300); }
+
+  .footer-brand p {
+    font-size: 0.875rem;
+    color: var(--c-gray-400);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-green-300);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-cta:hover { color: #fff; }
+
+  /* NAV COLS */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-col h3 {
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-col li { margin: 0; }
+
+  .footer-col a {
+    font-size: 0.875rem;
+    color: var(--c-gray-400);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-col a:hover { color: #fff; }
+
+  /* BOTTOM */
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.5rem 0;
+    font-size: 0.8125rem;
+    color: var(--c-gray-500);
+  }
+
+  .footer-bottom p { margin: 0; }
+
+  .footer-bottom a {
+    color: var(--c-gray-400);
+    text-decoration: none;
+  }
+
+  .footer-bottom a:hover { color: #fff; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-nav {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-nav {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
