@@ -10,64 +10,41 @@ const breadcrumbs = [
 const faqItems = [
   {
     question: 'Qual é a melhor bicicleta ergométrica do Brasil?',
-    answer: 'Entre as melhores bicicletas ergométricas disponíveis no Brasil estão os modelos Randers BRF-1800, Kikos FB 180i e Moviment BEX-2300, que oferecem resistência magnética, 16 níveis de carga, monitor de frequência cardíaca e peso suportado de 100 a 120 kg com preço entre R$ 1.200 e R$ 2.500.',
+    answer: 'Entre as melhores bicicletas ergométricas disponíveis no Brasil estão os modelos Gallant Elite Pro Spinning, Kikos KV3.1i, Dream Fitness Max V e WCT Fitness 13kg, que oferecem boa relação entre resistência, durabilidade e preço. A escolha depende do objetivo, frequência de uso e orçamento.',
   },
   {
     question: 'Qual marca de bicicleta ergométrica é mais confiável?',
-    answer: 'As marcas com maior reconhecimento no mercado brasileiro são Randers, Kikos, Moviment, Athletic e Wellness, todas com assistência técnica nacional, peças de reposição disponíveis e garantia mínima de 12 meses. Para o segmento premium, a Technogym lidera com equipamentos de academia.',
-  },
-  {
-    question: 'Vale a pena comprar bicicleta ergométrica de academia usada?',
-    answer: 'Bicicletas ergométricas comerciais usadas de marcas como Life Fitness, Precor ou Technogym podem oferecer excelente custo-benefício, pois são construídas para uso intensivo. O risco é a dificuldade de manutenção e o peso elevado. Verifique o estado do volante, dos pedais e do painel antes de comprar.',
+    answer: 'As marcas com maior reconhecimento e volume de avaliações positivas na Amazon BR são Gallant, Kikos, Dream Fitness, Odin Fit e WCT Fitness. Para o segmento premium, a Speedo e a Technogym lideram com equipamentos de nível semiprofissional e profissional.',
   },
   {
     question: 'Qual bicicleta ergométrica tem melhor custo-benefício?',
-    answer: 'Na faixa de R$ 800 a R$ 1.500, o melhor custo-benefício é encontrado nos modelos Randers BR-300 e Moviment BEX-1800, com resistência magnética, 8 a 12 níveis e peso suportado de 100 kg. Para quem busca qualidade superior, os modelos entre R$ 2.000 e R$ 3.500 da Kikos e Athletic oferecem maior durabilidade e recursos.',
+    answer: 'Na faixa até R$ 1.500, o melhor custo-benefício está nos modelos Gallant Elite X Spinning 8kg e Dream Fitness Max V. Para uso mais intensivo com orçamento entre R$ 1.500 e R$ 2.500, o Gallant Elite Pro 13kg e o WCT Fitness 13kg são as melhores opções.',
+  },
+  {
+    question: 'Vale a pena comprar bicicleta ergométrica de academia usada?',
+    answer: 'Bicicletas ergométricas comerciais usadas de marcas como Speedo, Technogym ou Life Fitness podem oferecer excelente custo-benefício, pois são construídas para uso intensivo. O risco é a dificuldade de manutenção e o peso elevado. Verifique o estado do volante, dos pedais e do painel antes de comprar.',
   },
 ];
 
-const modelos = [
-  {
-    href: '/melhores-bicicletas-ergometricas/randers/',
-    title: 'Bicicleta Ergométrica Randers',
-    desc: 'Análise completa dos modelos Randers: BRF-800, BRF-1200 e BRF-1800, com especificações, preço e comparativo de desempenho.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/kikos/',
-    title: 'Bicicleta Ergométrica Kikos',
-    desc: 'Modelos FB 180i, BIO-1800 e Premium 2200: quando o design e a tecnologia se tornam diferenciais em relação aos concorrentes.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/moviment/',
-    title: 'Bicicleta Ergométrica Moviment',
-    desc: 'Linha BEX completa: quais modelos Moviment valem o investimento e para qual perfil de usuário cada um se aplica melhor.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/athletic/',
-    title: 'Bicicleta Ergométrica Athletic',
-    desc: 'Athletic Bike Advanced e Pro: análise do posicionamento de mercado e das especificações técnicas da marca.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/wellness/',
-    title: 'Bicicleta Ergométrica Wellness',
-    desc: 'Linha Wellness Health Bike: durabilidade, acabamento e recursos digitais para uso em academias e residências.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/technogym/',
-    title: 'Bicicleta Ergométrica Technogym',
-    desc: 'A referência premium do mercado: Excite Bike e Mycycling para academias corporativas e usuários de alta exigência.',
-  },
-  {
-    href: '/melhores-bicicletas-ergometricas/melhor-custo-beneficio/',
-    title: 'Melhor Custo-Benefício por Faixa de Preço',
-    desc: 'As melhores opções de R$ 700 a mais de R$ 5.000: como identificar o equipamento certo para o seu orçamento.',
-  },
+const marcasPrincipais = [
+  { href: '/melhores-bicicletas-ergometricas/gallant/', title: 'Gallant', segmento: 'Entrada – Intermediário', preco: 'R$ 400 – R$ 5.599', destaque: 'Maior variedade de modelos', badge: 'Mais opções' },
+  { href: '/melhores-bicicletas-ergometricas/dream-fitness/', title: 'Dream Fitness', segmento: 'Entrada', preco: 'R$ 429 – R$ 1.499', destaque: '+3.700 avaliações no modelo EX 450', badge: 'Mais avaliada' },
+  { href: '/melhores-bicicletas-ergometricas/kikos/', title: 'Kikos', segmento: 'Intermediário – Premium', preco: 'R$ 1.535 – R$ 8.952', destaque: 'Bluetooth e conectividade', badge: 'Tecnologia' },
+  { href: '/melhores-bicicletas-ergometricas/wct-fitness/', title: 'WCT Fitness', segmento: 'Intermediário', preco: 'R$ 444 – R$ 1.888', destaque: 'Spinning com volante pesado', badge: 'Spinning' },
+  { href: '/melhores-bicicletas-ergometricas/odin-fit/', title: 'Odin Fit', segmento: 'Entrada – Intermediário', preco: 'R$ 400 – R$ 1.899', destaque: 'Pedais com clip inclusos', badge: 'Ciclismo' },
+  { href: '/melhores-bicicletas-ergometricas/poli-sports/', title: 'Poli Sports / Polimet', segmento: 'Entrada', preco: 'R$ 330 – R$ 940', destaque: '+5.700 avaliações no POLI-163', badge: 'Mais barata' },
+  { href: '/melhores-bicicletas-ergometricas/acte-sports/', title: 'Acte Sports', segmento: 'Intermediário', preco: 'R$ 814 – R$ 2.099', destaque: 'E16 Spinning com 4.5 estrelas', badge: 'Melhor nota' },
+  { href: '/melhores-bicicletas-ergometricas/podiumfit/', title: 'PodiumFit', segmento: 'Entrada – Semiprofissional', preco: 'R$ 599 – R$ 2.290', destaque: 'Linha completa vertical e horizontal', badge: 'Versátil' },
+  { href: '/melhores-bicicletas-ergometricas/athletic/', title: 'Athletic', segmento: 'Intermediário – Premium', preco: 'R$ 1.290 – R$ 4.490', destaque: 'Garantia de 2 anos na estrutura', badge: 'Durabilidade' },
+  { href: '/melhores-bicicletas-ergometricas/wellness/', title: 'Wellness', segmento: 'Premium', preco: 'R$ 2.000 – R$ 3.800', destaque: 'Design premium domiciliar', badge: 'Premium' },
+  { href: '/melhores-bicicletas-ergometricas/technogym/', title: 'Technogym', segmento: 'Profissional', preco: 'R$ 8.000+', destaque: 'Padrão Olímpico', badge: 'Profissional' },
+  { href: '/melhores-bicicletas-ergometricas/melhor-custo-beneficio/', title: 'Melhor Custo-Benefício', segmento: 'Todas as faixas', preco: 'R$ 400 – R$ 5.000', destaque: 'Guia por faixa de orçamento', badge: 'Guia' },
 ];
 ---
 
 <Layout
   title="Melhores Bicicletas Ergométricas 2026: Comparativo por Marca e Preço"
-  description="Ranking das melhores bicicletas ergométricas do Brasil: Randers, Kikos, Moviment, Athletic, Wellness e Technogym. Comparativo técnico com especificações, preço e avaliação por perfil de usuário."
+  description="Ranking das melhores bicicletas ergométricas do Brasil: Gallant, Dream Fitness, Kikos, WCT Fitness, Odin Fit, Poli Sports e mais. Comparativo técnico com especificações, preço e avaliação por perfil de usuário."
   breadcrumbs={breadcrumbs}
   faqItems={faqItems}
   datePublished="2026-02-01"
@@ -79,17 +56,17 @@ const modelos = [
       <h1 id="page-heading">Melhores Bicicletas Ergométricas 2026: Comparativo Completo por Marca</h1>
 
       <p class="summarization">
-        As <strong>melhores bicicletas ergométricas</strong> disponíveis no Brasil em 2026 são os modelos com <strong>resistência magnética</strong>, peso suportado acima de <strong>100 kg</strong> e painel com monitor de frequência cardíaca. As marcas mais reconhecidas são <strong>Randers</strong>, <strong>Kikos</strong>, <strong>Moviment</strong>, <strong>Athletic</strong>, <strong>Wellness</strong> e <strong>Technogym</strong>, com preços de <strong>R$ 700 a mais de R$ 8.000</strong> dependendo da categoria e dos recursos.
+        As <strong>melhores bicicletas ergométricas</strong> disponíveis no Brasil em 2026 cobrem desde modelos de entrada como o <strong>Polimet POLI-163</strong> (R$ 430) até bikes semiprofissionais como o <strong>Gallant Smart 18kg</strong> (R$ 5.599). As marcas com maior presença na Amazon BR são <strong>Gallant</strong>, <strong>Dream Fitness</strong>, <strong>Kikos</strong>, <strong>WCT Fitness</strong>, <strong>Odin Fit</strong> e <strong>Poli Sports</strong>, com modelos para todos os perfis de uso e orçamento.
       </p>
 
       <p>
-        A bicicleta ergométrica certa não é necessariamente a mais cara. Cada marca e cada modelo foi projetado para um perfil de usuário específico. Este guia organiza as opções por marca, faixa de preço e critério técnico para facilitar a comparação antes da compra.
+        A bicicleta ergométrica certa não é necessariamente a mais cara. Cada marca foi projetada para um perfil de usuário específico. Este guia organiza as opções por marca, faixa de preço e critério técnico para facilitar a comparação antes da compra.
       </p>
 
       <h2>Como avaliamos as bicicletas ergométricas</h2>
 
       <p>
-        Cada modelo neste comparativo foi avaliado com base em seis critérios objetivos: <strong>tipo e qualidade da resistência</strong>, <strong>peso suportado</strong>, <strong>estabilidade estrutural</strong> (medida pelo peso do equipamento e qualidade dos tubos), <strong>conforto do assento e do guidão</strong>, <strong>recursos digitais do painel</strong> e <strong>custo-benefício em relação ao preço de mercado</strong>.
+        Cada modelo neste comparativo foi avaliado com base em seis critérios objetivos: <strong>tipo e qualidade da resistência</strong>, <strong>peso suportado</strong>, <strong>estabilidade estrutural</strong>, <strong>conforto do assento e do guidão</strong>, <strong>recursos do painel digital</strong> e <strong>custo-benefício em relação ao preço de mercado</strong>. Avaliações de usuários na Amazon BR também foram consideradas.
       </p>
 
       <h2>Bicicletas ergométricas por faixa de preço</h2>
@@ -105,53 +82,33 @@ const modelos = [
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>R$ 700 a R$ 1.200</strong></td>
-            <td>Randers BR-300, Moviment BEX-800</td>
-            <td>Magnética, 8 níveis</td>
-            <td>90-100 kg</td>
-            <td>Uso ocasional, iniciante</td>
-          </tr>
-          <tr>
-            <td><strong>R$ 1.200 a R$ 2.500</strong></td>
-            <td>Kikos FB 180i, Randers BRF-1800</td>
-            <td>Magnética, 16 níveis</td>
-            <td>100-120 kg</td>
-            <td>Uso regular, 3-5x/semana</td>
-          </tr>
-          <tr>
-            <td><strong>R$ 2.500 a R$ 5.000</strong></td>
-            <td>Athletic Bike Pro, Wellness Premium</td>
-            <td>Magnética, 20+ níveis</td>
-            <td>120-150 kg</td>
-            <td>Uso intensivo, família</td>
-          </tr>
-          <tr>
-            <td><strong>Acima de R$ 5.000</strong></td>
-            <td>Technogym Excite, Life Fitness C5</td>
-            <td>Eletromagnética</td>
-            <td>150+ kg</td>
-            <td>Academia, uso profissional</td>
-          </tr>
+          <tr><td><strong>Até R$ 700</strong></td><td>Polimet POLI-163, Dream Fitness EX 450</td><td>Mecânica</td><td>90-100 kg</td><td>Iniciante, uso ocasional</td></tr>
+          <tr><td><strong>R$ 700 a R$ 1.500</strong></td><td>Gallant Elite X, Odin Fit Chase</td><td>Mecânica / Magnética</td><td>100-110 kg</td><td>Uso regular, 3x/semana</td></tr>
+          <tr><td><strong>R$ 1.500 a R$ 2.500</strong></td><td>WCT Fitness 13kg, Gallant Elite Pro</td><td>Mecânica / Magnética</td><td>110-130 kg</td><td>Uso intensivo, spinning</td></tr>
+          <tr><td><strong>R$ 2.500 a R$ 5.000</strong></td><td>Kikos KV6.3i, Athletic Bike Pro</td><td>Magnética</td><td>120-150 kg</td><td>Bluetooth, uso familiar</td></tr>
+          <tr><td><strong>Acima de R$ 5.000</strong></td><td>Technogym Excite, Speedo B75</td><td>Eletromagnética</td><td>150+ kg</td><td>Academia, profissional</td></tr>
         </tbody>
       </table>
 
       <div class="highlight-box">
         <p>
-          <strong>Recomendação para uso domiciliar:</strong> Para 3 a 5 sessões semanais com dois ou mais usuários, o investimento ideal está entre R$ 1.500 e R$ 2.500. Abaixo disso, o risco de desgaste prematuro é maior. Acima de R$ 3.000, os recursos adicionais (como telas touch e conectividade avançada) justificam o preço apenas para usuários com objetivos de performance.
+          <strong>Recomendação para uso domiciliar:</strong> Para 3 a 5 sessões semanais, o investimento ideal está entre R$ 1.200 e R$ 2.500. O <strong>Gallant Elite Pro Spinning 13kg</strong> e o <strong>WCT Fitness 13kg</strong> são as opções mais equilibradas nessa faixa, com volante pesado, boa durabilidade e ampla disponibilidade de peças.
         </p>
       </div>
 
-      <h2>Análise detalhada por marca</h2>
-      <div class="cards-grid">
-        {modelos.map(m => (
-          <article class="card">
-            <h3 style="margin-bottom:0.5rem;">
-              <a href={m.href} style="text-decoration:none;color:var(--token-text-primary);">{m.title}</a>
-            </h3>
-            <p style="font-size:0.9375rem;">{m.desc}</p>
-            <a href={m.href} class="btn-primary" style="font-size:0.875rem;margin-top:0.5rem;">Ver análise</a>
-          </article>
+      <h2>Análise por marca</h2>
+
+      <div class="marcas-comparativo">
+        {marcasPrincipais.map(m => (
+          <a href={m.href} class="marca-row">
+            <div class="marca-row-info">
+              <div class="marca-row-nome">{m.title}</div>
+              <div class="marca-row-segmento">{m.segmento}</div>
+            </div>
+            <div class="marca-row-preco">{m.preco}</div>
+            <div class="marca-row-destaque">✓ {m.destaque}</div>
+            <div class="marca-row-badge">{m.badge}</div>
+          </a>
         ))}
       </div>
 
@@ -163,3 +120,74 @@ const modelos = [
 
   <FAQ items={faqItems} title="Perguntas frequentes sobre as melhores bicicletas ergométricas" />
 </Layout>
+
+<style>
+  .marcas-comparativo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .marca-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .marca-row:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-color: var(--token-brand);
+  }
+
+  .marca-row-nome {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--token-text-primary);
+  }
+
+  .marca-row-segmento {
+    font-size: 0.75rem;
+    color: var(--token-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .marca-row-preco {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--token-brand);
+  }
+
+  .marca-row-destaque {
+    font-size: 0.85rem;
+    color: var(--token-text-secondary);
+  }
+
+  .marca-row-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--token-brand-light);
+    color: var(--token-brand);
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .marca-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .marca-row-destaque { display: none; }
+  }
+</style>
