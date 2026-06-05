@@ -18,7 +18,7 @@ const faqItems = [
   },
   {
     question: 'Qual é a melhor bicicleta ergométrica para iniciantes?',
-    answer: 'Para iniciantes, recomenda-se bicicletas ergométricas verticais com 8 a 12 níveis de resistência, assento ajustável, monitor de frequência cardíaca e peso suportado de ao menos 100 kg. Modelos das marcas Randers, Kikos e Moviment oferecem bom desempenho nessa faixa de entrada.',
+    answer: 'Para iniciantes, recomenda-se bicicletas ergométricas verticais com 8 a 12 níveis de resistência, assento ajustável, monitor de frequência cardíaca e peso suportado de ao menos 100 kg. Modelos das marcas Dream Fitness, Gallant e Poli Sports oferecem bom desempenho nessa faixa de entrada.',
   },
   {
     question: 'Quanto tempo pedalar por dia na bicicleta ergométrica?',
@@ -56,14 +56,14 @@ const perfis = [
   {
     icon: '🏠',
     titulo: 'Uso domiciliar leve',
-    desc: 'Até 3x por semana, espaço reduzido, orçamento até R$ 1.500. Modelos compactos das marcas Randers e Moviment atendem bem esse perfil.',
+    desc: 'Até 3x por semana, espaço reduzido, orçamento até R$ 1.500. Modelos compactos das marcas Dream Fitness, Gallant e Poli Sports atendem bem esse perfil.',
     href: '/melhores-bicicletas-ergometricas/',
     cta: 'Ver modelos compactos →',
   },
   {
     icon: '💪',
     titulo: 'Treino intenso / diário',
-    desc: 'Uso de 5x/semana ou mais exige estrutura robusta, suporte de 120 kg+, garantia de 2 anos. Athletic, Kikos e Wellness são as marcas certas.',
+    desc: 'Uso de 5x/semana ou mais exige estrutura robusta, suporte de 120 kg+, inércia pesada. WCT Fitness 13kg, Gallant Elite Pro e Kikos são as marcas certas.',
     href: '/melhores-bicicletas-ergometricas/',
     cta: 'Ver modelos para uso intenso →',
   },
@@ -93,10 +93,15 @@ const comoEscolher = [
 ];
 
 const marcas = [
-  { nome: 'Randers', segmento: 'Entrada', preco: 'R$ 800–R$ 2.200', destaque: 'Melhor custo-benefício', href: '/melhores-bicicletas-ergometricas/randers/' },
-  { nome: 'Kikos', segmento: 'Intermediário', preco: 'R$ 1.000–R$ 3.500', destaque: 'Bluetooth e conectividade', href: '/melhores-bicicletas-ergometricas/kikos/' },
-  { nome: 'Moviment', segmento: 'Entrada–Intermediário', preco: 'R$ 900–R$ 2.500', destaque: 'Durabilidade estrutural', href: '/melhores-bicicletas-ergometricas/moviment/' },
-  { nome: 'Athletic', segmento: 'Intermediário–Premium', preco: 'R$ 1.200–R$ 3.800', destaque: 'Garantia de 2 anos', href: '/melhores-bicicletas-ergometricas/athletic/' },
+  { nome: 'Gallant', segmento: 'Entrada – Intermediário', preco: 'R$ 400–R$ 5.599', destaque: 'Maior variedade de modelos', href: '/melhores-bicicletas-ergometricas/gallant/' },
+  { nome: 'Dream Fitness', segmento: 'Entrada', preco: 'R$ 429–R$ 1.499', destaque: '+3.700 avaliações no EX 450', href: '/melhores-bicicletas-ergometricas/dream-fitness/' },
+  { nome: 'Kikos', segmento: 'Intermediário – Premium', preco: 'R$ 1.535–R$ 8.952', destaque: 'Bluetooth e conectividade', href: '/melhores-bicicletas-ergometricas/kikos/' },
+  { nome: 'WCT Fitness', segmento: 'Intermediário', preco: 'R$ 444–R$ 1.888', destaque: 'Spinning com volante pesado', href: '/melhores-bicicletas-ergometricas/wct-fitness/' },
+  { nome: 'Odin Fit', segmento: 'Entrada – Intermediário', preco: 'R$ 400–R$ 1.899', destaque: 'Pedais com clip inclusos', href: '/melhores-bicicletas-ergometricas/odin-fit/' },
+  { nome: 'Poli Sports', segmento: 'Entrada', preco: 'R$ 330–R$ 940', destaque: '+5.700 avaliações no POLI-163', href: '/melhores-bicicletas-ergometricas/poli-sports/' },
+  { nome: 'Acte Sports', segmento: 'Intermediário', preco: 'R$ 814–R$ 2.099', destaque: 'E16 Spinning 4.5 estrelas', href: '/melhores-bicicletas-ergometricas/acte-sports/' },
+  { nome: 'PodiumFit', segmento: 'Entrada – Semiprofissional', preco: 'R$ 599–R$ 2.290', destaque: 'Linha vertical e horizontal', href: '/melhores-bicicletas-ergometricas/podiumfit/' },
+  { nome: 'Athletic', segmento: 'Intermediário – Premium', preco: 'R$ 1.290–R$ 4.490', destaque: 'Garantia de 2 anos', href: '/melhores-bicicletas-ergometricas/athletic/' },
   { nome: 'Wellness', segmento: 'Premium', preco: 'R$ 2.000–R$ 3.800', destaque: 'Design premium domiciliar', href: '/melhores-bicicletas-ergometricas/wellness/' },
   { nome: 'Technogym', segmento: 'Profissional', preco: 'R$ 8.000+', destaque: 'Padrão Olímpico', href: '/melhores-bicicletas-ergometricas/technogym/' },
 ];
@@ -155,7 +160,7 @@ const marcas = [
           <span>modelos analisados</span>
         </div>
         <div class="stat-item">
-          <strong>6</strong>
+          <strong>+12</strong>
           <span>marcas comparadas</span>
         </div>
         <div class="stat-item">
@@ -163,7 +168,7 @@ const marcas = [
           <span>tipos de bicicleta</span>
         </div>
         <div class="stat-item">
-          <strong>R$ 800</strong>
+          <strong>R$ 330</strong>
           <span>menor preço avaliado</span>
         </div>
       </div>
@@ -287,8 +292,6 @@ const marcas = [
 </Layout>
 
 <style>
-
-  /* HERO TWO COLUMNS */
   .hero-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -320,18 +323,13 @@ const marcas = [
     text-align: right;
   }
 
-  .hero-image-credit a {
-    color: rgba(255,255,255,0.6);
-  }
+  .hero-image-credit a { color: rgba(255,255,255,0.6); }
 
   @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-    }
+    .hero-inner { grid-template-columns: 1fr; }
     .hero-image { display: none; }
   }
 
-  /* STATS BAR */
   .stats-bar {
     background: var(--token-surface-alt, #f8f8f6);
     border-bottom: 1px solid var(--token-border, #e8e8e4);
@@ -360,16 +358,13 @@ const marcas = [
     letter-spacing: 0.05em;
   }
 
-  /* SECTION HEADER */
   .section-header {
     text-align: center;
     max-width: 560px;
     margin: 0 auto 3rem;
   }
 
-  .section-header h2 {
-    margin-bottom: 0.5rem;
-  }
+  .section-header h2 { margin-bottom: 0.5rem; }
 
   .section-header p {
     color: var(--token-text-secondary, #666);
@@ -377,7 +372,6 @@ const marcas = [
     margin: 0;
   }
 
-  /* PERFIS */
   .perfis-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -397,10 +391,7 @@ const marcas = [
     transform: translateY(-2px);
   }
 
-  .perfil-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-  }
+  .perfil-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 
   .perfil-card h3 {
     font-size: 1.0625rem;
@@ -423,11 +414,8 @@ const marcas = [
     text-decoration: none;
   }
 
-  .perfil-card a:hover {
-    text-decoration: underline;
-  }
+  .perfil-card a:hover { text-decoration: underline; }
 
-  /* STEPS */
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -462,7 +450,6 @@ const marcas = [
     margin: 0;
   }
 
-  /* MARCAS */
   .marcas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -512,7 +499,6 @@ const marcas = [
     margin-top: 0.25rem;
   }
 
-  /* CTA FINAL */
   .cta-final {
     background: var(--token-brand, #2e7d32);
     padding: 4rem 1rem;
@@ -536,7 +522,5 @@ const marcas = [
     color: var(--token-brand, #2e7d32);
   }
 
-  .cta-final .btn-cta:hover {
-    background: #f0f0f0;
-  }
+  .cta-final .btn-cta:hover { background: #f0f0f0; }
 </style>
