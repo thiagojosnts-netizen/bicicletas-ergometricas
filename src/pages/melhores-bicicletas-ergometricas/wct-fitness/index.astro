@@ -1,0 +1,102 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'WCT Fitness', url: '/melhores-bicicletas-ergometricas/wct-fitness/' },
+];
+
+const faqItems = [
+  {
+    question: 'WCT Fitness é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A WCT Fitness é reconhecida no Brasil pela qualidade de suas bikes de spinning, com ênfase em rodas de inércia pesadas e transmissão por correia. É uma opção sólida para quem quer treinos de intensidade média a alta em casa.',
+  },
+  {
+    question: 'Qual a diferença entre WCT Fitness 13kg e 20kg?',
+    answer: 'A diferença principal é no peso da roda de inércia: 13kg oferece boa resistência para uso regular, enquanto 20kg proporciona pedalagem mais fluida e constante, indicada para treinos mais intensos ou usuários experientes em spinning.',
+  },
+  {
+    question: 'WCT Fitness tem entrega para todo o Brasil?',
+    answer: 'A WCT Fitness é uma pequena empresa que vende principalmente pela Amazon BR. A entrega varia por região — alguns modelos têm frete grátis para regiões Sul e Sudeste, com custo adicional para outras regiões.',
+  },
+];
+
+const imagem = await fetchBikeImage('spin bike flywheel indoor cycling');
+---
+
+<Layout
+  title="Bicicleta Ergométrica WCT Fitness: Spinning 13kg, 20kg e Linha Completa"
+  description="Análise das bicicletas ergométricas WCT Fitness no Brasil: modelos Spinning 6kg, 13kg e 20kg. Especificações técnicas, preços e qual modelo escolher."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica WCT Fitness: Análise dos Modelos Spinning</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica WCT Fitness</strong> é especializada em bikes de spinning com rodas de inércia pesadas, com modelos que vão de <strong>R$ 444 a R$ 1.888</strong>. O modelo com <strong>roda de inércia de 13kg</strong> é o mais popular da linha, com mais de 200 avaliações e média de 4.2 estrelas.
+      </p>
+
+      <p>A <strong>WCT Fitness</strong> foca em bicicletas de spinning com ênfase na qualidade mecânica e peso do volante de inércia. Seus modelos são indicados para quem busca treinos mais intensos em casa, próximos à experiência de spinning em academia, com transmissão por correia silenciosa e estrutura robusta.</p>
+
+      <h2>Modelos WCT Fitness: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Inércia</th>
+            <th>Transmissão</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Spinning 6kg</td><td>6kg</td><td>Correia</td><td>100 kg</td><td>R$ 444-R$ 548</td></tr>
+          <tr><td>Spinning 13kg</td><td>13kg</td><td>Correia</td><td>120 kg</td><td>R$ 1.248-R$ 1.579</td></tr>
+          <tr><td>Spinning 20kg</td><td>20kg</td><td>Correia</td><td>130 kg</td><td>R$ 1.699-R$ 1.888</td></tr>
+          <tr><td>Air Bike Magnética</td><td>—</td><td>Magnética</td><td>120 kg</td><td>R$ 899-R$ 1.600</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O modelo <strong>WCT Fitness Spinning 13kg</strong> é o melhor custo-benefício da linha para quem quer experiência próxima de academia em casa. Para treinos de alta intensidade, o <strong>modelo 20kg</strong> oferece inércia superior com menor variação de resistência durante o pedal.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Spinning WCT Fitness — Roda de Inércia 13kg",
+          description: "Roda de inércia de 13kg, transmissão por correia silenciosa, sensor cardíaco e monitor digital. Suporta até 120kg. Mais de 400 compras no mês passado.",
+          price: "R$ 1.248 – R$ 1.579",
+          rating: 4.2,
+          reviewCount: 203,
+          badge: "Mais Vendida",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica WCT Fitness",
+          features: ["Roda de inércia 13kg", "Transmissão por correia silenciosa", "Sensor cardíaco", "Suporte até 120 kg"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia completo de bicicleta ergométrica spinning</a>. Veja também o <a href="/melhores-bicicletas-ergometricas/">comparativo completo das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica WCT Fitness" />
+</Layout>

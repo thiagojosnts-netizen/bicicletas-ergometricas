@@ -1,0 +1,101 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Acte Sports', url: '/melhores-bicicletas-ergometricas/acte-sports/' },
+];
+
+const faqItems = [
+  {
+    question: 'Acte Sports é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Acte Sports tem boa reputação no mercado brasileiro de equipamentos fitness, com produtos de acabamento acima da média para o preço. O modelo E16 é especialmente bem avaliado pelos usuários.',
+  },
+  {
+    question: 'Acte E16 vale a pena?',
+    answer: 'Sim, especialmente quando encontrado com desconto. Com 4.5 estrelas e mais de 600 avaliações, é um dos modelos de spinning mais bem avaliados da Amazon BR. É indicado para uso domiciliar de frequência moderada a alta.',
+  },
+  {
+    question: 'Acte Sports tem garantia e assistência técnica?',
+    answer: 'Sim. A Acte Sports oferece garantia de 12 meses e possui rede de assistência técnica nas principais capitais brasileiras, com peças de reposição disponíveis.',
+  },
+];
+
+const imagem = await fetchBikeImage('spinning class exercise bike studio');
+---
+
+<Layout
+  title="Bicicleta Ergométrica Acte Sports: E16, E26, E32 e Linha Completa"
+  description="Análise das bicicletas ergométricas Acte Sports no Brasil: modelos E16 Spinning, E26 Magnética e E32. Especificações, preços e qual modelo escolher."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Acte Sports: Análise dos Modelos E16, E26 e E32</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Acte Sports</strong> oferece linha variada com modelos de <strong>R$ 814 a R$ 2.099</strong>, cobrindo spinning mecânico, magnético e bikes semiprofissionais. O modelo <strong>E16 Spinning</strong> é o mais popular da marca com mais de 600 avaliações e impressionante desconto de preço original.
+      </p>
+
+      <p>A <strong>Acte Sports</strong> é uma marca brasileira com foco em equipamentos de fitness para uso domiciliar e acadêmico. Seus modelos de bicicleta ergométrica se destacam pelo acabamento e pela variedade de recursos em relação ao preço, com modelos adequados tanto para iniciantes quanto para usuários intermediários.</p>
+
+      <h2>Modelos Acte Sports: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Resistência</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>E16 Spinning</td><td>Spinning</td><td>Mecânica</td><td>100 kg</td><td>R$ 889-R$ 2.499</td></tr>
+          <tr><td>E32 Spinning 4.0</td><td>Spinning</td><td>Mecânica</td><td>100 kg</td><td>R$ 814-R$ 902</td></tr>
+          <tr><td>E26 Magnética</td><td>Vertical</td><td>Magnética</td><td>110 kg</td><td>R$ 2.099</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O <strong>Acte E16 Spinning</strong> é o modelo com melhor avaliação da linha, frequentemente encontrado com descontos expressivos. Para quem quer resistência magnética, o <strong>E26</strong> é a opção mais silenciosa e precisa da Acte Sports.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Spinning E16 Acte Sports",
+          description: "Mais de 600 avaliações na Amazon BR. Spinning mecânica com resistência ajustável, assento e guidão reguláveis. Frequentemente com desconto expressivo.",
+          price: "R$ 889 – R$ 2.499",
+          rating: 4.5,
+          reviewCount: 627,
+          badge: "Melhor Avaliada",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Acte Sports",
+          features: ["Spinning mecânica", "Resistência ajustável por fricção", "Assento e guidão reguláveis", "Estrutura em aço"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta de spinning</a>. Veja também o <a href="/melhores-bicicletas-ergometricas/">comparativo das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Acte Sports" />
+</Layout>

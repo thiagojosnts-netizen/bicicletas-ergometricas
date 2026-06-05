@@ -1,0 +1,103 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'PodiumFit', url: '/melhores-bicicletas-ergometricas/podiumfit/' },
+];
+
+const faqItems = [
+  {
+    question: 'PodiumFit é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A PodiumFit oferece bom custo-benefício em diferentes faixas de preço, com modelos que vão do uso domiciliar básico ao semiprofissional. Seus produtos têm boas avaliações e assistência técnica disponível no Brasil.',
+  },
+  {
+    question: 'PodiumFit V90 ou X-BIKE — qual escolher?',
+    answer: 'O V90 tem resistência magnética (mais silencioso e preciso) enquanto o X-BIKE tem resistência mecânica (mais simples). Para uso frequente e silêncio, o V90 é melhor. Para orçamento menor e uso leve, o X-BIKE atende bem.',
+  },
+  {
+    question: 'PodiumFit Pro Royale vale a pena?',
+    answer: 'Para quem quer experiência próxima de academia em casa, sim. O Pro Royale é adequado para uso de 5x/semana ou mais, com estrutura robusta e resistência por fricção de qualidade semiprofissional.',
+  },
+];
+
+const imagem = await fetchBikeImage('home gym exercise bike compact');
+---
+
+<Layout
+  title="Bicicleta Ergométrica PodiumFit: X-BIKE, V90, Pro Royale e Linha Completa"
+  description="Análise das bicicletas ergométricas PodiumFit no Brasil: modelos X-BIKE 100, V90, Pro Royale e H100 horizontal. Especificações, preços e qual modelo escolher."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica PodiumFit: Análise dos Modelos X-BIKE, V90 e Pro Royale</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica PodiumFit</strong> oferece linha que vai de entrada a semiprofissional, com preços entre <strong>R$ 600 e R$ 2.300</strong>. O modelo <strong>X-BIKE 100</strong> é o mais acessível da linha com boa avaliação, enquanto o <strong>Pro Royale</strong> é o modelo premium para uso em academia.
+      </p>
+
+      <p>A <strong>PodiumFit</strong> se diferencia por oferecer modelos com boa relação custo-benefício em diferentes faixas, desde o compacto X-BIKE para uso domiciliar até o Pro Royale semiprofissional. A marca tem presença consolidada no mercado brasileiro de fitness.</p>
+
+      <h2>Modelos PodiumFit: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Resistência</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>X-BIKE 100</td><td>Vertical</td><td>Mecânica</td><td>100 kg</td><td>R$ 699-R$ 1.290</td></tr>
+          <tr><td>V90 Magnética</td><td>Vertical</td><td>Magnética 8 cargas</td><td>110 kg</td><td>R$ 599</td></tr>
+          <tr><td>H100 Horizontal</td><td>Horizontal</td><td>Magnética</td><td>120 kg</td><td>R$ 1.939</td></tr>
+          <tr><td>Pro Royale</td><td>Spinning</td><td>Fricção</td><td>120 kg</td><td>R$ 2.290</td></tr>
+          <tr><td>Supreme Silenciosa</td><td>Spinning</td><td>Mecânica</td><td>110 kg</td><td>R$ 1.399</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O <strong>PodiumFit V90</strong> é o melhor custo-benefício da linha para uso domiciliar regular com resistência magnética. Para spinning de qualidade próxima ao nível acadêmico, o <strong>Pro Royale</strong> é a escolha certa dentro de um orçamento controlado.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica PodiumFit X-BIKE 100",
+          description: "Compacta e funcional para uso domiciliar. Resistência mecânica ajustável, assento regulável e painel monitor. Frequentemente com desconto expressivo.",
+          price: "R$ 699 – R$ 1.290",
+          rating: 4.3,
+          reviewCount: 38,
+          badge: "Entrada Premium",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica PodiumFit",
+          features: ["Design compacto", "Resistência ajustável", "Assento regulável", "Painel monitor incluso"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>. Veja também o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta de spinning</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica PodiumFit" />
+</Layout>

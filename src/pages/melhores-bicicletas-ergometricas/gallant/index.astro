@@ -1,0 +1,103 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Gallant', url: '/melhores-bicicletas-ergometricas/gallant/' },
+];
+
+const faqItems = [
+  {
+    question: 'Gallant é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Gallant tem ampla linha de bicicletas ergométricas disponíveis no Brasil com boa relação custo-benefício. Seus modelos Elite Pro e Elite X são consistentemente bem avaliados pelos usuários, com destaque para a durabilidade estrutural e variedade de ajustes.',
+  },
+  {
+    question: 'Qual é o melhor modelo Gallant para uso em casa?',
+    answer: 'Para uso domiciliar regular, o Gallant Elite Pro Spinning Mecânica com roda de inércia 13kg é o mais indicado. Para quem prefere mais silêncio, o Elite X Magnética é a alternativa com resistência magnética na mesma faixa de preço.',
+  },
+  {
+    question: 'Gallant tem assistência técnica no Brasil?',
+    answer: 'Sim. A Gallant possui rede de revendedores e assistência técnica em diversas regiões do Brasil. A garantia varia por modelo, geralmente entre 12 e 24 meses para estrutura e componentes principais.',
+  },
+];
+
+const imagem = await fetchBikeImage('spinning bike indoor gym professional');
+---
+
+<Layout
+  title="Bicicleta Ergométrica Gallant: Elite Pro, Elite X e Linha Completa"
+  description="Análise completa da linha de bicicletas ergométricas Gallant no Brasil: modelos Elite Pro, Elite X, Smart e horizontais. Especificações, preços e qual modelo escolher."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Gallant: Análise da Linha Elite Pro e Elite X</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Gallant</strong> é uma das marcas com maior variedade no mercado brasileiro, com modelos que vão de <strong>R$ 400 a R$ 5.500</strong> cobrindo verticais mecânicas, magnéticas, horizontais e air bikes. O modelo <strong>Elite Pro Spinning Mecânica</strong> é o mais vendido da linha, com roda de inércia de 13kg e suporte até 110kg.
+      </p>
+
+      <p>A <strong>Gallant</strong> se destaca pela amplitude de linha — são mais de 15 modelos disponíveis no Brasil, do iniciante ao semiprofissional. A marca investe em acabamento e variedade de opções, oferecendo modelos mecânicos para quem busca custo-benefício e magnéticos para uso mais silencioso.</p>
+
+      <h2>Modelos Gallant: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Inércia</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Elite Pro Spinning</td><td>Mecânica</td><td>13kg</td><td>110 kg</td><td>R$ 1.399-R$ 2.019</td></tr>
+          <tr><td>Elite X Spinning 8kg</td><td>Mecânica</td><td>8kg</td><td>110 kg</td><td>R$ 949-R$ 1.159</td></tr>
+          <tr><td>Smart Spinning 18kg</td><td>Magnética</td><td>18kg</td><td>150 kg</td><td>R$ 4.500-R$ 5.599</td></tr>
+          <tr><td>Elite X Magnética</td><td>Magnética</td><td>8kg</td><td>110 kg</td><td>R$ 574-R$ 699</td></tr>
+          <tr><td>Horizontal Elite X</td><td>Horizontal</td><td>—</td><td>120 kg</td><td>R$ 953-R$ 1.059</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O <strong>Gallant Elite Pro Spinning Mecânica</strong> é a melhor opção custo-benefício da linha, com roda de inércia de 13kg, transmissão por correia silenciosa e suporte até 110kg. Para quem quer magnético, o <strong>Elite X Magnética</strong> oferece silêncio adicional a um preço acessível.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Gallant Elite Pro Spinning Mecânica",
+          description: "Roda de inércia 13kg, transmissão por correia silenciosa, assento e guidão ajustáveis. Suporta até 110kg. Mais de 160 avaliações na Amazon.",
+          price: "R$ 1.399 – R$ 2.019",
+          rating: 4.4,
+          reviewCount: 160,
+          badge: "Mais Vendida",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Gallant",
+          features: ["Roda de inércia 13kg", "Transmissão por correia silenciosa", "Suporte até 110 kg", "Assento e guidão reguláveis"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/melhores-bicicletas-ergometricas/">comparativo completo das melhores bicicletas ergométricas</a>. Veja também o <a href="/como-escolher-bicicleta-ergometrica/">guia de como escolher</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Gallant" />
+</Layout>

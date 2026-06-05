@@ -1,0 +1,103 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Poli Sports', url: '/melhores-bicicletas-ergometricas/poli-sports/' },
+];
+
+const faqItems = [
+  {
+    question: 'Poli Sports é uma boa marca de bicicleta ergométrica?',
+    answer: 'Para o segmento de entrada, sim. A Poli Sports e Polimet oferecem equipamentos acessíveis e funcionais para iniciantes com uso de baixa a moderada intensidade. Não são indicadas para uso intensivo ou usuários acima de 80kg.',
+  },
+  {
+    question: 'Polimet POLI-163 é boa?',
+    answer: 'É uma das bicicletas ergométricas mais avaliadas da Amazon BR. Para uso leve de 2 a 3 vezes por semana, cumpre bem sua função. Limitações incluem poucos níveis de resistência e suporte de peso mais baixo que modelos intermediários.',
+  },
+  {
+    question: 'Diferença entre Poli Sports e Polimet?',
+    answer: 'Poli Sports e Polimet são linhas da mesma empresa, com Polimet sendo a denominação usada em modelos mais simples de tração mecânica e Poli Sports em modelos com mais recursos como o BH3800 horizontal magnético.',
+  },
+];
+
+const imagem = await fetchBikeImage('stationary bike beginner home exercise');
+---
+
+<Layout
+  title="Bicicleta Ergométrica Poli Sports e Polimet: Modelos VTC, BH3800 e YB505"
+  description="Análise das bicicletas ergométricas Poli Sports e Polimet no Brasil: modelos VTC, BH3800 horizontal e YB505. Especificações técnicas, preços e comparativo."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Poli Sports: Análise dos Modelos VTC, Horizontal e Vertical</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Poli Sports</strong> (e sua linha Polimet) oferece modelos de entrada com preços entre <strong>R$ 330 e R$ 940</strong>, cobrindo verticais mecânicas, horizontais magnéticas e modelos compactos. O <strong>Polimet POLI-163</strong> é o modelo com mais avaliações da marca, com mais de 5.700 reviews na Amazon BR.
+      </p>
+
+      <p>A <strong>Poli Sports</strong> e sua divisão <strong>Polimet</strong> atendem o segmento de entrada do mercado brasileiro, com bicicletas ergométricas de tração mecânica voltadas para uso domiciliar leve. Seus modelos são compactos, fáceis de montar e indicados para quem está começando.</p>
+
+      <h2>Modelos Poli Sports: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Resistência</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Polimet POLI-163</td><td>Vertical</td><td>Mecânica</td><td>90 kg</td><td>R$ 430-R$ 683</td></tr>
+          <tr><td>Polimet BP-770</td><td>Vertical</td><td>Mecânica</td><td>100 kg</td><td>R$ 429-R$ 500</td></tr>
+          <tr><td>VTC (0162)</td><td>Vertical</td><td>Mecânica</td><td>90 kg</td><td>R$ 400-R$ 571</td></tr>
+          <tr><td>BH3800 Horizontal</td><td>Horizontal</td><td>Magnética</td><td>120 kg</td><td>R$ 939-R$ 1.253</td></tr>
+          <tr><td>YB 505 Vertical</td><td>Vertical</td><td>Mecânica</td><td>100 kg</td><td>R$ 480</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O <strong>Polimet POLI-163</strong> é o modelo com melhor custo-benefício da linha para iniciantes, com mais de 5.700 avaliações na Amazon. Para usuários que precisam de baixo impacto articular, o <strong>BH3800 Horizontal</strong> com resistência magnética é a melhor opção da marca.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Polimet POLI-163 — Bicicleta Ergométrica Tração Mecânica",
+          description: "O modelo mais avaliado da linha com mais de 5.700 reviews na Amazon BR. Tração mecânica, compacta e fácil de montar. Ideal para iniciantes e uso leve.",
+          price: "R$ 430 – R$ 683",
+          rating: 3.9,
+          reviewCount: 5700,
+          badge: "Mais Avaliada",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Poli Sports",
+          features: ["Tração mecânica simples", "Design compacto", "Fácil montagem", "Ideal para iniciantes"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>. Veja também o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">bicicletas ergométricas baratas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Poli Sports" />
+</Layout>

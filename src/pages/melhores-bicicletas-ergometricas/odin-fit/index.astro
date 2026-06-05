@@ -1,0 +1,103 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Odin Fit', url: '/melhores-bicicletas-ergometricas/odin-fit/' },
+];
+
+const faqItems = [
+  {
+    question: 'Odin Fit é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Odin Fit oferece bikes de spinning com boa construção e custo-benefício competitivo. Seus modelos mecânicos são indicados para uso domiciliar de intensidade média a alta, com estrutura robusta e pedais compatíveis com sapatilhas de ciclismo.',
+  },
+  {
+    question: 'Odin Fit Sprint ou Chase — qual escolher?',
+    answer: 'O Chase (5kg) é indicado para iniciantes ou uso leve. O Sprint (13kg) é melhor para treinos mais intensos e frequentes, com pedalagem mais fluida e constante graças ao volante mais pesado.',
+  },
+  {
+    question: 'Odin Fit tem peças disponíveis no Brasil?',
+    answer: 'Sim. A Odin Fit tem boa disponibilidade de peças de reposição e acessórios no mercado brasileiro, incluindo pedais com clip e correias de transmissão.',
+  },
+];
+
+const imagem = await fetchBikeImage('spinning bike home workout indoor');
+---
+
+<Layout
+  title="Bicicleta Ergométrica Odin Fit: Sprint, Chase e Linha Completa"
+  description="Análise das bicicletas ergométricas Odin Fit no Brasil: modelos Sprint 13kg, Chase 5kg, Stage e dobrável Cadence X. Especificações, preços e qual modelo escolher."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-05"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Odin Fit: Análise dos Modelos Sprint e Chase</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Odin Fit</strong> oferece linha variada de spinning mecânicas com modelos de <strong>R$ 400 a R$ 1.900</strong>, cobrindo desde iniciantes até uso semiprofissional. O modelo <strong>Sprint 13kg</strong> é o mais completo da linha para uso domiciliar intensivo.
+      </p>
+
+      <p>A <strong>Odin Fit</strong> se posiciona como uma marca de bikes de spinning com foco em custo-benefício e variedade. Seus modelos mecânicos são construídos com estruturas em aço, pedais com clip e ajuste completo de assento e guidão, atendendo tanto iniciantes quanto usuários mais experientes.</p>
+
+      <h2>Modelos Odin Fit: comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Inércia</th>
+            <th>Tipo</th>
+            <th>Peso suportado</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Stage Mecânica</td><td>—</td><td>Mecânica</td><td>100 kg</td><td>R$ 400-R$ 444</td></tr>
+          <tr><td>Chase 5kg</td><td>5kg</td><td>Mecânica</td><td>110 kg</td><td>R$ 949</td></tr>
+          <tr><td>Sprint 13kg</td><td>13kg</td><td>Mecânica</td><td>120 kg</td><td>R$ 1.499</td></tr>
+          <tr><td>Sprint 18kg</td><td>18kg</td><td>Mecânica</td><td>130 kg</td><td>R$ 1.899</td></tr>
+          <tr><td>Cadence X Dobrável</td><td>—</td><td>Magnética</td><td>100 kg</td><td>R$ 1.289</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>O <strong>Odin Fit Sprint 13kg</strong> é o melhor custo-benefício da linha para uso domiciliar regular com intensidade média a alta. Para quem precisa economizar espaço, o <strong>Cadence X Dobrável</strong> com resistência magnética é uma opção prática.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Spinning Odin Fit Sprint 13kg",
+          description: "Roda de inércia mecânica 13kg, estrutura em aço reforçado, pedais com clip, assento e guidão com múltiplas regulagens. Suporta até 120kg.",
+          price: "R$ 1.499",
+          rating: 4.3,
+          reviewCount: 85,
+          badge: "Melhor da Linha",
+          affiliateUrl: "SEU_LINK_SITESTRIPE_AQUI",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Odin Fit",
+          features: ["Roda de inércia 13kg", "Pedais com clip", "Estrutura em aço reforçado", "Assento e guidão reguláveis"],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare em <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta ergométrica spinning</a>. Veja também o <a href="/melhores-bicicletas-ergometricas/">comparativo das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Odin Fit" />
+</Layout>
