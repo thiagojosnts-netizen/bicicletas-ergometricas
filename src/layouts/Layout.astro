@@ -1,14 +1,12 @@
-﻿---
-import Layout from './Layout.astro';
-
+---
 export interface Props {
   title: string;
   description: string;
-  publishDate: string;
+  publishDate?: string;
   modifiedDate?: string;
   slug: string;
   image?: string;
-  breadcrumbs: Array<{ label: string; href: string }>;
+  breadcrumbs?: Array<{ label: string; href: string }>;
   toc?: Array<{ id: string; label: string; level?: 2 | 3 }>;
   affiliate?: boolean;
   readingTime?: number;
@@ -21,15 +19,15 @@ const {
   modifiedDate,
   slug,
   image = "https://bicicletasergometricas.com/og-default.jpg",
-  breadcrumbs,
+  breadcrumbs = [],
   toc = [],
   affiliate = true,
   readingTime,
 } = Astro.props;
 
 const siteUrl = "https://bicicletasergometricas.com";
-const canonicalUrl = `/${slug}`;
-const datePublished = new Date(publishDate).toISOString();
+const canonicalUrl = `${siteUrl}/${slug}`;
+const datePublished = publishDate ? new Date(publishDate).toISOString() : undefined;
 const dateModified = modifiedDate ? new Date(modifiedDate).toISOString() : datePublished;
 
 const schemaArticle = {
@@ -42,7 +40,7 @@ const schemaArticle = {
   dateModified,
   author: { "@type": "Organization", name: "Bicicletas Ergométricas", url: siteUrl },
   publisher: { "@type": "Organization", name: "Bicicletas Ergométricas", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
-  mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}${canonicalUrl}` },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
 };
 
 const schemaBreadcrumb = {
@@ -60,85 +58,159 @@ const schemaBreadcrumb = {
 };
 ---
 
-<Layout title={title} description={description} canonical={canonicalUrl}>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Schema extras no <head> via slot -->
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaArticle)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaBreadcrumb)} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Bicicletas Ergométricas" />
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Localização" class="border-b border-gray-100 bg-gray-50 px-4 py-2 text-sm text-gray-500">
-    <ol class="mx-auto flex max-w-6xl flex-wrap items-center gap-1">
-      <li><a href="/" class="hover:text-rose-500">Início</a></li>
-      {breadcrumbs.map((crumb, i) => (
-        <>
-          <li aria-hidden="true">/</li>
-          <li>
-            {i < breadcrumbs.length - 1
-              ? <a href={crumb.href} class="hover:text-rose-500">{crumb.label}</a>
-              : <span class="text-gray-800 font-medium" aria-current="page">{crumb.label}</span>
-            }
-          </li>
-        </>
-      ))}
-    </ol>
-  </nav>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
 
-  <!-- Layout artigo: conteúdo + sidebar TOC -->
-  <div class="mx-auto max-w-6xl px-4 py-8 lg:flex lg:gap-10">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <main class="min-w-0 flex-1">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
 
-      <header class="mb-8">
-        <h1 class="mb-3 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">{title}</h1>
-        <p class="mb-4 text-lg text-gray-600 leading-relaxed">{description}</p>
-        <div class="flex flex-wrap gap-4 text-sm text-gray-500">
-          <time datetime={datePublished}>
-            Publicado em {new Date(publishDate).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
-          </time>
-          {modifiedDate && modifiedDate !== publishDate && (
-            <time datetime={dateModified}>
-              · Atualizado em {new Date(modifiedDate).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
-            </time>
-          )}
-          {readingTime && <span>· {readingTime} min de leitura</span>}
-        </div>
-      </header>
+    <script type="application/ld+json" set:html={JSON.stringify(schemaArticle)} />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumb)} />
+  </head>
 
-      {affiliate && (
-        <aside role="note" class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          <strong>Transparência:</strong> Este site contém links de afiliado. Se você comprar por eles, recebemos uma comissão sem custo extra para você. Nossa curadoria é independente. <a href="/sobre" class="underline hover:text-amber-900">Saiba mais.</a>
+  <body class="bg-white text-gray-900 antialiased">
+
+    <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="flex items-center gap-2 font-bold text-emerald-700 text-lg" style="font-family: var(--font-display);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
+          </svg>
+          Bicicletas Ergométricas
+        </a>
+        <nav aria-label="Navegação principal" class="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
+          <a href="/guia" class="hover:text-emerald-700 transition-colors">Guia de Compra</a>
+          <a href="/comparativos/mecanica-vs-magnetica" class="hover:text-emerald-700 transition-colors">Comparativos</a>
+          <a href="/como-usar" class="hover:text-emerald-700 transition-colors">Como Usar</a>
+          <a href="/sobre" class="hover:text-emerald-700 transition-colors">Sobre</a>
+        </nav>
+        <a href="/ferramentas/quiz-qual-ergometrica" class="hidden md:inline-flex items-center gap-1.5 rounded-lg bg-rose-500 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600 transition-colors">
+          Qual é a minha? →
+        </a>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    {breadcrumbs.length > 0 && (
+      <nav aria-label="Localização" class="border-b border-gray-100 bg-gray-50 px-4 py-2 text-sm text-gray-500">
+        <ol class="mx-auto flex max-w-6xl flex-wrap items-center gap-1">
+          <li><a href="/" class="hover:text-rose-500">Início</a></li>
+          {breadcrumbs.map((crumb, i) => (
+            <>
+              <li aria-hidden="true">/</li>
+              <li>
+                {i < breadcrumbs.length - 1
+                  ? <a href={crumb.href} class="hover:text-rose-500">{crumb.label}</a>
+                  : <span class="text-gray-800 font-medium" aria-current="page">{crumb.label}</span>
+                }
+              </li>
+            </>
+          ))}
+        </ol>
+      </nav>
+    )}
+
+    <!-- Layout artigo: conteúdo + sidebar TOC -->
+    <div class="mx-auto max-w-6xl px-4 py-8 lg:flex lg:gap-10">
+
+      <main class="min-w-0 flex-1">
+
+        <header class="mb-8">
+          <h1 class="mb-3 text-3xl leading-tight text-gray-900 lg:text-4xl" style="font-family: var(--font-display); font-weight: 700;">{title}</h1>
+          <p class="mb-4 text-lg text-gray-600 leading-relaxed">{description}</p>
+          <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+            {datePublished && (
+              <time datetime={datePublished}>
+                Publicado em {new Date(publishDate!).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+              </time>
+            )}
+            {modifiedDate && modifiedDate !== publishDate && (
+              <time datetime={dateModified}>
+                · Atualizado em {new Date(modifiedDate).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+              </time>
+            )}
+            {readingTime && <span>· {readingTime} min de leitura</span>}
+          </div>
+        </header>
+
+        {affiliate && (
+          <aside role="note" class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            <strong>Transparência:</strong> Este site contém links de afiliado. Se você comprar por eles, recebemos uma comissão sem custo extra para você. Nossa curadoria é independente. <a href="/sobre" class="underline hover:text-amber-900">Saiba mais.</a>
+          </aside>
+        )}
+
+        <article class="prose prose-rose max-w-none prose-headings:scroll-mt-24 prose-a:text-rose-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
+          <slot />
+        </article>
+
+        {dateModified && (
+          <footer class="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-400">
+            <p>Última atualização: <time datetime={dateModified}>{new Date(dateModified).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></p>
+            <p class="mt-1">Informações baseadas em fichas técnicas dos fabricantes e avaliações públicas de usuários.</p>
+          </footer>
+        )}
+
+      </main>
+
+      {toc.length > 0 && (
+        <aside class="hidden lg:block lg:w-64 lg:shrink-0">
+          <div class="sticky top-24">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">Neste artigo</p>
+            <ol class="space-y-1 text-sm">
+              {toc.map((item) => (
+                <li class={item.level === 3 ? "pl-3" : ""}>
+                  <a href={`#${item.id}`} class="block rounded px-2 py-1 text-gray-600 transition-colors hover:bg-rose-50 hover:text-rose-500">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
         </aside>
       )}
 
-      <article class="prose prose-rose max-w-none prose-headings:scroll-mt-24 prose-a:text-rose-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
-        <slot />
-      </article>
+    </div>
 
-      <footer class="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-400">
-        <p>Última atualização: <time datetime={dateModified}>{new Date(dateModified).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></p>
-        <p class="mt-1">Informações baseadas em fichas técnicas dos fabricantes e avaliações públicas de usuários.</p>
-      </footer>
+    <footer class="mt-8 border-t border-gray-200 bg-gray-50 py-8 text-sm text-gray-500">
+      <div class="mx-auto max-w-6xl px-4 text-center">
+        <p class="mb-2">
+          <strong class="text-gray-700" style="font-family: var(--font-display);">Bicicletas Ergométricas</strong> — Curadoria independente para quem quer pedalar em casa com segurança.
+        </p>
+        <nav aria-label="Links do rodapé" class="flex flex-wrap justify-center gap-4">
+          <a href="/sobre" class="hover:text-emerald-700">Sobre & Metodologia</a>
+          <a href="/guia" class="hover:text-emerald-700">Guia de Compra</a>
+          <a href="/como-usar" class="hover:text-emerald-700">Como Usar</a>
+          <a href="/ferramentas/quiz-qual-ergometrica" class="hover:text-emerald-700">Quiz</a>
+          <a href="/sitemap.xml" class="hover:text-emerald-700">Sitemap</a>
+        </nav>
+        <p class="mt-4 text-xs text-gray-400">
+          © {new Date().getFullYear()} bicicletasergometricas.com · Participante dos programas de afiliados da Amazon, Shopee e Mercado Livre.
+        </p>
+      </div>
+    </footer>
 
-    </main>
-
-    {toc.length > 0 && (
-      <aside class="hidden lg:block lg:w-64 lg:shrink-0">
-        <div class="sticky top-24">
-          <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">Neste artigo</p>
-          <ol class="space-y-1 text-sm">
-            {toc.map((item) => (
-              <li class={item.level === 3 ? "pl-3" : ""}>
-                <a href={`#${item.id}`} class="block rounded px-2 py-1 text-gray-600 transition-colors hover:bg-rose-50 hover:text-rose-500">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </aside>
-    )}
-
-  </div>
-
-</Layout>
+  </body>
+</html>

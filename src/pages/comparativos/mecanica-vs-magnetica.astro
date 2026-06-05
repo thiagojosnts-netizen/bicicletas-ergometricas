@@ -1,0 +1,199 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Comparativos", href: "/comparativos" },
+  { label: "Mecânica vs Magnética", href: "/comparativos/mecanica-vs-magnetica" },
+];
+
+const toc = [
+  { id: "veredicto", label: "Veredicto direto", level: 2 },
+  { id: "como-funciona", label: "Como cada sistema funciona", level: 2 },
+  { id: "mecanica", label: "Resistência mecânica", level: 3 },
+  { id: "magnetica", label: "Resistência magnética", level: 3 },
+  { id: "comparativo", label: "Comparativo técnico detalhado", level: 2 },
+  { id: "ruido", label: "Ruído", level: 3 },
+  { id: "durabilidade", label: "Durabilidade", level: 3 },
+  { id: "precisao", label: "Precisão da resistência", level: 3 },
+  { id: "preco", label: "Quando a mecânica vale a pena", level: 2 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Ergométrica Mecânica vs Magnética: Diferença Real no Dia a Dia (2026)"
+  description="Comparativo técnico entre resistência mecânica e magnética em bicicletas ergométricas: ruído, durabilidade, precisão e custo. Qual vale a pena para uso doméstico."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="comparativos/mecanica-vs-magnetica"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={9}
+>
+
+  <p>
+    O sistema de resistência é o critério de qualidade mais importante de uma bicicleta ergométrica — mais do que o número de níveis, o painel digital ou os programas de treino. A diferença entre mecânica e magnética impacta o ruído, a durabilidade, a precisão do treino e o custo de manutenção ao longo dos anos.
+  </p>
+
+  <h2 id="veredicto">Veredicto direto</h2>
+
+  <div class="not-prose my-6 rounded-xl border-2 border-emerald-400 bg-emerald-50 p-5">
+    <p class="font-semibold text-emerald-900 mb-2">Para uso doméstico geral: <span class="text-emerald-700">magnética vence em todos os critérios relevantes</span></p>
+    <p class="text-gray-700 text-sm">
+      A resistência magnética é silenciosa, durável, consistente e sem manutenção. O delta de preço em relação à mecânica — em geral R$ 200–400 — se paga em silêncio, durabilidade e ausência de custo de manutenção. A única exceção é o uso esporádico com orçamento muito restrito.
+    </p>
+  </div>
+
+  <h2 id="como-funciona">Como cada sistema funciona</h2>
+
+  <h3 id="mecanica">Resistência mecânica (por atrito)</h3>
+  <p>
+    Na resistência mecânica, uma pastilha de borracha ou feltro é pressionada fisicamente contra o volante de inércia. A força de pressão determina a resistência — mais pressão, mais difícil pedalar. O ajuste é feito por um knob que move a pastilha mecanicamente.
+  </p>
+  <p>
+    O problema fundamental desse sistema é o <strong>atrito físico</strong>: pastilha e volante se desgastam com o uso. Com o tempo, a resistência muda de característica — o nível 3 de hoje não é o mesmo nível 3 de 2 anos de uso. A pastilha precisa ser substituída periodicamente.
+  </p>
+  <p>
+    O ruído é consequência direta do contato físico: o atrito produz um chiado contínuo cuja intensidade aumenta com a velocidade de pedalagem.
+  </p>
+
+  <h3 id="magnetica">Resistência magnética</h3>
+  <p>
+    Na resistência magnética, ímãs (permanentes ou eletroímãs) são posicionados próximos ao volante metálico sem tocá-lo. A proximidade dos ímãs cria correntes parasitas (efeito de Foucault) no metal do volante, gerando resistência ao movimento. Quanto mais próximos os ímãs, maior a resistência.
+  </p>
+  <p>
+    Como não há contato físico, não há desgaste, não há ruído por atrito, e a resistência é matematicamente determinada pela posição dos ímãs — calibrada e consistente ao longo do tempo.
+  </p>
+
+  <h2 id="comparativo">Comparativo técnico detalhado</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Critério</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-amber-700">Mecânica</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-emerald-700">Magnética</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Vantagem</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Nível de ruído em uso</td>
+          <td class="px-4 py-3 text-amber-700">45–65 dB</td>
+          <td class="px-4 py-3 text-emerald-700">25–35 dB</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Desgaste de componentes</td>
+          <td class="px-4 py-3 text-amber-700">Pastilha desgasta (1–3 anos)</td>
+          <td class="px-4 py-3 text-emerald-700">Sem peças de desgaste</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Precisão da resistência</td>
+          <td class="px-4 py-3 text-amber-700">Varia com desgaste e temperatura</td>
+          <td class="px-4 py-3 text-emerald-700">Consistente e calibrada</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Custo de manutenção</td>
+          <td class="px-4 py-3 text-amber-700">Substituição de pastilha (R$ 50–150)</td>
+          <td class="px-4 py-3 text-emerald-700">Zero manutenção</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Preço de aquisição</td>
+          <td class="px-4 py-3 text-emerald-700">R$ 500–900 (entrada)</td>
+          <td class="px-4 py-3 text-amber-700">R$ 900–3.500</td>
+          <td class="px-4 py-3 text-amber-700 font-medium">Mecânica</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Adequada para apartamento</td>
+          <td class="px-4 py-3 text-red-600 font-medium">✗ Não</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">✓ Sim</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Adequada para reabilitação</td>
+          <td class="px-4 py-3 text-red-600 font-medium">✗ Carga imprecisa</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">✓ Sim</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Conexão com apps (Bluetooth)</td>
+          <td class="px-4 py-3 text-gray-600">Raramente disponível</td>
+          <td class="px-4 py-3 text-emerald-700">Comum em modelos ≥ R$ 1.500</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Magnética</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="ruido">Ruído</h3>
+  <p>
+    45–65 dB é o nível de ruído típico de uma ergométrica mecânica em uso moderado. Para referência: 50 dB é equivalente a uma conversa em tom normal. 65 dB é equivalente a um ambiente de restaurante movimentado.
+  </p>
+  <p>
+    Esse nível de ruído atravessa paredes comuns e é claramente audível em cômodos adjacentes. Para quem mora em apartamento, usa a bicicleta enquanto outros dormem, ou simplesmente prefere silêncio durante o treino, a mecânica é inaceitável.
+  </p>
+  <p>
+    A magnética opera entre 25–35 dB — o ruído vem da rotação do próprio volante e da correia, não da resistência. Em comparação, uma conversa sussurrada é aproximadamente 30 dB.
+  </p>
+
+  <h3 id="durabilidade">Durabilidade</h3>
+  <p>
+    A durabilidade da resistência mecânica depende diretamente do uso e da qualidade da pastilha. Em uso moderado (30 min/dia, 5x/semana), uma pastilha dura 12–24 meses antes de começar a comprometer a consistência da resistência. A substituição é barata, mas exige que a marca tenha peças disponíveis — o que não é garantido para marcas importadas sem representante nacional.
+  </p>
+  <p>
+    A resistência magnética não tem peças de desgaste na parte que cria a resistência. O componente que pode falhar ao longo do tempo é o motor de ajuste (em modelos com ajuste motorizado) ou o mecanismo de posicionamento dos ímãs — menos frequente e geralmente coberto pela garantia.
+  </p>
+
+  <h3 id="precisao">Precisão da resistência</h3>
+  <p>
+    Em treinos com frequência cardíaca alvo ou protocolo de intensidade específico, a precisão da resistência é relevante. A mecânica apresenta dois problemas: variação por desgaste (a pastilha nova não tem a mesma resposta que a usada) e variação por temperatura (o atrito muda com a temperatura da pastilha durante o aquecimento). O nível 5 no início da sessão não é o mesmo nível 5 após 30 minutos.
+  </p>
+  <p>
+    A magnética é matematicamente precisa — a posição dos ímãs determina uma resistência específica, reproduzível em qualquer condição.
+  </p>
+
+  <h2 id="preco">Quando a mecânica vale a pena</h2>
+  <p>
+    A única situação em que a ergométrica mecânica faz sentido é quando o orçamento é muito restrito (&lt; R$ 700) e o uso é esporádico — 1–2 vezes por semana, em ambiente onde o ruído não é problema (casa, garagem, área externa). Para uso regular em apartamento ou com objetivos de treino específicos, a mecânica não oferece a qualidade mínima necessária.
+  </p>
+  <p>
+    A diferença de preço entre uma mecânica de R$ 600 e uma magnética de R$ 1.000 é amortizada em 12–24 meses de uso regular sem gastos com manutenção e sem o incômodo do ruído.
+  </p>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>Fichas técnicas dos fabricantes: Gallant Sport, Kikos, WCT Fitness, Dream Fitness, Randers</li>
+    <li>ABNT NBR 10151: classificação de níveis de pressão sonora em ambientes</li>
+    <li>Avaliações verificadas na Amazon Brasil e Shopee, filtradas por menção de "barulho" e "ruído" (junho 2026)</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Ergométrica mecânica pode se tornar silenciosa com lubrificação?</summary>
+    <p class="mt-2 text-gray-600">
+      Não. O ruído da mecânica é estrutural — vem do contato físico entre pastilha e volante. Lubrificação pode reduzir o chiado marginalmente, mas não elimina a fonte do ruído. Para silêncio real, é necessário um modelo magnético. Lubrificação em correia e eixos pode ajudar em outros tipos de ruído (chiado metálico, rangido), mas não no ruído de resistência.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Qual nível de resistência é mais real: mecânica ou magnética?</summary>
+    <p class="mt-2 text-gray-600">
+      "Real" depende do que você está comparando. A sensação de pedalagem da magnética é mais suave e linear — como pedalar em asfalto plano. A mecânica tem uma sensação ligeiramente mais áspera, parecida com resistência de estrada em superfície irregular. Para simular ciclismo real, nem mecânica nem magnética são ideais — isso é território da spinning com corrente e volante pesado.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Como saber se minha ergométrica é mecânica ou magnética?</summary>
+    <p class="mt-2 text-gray-600">
+      Pela ficha técnica: procure os termos "resistência magnética", "magnetic resistance" ou "frenagem magnética". Termos como "resistência por atrito", "mechanical resistance" ou simplesmente "resistência ajustável" (sem especificar) geralmente indicam mecânica. Você também pode testar: pedale em velocidade moderada e observe se há chiado persistente — se sim, é mecânica.
+    </p>
+  </details>
+
+</ArticleLayout>

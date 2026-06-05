@@ -1,0 +1,161 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [{ label: "Sobre & Metodologia", href: "/sobre" }];
+
+const toc = [
+  { id: "quem-somos", label: "Quem somos", level: 2 },
+  { id: "missao", label: "Nossa missão editorial", level: 2 },
+  { id: "metodologia", label: "Metodologia de avaliação", level: 2 },
+  { id: "criterios", label: "Critérios objetivos", level: 3 },
+  { id: "o-que-nao-fazemos", label: "O que não fazemos", level: 3 },
+  { id: "fontes", label: "Fontes que utilizamos", level: 2 },
+  { id: "afiliados", label: "Sobre os links de afiliado", level: 2 },
+  { id: "contato", label: "Contato", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Sobre o BicicletasErgometricas.com — Curadoria Independente"
+  description="Conheça nossa missão, metodologia de avaliação e como produzimos conteúdo independente sobre bicicletas ergométricas no Brasil."
+  publishDate="2026-05-24"
+  modifiedDate="2026-06-05"
+  slug="sobre"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  affiliate={false}
+  readingTime={6}
+>
+
+  <h2 id="quem-somos">Quem somos</h2>
+  <p>
+    O <strong>BicicletasErgometricas.com</strong> é um portal editorial independente dedicado a ajudar brasileiros a escolher bicicletas ergométricas com base em critérios objetivos e verificáveis — não em anúncios ou relações comerciais com fabricantes.
+  </p>
+  <p>
+    Não somos loja. Não somos fabricante. Não recebemos produtos para teste nem patrocínio de marcas. Nossa receita vem exclusivamente de comissões de afiliado quando você compra por nossos links — sem custo adicional para você, e sem influência editorial sobre nossas recomendações.
+  </p>
+
+  <h2 id="missao">Nossa missão editorial</h2>
+  <p>
+    O mercado de equipamentos fitness no Brasil tem um problema estrutural: a maioria das reviews é produzida por canais com incentivo comercial claro — marcas que enviam produtos gratuitamente, afiliados que recomendam o que paga mais comissão, e lojas disfarçadas de guias editoriais.
+  </p>
+  <p>
+    Nossa missão é diferente: produzir conteúdo com a mesma lógica de curadoria que um consumidor criterioso aplicaria — comparando especificações técnicas, mapeando reclamações reais, consultando literatura de fisiologia do exercício e explicando o que a ficha técnica significa em linguagem prática.
+  </p>
+  <p>
+    Adotamos <strong>voz editorial de marca</strong>: nossos artigos representam o resultado de um processo de pesquisa documentado, não a opinião de uma pessoa específica. Isso garante que o rigor do processo de avaliação seja consistente independentemente de quem escreve.
+  </p>
+
+  <h2 id="metodologia">Metodologia de avaliação</h2>
+  <p>
+    Cada artigo de recomendação publicado neste site segue um processo documentado de curadoria. Explicamos abaixo como funciona.
+  </p>
+
+  <h3 id="criterios">Critérios objetivos de avaliação</h3>
+  <p>Avaliamos bicicletas ergométricas com base nos seguintes critérios, em ordem de peso:</p>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Critério</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">O que verificamos</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Fontes</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Tipo de resistência</td>
+          <td class="px-4 py-3 text-gray-600">Magnética vs mecânica — impacto em ruído e durabilidade</td>
+          <td class="px-4 py-3 text-gray-500">Ficha técnica do fabricante</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Peso suportado real</td>
+          <td class="px-4 py-3 text-gray-600">Comparamos o declarado com reclamações de usuários acima de 90 kg</td>
+          <td class="px-4 py-3 text-gray-500">Reclame Aqui, avaliações Amazon/Shopee</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Peso do volante de inércia</td>
+          <td class="px-4 py-3 text-gray-600">Determina a fluidez do movimento; verificamos via ficha técnica e manual</td>
+          <td class="px-4 py-3 text-gray-500">Manual do produto, catálogo do fabricante</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Nível de ruído</td>
+          <td class="px-4 py-3 text-gray-600">Estimamos com base no tipo de resistência e relatos de usuários em ambiente doméstico</td>
+          <td class="px-4 py-3 text-gray-500">Avaliações verificadas, fóruns de ciclismo indoor</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Dimensões e peso do equipamento</td>
+          <td class="px-4 py-3 text-gray-600">Montado e em uso; relevante para apartamentos</td>
+          <td class="px-4 py-3 text-gray-500">Ficha técnica, fotos de usuários</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Garantia por componente</td>
+          <td class="px-4 py-3 text-gray-600">Estrutura, motor, peças eletrônicas — separadamente</td>
+          <td class="px-4 py-3 text-gray-500">Política de garantia do fabricante</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Satisfação de usuários</td>
+          <td class="px-4 py-3 text-gray-600">Lemos avaliações verificadas; separamos elogios de problemas recorrentes</td>
+          <td class="px-4 py-3 text-gray-500">Amazon Brasil, Shopee, Mercado Livre</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Histórico de reclamações</td>
+          <td class="px-4 py-3 text-gray-600">Reclamações resolvidas vs. não resolvidas, padrão de problemas</td>
+          <td class="px-4 py-3 text-gray-500">Reclame Aqui</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Assistência técnica</td>
+          <td class="px-4 py-3 text-gray-600">Presença de rede autorizada no Brasil, disponibilidade de peças</td>
+          <td class="px-4 py-3 text-gray-500">Site do fabricante, relatos de usuários</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="o-que-nao-fazemos">O que não fazemos</h3>
+  <ul>
+    <li><strong>Não testamos fisicamente os produtos.</strong> Nossas análises são baseadas em fontes públicas e verificáveis. Quando informações conflitam entre fontes, indicamos isso explicitamente.</li>
+    <li><strong>Não recebemos produtos ou pagamento de fabricantes.</strong> Nenhuma marca tem influência editorial sobre nossas recomendações.</li>
+    <li><strong>Não recomendamos com base na comissão de afiliado.</strong> A comissão é igual ou similar entre diferentes lojas; escolhemos a loja com base em disponibilidade e histórico de atendimento.</li>
+    <li><strong>Não fazemos promessas de resultados de saúde.</strong> Nosso conteúdo de uso tem base em guidelines de organizações como o ACSM (American College of Sports Medicine), mas não substitui orientação médica ou de profissional de educação física.</li>
+  </ul>
+
+  <h2 id="fontes">Fontes que utilizamos</h2>
+  <p>Nosso conteúdo de uso e benefícios cita fontes externas autoritativas sempre que possível:</p>
+  <ul>
+    <li><strong>ACSM — American College of Sports Medicine:</strong> guidelines de exercício aeróbico, intensidade e frequência cardíaca alvo</li>
+    <li><strong>Harvard Health Publishing:</strong> benefícios cardiovasculares do exercício em bicicleta, impacto articular comparativo</li>
+    <li><strong>Fichas técnicas dos fabricantes:</strong> especificações de peso, resistência, dimensões e garantia</li>
+    <li><strong>Manuais de operação:</strong> instruções de regulagem, manutenção preventiva e limites de uso</li>
+    <li><strong>Avaliações verificadas de compradores:</strong> Amazon Brasil, Shopee, Mercado Livre — filtramos avaliações não verificadas</li>
+    <li><strong>Reclame Aqui:</strong> histórico de reclamações por marca e produto</li>
+  </ul>
+
+  <h2 id="afiliados">Sobre os links de afiliado</h2>
+  <p>
+    Este site participa dos programas de afiliados da <strong>Amazon Brasil</strong>, <strong>Shopee</strong> e <strong>Mercado Livre</strong>. Quando você clica em um link de produto e realiza uma compra, recebemos uma comissão — sem nenhum custo adicional para você. O preço é o mesmo que você encontraria acessando diretamente a loja.
+  </p>
+  <p>
+    Acreditamos que a transparência sobre esse modelo de negócio aumenta — não diminui — a confiança no conteúdo. Portanto, exibimos essa informação com clareza no início de cada artigo com recomendação de produto.
+  </p>
+  <p>
+    <strong>Nossa curadoria não é influenciada pelas comissões.</strong> Se um produto tem histórico ruim de reclamações ou especificações aquém do declarado pelo fabricante, não o recomendamos — independentemente da comissão que ele gera.
+  </p>
+
+  <h2 id="contato">Contato</h2>
+  <p>
+    Para sugestões, correções ou dúvidas sobre nosso conteúdo, entre em contato pelo e-mail disponível na política de privacidade. Levamos a sério correções factuais — se encontrar um erro em qualquer artigo, queremos saber.
+  </p>
+
+  <div class="not-prose my-8 rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+    <h3 class="mb-2 text-lg font-bold text-emerald-900" style="font-family: var(--font-display);">Pronto para encontrar a ergométrica certa?</h3>
+    <p class="mb-4 text-emerald-800">
+      Responda 5 perguntas e receba uma recomendação baseada no seu perfil, espaço e orçamento.
+    </p>
+    <a href="/ferramentas/quiz-qual-ergometrica" class="inline-block rounded-lg bg-emerald-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-800">
+      Fazer o quiz gratuito →
+    </a>
+  </div>
+
+</ArticleLayout>

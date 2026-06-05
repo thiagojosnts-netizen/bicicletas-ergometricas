@@ -1,0 +1,254 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Comparativos", href: "/comparativos" },
+  { label: "Ergométrica vs Esteira", href: "/comparativos/ergometrica-vs-esteira" },
+];
+
+const toc = [
+  { id: "veredicto", label: "Veredicto rápido", level: 2 },
+  { id: "gasto-calorico", label: "Gasto calórico: empate técnico", level: 2 },
+  { id: "articulacoes", label: "Impacto articular: ergométrica vence", level: 2 },
+  { id: "espaco-custo", label: "Espaço e custo: ergométrica vence", level: 2 },
+  { id: "esteira-vence", label: "Quando a esteira é melhor", level: 2 },
+  { id: "comparativo-specs", label: "Comparativo de specs", level: 2 },
+  { id: "por-objetivo", label: "Escolha por objetivo", level: 2 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Bicicleta Ergométrica vs Esteira: Qual Comprar em 2026?"
+  description="Comparativo completo entre ergométrica e esteira: gasto calórico, impacto articular, espaço, custo e qual escolher para emagrecer, condicionamento ou reabilitação."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="comparativos/ergometrica-vs-esteira"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={10}
+>
+
+  <p>
+    Bicicleta ergométrica e esteira são os dois cardios domésticos mais vendidos no Brasil — e as perguntas mais comuns antes de comprar são sempre as mesmas: qual emagrece mais? qual é melhor para o joelho? qual ocupa menos espaço? Este comparativo responde com dados reais.
+  </p>
+
+  <h2 id="veredicto">Veredicto rápido</h2>
+
+  <div class="not-prose my-6 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-xl border-2 border-emerald-400 bg-emerald-50 p-5">
+      <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">Escolha a ergométrica se:</div>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li>✓ Tem problemas nos joelhos, quadril ou coluna</li>
+        <li>✓ Mora em apartamento (menos ruído e vibração)</li>
+        <li>✓ Está em reabilitação</li>
+        <li>✓ Tem espaço reduzido</li>
+        <li>✓ Orçamento até R$ 2.000</li>
+        <li>✓ Quer exercício sustentável no longo prazo</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border-2 border-blue-400 bg-blue-50 p-5">
+      <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-blue-700">Escolha a esteira se:</div>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li>✓ Quer treinar para corrida ou caminhada</li>
+        <li>✓ Tem articulações saudáveis e quer impacto controlado</li>
+        <li>✓ Prefere o padrão de movimento da caminhada/corrida</li>
+        <li>✓ Tem espaço e orçamento compatíveis</li>
+        <li>✓ Quer variar inclinação (simula subidas)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="gasto-calorico">Gasto calórico: empate técnico</h2>
+  <p>
+    A comparação de gasto calórico entre ergométrica e esteira depende fundamentalmente da intensidade — não do equipamento em si. Em intensidade moderada equivalente (frequência cardíaca de 65–75% da máxima), os valores são muito próximos:
+  </p>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Atividade</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Intensidade</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">kcal/hora (70 kg)</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">MET</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Ergométrica — esforço leve</td>
+          <td class="px-4 py-3 text-gray-600">&lt; 50 W</td>
+          <td class="px-4 py-3 text-gray-600">~300 kcal</td>
+          <td class="px-4 py-3 text-gray-600">3.5</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Ergométrica — esforço moderado</td>
+          <td class="px-4 py-3 text-gray-600">100–150 W</td>
+          <td class="px-4 py-3 text-gray-600">~490 kcal</td>
+          <td class="px-4 py-3 text-gray-600">5.8</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Ergométrica — esforço vigoroso</td>
+          <td class="px-4 py-3 text-gray-600">&gt; 200 W</td>
+          <td class="px-4 py-3 text-gray-600">~700+ kcal</td>
+          <td class="px-4 py-3 text-gray-600">8.5</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Esteira — caminhada rápida</td>
+          <td class="px-4 py-3 text-gray-600">6 km/h, 0% incl.</td>
+          <td class="px-4 py-3 text-gray-600">~320 kcal</td>
+          <td class="px-4 py-3 text-gray-600">3.8</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Esteira — corrida leve</td>
+          <td class="px-4 py-3 text-gray-600">9 km/h, 0% incl.</td>
+          <td class="px-4 py-3 text-gray-600">~520 kcal</td>
+          <td class="px-4 py-3 text-gray-600">6.0</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Esteira — corrida moderada</td>
+          <td class="px-4 py-3 text-gray-600">12 km/h, 0% incl.</td>
+          <td class="px-4 py-3 text-gray-600">~700 kcal</td>
+          <td class="px-4 py-3 text-gray-600">8.3</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="px-4 py-2 text-xs text-gray-400">Valores baseados em dados do Compendium of Physical Activities (Ainsworth et al., 2011), para pessoa de 70 kg. Valores individuais variam com composição corporal, condicionamento e biomecânica.</p>
+  </div>
+
+  <p>
+    Em esforço moderado equivalente, a ergométrica e a corrida produzem gastos calóricos similares (490 vs 520 kcal/hora). A esteira vence em intensidade máxima por permitir corrida — mas a corrida tem custo articular significativo que precisa ser considerado.
+  </p>
+
+  <h2 id="articulacoes">Impacto articular: ergométrica vence com clareza</h2>
+  <p>
+    Este é o critério que, para a maioria das pessoas acima de 35 anos, decide a questão. A corrida na esteira impõe uma carga de <strong>2,5–3× o peso corporal</strong> sobre o joelho a cada passada. Para uma pessoa de 80 kg correndo a 9 km/h por 30 minutos, isso representa aproximadamente 1.200 ciclos de impacto com pico de força de 200–240 kg por joelho.
+  </p>
+  <p>
+    Segundo dados da <strong>Harvard Health</strong>, a corrida tem taxa de lesão de 40–60% ao ano em corredores recreativos — sendo joelho (síndrome patelofemoral, banda iliotibial), shin splints e fascite plantar os mais comuns.
+  </p>
+  <p>
+    A ergométrica não tem fase de impacto. O joelho se dobra e estende em movimento controlado e sem carga de impacto. Para quem já tem artrite, histórico de lesão ou está acima do peso ideal, a diferença é clinicamente significativa.
+  </p>
+  <p>
+    A caminhada na esteira tem impacto articular bem menor que a corrida — apenas 1,5–2× o peso corporal por passada. Se o objetivo é caminhar (não correr), a esteira é uma alternativa razoável, embora a ergométrica ainda seja mais segura articular mente.
+  </p>
+
+  <h2 id="espaco-custo">Espaço e custo: ergométrica vence</h2>
+  <p>
+    Esteiras domésticas de qualidade são equipamentos grandes: tipicamente 170–200 cm de comprimento, 70–90 cm de largura, 40–60 kg. Em apartamentos compactos, simplesmente não cabem — mesmo dobradas, ocupam espaço significativo.
+  </p>
+  <p>
+    Uma ergométrica magnética de qualidade ocupa em média 85×50 cm e pesa 18–25 kg. Pode ser guardada encostada na parede ou movida para outro cômodo com rodas de transporte.
+  </p>
+  <p>
+    Em preço, esteiras domésticas de qualidade começam em R$ 2.500 e modelos recomendáveis ficam em R$ 3.500–6.000. Ergométricas magnéticas recomendáveis começam em R$ 900–1.200. Para o mesmo orçamento, você compra uma ergométrica significativamente melhor do que uma esteira equivalente.
+  </p>
+
+  <h2 id="esteira-vence">Quando a esteira é melhor</h2>
+  <p>
+    A esteira vence claramente em um cenário: quando o objetivo é treinar para corrida. Se você está se preparando para uma corrida de rua ou quer melhorar seu condicionamento de corrida especificamente, a esteira é o equipamento correto — porque treina o padrão de movimento que você quer desenvolver. Não há substituto para o treinamento específico.
+  </p>
+  <p>
+    Também faz mais sentido para pessoas que simplesmente preferem caminhar/correr como padrão de movimento e têm articulações saudáveis sem histórico de lesão.
+  </p>
+
+  <h2 id="comparativo-specs">Comparativo de specs</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Critério</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-emerald-700">Ergométrica</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-blue-700">Esteira</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Impacto articular</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">Mínimo — sem impacto</td>
+          <td class="px-4 py-3 text-amber-700">Moderado (caminhada) a alto (corrida)</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Gasto calórico (moderado)</td>
+          <td class="px-4 py-3 text-gray-600">~490 kcal/h</td>
+          <td class="px-4 py-3 text-gray-600">~520 kcal/h (corrida)</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Dimensões típicas</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">85 × 50 cm</td>
+          <td class="px-4 py-3 text-amber-700">180 × 80 cm</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Peso do equipamento</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">18–25 kg</td>
+          <td class="px-4 py-3 text-amber-700">40–60 kg</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Preço de entrada (recomendável)</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">R$ 900–1.200</td>
+          <td class="px-4 py-3 text-amber-700">R$ 2.500–3.500</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Ruído em uso</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">25–35 dB (magnética)</td>
+          <td class="px-4 py-3 text-amber-700">60–75 dB (motor + impacto)</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Adequada para apartamento</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">✓ Sim</td>
+          <td class="px-4 py-3 text-red-600 font-medium">✗ Difícil (ruído + espaço)</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Indicada para reabilitação</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">✓ Amplamente</td>
+          <td class="px-4 py-3 text-gray-600">Parcial (caminhada)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="por-objetivo">Escolha por objetivo</h2>
+  <ul>
+    <li><strong>Emagrecer:</strong> qualquer um dos dois, desde que o uso seja consistente. A ergométrica é mais sustentável por ser mais silenciosa e ter menos impacto articular.</li>
+    <li><strong>Condicionamento cardiovascular:</strong> ambos são equivalentes em intensidade moderada. A ergométrica permite sessões mais longas por ser mais confortável.</li>
+    <li><strong>Reabilitação de joelho ou quadril:</strong> ergométrica, sem dúvida.</li>
+    <li><strong>Treinar para corrida:</strong> esteira.</li>
+    <li><strong>Apartamento compacto:</strong> ergométrica, com clareza.</li>
+    <li><strong>Orçamento limitado:</strong> ergométrica — melhor equipamento pelo mesmo preço.</li>
+  </ul>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>Ainsworth BE et al. <em>Compendium of Physical Activities</em>. Medicine &amp; Science in Sports &amp; Exercise, 2011.</li>
+    <li>Harvard Health Publishing: <em>Choosing the Right Exercise Machine</em>, 2023</li>
+    <li>American College of Sports Medicine: <em>Guidelines for Exercise Testing and Prescription</em>, 11ª edição</li>
+    <li>ABNT NBR 10151: níveis de ruído em ambientes residenciais</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Ergométrica ou esteira: qual emagrece mais rápido?</summary>
+    <p class="mt-2 text-gray-600">
+      Nenhuma das duas emagrece "mais rápido" por si só — o emagrecimento depende do déficit calórico total, que inclui alimentação. Em termos de gasto calórico por sessão em esforço moderado equivalente, os valores são muito similares. A diferença que importa: a ergométrica permite uso mais frequente porque agride menos as articulações, o que tende a gerar maior volume total de exercício ao longo das semanas.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Ergométrica é boa para quem tem joelho ruim?</summary>
+    <p class="mt-2 text-gray-600">
+      Sim — é um dos exercícios mais recomendados para esse perfil. O movimento de pedalagem não impõe impacto sobre o joelho e fortalece o quadríceps, que é o principal estabilizador articular. A condição é ter o selim na altura correta (joelho com 25–30° de flexão no ponto mais baixo do pedal). Para artrite severa ou pós-operatório recente, consulte o fisioterapeuta para o protocolo adequado.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Posso usar esteira em apartamento?</summary>
+    <p class="mt-2 text-gray-600">
+      É desafiador. O ruído do motor (60–70 dB) e o impacto da corrida que se propaga pela laje são os maiores problemas. Alguns modelos dobráveis reduzem o espaço, mas não o ruído. Para uso em apartamento com vizinhos, a ergométrica magnética é a escolha muito mais viável. Se insistir na esteira, use apenas para caminhada (menor impacto), no horário diurno, com tapete de borracha espesso.
+    </p>
+  </details>
+
+</ArticleLayout>

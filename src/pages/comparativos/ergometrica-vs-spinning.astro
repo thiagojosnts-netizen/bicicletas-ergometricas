@@ -1,0 +1,212 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Comparativos", href: "/comparativos" },
+  { label: "Ergométrica vs Spinning", href: "/comparativos/ergometrica-vs-spinning" },
+];
+
+const toc = [
+  { id: "veredicto", label: "Veredicto rápido", level: 2 },
+  { id: "diferencas-tecnicas", label: "Diferenças técnicas", level: 2 },
+  { id: "comparativo-specs", label: "Comparativo de specs", level: 2 },
+  { id: "ruido", label: "Ruído: ergométrica ganha", level: 2 },
+  { id: "custo", label: "Custo: ergométrica ganha", level: 2 },
+  { id: "intensidade", label: "Intensidade: spinning ganha", level: 2 },
+  { id: "espaco", label: "Espaço: ergométrica ganha", level: 2 },
+  { id: "quem-escolhe-o-que", label: "Quem deve escolher cada uma", level: 2 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Bicicleta Ergométrica vs Spinning: Qual Comprar para Casa? (2026)"
+  description="Comparativo técnico completo entre ergométrica e spinning: ruído, custo, intensidade, espaço e qual escolher para uso doméstico. Com specs reais."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="comparativos/ergometrica-vs-spinning"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={10}
+>
+
+  <p>
+    Bicicleta ergométrica e bicicleta de spinning são equipamentos distintos — não versões da mesma coisa. Elas têm filosofias de uso diferentes, mecanismos de resistência diferentes e públicos diferentes. A escolha errada significa gastar mais do que o necessário (no caso do spinning) ou ter um equipamento com limitações para um objetivo específico (no caso da ergométrica para treinos intensos).
+  </p>
+
+  <h2 id="veredicto">Veredicto rápido</h2>
+
+  <div class="not-prose my-6 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-xl border-2 border-emerald-400 bg-emerald-50 p-5">
+      <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">Escolha a ergométrica se:</div>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li>✓ Mora em apartamento</li>
+        <li>✓ Quer pedalar 30–60 min/dia em ritmo moderado</li>
+        <li>✓ Tem vizinhos ou filhos dormindo</li>
+        <li>✓ Está em reabilitação ou tem restrição articular</li>
+        <li>✓ Orçamento até R$ 2.500</li>
+        <li>✓ Espaço limitado</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border-2 border-sky-400 bg-sky-50 p-5">
+      <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-sky-700">Escolha o spinning se:</div>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li>✓ Treina com alta intensidade (HIIT, treinos de ciclismo)</li>
+        <li>✓ Quer simular o ciclismo ao ar livre</li>
+        <li>✓ Tem espaço dedicado para treino (casa, garagem)</li>
+        <li>✓ Já tem condicionamento físico desenvolvido</li>
+        <li>✓ Tolera ruído ou tem isolamento acústico</li>
+        <li>✓ Orçamento acima de R$ 2.000</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="diferencas-tecnicas">Diferenças técnicas</h2>
+  <p>
+    A diferença fundamental está no <strong>volante de inércia</strong>: a spinning tem um volante muito mais pesado (14–22 kg) que armazena mais energia cinética, criando um movimento de pedalagem mais fluido e que imita o ciclismo real. A ergométrica doméstica tem volante de 4–10 kg, o que resulta em movimento mais leve e controlado — ideal para exercício moderado, não para simulação de ciclismo.
+  </p>
+  <p>
+    A segunda diferença estrutural é a <strong>transmissão</strong>: spinning usa corrente (como a bicicleta de rua), que exige manutenção periódica (lubrificação). Ergométricas modernas usam correia, que é sem manutenção.
+  </p>
+  <p>
+    A terceira é a <strong>postura</strong>: spinning tem selim de corrida (duro, estreito) e posição inclinada para frente — ergonomia de performance. Ergométrica tem selim mais confortável e posição mais ereta — ergonomia de uso doméstico prolongado.
+  </p>
+
+  <h2 id="comparativo-specs">Comparativo de specs</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Característica</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-emerald-700">Ergométrica doméstica</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700 text-sky-700">Spinning / Indoor cycling</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Volante de inércia</td>
+          <td class="px-4 py-3 text-gray-600">4–10 kg</td>
+          <td class="px-4 py-3 text-gray-600">14–22 kg</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Tipo de resistência</td>
+          <td class="px-4 py-3 text-gray-600">Magnética (doméstica) ou mecânica</td>
+          <td class="px-4 py-3 text-gray-600">Mecânica por atrito (pand)</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Nível de ruído</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">25–35 dB (magnética)</td>
+          <td class="px-4 py-3 text-red-600 font-medium">50–70 dB em uso</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Transmissão</td>
+          <td class="px-4 py-3 text-gray-600">Correia (sem manutenção)</td>
+          <td class="px-4 py-3 text-gray-600">Corrente (requer lubrificação)</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Selim</td>
+          <td class="px-4 py-3 text-gray-600">Largo, acolchoado</td>
+          <td class="px-4 py-3 text-gray-600">Estreito, rígido</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Dimensões típicas</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">85×50×130 cm</td>
+          <td class="px-4 py-3 text-gray-600">110×55×130 cm</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Peso típico</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">18–25 kg</td>
+          <td class="px-4 py-3 text-gray-600">35–55 kg</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Faixa de preço (Brasil)</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">R$ 800–3.500</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.500–6.000+</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-700">Adequada para apartamento</td>
+          <td class="px-4 py-3 text-emerald-700 font-medium">✓ Sim (magnética)</td>
+          <td class="px-4 py-3 text-red-600 font-medium">✗ Não (ruído + peso)</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-700">Simulação de ciclismo real</td>
+          <td class="px-4 py-3 text-gray-600">Parcial</td>
+          <td class="px-4 py-3 text-sky-700 font-medium">✓ Alta fidelidade</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="ruido">Ruído: ergométrica ganha com folga</h2>
+  <p>
+    Esta é a diferença mais impactante para uso doméstico. A bicicleta de spinning usa resistência por atrito — uma panda (bloco de fricção) pressionada contra a roda — que produz som similar ao de um ventilador de teto em velocidade alta: 50–70 dB durante o uso.
+  </p>
+  <p>
+    Para referência: 50 dB equivale a uma conversa normal a 1 metro de distância. 70 dB equivale ao som de um aspirador de pó. Esse nível de ruído durante 45 minutos de treino, às 6h da manhã, certamente incomodará vizinhos em apartamentos com isolamento acústico padrão.
+  </p>
+  <p>
+    A ergométrica magnética opera entre 25–35 dB — abaixo do limiar de percepção de ruído ambiental para a maioria das pessoas.
+  </p>
+
+  <h2 id="custo">Custo: ergométrica ganha</h2>
+  <p>
+    Para especificações equivalentes de uso doméstico, a ergométrica custa entre 30–50% menos que um spinning de qualidade similar. Um spinning com nível de ruído aceitável e estrutura robusta raramente está abaixo de R$ 2.000 — e um modelo de qualidade com volante de 16 kg+ começa em R$ 3.000.
+  </p>
+  <p>
+    Além do custo de aquisição, considere a manutenção: a corrente da spinning exige lubrificação periódica (a cada 3–6 meses de uso regular) e eventual substituição. A correia da ergométrica é, na prática, sem manutenção.
+  </p>
+
+  <h2 id="intensidade">Intensidade: spinning ganha</h2>
+  <p>
+    Para treinos de alta intensidade — HIIT, treinos de ciclismo com intervalos, simulação de subidas — o spinning é superior. O volante pesado cria uma inércia que torna o pedal mais resistente, permitindo esforços muito maiores. Alguns ciclistas de estrada usam spinning indoor como treino principal no inverno ou em dias de chuva.
+  </p>
+  <p>
+    A ergométrica doméstica tem limite de intensidade: o volante leve e a resistência magnética não conseguem simular a sensação de uma subida de 8% de inclinação por 30 minutos.
+  </p>
+
+  <h2 id="espaco">Espaço: ergométrica ganha</h2>
+  <p>
+    A spinning é mais longa e mais pesada que a ergométrica equivalente. Uma spinning de qualidade pesa 40–55 kg, contra 18–25 kg de uma ergométrica. Em termos de dimensões, a spinning ocupa em média 20–30% mais comprimento. Para apartamentos compactos, essa diferença pode ser decisiva.
+  </p>
+
+  <h2 id="quem-escolhe-o-que">Quem deve escolher cada uma</h2>
+  <p>
+    <strong>Ergométrica é a escolha certa</strong> para a maioria das pessoas que querem pedalar em casa: exercício aeróbico moderado, condicionamento cardiovascular, emagrecimento com impacto controlado, uso por pessoas com restrições articulares. Silenciosa, compacta, de baixo custo de operação.
+  </p>
+  <p>
+    <strong>Spinning faz mais sentido</strong> para ciclistas que treinam para competições ou para pessoas com nível de condicionamento alto que querem treinos de alta intensidade em casa e têm espaço e tolerância ao ruído. Não é a escolha para iniciantes ou para uso moderado — o investimento não se justifica.
+  </p>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>ACSM — American College of Sports Medicine: <em>Indoor Cycling Compared to Other Aerobic Exercise Modalities</em>, 2022</li>
+    <li>Fichas técnicas comparadas: Gallant, Kikos, WCT Fitness (ergométrica) vs modelos de spinning disponíveis no Brasil</li>
+    <li>ABNT NBR 10151: níveis de ruído em ambiente residencial</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Spinning emagrece mais do que ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Em termos de gasto calórico por hora em intensidade máxima, a spinning pode ser superior porque permite esforços maiores. Mas o gasto calórico total depende mais da frequência e consistência do treino do que do equipamento. Uma ergométrica usada 5 vezes por semana por 45 minutos emagrecerá mais do que uma spinning usada 1–2 vezes por semana. O melhor equipamento é o que você vai usar com regularidade.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">É possível fazer HIIT em ergométrica doméstica?</summary>
+    <p class="mt-2 text-gray-600">
+      Sim, com limitações. HIIT em ergométrica doméstica é possível — intervalos de pedalagem rápida em resistência alta alternando com períodos de recuperação. A limitação é que o volante leve torna a inércia do sistema menor, então a sensação de "esforço máximo" é diferente do spinning. Para iniciantes e usuários intermediários, o HIIT em ergométrica é eficaz. Para atletas e ciclistas com condicionamento avançado, o spinning oferece mais resistência.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Qual tem mais durabilidade, ergométrica ou spinning?</summary>
+    <p class="mt-2 text-gray-600">
+      A spinning tem componentes que demandam mais manutenção (corrente, panda de atrito), mas estruturalmente tende a ser mais robusta — o peso maior indica uma construção mais sólida. Ergométricas magnéticas de qualidade (R$ 1.200+) têm excelente durabilidade por serem mecanicamente mais simples — sem corrente, sem fricção, menos peças sujeitas a desgaste. Para uso doméstico moderado, ambas duram 5–10 anos com os cuidados básicos.
+    </p>
+  </details>
+
+</ArticleLayout>

@@ -1,0 +1,251 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Reviews", href: "/reviews" },
+  { label: "Manutenção de Bicicleta Ergométrica", href: "/reviews/manutencao-bicicleta-ergometrica" },
+];
+
+const toc = [
+  { id: "rotina-limpeza", label: "Rotina de limpeza", level: 2 },
+  { id: "correia-corrente", label: "Correia e corrente", level: 2 },
+  { id: "selim-guidao", label: "Selim e guidão", level: 2 },
+  { id: "volante", label: "Volante de inércia e rolamentos", level: 2 },
+  { id: "cronograma", label: "Cronograma de manutenção", level: 2 },
+  { id: "problemas-comuns", label: "Diagnóstico de problemas comuns", level: 2 },
+  { id: "vida-util", label: "Vida útil esperada", level: 2 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Manutenção de Bicicleta Ergométrica: Guia Completo (2026)"
+  description="Como fazer a manutenção de bicicleta ergométrica em casa: limpeza, lubrificação da correia, ajuste do selim, diagnóstico de ruídos e vida útil esperada."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="reviews/manutencao-bicicleta-ergometrica"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={10}
+  affiliate={false}
+>
+
+  <p>
+    A maioria das falhas em bicicletas ergométricas domésticas não é defeito de fabricação — é consequência de manutenção negligenciada. Acúmulo de suor na estrutura corrói parafusos e tubos. Correia ressecada perde elasticidade e chiado. Rolamentos sem lubrificação desgastam mais rápido. Pequenas manutenções periódicas evitam grandes reparos.
+  </p>
+  <p>
+    Este guia cobre a manutenção que você pode fazer sem assistência técnica, com produtos acessíveis.
+  </p>
+
+  <h2 id="rotina-limpeza">Rotina de limpeza</h2>
+  <p>
+    O suor é o maior inimigo de uma ergométrica. Ele é levemente ácido e corrói aço e alumínio ao longo do tempo — especialmente parafusos, guias de ajuste de selim e a estrutura próxima ao guidão, onde o contato com as mãos é maior.
+  </p>
+  <p>
+    <strong>Após cada uso:</strong>
+  </p>
+  <ul>
+    <li>Passe um pano seco (ou levemente úmido) no guidão, selim e painel para remover o suor fresco</li>
+    <li>Seque qualquer poça de suor no chão próximo ao equipamento</li>
+    <li>Não use spray de limpeza direto no painel eletrônico — aplique no pano antes</li>
+  </ul>
+  <p>
+    <strong>Semanalmente (em uso regular):</strong>
+  </p>
+  <ul>
+    <li>Limpe toda a estrutura metálica com pano úmido</li>
+    <li>Verifique se há parafusos frouxos — especialmente nos pedais, selim e base</li>
+    <li>Cheque o aperto dos estabilizadores de nível (pés ajustáveis)</li>
+  </ul>
+  <p>
+    <strong>Produtos adequados:</strong> água com sabão neutro diluído. Evite produtos com amônia ou solventes nos plásticos e no painel.
+  </p>
+
+  <h2 id="correia-corrente">Correia e corrente</h2>
+  <p>
+    A correia de transmissão é o componente que mais varia entre modelos e que mais impacta o som do equipamento.
+  </p>
+
+  <h3>Correias de poliuretano (sem manutenção)</h3>
+  <p>
+    Modelos com correia de poliuretano (a maioria das ergométricas magnéticas de qualidade) não requerem lubrificação periódica. A correia deve ser inspecionada visualmente a cada 6 meses para verificar sinais de desgaste: rachaduras, friagem ou deformação lateral. Vida útil esperada: 5–8 anos em uso moderado.
+  </p>
+
+  <h3>Correias dentadas e correntes (requerem lubrificação)</h3>
+  <p>
+    Modelos com correia dentada ou corrente (comum em spinning e ergométricas mais antigas) requerem lubrificação a cada 3–6 meses, dependendo da frequência de uso.
+  </p>
+  <p>
+    <strong>Lubrificante correto:</strong> use lubrificante específico para correntes de bicicleta (ceroso ou molhado, dependendo do ambiente). Não use WD-40 para lubrificar correntes — ele é solvente/desengordurante, não lubrificante, e vai remover a lubrificação existente. Use WD-40 apenas para remover ferrugem de parafusos.
+  </p>
+  <p>
+    <strong>Como lubrificar a correia dentada:</strong>
+  </p>
+  <ol>
+    <li>Posicione o equipamento de forma acessível à correia (geralmente lateral direita)</li>
+    <li>Aplique lubrificante ao longo de toda a correia, girando os pedais lentamente para que ela passe pelo aplicador</li>
+    <li>Aplique no elo interno (entre os pinos), não por cima</li>
+    <li>Deixe 5 minutos para penetrar, depois pedalar brevemente para distribuir</li>
+    <li>Remova o excesso com um pano limpo</li>
+  </ol>
+
+  <h2 id="selim-guidao">Selim e guidão</h2>
+  <p>
+    O sistema de ajuste do selim é o componente mecânico mais exigido em ergométricas domésticas — especialmente se múltiplas pessoas usam o equipamento com alturas diferentes.
+  </p>
+  <ul>
+    <li><strong>Pino de ajuste:</strong> aplique uma fina camada de graxa ou óleo de silicone no pino de ajuste do selim a cada 3 meses. Isso evita que o pino gripe por oxidação — um problema comum em ambientes úmidos.</li>
+    <li><strong>Parafusos de fixação:</strong> verifique o aperto mensalmente. Selim e guidão frouxos são perigosos e aceleram o desgaste das roscas.</li>
+    <li><strong>Silicone spray:</strong> aplique nas guias de ajuste vertical do selim (não no assento em si) para facilitar o deslizamento e prevenir rangidos.</li>
+  </ul>
+
+  <h2 id="volante">Volante de inércia e rolamentos</h2>
+  <p>
+    O volante de inércia gira em rolamentos — a maioria é selada de fábrica e não requer lubrificação pelo usuário. O problema ocorre quando os rolamentos começam a fazer ruído: chiado metálico agudo diferente do ruído de resistência normal indica rolamento desgastado.
+  </p>
+  <p>
+    <strong>Rolamentos selados:</strong> quando chegam ao fim da vida útil (2–5 anos em uso intenso), devem ser substituídos pelo serviço técnico. Não tente abrir rolamentos selados sem ferramentas específicas.
+  </p>
+  <p>
+    <strong>Rolamentos abertos (menos comuns):</strong> alguns modelos têm rolamentos acessíveis. Aplique graxa de lítio branca a cada 12 meses. Consulte o manual do produto para identificar quais rolamentos são acessíveis.
+  </p>
+
+  <h2 id="cronograma">Cronograma de manutenção</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Frequência</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Tarefa</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Material necessário</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Após cada uso</td>
+          <td class="px-4 py-3 text-gray-600">Limpar suor do guidão, selim e painel</td>
+          <td class="px-4 py-3 text-gray-600">Pano seco ou levemente úmido</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Semanal</td>
+          <td class="px-4 py-3 text-gray-600">Limpar estrutura, verificar parafusos</td>
+          <td class="px-4 py-3 text-gray-600">Pano úmido, chave de fenda/allen</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Mensal</td>
+          <td class="px-4 py-3 text-gray-600">Apertar todos os parafusos, verificar pedais</td>
+          <td class="px-4 py-3 text-gray-600">Chave allen 4–6 mm, chave de boca</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">A cada 3 meses</td>
+          <td class="px-4 py-3 text-gray-600">Lubrificar pino de selim; lubrificar correia (se dentada)</td>
+          <td class="px-4 py-3 text-gray-600">Óleo de silicone; lubrificante para corrente</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">A cada 6 meses</td>
+          <td class="px-4 py-3 text-gray-600">Inspecionar correia (poliuretano), calibrar nível do equipamento</td>
+          <td class="px-4 py-3 text-gray-600">Visual + nível de bolha</td>
+        </tr>
+        <tr class="bg-gray-50/50">
+          <td class="px-4 py-3 font-medium text-gray-900">Anual</td>
+          <td class="px-4 py-3 text-gray-600">Verificar rolamentos (chiado), inspecionar fiação do painel</td>
+          <td class="px-4 py-3 text-gray-600">Visual, eventual chamado de assistência técnica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="problemas-comuns">Diagnóstico de problemas comuns</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        sintoma: "Chiado constante durante a pedalagem",
+        causas: "1. Resistência mecânica (pastilha atritando a roda) — normal para mecânicas. 2. Correia seca em modelos com correia dentada. 3. Rolamento desgastado.",
+        acao: "Identifique se o chiado vem da resistência ou do volante. Se da correia: lubrifique. Se do rolamento: assistência técnica."
+      },
+      {
+        sintoma: "Rangido ao mudar a posição do selim",
+        causas: "Pino de ajuste oxidado ou ressecado",
+        acao: "Aplique silicone spray nas guias de ajuste. Se persistir, aplique óleo mineral leve."
+      },
+      {
+        sintoma: "Clique rítmico sincronizado com a pedalagem",
+        causas: "Pedal frouxo (mais comum) ou pino da correia com desgaste pontual",
+        acao: "Verifique e aperte os pedais com chave. Pedais devem ser apertados com rosca invertida (esquerdo aperta no sentido anti-horário)."
+      },
+      {
+        sintoma: "Resistência que não sente uniforme entre os níveis",
+        causas: "Em mecânicas: desgaste da pastilha. Em magnéticas: falha no mecanismo de posicionamento dos ímãs.",
+        acao: "Mecânica: substituir pastilha. Magnética: assistência técnica, provavelmente coberto pela garantia se recente."
+      },
+      {
+        sintoma: "Painel eletrônico não liga ou leituras incorretas",
+        causas: "Bateria fraca ou sensor de pulso com contato oxidado",
+        acao: "Substituir pilhas (se for por pilha). Limpar eletrodos do sensor de pulso com pano levemente úmido."
+      }
+    ].map(item => (
+      <div class="rounded-xl border border-gray-200 p-4">
+        <div class="font-semibold text-gray-900 mb-1">🔧 {item.sintoma}</div>
+        <div class="text-sm text-gray-600 mb-1"><span class="font-medium">Causas:</span> {item.causas}</div>
+        <div class="text-sm text-emerald-700"><span class="font-medium">Ação:</span> {item.acao}</div>
+      </div>
+    ))}
+  </div>
+
+  <h2 id="vida-util">Vida útil esperada</h2>
+  <p>
+    Uma bicicleta ergométrica doméstica bem mantida tem vida útil de <strong>7–15 anos</strong> em uso moderado. Os componentes com vida útil mais limitada são:
+  </p>
+  <ul>
+    <li><strong>Pastilha de resistência mecânica:</strong> 2–4 anos (depende de uso e carga)</li>
+    <li><strong>Correia dentada ou corrente:</strong> 3–7 anos (com lubrificação adequada)</li>
+    <li><strong>Correia de poliuretano:</strong> 5–10 anos</li>
+    <li><strong>Selim (espuma):</strong> 3–5 anos em uso intenso — pode ser substituído</li>
+    <li><strong>Rolamentos:</strong> 5–10 anos (magnética); 3–7 anos (mecânica por maior vibração)</li>
+    <li><strong>Painel eletrônico:</strong> componente mais imprevisível — 5–10 anos, sujeito a falha elétrica</li>
+  </ul>
+  <p>
+    O fator mais determinante para longevidade é o ambiente: umidade alta (banheiro, área de serviço) acelera corrosão significativamente. Mantenha em ambiente ventilado e com umidade controlada.
+  </p>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>Manuais de serviço: Gallant Sport, Kikos, WCT Fitness, Dream Fitness</li>
+    <li>Normas de manutenção preventiva de equipamentos de ginástica doméstica (ABNT NBR 16060)</li>
+    <li>Relatos de usuários em grupos especializados de ciclismo indoor (junho 2026)</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Com que frequência devo fazer manutenção na ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Para uso regular (4–5 vezes por semana): limpeza de suor após cada uso, verificação de parafusos mensalmente, lubrificação da correia (se dentada) a cada 3 meses. Para uso esporádico (1–2 vezes por semana): os intervalos podem ser dobrados, mas a inspeção visual mensal ainda é recomendada.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Posso usar WD-40 na corrente da ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Não para lubrificar. O WD-40 é um desengordurante/solvente — ele remove a lubrificação existente e protege temporariamente contra umidade, mas não é lubrificante para uso contínuo. Para correntes e correias, use lubrificante específico para correntes de bicicleta (ceroso ou "wet" para ambientes úmidos). Use WD-40 apenas para desengrippar parafusos enferrujados.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Quanto tempo dura uma correia de ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Depende do tipo. Correia de poliuretano: 5–8 anos com uso regular. Correia dentada com lubrificação adequada: 4–7 anos. Correia dentada sem lubrificação: 2–4 anos. Corrente (spinning): 2–5 anos, com lubrificação regular. Sinais de desgaste: chiado crescente, irregularidade no movimento, rachaduras visíveis na borracha.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Onde encontrar peças de reposição para ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Marcas com representante nacional (Kikos, Movement, Caloi, Technogym) geralmente têm peças disponíveis direto com a marca ou assistências técnicas autorizadas. Para marcas importadas sem representante (várias das menores marcas disponíveis no Mercado Livre e Shopee), a reposição pode ser difícil — importação direta é às vezes a única opção. Esse é um dos critérios mais importantes a verificar antes de comprar.
+    </p>
+  </details>
+
+</ArticleLayout>

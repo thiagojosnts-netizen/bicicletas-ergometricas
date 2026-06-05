@@ -1,3 +1,8 @@
 ﻿@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @source "../**/*.astro";
+
+@theme {
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+}

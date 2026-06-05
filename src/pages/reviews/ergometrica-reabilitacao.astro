@@ -1,0 +1,186 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Reviews", href: "/reviews" },
+  { label: "Ergométrica para Reabilitação", href: "/reviews/ergometrica-reabilitacao" },
+];
+
+const toc = [
+  { id: "top-pick", label: "Nossa recomendação principal", level: 2 },
+  { id: "por-que-ergometrica", label: "Por que a ergométrica é indicada na reabilitação", level: 2 },
+  { id: "por-condicao", label: "Análise por condição clínica", level: 2 },
+  { id: "joelho", label: "Reabilitação de joelho", level: 3 },
+  { id: "coluna", label: "Reabilitação de coluna lombar", level: 3 },
+  { id: "quadril", label: "Reabilitação de quadril", level: 3 },
+  { id: "comparativo", label: "Modelos recomendados para reabilitação", level: 2 },
+  { id: "protocolo-basico", label: "Protocolo básico de início", level: 2 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Bicicleta Ergométrica para Reabilitação: Joelho, Coluna e Quadril (2026)"
+  description="Como usar a ergométrica na reabilitação de joelho, coluna lombar e quadril. Critérios técnicos para seleção do equipamento e protocolo de início seguro."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="reviews/ergometrica-reabilitacao"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={12}
+>
+
+  <p>
+    A bicicleta ergométrica é um dos equipamentos mais utilizados em fisioterapia e reabilitação ortopédica porque permite exercício aeróbico com carga articular controlada e progressiva. O movimento de pedalagem pode ser ajustado em amplitude (pela altura do selim), intensidade (pela resistência) e frequência — tornando-o adaptável a diferentes estágios de recuperação.
+  </p>
+  <p>
+    <strong>Atenção:</strong> este artigo tem finalidade informativa sobre características técnicas do equipamento. O protocolo de reabilitação deve ser definido pelo fisioterapeuta ou médico responsável pelo caso.
+  </p>
+
+  <h2 id="top-pick">Nossa recomendação principal</h2>
+
+  <div class="not-prose my-6 rounded-xl border-2 border-emerald-400 bg-emerald-50 p-6">
+    <div class="mb-2 inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">Melhor para reabilitação geral</div>
+    <h3 class="mb-1 text-xl font-bold text-gray-900" style="font-family: var(--font-display);">Ergométrica Upright ou Recumbente Magnética com Resistência Mínima Baixa</h3>
+    <p class="mb-4 text-gray-700">
+      Para reabilitação, o critério mais importante não é o número máximo de níveis de resistência, mas a <strong>qualidade do nível 1</strong>: ele precisa ser suficientemente leve para permitir movimento livre com quase nenhuma carga adicional. Modelos onde o nível 1 já oferece resistência significativa são inadequados para as fases iniciais de recuperação. A ergométrica recumbente é preferível para reabilitação de coluna e quadril; a upright funciona melhor para joelho.
+    </p>
+  </div>
+
+  <h2 id="por-que-ergometrica">Por que a ergométrica é indicada na reabilitação</h2>
+  <p>
+    O exercício em ergométrica tem características únicas que o tornam adequado para reabilitação:
+  </p>
+  <ul>
+    <li><strong>Carga articular controlável:</strong> a resistência pode ser ajustada para zero carga adicional, permitindo que a articulação se mova apenas sob o peso dos segmentos corporais — fundamental nas fases iniciais pós-cirúrgicas.</li>
+    <li><strong>Amplitude de movimento padronizada:</strong> diferente de outros exercícios, a amplitude de flexão/extensão do joelho é determinada pela altura do selim, tornando-a mensurável e reproduzível.</li>
+    <li><strong>Ausência de fase de impacto:</strong> não há momento de contato com o solo — o movimento é contínuo e sem impacto, o que reduz o risco de exacerbação inflamatória nas fases subaguda e crônica.</li>
+    <li><strong>Estímulo circulatório:</strong> o exercício aeróbico de baixa intensidade melhora a circulação local, acelerando a remoção de mediadores inflamatórios e nutrição da cartilagem articular.</li>
+  </ul>
+  <p>
+    Essa combinação de características é reconhecida nas diretrizes de reabilitação do <strong>American Physical Therapy Association (APTA)</strong> e em protocolos de reabilitação pós-artroplastia de joelho e quadril publicados em periódicos indexados.
+  </p>
+
+  <h2 id="por-condicao">Análise por condição clínica</h2>
+
+  <h3 id="joelho">Reabilitação de joelho (LCA, menisco, artroscopia, artroplastia)</h3>
+  <p>
+    A ergométrica é frequentemente a primeira atividade introduzida na reabilitação de joelho pós-cirúrgica — geralmente entre a 2ª e 4ª semana após a cirurgia, dependendo do protocolo específico.
+  </p>
+  <p>
+    O critério técnico central é a <strong>amplitude de flexão do joelho</strong> durante a pedalagem. Ela é controlada pela altura do selim:
+  </p>
+  <ul>
+    <li>Selim alto (joelho com 15–20° de flexão máxima): menor amplitude, menor carga sobre a articulação — indicado para as fases iniciais</li>
+    <li>Selim médio (joelho com 90–100° de flexão máxima): amplitude funcional para condicionamento geral</li>
+    <li>Selim baixo (joelho com &gt;110° de flexão máxima): não recomendado em reabilitação sem liberação do fisioterapeuta</li>
+  </ul>
+  <p>
+    Para reabilitação de joelho, use <strong>ergométrica upright</strong> — a posição mais próxima do ciclismo funcional, que permite melhor monitoramento da biomecânica pelo terapeuta.
+  </p>
+
+  <h3 id="coluna">Reabilitação de coluna lombar (hérnia discal, pós-cirurgia, estenose)</h3>
+  <p>
+    A posição ereta da ergométrica upright pode ser inadequada para fases agudas de dor lombar — a inclinação do tronco e a postura "curvada" sobre o guidão cria sobrecarga nos discos lombares.
+  </p>
+  <p>
+    A <strong>ergométrica recumbente</strong> é a escolha correta para esse perfil: o encosto elimina a carga compressiva axial, e a posição reclinada reduz a pressão discal em comparação com a postura ereta. Para quem só tem acesso à upright, manter o tronco ereto — sem inclinar para frente — e usar resistência muito baixa minimiza o risco.
+  </p>
+
+  <h3 id="quadril">Reabilitação de quadril (artroplastia, fratura, artrite)</h3>
+  <p>
+    Pós-artroplastia total de quadril, a restrição de amplitude de movimento é crucial — especialmente a flexão acima de 90° e rotação interna. A ergométrica recumbente com selim ajustado na posição correta mantém o quadril em ângulo seguro durante toda a pedalagem.
+  </p>
+  <p>
+    Verifique com o fisioterapeuta a altura específica do selim para não exceder os limites de amplitude autorizados no protocolo. Na maioria dos protocolos pós-ATQ, a ergométrica é introduzida entre a 4ª e 8ª semana com resistência mínima.
+  </p>
+
+  <h2 id="comparativo">Modelos recomendados para reabilitação</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Modelo</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Tipo</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Resistência mín.</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Regulagem selim</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Indicação principal</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Preço aprox.</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-emerald-50/40">
+          <td class="px-4 py-3 font-medium text-gray-900">Kikos KR26<br/><span class="text-xs text-emerald-700">★ Coluna e quadril</span></td>
+          <td class="px-4 py-3 text-gray-600">Recumbente</td>
+          <td class="px-4 py-3 text-gray-600">Muito baixa</td>
+          <td class="px-4 py-3 text-gray-600">Deslizante (assento)</td>
+          <td class="px-4 py-3 text-gray-600">Coluna, quadril</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.800–2.400</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Gallant Sport B300<br/><span class="text-xs text-emerald-700">★ Joelho</span></td>
+          <td class="px-4 py-3 text-gray-600">Upright</td>
+          <td class="px-4 py-3 text-gray-600">Baixa</td>
+          <td class="px-4 py-3 text-gray-600">8 posições verticais</td>
+          <td class="px-4 py-3 text-gray-600">Joelho</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.200–1.600</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">WCT Fitness Recline Pro</td>
+          <td class="px-4 py-3 text-gray-600">Recumbente</td>
+          <td class="px-4 py-3 text-gray-600">Muito baixa</td>
+          <td class="px-4 py-3 text-gray-600">Deslizante (assento)</td>
+          <td class="px-4 py-3 text-gray-600">Coluna, quadril, idosos</td>
+          <td class="px-4 py-3 text-gray-600">R$ 2.200–2.800</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="protocolo-basico">Protocolo básico de início</h2>
+  <p>
+    As orientações abaixo são gerais e devem ser adaptadas pelo profissional de saúde responsável:
+  </p>
+  <ol>
+    <li><strong>Fase 1 (semanas 1–2):</strong> 10–15 minutos, resistência mínima (nível 1), cadência baixa (40–50 RPM). Objetivo: mobilização suave da articulação.</li>
+    <li><strong>Fase 2 (semanas 3–4):</strong> 15–20 minutos, resistência nível 1–2, cadência 50–60 RPM. Objetivo: condicionamento cardiovascular inicial.</li>
+    <li><strong>Fase 3 (semanas 5–8):</strong> 20–30 minutos, progressão gradual de resistência, cadência 60–70 RPM. Objetivo: fortalecimento muscular progressivo.</li>
+  </ol>
+  <p>
+    Sinais para interromper o exercício e consultar o fisioterapeuta: dor articular que persiste mais de 2 horas após o exercício, inchaço crescente, crepitação nova ou aumento de limitação de movimento.
+  </p>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>APTA — American Physical Therapy Association. <em>Clinical Practice Guidelines for Knee Rehabilitation</em>, 2021</li>
+    <li>Fichas técnicas e manuais: Kikos, Gallant Sport, WCT Fitness</li>
+    <li>Journal of Orthopaedic &amp; Sports Physical Therapy: protocolos de reabilitação pós-artroplastia de joelho e quadril</li>
+    <li>Harvard Health Publishing: <em>Exercise After Joint Replacement Surgery</em>, 2023</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Posso usar ergométrica sem consultar um fisioterapeuta?</summary>
+    <p class="mt-2 text-gray-600">
+      Para uso geral de condicionamento, sim. Para reabilitação pós-cirúrgica ou em casos de dor articular aguda, não — o protocolo deve ser definido pelo profissional responsável. A ergométrica é um instrumento de reabilitação, não um substituto ao tratamento.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Qual é o melhor tipo de bicicleta ergométrica para reabilitação de LCA?</summary>
+    <p class="mt-2 text-gray-600">
+      A ergométrica upright com selim ajustável em múltiplas posições. A altura do selim controla a amplitude de flexão do joelho durante a pedalagem — essa é a variável mais importante no protocolo de reabilitação de LCA. Selim com pelo menos 6–8 posições verticais permite progressão gradual controlada. Resistência magnética é obrigatória para garantir carga suave e consistente.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Quanto tempo após cirurgia posso começar a usar ergométrica?</summary>
+    <p class="mt-2 text-gray-600">
+      Depende do tipo de cirurgia e do protocolo do cirurgião. Para artroplastia de joelho, alguns protocolos já introduzem a ergométrica na 1ª semana pós-operatória com resistência zero. Para cirurgia de LCA, geralmente entre 2ª e 4ª semana. Para cirurgias de coluna com fusão vertebral, o prazo é mais longo. Siga as orientações específicas do seu médico e fisioterapeuta.
+    </p>
+  </details>
+
+</ArticleLayout>

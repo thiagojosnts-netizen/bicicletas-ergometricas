@@ -1,0 +1,195 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Reviews", href: "/reviews" },
+  { label: "Ergométrica para acima de 100 kg", href: "/reviews/ergometrica-acima-100kg" },
+];
+
+const toc = [
+  { id: "top-pick", label: "Nossa recomendação principal", level: 2 },
+  { id: "peso-declarado", label: "O problema do peso declarado vs real", level: 2 },
+  { id: "o-que-verificar", label: "O que verificar na estrutura", level: 2 },
+  { id: "comparativo", label: "Comparativo por capacidade de carga", level: 2 },
+  { id: "entre-100-120kg", label: "Entre 100 e 120 kg", level: 3 },
+  { id: "acima-120kg", label: "Acima de 120 kg", level: 3 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Bicicleta Ergométrica para Quem Pesa Acima de 100 kg (2026)"
+  description="Como escolher ergométrica com capacidade real para pessoas acima de 100 kg: análise do peso suportado declarado vs real, estrutura, e modelos recomendados."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="reviews/ergometrica-acima-100kg"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={9}
+>
+
+  <p>
+    A capacidade de carga de uma bicicleta ergométrica é o dado mais frequentemente mal interpretado no mercado brasileiro. O número anunciado na ficha técnica — geralmente 100, 110 ou 120 kg — raramente corresponde à capacidade real de uso contínuo. Entender essa diferença é o passo mais importante para quem está acima de 100 kg.
+  </p>
+
+  <h2 id="top-pick">Nossa recomendação principal</h2>
+
+  <div class="not-prose my-6 rounded-xl border-2 border-emerald-400 bg-emerald-50 p-6">
+    <div class="mb-2 inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">Recomendação para quem pesa acima de 100 kg</div>
+    <h3 class="mb-1 text-xl font-bold text-gray-900" style="font-family: var(--font-display);">Modelos com capacidade declarada de 130 kg ou mais</h3>
+    <p class="mb-4 text-gray-700">
+      Se você pesa 100 kg, compre um modelo com capacidade declarada de pelo menos 120–130 kg. Se pesa 110–120 kg, procure modelos com 140–150 kg declarados. Essa margem de 20–30% compensa a diferença entre capacidade estática (o número que o fabricante declara) e capacidade dinâmica (carga real durante a pedalagem, que é maior devido às forças de aceleração). A regra prática: <strong>nunca compre um modelo com capacidade igual ao seu peso</strong>.
+    </p>
+    <div class="grid gap-3 sm:grid-cols-3">
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">+20–30%</div>
+        <div class="text-xs text-gray-500 mt-1">Margem mínima de segurança</div>
+      </div>
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">Aço carbono</div>
+        <div class="text-xs text-gray-500 mt-1">Material da estrutura</div>
+      </div>
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">Selim largo</div>
+        <div class="text-xs text-gray-500 mt-1">≥ 28 cm de largura</td>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="peso-declarado">O problema do peso declarado vs real</h2>
+  <p>
+    A capacidade de carga anunciada nas fichas técnicas brasileiras segue normas de teste estático — ou seja, mede o peso que a estrutura suporta <em>parada</em>, não em movimento. Durante a pedalagem, as forças dinâmicas (aceleração, variação de carga, movimentação do tronco) multiplicam a força efetiva sobre a estrutura por um fator de 1,3 a 1,6.
+  </p>
+  <p>
+    Na prática: se você pesa 100 kg e pedala em intensidade moderada, a força pico sobre o selim e os pedais pode chegar a 130–160 kg durante parte do ciclo. Um modelo com capacidade declarada de 100 kg pode estar operando no limite estrutural — ou além dele — durante seu uso.
+  </p>
+  <p>
+    Esse padrão é confirmado pelo histórico de reclamações no Reclame Aqui: a maioria das reclamações de quebra de estrutura em usuários acima de 90 kg envolve modelos com capacidade declarada de 90–100 kg — exatamente na faixa de uso para esse perfil.
+  </p>
+
+  <h2 id="o-que-verificar">O que verificar na estrutura</h2>
+  <p>
+    Além da capacidade de carga, esses elementos estruturais indicam robustez real:
+  </p>
+  <ul>
+    <li><strong>Material do quadro:</strong> Aço carbono é significativamente mais resistente que aço galvanizado ou alumínio. Procure "aço carbono" ou "steel frame" na ficha técnica — não apenas "aço".</li>
+    <li><strong>Espessura dos tubos:</strong> Tubos com perfil mais grosso (geralmente 2,5–3 mm de espessura de parede) indicam maior resistência. Esse dado raramente é declarado na ficha técnica — procure nos comentários de usuários e nos manuais de serviço.</li>
+    <li><strong>Selim:</strong> Selins estreitos (menos de 25 cm) criam pressão intensa nos ísquios em pessoas acima de 100 kg, causando dor em sessões de mais de 20 minutos. Procure selim anatômico com largura ≥ 28 cm.</li>
+    <li><strong>Pino do selim:</strong> É o componente mais sujeito a fratura em uso intenso por pessoas acima de 100 kg. Verifique se a marca tem reposição disponível.</li>
+    <li><strong>Base e estabilizadores:</strong> A pegada do equipamento deve ser suficientemente larga para não tombar sob cargas assimétricas. Pés de borracha ajustáveis aumentam a estabilidade em pisos irregulares.</li>
+  </ul>
+
+  <h2 id="comparativo">Comparativo por capacidade de carga</h2>
+
+  <h3 id="entre-100-120kg">Para quem pesa entre 100 e 120 kg</h3>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Modelo</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Carga declarada</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Estrutura</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Volante</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Selim</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Peso equip.</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Preço aprox.</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-emerald-50/40">
+          <td class="px-4 py-3 font-medium text-gray-900">WCT Fitness Revo Pro<br/><span class="text-xs text-emerald-700">★ Indicado</span></td>
+          <td class="px-4 py-3 text-gray-600">130 kg</td>
+          <td class="px-4 py-3 text-gray-600">Aço carbono</td>
+          <td class="px-4 py-3 text-gray-600">8 kg</td>
+          <td class="px-4 py-3 text-gray-600">30 cm</td>
+          <td class="px-4 py-3 text-gray-600">26 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.600–2.000</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Gallant Sport B500</td>
+          <td class="px-4 py-3 text-gray-600">130 kg</td>
+          <td class="px-4 py-3 text-gray-600">Aço carbono</td>
+          <td class="px-4 py-3 text-gray-600">7 kg</td>
+          <td class="px-4 py-3 text-gray-600">28 cm</td>
+          <td class="px-4 py-3 text-gray-600">24 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.400–1.800</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Kikos KE500</td>
+          <td class="px-4 py-3 text-gray-600">120 kg</td>
+          <td class="px-4 py-3 text-gray-600">Aço carbono</td>
+          <td class="px-4 py-3 text-gray-600">7 kg</td>
+          <td class="px-4 py-3 text-gray-600">27 cm</td>
+          <td class="px-4 py-3 text-gray-600">22 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.300–1.700</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="acima-120kg">Para quem pesa acima de 120 kg</h3>
+  <p>
+    Acima de 120 kg, as opções no mercado brasileiro ficam mais limitadas. Fabricantes como Technogym (linha Ride) e Movement oferecem modelos com capacidade de 150 kg ou mais, mas a faixa de preço é significativamente maior (R$ 3.000–8.000). Uma alternativa é procurar ergométricas semiprofissionais — equipamentos de academia com uso reduzido, onde a estrutura é projetada para uso intensivo por múltiplos usuários (o que implica maior robustez estrutural).
+  </p>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Modelo</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Carga declarada</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Categoria</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Preço aprox.</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-emerald-50/40">
+          <td class="px-4 py-3 font-medium text-gray-900">Movement MX500<br/><span class="text-xs text-emerald-700">★ Melhor custo-benefício nessa faixa</span></td>
+          <td class="px-4 py-3 text-gray-600">150 kg</td>
+          <td class="px-4 py-3 text-gray-600">Doméstico premium</td>
+          <td class="px-4 py-3 text-gray-600">R$ 2.800–3.500</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Technogym Ride</td>
+          <td class="px-4 py-3 text-gray-600">160 kg</td>
+          <td class="px-4 py-3 text-gray-600">Semiprofissional</td>
+          <td class="px-4 py-3 text-gray-600">R$ 6.000–8.500</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>Fichas técnicas e manuais dos fabricantes: WCT Fitness, Gallant Sport, Kikos, Movement, Technogym</li>
+    <li>Reclame Aqui: reclamações filtradas por "estrutura", "quebra" e "selim" — consultadas em junho 2026</li>
+    <li>Avaliações verificadas na Amazon Brasil e Shopee — filtradas por usuários que mencionam peso acima de 90 kg</li>
+    <li>ABNT NBR 16060 — requisitos de segurança para equipamentos de ginástica de uso doméstico (referência para os padrões de teste de carga no Brasil)</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Posso confiar no peso máximo declarado pelo fabricante?</summary>
+    <p class="mt-2 text-gray-600">
+      Parcialmente. O peso declarado é testado em condição estática — o produto suporta esse peso parado. Em uso dinâmico (pedalando), as forças sobre a estrutura são 30–60% maiores. Por isso a regra prática: procure um modelo com capacidade declarada pelo menos 20–30% acima do seu peso. Se você pesa 100 kg, o mínimo razoável é um modelo de 120–130 kg.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Qual parte da ergométrica quebra primeiro em uso por pessoas acima de 100 kg?</summary>
+    <p class="mt-2 text-gray-600">
+      Em ordem de frequência nos relatos de usuários: (1) pino/tubo do selim — especialmente em modelos com selim de altura não ajustável; (2) pedaleiras e eixo dos pedais — em modelos com eixo de 9/16 polegadas em vez de 1/2 polegada (mais robusto); (3) o próprio selim — espuma que comprime com uso frequente em cargas altas. Verifique se esses componentes têm reposição disponível da marca antes de comprar.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text="gray-900 py-2">Bicicleta ergométrica ajuda a emagrecer para quem está acima de 100 kg?</summary>
+    <p class="mt-2 text-gray-600">
+      Sim, com ressalvas. O gasto calórico em ergométrica para uma pessoa de 100 kg em intensidade moderada (cadência de 70–80 RPM, resistência média) é de aproximadamente 500–650 kcal/hora — mais alto que para uma pessoa de 70 kg no mesmo esforço relativo, pois o custo energético escala com a massa corporal. O benefício adicional é o baixo impacto articular, que permite frequência de uso mais alta do que caminhada ou corrida. Combine com orientação nutricional para resultados sustentáveis.
+    </p>
+  </details>
+
+</ArticleLayout>

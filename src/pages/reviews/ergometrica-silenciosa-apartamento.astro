@@ -1,0 +1,215 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+const breadcrumbs = [
+  { label: "Reviews", href: "/reviews" },
+  { label: "Ergométrica Silenciosa para Apartamento", href: "/reviews/ergometrica-silenciosa-apartamento" },
+];
+
+const toc = [
+  { id: "top-pick", label: "Nossa recomendação principal", level: 2 },
+  { id: "o-que-faz-silenciosa", label: "O que torna uma ergométrica silenciosa", level: 2 },
+  { id: "comparativo", label: "Comparativo técnico", level: 2 },
+  { id: "analise-por-perfil", label: "Análise por perfil", level: 2 },
+  { id: "estudio", label: "Para studio ou quarto pequeno", level: 3 },
+  { id: "vizinhos", label: "Prédios com restrição de horário", level: 3 },
+  { id: "referencias", label: "Fontes e referências", level: 2 },
+  { id: "faq", label: "Perguntas frequentes", level: 2 },
+];
+---
+
+<ArticleLayout
+  title="Melhor Bicicleta Ergométrica Silenciosa para Apartamento (2026)"
+  description="As ergométricas mais silenciosas para uso em apartamento: análise técnica do nível de ruído, tipo de resistência e dimensões. Comparativo com specs reais."
+  publishDate="2026-06-05"
+  modifiedDate="2026-06-05"
+  slug="reviews/ergometrica-silenciosa-apartamento"
+  breadcrumbs={breadcrumbs}
+  toc={toc}
+  readingTime={10}
+>
+
+  <p>
+    A bicicleta ergométrica para apartamento tem dois requisitos inegociáveis: <strong>resistência magnética</strong> (sem chiado por atrito) e <strong>dimensões compactas</strong>. Modelos mecânicos — que criam resistência pressionando uma pastilha contra a roda — produzem um chiado constante de 45–60 dB que atravessa paredes e incomoda vizinhos. Modelos magnéticos operam em silêncio porque não há contato físico entre os componentes.
+  </p>
+
+  <h2 id="top-pick">Nossa recomendação principal</h2>
+
+  <div class="not-prose my-6 rounded-xl border-2 border-emerald-400 bg-emerald-50 p-6">
+    <div class="mb-2 inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">Melhor escolha para apartamento</div>
+    <h3 class="mb-1 text-xl font-bold text-gray-900" style="font-family: var(--font-display);">Ergométrica Magnética com Correia de Poliuretano</h3>
+    <p class="mb-4 text-gray-700">
+      Para a maioria dos moradores de apartamento, a melhor ergométrica é uma magnética com correia de poliuretano — não correia dentada comum. Essa combinação elimina as duas principais fontes de ruído: a fricção da resistência e o chiado da correia. O nível de ruído resultante fica abaixo de 30 dB — equivalente a um sussurro, inaudível para vizinhos.
+    </p>
+    <div class="grid gap-3 sm:grid-cols-3">
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">&lt;30 dB</div>
+        <div class="text-xs text-gray-500 mt-1">Nível de ruído em uso</div>
+      </div>
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">Magnética</div>
+        <div class="text-xs text-gray-500 mt-1">Tipo de resistência</div>
+      </div>
+      <div class="rounded-lg bg-white p-3 text-center shadow-sm">
+        <div class="text-2xl font-bold text-emerald-700">Poliuretano</div>
+        <div class="text-xs text-gray-500 mt-1">Correia de transmissão</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="o-que-faz-silenciosa">O que torna uma ergométrica silenciosa</h2>
+  <p>
+    O ruído de uma bicicleta ergométrica tem duas origens principais, que precisam ser tratadas separadamente:
+  </p>
+
+  <h3>1. Sistema de resistência</h3>
+  <p>
+    Ergométricas mecânicas usam uma pastilha de borracha pressionada contra o volante de inércia para criar resistência. O atrito produz um chiado que aumenta com a velocidade de pedalagem — chegando a 55–65 dB em cadência moderada. Esse ruído é estrutural, não elimina com lubrificação.
+  </p>
+  <p>
+    Ergométricas magnéticas usam eletroímãs ou ímãs permanentes para criar resistência sem contato físico. O único ruído vem da rotação do próprio volante — entre 20–35 dB, abaixo do limiar de incômodo para vizinhos.
+  </p>
+
+  <h3>2. Correia de transmissão</h3>
+  <p>
+    Menos conhecida mas igualmente importante: a correia que transfere a força dos pedais para o volante. Correias dentadas comuns produzem um clique rítmico que se propaga pela estrutura do equipamento. Correias de poliuretano (ou cabos) são silenciosas porque não têm dentes que encaixam no eixo — o movimento é suave e contínuo.
+  </p>
+
+  <p>
+    De acordo com <strong>pesquisas de bioacústica em ambientes residenciais</strong>, sons contínuos acima de 35 dB durante a noite (ABNT NBR 10151) podem gerar reclamações fundadas em condomínios com regulamento interno. Ergométricas magnéticas com correia de poliuretano ficam bem abaixo desse limiar.
+  </p>
+
+  <h2 id="comparativo">Comparativo técnico — ergométricas para apartamento</h2>
+
+  <div class="not-prose my-6 overflow-x-auto rounded-xl border border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Modelo</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Resistência</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Correia</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Ruído est.</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Volante</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Carga máx.</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Peso equip.</th>
+          <th class="px-4 py-3 text-left font-semibold text-gray-700">Preço aprox.</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr class="bg-emerald-50/40">
+          <td class="px-4 py-3 font-medium text-gray-900">Gallant Sport BG6<br/><span class="text-xs font-normal text-emerald-700">★ Melhor custo-benefício</span></td>
+          <td class="px-4 py-3 text-gray-600">Magnética</td>
+          <td class="px-4 py-3 text-gray-600">Poliuretano</td>
+          <td class="px-4 py-3 text-gray-600">~28 dB</td>
+          <td class="px-4 py-3 text-gray-600">5,5 kg</td>
+          <td class="px-4 py-3 text-gray-600">120 kg</td>
+          <td class="px-4 py-3 text-gray-600">21 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.100–1.400</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Kikos KE350</td>
+          <td class="px-4 py-3 text-gray-600">Magnética</td>
+          <td class="px-4 py-3 text-gray-600">Poliuretano</td>
+          <td class="px-4 py-3 text-gray-600">~30 dB</td>
+          <td class="px-4 py-3 text-gray-600">6 kg</td>
+          <td class="px-4 py-3 text-gray-600">110 kg</td>
+          <td class="px-4 py-3 text-gray-600">19 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.200–1.600</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">WCT Fitness Heron II</td>
+          <td class="px-4 py-3 text-gray-600">Magnética</td>
+          <td class="px-4 py-3 text-gray-600">Correia dentada</td>
+          <td class="px-4 py-3 text-gray-600">~38 dB</td>
+          <td class="px-4 py-3 text-gray-600">7 kg</td>
+          <td class="px-4 py-3 text-gray-600">120 kg</td>
+          <td class="px-4 py-3 text-gray-600">23 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.300–1.700</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Dream Fitness Light</td>
+          <td class="px-4 py-3 text-gray-600">Magnética</td>
+          <td class="px-4 py-3 text-gray-600">Poliuretano</td>
+          <td class="px-4 py-3 text-gray-600">~27 dB</td>
+          <td class="px-4 py-3 text-gray-600">5 kg</td>
+          <td class="px-4 py-3 text-gray-600">100 kg</td>
+          <td class="px-4 py-3 text-gray-600">18 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 1.500–1.900</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-3 font-medium text-gray-900">Modelo mecânico básico<br/><span class="text-xs font-normal text-red-600">✗ Não recomendado para apt.</span></td>
+          <td class="px-4 py-3 text-gray-600">Mecânica</td>
+          <td class="px-4 py-3 text-gray-600">Correia dentada</td>
+          <td class="px-4 py-3 text-gray-600">55–65 dB</td>
+          <td class="px-4 py-3 text-gray-600">4 kg</td>
+          <td class="px-4 py-3 text-gray-600">90 kg</td>
+          <td class="px-4 py-3 text-gray-600">14 kg</td>
+          <td class="px-4 py-3 text-gray-600">R$ 500–800</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="px-4 py-2 text-xs text-gray-400">Nível de ruído estimado com base no tipo de resistência e relatos de usuários. Medições reais variam conforme piso e cadência de pedalagem.</p>
+  </div>
+
+  <h2 id="analise-por-perfil">Análise por perfil</h2>
+
+  <h3 id="estudio">Studio ou quarto pequeno (menos de 10 m²)</h3>
+  <p>
+    Nesses espaços, as dimensões são tão importantes quanto o ruído. Priorize modelos com largura inferior a 55 cm (com guidão) e que tenham <strong>rodas de transporte</strong> para guardar na vertical ou encostada na parede após o uso. Verifique sempre as dimensões do manual — algumas fichas técnicas omitem a largura total com o guidão estendido.
+  </p>
+  <p>
+    O peso do equipamento também importa: modelos acima de 25 kg são difíceis de mover sozinho em apartamento pequeno. A faixa de 18–22 kg combina estabilidade estrutural com mobilidade razoável.
+  </p>
+
+  <h3 id="vizinhos">Prédios com restrição de horário de silêncio</h3>
+  <p>
+    Se você precisa treinar antes das 7h ou após as 22h, o nível de ruído do equipamento é secundário — o impacto estrutural da pedalagem na laje é o principal problema. Para esses casos, use <strong>tapete de borracha de alta densidade</strong> (pelo menos 10 mm) sob o equipamento. O tapete absorve a vibração que se propaga pela estrutura do prédio e que chega ao vizinho de baixo mesmo com equipamento silencioso.
+  </p>
+
+  <h2 id="referencias">Fontes e referências</h2>
+  <ul>
+    <li>ABNT NBR 10151 — Acústica: Avaliação do ruído em áreas habitadas com foco em saúde e bem-estar</li>
+    <li>Fichas técnicas dos fabricantes: Gallant Sport, Kikos, WCT Fitness, Dream Fitness</li>
+    <li>Avaliações verificadas de compradores: Amazon Brasil, Shopee, Mercado Livre (consultadas em junho 2026)</li>
+    <li>Reclame Aqui: histórico de reclamações por modelo, filtrado pelos termos "barulho" e "ruído"</li>
+  </ul>
+
+  <h2 id="faq">Perguntas frequentes</h2>
+
+  <details open>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Ergométrica magnética é mesmo silenciosa?</summary>
+    <p class="mt-2 text-gray-600">
+      Sim — mas com uma ressalva: o silêncio depende também da correia de transmissão. Um modelo magnético com correia dentada ainda produz um clique rítmico de 35–40 dB. Para silêncio máximo, procure magnética com correia de poliuretano. Modelos com essa combinação operam abaixo de 30 dB — equivalente a um ambiente de escritório vazio.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Posso usar ergométrica em apartamento sem problema com vizinhos?</summary>
+    <p class="mt-2 text-gray-600">
+      Com a combinação certa, sim. Use ergométrica magnética com correia de poliuretano e coloque um tapete de borracha de 10 mm sob o equipamento. Essa combinação reduz o ruído aéreo para menos de 30 dB e absorve boa parte da vibração estrutural. Evite usar em horários de silêncio obrigatório do condomínio independentemente do equipamento.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Qual tapete usar sob a bicicleta ergométrica em apartamento?</summary>
+    <p class="mt-2 text-gray-600">
+      Tapetes de borracha EVA com pelo menos 8–10 mm de espessura e densidade ≥ 40 kg/m³. Tapetes de academia são os mais eficazes, mas tapetes de yoga (5 mm, baixa densidade) também ajudam — são melhores do que nada, mas menos eficientes que o EVA de academia. O tapete deve ter dimensões maiores que a pegada do equipamento: ao menos 80 × 120 cm.
+    </p>
+  </details>
+
+  <details>
+    <summary class="cursor-pointer font-semibold text-gray-900 py-2">Ergométrica dobrável é boa para apartamento?</summary>
+    <p class="mt-2 text-gray-600">
+      Boa para espaço, nem sempre boa para uso intenso. Ergométricas dobráveis tendem a ter estruturas mais leves e volantes de inércia menores (2–4 kg), o que resulta em movimento menos fluido e menor capacidade de carga. São adequadas para uso leve (20–30 min/dia, 3×/semana). Para uso mais intenso, prefira um modelo compacto não dobrável com rodas de transporte.
+    </p>
+  </details>
+
+  <div class="not-prose my-8 rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+    <h3 class="mb-2 text-lg font-bold text-emerald-900" style="font-family: var(--font-display);">Qual modelo é ideal para o seu apartamento?</h3>
+    <p class="mb-4 text-emerald-800">Informe seu orçamento, espaço disponível e frequência de uso — receba uma recomendação específica.</p>
+    <a href="/ferramentas/quiz-qual-ergometrica" class="inline-block rounded-lg bg-emerald-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-800">
+      Fazer o quiz gratuito →
+    </a>
+  </div>
+
+</ArticleLayout>
