@@ -1,0 +1,216 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Para Gestantes', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-gestantes/' },
+];
+
+const faqItems = [
+  {
+    question: 'Gestante pode usar bicicleta ergométrica?',
+    answer: 'Sim, em geral. O exercício aeróbico moderado na gestação é recomendado pelo Colégio Americano de Obstetrícia e Ginecologia (ACOG) para gestantes sem complicações. A bicicleta ergométrica é uma das modalidades mais seguras por ser de baixo impacto, sem risco de queda e com intensidade controlada. A autorização do obstetra é obrigatória antes de iniciar ou continuar qualquer programa de exercícios na gestação.',
+  },
+  {
+    question: 'Qual tipo de bicicleta ergométrica é mais indicado para gestantes?',
+    answer: 'A bicicleta ergométrica horizontal ou recumbente é a mais indicada para gestantes, especialmente a partir do segundo trimestre. O encosto reclinado reduz a pressão sobre a coluna lombar e a pelve, oferece melhor estabilidade e é mais confortável com o crescimento do abdome. A bicicleta vertical pode ser usada no primeiro trimestre com guidão alto, mas tende a se tornar desconfortável à medida que o abdome cresce.',
+  },
+  {
+    question: 'Qual é a intensidade certa de exercício na bicicleta para gestantes?',
+    answer: 'O ACOG recomenda intensidade moderada: frequência cardíaca entre 130 e 145 bpm para gestantes com boa condição física, ou nível de esforço percebido de 12 a 14 na escala de Borg (em que 20 é esforço máximo). Regra prática: você deve conseguir manter uma conversa durante o exercício. Nunca exercite acima do ponto em que a fala se torna difícil.',
+  },
+  {
+    question: 'Em qual trimestre parar de usar bicicleta ergométrica?',
+    answer: 'Não há uma regra universal — depende da condição de cada gestante e da orientação médica. Muitas gestantes usam bicicleta horizontal até próximo ao termo com autorização médica. A bicicleta vertical tende a se tornar desconfortável no terceiro trimestre pela posição do guidão e o tamanho do abdome. A decisão de parar deve ser sempre compartilhada com o obstetra.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Gestantes: É Seguro e Como Usar"
+  description="Guia completo sobre bicicleta ergométrica na gestação: qual tipo é mais seguro, intensidade recomendada pelo ACOG, trimestres e critérios de compra para grávidas."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-03-10"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Bicicleta Ergométrica para Gestantes: É Seguro, Qual Tipo Escolher e Como Usar</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica para gestantes</strong> é considerada segura e recomendada pelo <strong>ACOG</strong> (Colégio Americano de Obstetrícia e Ginecologia) para gestações sem complicações. O modelo mais indicado é a <strong>bicicleta horizontal ou recumbente</strong>, com encosto que suporta a coluna e reduz a pressão pélvica. A intensidade deve ser <strong>moderada</strong> — frequência cardíaca entre <strong>130 e 145 bpm</strong> — e a autorização do obstetra é obrigatória antes de iniciar.
+      </p>
+
+      <div class="alert-box">
+        <strong>Importante:</strong> este conteúdo é informativo e não substitui orientação médica. Consulte seu obstetra antes de iniciar ou modificar qualquer programa de exercícios durante a gestação.
+      </div>
+
+      <h2>Por que a bicicleta ergométrica é segura na gestação</h2>
+
+      <p>
+        A bicicleta ergométrica reúne três características que a tornam particularmente adequada para o exercício na gestação:
+      </p>
+
+      <ul>
+        <li><strong>Baixo impacto articular:</strong> sem saltos ou movimentos de impacto, preserva joelhos, quadris e pelve</li>
+        <li><strong>Sem risco de queda:</strong> diferente de caminhadas externas ou corrida, a bicicleta fixa elimina o risco de queda mesmo com alteração do centro de gravidade gestacional</li>
+        <li><strong>Controle preciso de intensidade:</strong> fácil ajuste de carga para manter a frequência cardíaca na zona segura</li>
+        <li><strong>Posição sentada:</strong> reduz o estresse sobre os ligamentos pélvicos que relaxam durante a gestação</li>
+      </ul>
+
+      <h2>Qual tipo de bicicleta ergométrica escolher</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Indicação na gestação</th>
+            <th>Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Horizontal / Recumbente</strong></td>
+            <td class="highlight-cell">Mais indicada — todos os trimestres</td>
+            <td>Encosto suporta a coluna; mais confortável com o crescimento do abdome</td>
+          </tr>
+          <tr>
+            <td><strong>Vertical</strong></td>
+            <td>Adequada no 1º trimestre; pode ficar desconfortável no 2º e 3º</td>
+            <td>Guidão alto reduz a inclinação; verificar conforto com o crescimento abdominal</td>
+          </tr>
+          <tr>
+            <td><strong>Spinning</strong></td>
+            <td>Não recomendada</td>
+            <td>Alta intensidade e posição agressiva não são indicadas na gestação</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Intensidade recomendada por trimestre</h2>
+
+      <p>
+        O ACOG (American College of Obstetricians and Gynecologists) recomenda que gestantes sem complicações pratiquem <strong>150 minutos de exercício aeróbico moderado por semana</strong> — distribuídos em 5 sessões de 30 minutos ou 3 sessões de 50 minutos.
+      </p>
+
+      <div class="trimester-grid">
+        <div class="trimester-item">
+          <div class="trimester-label">1º Trimestre</div>
+          <p><strong>FC alvo:</strong> 130–145 bpm (boa condição física) ou 115–130 bpm (sedentária antes da gestação)</p>
+          <p><strong>Duração:</strong> 20 a 40 minutos por sessão</p>
+          <p><strong>Tipo:</strong> vertical ou horizontal</p>
+          <p><strong>Atenção:</strong> hipoglicemia e náuseas são comuns — tenha alimento leve antes do treino</p>
+        </div>
+        <div class="trimester-item">
+          <div class="trimester-label">2º Trimestre</div>
+          <p><strong>FC alvo:</strong> 130–145 bpm</p>
+          <p><strong>Duração:</strong> 20 a 40 minutos por sessão</p>
+          <p><strong>Tipo:</strong> horizontal / recumbente (preferencial)</p>
+          <p><strong>Atenção:</strong> evitar posição supina prolongada — pode comprimir a veia cava</p>
+        </div>
+        <div class="trimester-item">
+          <div class="trimester-label">3º Trimestre</div>
+          <p><strong>FC alvo:</strong> 125–140 bpm (reduzir se necessário)</p>
+          <p><strong>Duração:</strong> 20 a 30 minutos por sessão</p>
+          <p><strong>Tipo:</strong> horizontal / recumbente exclusivamente</p>
+          <p><strong>Atenção:</strong> interromper se houver dor pélvica, falta de ar intensa ou qualquer desconforto incomum</p>
+        </div>
+      </div>
+
+      <h2>Quando parar imediatamente e buscar atendimento</h2>
+
+      <p>
+        Interrompa o exercício e contate seu obstetra se durante ou após o uso da bicicleta ocorrer:
+      </p>
+
+      <ul>
+        <li>Dor ou pressão no peito</li>
+        <li>Falta de ar desproporcional ao esforço</li>
+        <li>Tontura, desmaio ou visão turva</li>
+        <li>Contrações uterinas regulares</li>
+        <li>Sangramento vaginal</li>
+        <li>Redução perceptível dos movimentos fetais</li>
+        <li>Dor pélvica ou abdominal intensa</li>
+        <li>Edema repentino de tornozelos, mãos ou rosto</li>
+      </ul>
+
+      <h2>Critérios de compra: o que priorizar</h2>
+
+      <p>
+        Para gestantes que vão adquirir uma bicicleta ergométrica especificamente para uso na gestação, os critérios principais são:
+      </p>
+
+      <ul>
+        <li><strong>Tipo horizontal ou recumbente</strong> — obrigatório para o segundo e terceiro trimestres</li>
+        <li><strong>Assento com encosto ajustável</strong> — ideal para adaptação ao longo da gestação</li>
+        <li><strong>Fácil entrada e saída</strong> — o esforço de subir na bicicleta deve ser mínimo</li>
+        <li><strong>Monitor de frequência cardíaca</strong> — para controle da zona de treino segura</li>
+        <li><strong>Resistência ajustável com facilidade</strong> — preferencialmente botões no guidão, sem precisar se inclinar</li>
+        <li><strong>Peso suportado adequado</strong> — considere o ganho de peso gestacional esperado</li>
+      </ul>
+
+      <p>
+        Para ver opções de bicicletas horizontais e recumbentes disponíveis no Brasil, acesse o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/">guia de bicicleta ergométrica horizontal</a> e o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">guia de recumbente</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: bicicleta ergométrica na gestação" />
+</Layout>
+
+<style>
+  .alert-box {
+    background: #fff8e1;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--token-radius-md) var(--token-radius-md) 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+  }
+
+  .highlight-cell {
+    background: var(--c-green-50);
+    color: var(--c-green-700);
+    font-weight: 600;
+  }
+
+  .trimester-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .trimester-item {
+    padding: 1.25rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+  }
+
+  .trimester-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--token-brand);
+    margin-bottom: 0.75rem;
+  }
+
+  .trimester-item p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0 0 0.375rem;
+  }
+
+  @media (max-width: 768px) {
+    .trimester-grid { grid-template-columns: 1fr; }
+  }
+</style>

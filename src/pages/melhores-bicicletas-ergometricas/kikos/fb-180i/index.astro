@@ -1,0 +1,288 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import FAQ from '../../../../components/FAQ.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Kikos', url: '/melhores-bicicletas-ergometricas/kikos/' },
+  { name: 'FB 180i', url: '/melhores-bicicletas-ergometricas/kikos/fb-180i/' },
+];
+
+const faqItems = [
+  {
+    question: 'Com quais aplicativos a Kikos FB 180i é compatível?',
+    answer: 'A Kikos FB 180i é compatível com o app FitShow (iOS e Android) via Bluetooth BLE. O FitShow exibe métricas em tempo real, armazena histórico e oferece rotas virtuais. O modelo não é compatível nativamente com Zwift, Strava ou ANT+, mas pode ser integrado via aplicativos de ponte como o Wahoo Fitness em alguns casos.',
+  },
+  {
+    question: 'A Kikos FB 180i aguenta 110 kg?',
+    answer: 'Sim, segundo especificação do fabricante o suporte é de 110 kg. Para uso seguro a longo prazo, recomenda-se não exceder 88 kg (80% do limite declarado). Para usuários entre 88 e 100 kg, o modelo Kikos Premium 2200 oferece suporte declarado de 130 kg e maior margem de segurança estrutural.',
+  },
+  {
+    question: 'Qual é o nível de ruído da Kikos FB 180i?',
+    answer: 'A Kikos FB 180i usa resistência magnética, que não gera atrito direto. O nível de ruído estimado fica abaixo de 40 dB em uso normal — equivalente ao volume de uma conversa baixa. É adequada para apartamentos em horários normais. O som predominante é o das pedaleiras e da correia.',
+  },
+  {
+    question: 'Kikos FB 180i ou Randers BRF-1800: qual é melhor?',
+    answer: 'Depende do uso. A Kikos FB 180i tem vantagem em conectividade (bluetooth + app FitShow) e acabamento. A Randers BRF-1800 suporta mais peso (120 kg vs 110 kg) e costuma ser um pouco mais barata. Para usuários que querem integração com apps, a Kikos ganha. Para quem não usa apps e pesa mais de 88 kg, a Randers pode ser mais adequada. Veja o comparativo completo em Randers vs Kikos.',
+  },
+];
+
+const imagem = await fetchBikeImage("exercise bike bluetooth smart indoor");
+---
+
+<Layout
+  title="Kikos FB 180i: Análise Completa, Especificações e Vale a Pena?"
+  description="Análise detalhada da bicicleta ergométrica Kikos FB 180i: bluetooth BLE, 16 níveis de resistência magnética, 110 kg de suporte e app FitShow. Especificações técnicas, prós e contras."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-03-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Kikos FB 180i: Análise Completa da Bicicleta Ergométrica com Bluetooth</h1>
+
+      <div class="top-pick-box">
+        <div class="top-pick-label">Nossa avaliação</div>
+        <p>
+          A <strong>Kikos FB 180i</strong> é a melhor bicicleta ergométrica com bluetooth na faixa de <strong>R$ 1.700 a R$ 2.200</strong>. Com <strong>16 níveis de resistência magnética silenciosa</strong>, <strong>conectividade BLE</strong> com o app FitShow e <strong>16 programas de treino</strong>, é a opção mais completa para usuários que querem acompanhamento digital sem gastar acima de R$ 2.500.
+        </p>
+        <div class="top-pick-verdict">
+          <span class="verdict-badge verdict-sim">Recomendada para: uso com app, frequência alta, conectividade</span>
+          <span class="verdict-badge verdict-nao">Não indicada para: usuários acima de 88 kg ou quem precisa de ANT+</span>
+        </div>
+      </div>
+
+      <h2>Especificações técnicas completas</h2>
+
+      <table>
+        <tbody>
+          <tr><td><strong>Tipo de resistência</strong></td><td>Magnética (sem atrito direto)</td></tr>
+          <tr><td><strong>Níveis de resistência</strong></td><td>16</td></tr>
+          <tr><td><strong>Peso do volante de inércia</strong></td><td>Não declarado (estimado: 4–5 kg)</td></tr>
+          <tr><td><strong>Peso máximo suportado</strong></td><td>110 kg</td></tr>
+          <tr><td><strong>Peso do equipamento</strong></td><td>Aprox. 27 kg</td></tr>
+          <tr><td><strong>Dimensões montado</strong></td><td>Aprox. 95 × 52 cm (C × L)</td></tr>
+          <tr><td><strong>Programas de treino</strong></td><td>16</td></tr>
+          <tr><td><strong>Monitor</strong></td><td>Velocidade, distância, tempo, calorias, FC (sensor de mão)</td></tr>
+          <tr><td><strong>Bluetooth</strong></td><td>BLE — compatível com FitShow (iOS e Android)</td></tr>
+          <tr><td><strong>ANT+</strong></td><td>Não (disponível apenas no Premium 2200)</td></tr>
+          <tr><td><strong>Ajuste de selim</strong></td><td>Vertical e horizontal</td></tr>
+          <tr><td><strong>Ajuste de guidão</strong></td><td>Vertical</td></tr>
+          <tr><td><strong>Tipo de transmissão</strong></td><td>Correia</td></tr>
+          <tr><td><strong>Nível de ruído estimado</strong></td><td>Abaixo de 40 dB (resistência magnética)</td></tr>
+          <tr><td><strong>Garantia estrutura</strong></td><td>12 meses</td></tr>
+          <tr><td><strong>Garantia peças</strong></td><td>12 meses</td></tr>
+          <tr><td><strong>Preço aproximado</strong></td><td>R$ 1.700 – R$ 2.200</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Prós e contras</h2>
+
+      <div class="pros-cons">
+        <div class="pros">
+          <h3>Pontos positivos</h3>
+          <ul>
+            <li>Bluetooth BLE com app FitShow — histórico, métricas e rotas virtuais</li>
+            <li>16 programas automáticos — variação ampla para progressão</li>
+            <li>Resistência magnética silenciosa — adequada para apartamentos</li>
+            <li>Acabamento e materiais superiores ao padrão de entrada</li>
+            <li>Marca com mais de 20 anos no mercado brasileiro</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h3>Pontos negativos</h3>
+          <ul>
+            <li>Suporte de 110 kg — limite real de uso recomendado: 88 kg</li>
+            <li>Sem ANT+ — não integra com monitores cardíacos de peito</li>
+            <li>Sem compatibilidade nativa com Zwift ou Strava</li>
+            <li>Peso do volante não declarado — dificulta comparação objetiva</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Como funciona a conectividade bluetooth</h2>
+
+      <p>
+        A <strong>Kikos FB 180i</strong> usa protocolo Bluetooth BLE (Bluetooth Low Energy), padrão em dispositivos fitness. A conexão é feita pelo app <strong>FitShow</strong>, disponível gratuitamente para iOS e Android. O app exibe velocidade, cadência, distância, calorias e frequência cardíaca em tempo real, além de armazenar histórico de treinos e oferecer 14 rotas virtuais com mapas.
+      </p>
+      <p>
+        A bicicleta não é compatível nativamente com Zwift, Strava ou Garmin Connect. Para integração com essas plataformas, seria necessário um sensor ANT+ externo, presente apenas no modelo <strong>Premium 2200</strong>.
+      </p>
+
+      <h2>Comparativo com modelos concorrentes</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Níveis</th>
+            <th>Suporte</th>
+            <th>Bluetooth</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td><strong>Kikos FB 180i</strong></td>
+            <td>16</td>
+            <td>110 kg</td>
+            <td>BLE (FitShow)</td>
+            <td>R$ 1.700–R$ 2.200</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/randers/brf-1800/">Randers BRF-1800</a></td>
+            <td>16</td>
+            <td>120 kg</td>
+            <td>Não</td>
+            <td>R$ 1.600–R$ 2.200</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/kikos/">Kikos Premium 2200</a></td>
+            <td>24</td>
+            <td>130 kg</td>
+            <td>BLE + ANT+</td>
+            <td>R$ 2.800–R$ 3.500</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/athletic/">Athletic Advanced BT</a></td>
+            <td>16</td>
+            <td>120 kg</td>
+            <td>BLE</td>
+            <td>R$ 2.000–R$ 2.800</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Para o comparativo detalhado entre as duas marcas mais buscadas, veja <a href="/melhores-bicicletas-ergometricas/randers-vs-kikos/">Randers vs Kikos: qual comprar?</a>
+      </p>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Ergométrica Kikos FB 180i",
+          description: "16 níveis de resistência magnética silenciosa, bluetooth BLE com app FitShow, 16 programas de treino e monitor cardíaco. Melhor custo-benefício com conectividade na faixa intermediária.",
+          price: "R$ 1.700 – R$ 2.200",
+          rating: 4.4,
+          reviewCount: 1843,
+          badge: "Melhor com Bluetooth",
+          affiliateUrl: "https://amzn.to/4e6GmgM",
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Kikos FB 180i com bluetooth",
+          features: [
+            "Bluetooth BLE + app FitShow",
+            "16 níveis de resistência magnética",
+            "Suporte até 110 kg",
+            "16 programas de treino automáticos",
+          ],
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre a Kikos FB 180i" />
+</Layout>
+
+<style>
+  .top-pick-box {
+    background: var(--c-green-50);
+    border: 2px solid var(--c-green-300);
+    border-radius: var(--token-radius-lg);
+    padding: 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .top-pick-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-green-700);
+    margin-bottom: 0.75rem;
+  }
+
+  .top-pick-box p {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .top-pick-verdict {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .verdict-badge {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  .verdict-sim {
+    background: var(--c-green-100);
+    color: var(--c-green-700);
+  }
+
+  .verdict-nao {
+    background: var(--c-gray-100);
+    color: var(--c-gray-600);
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .pros, .cons {
+    padding: 1.25rem;
+    border-radius: var(--token-radius-md);
+    border: 1px solid var(--token-border);
+  }
+
+  .pros { background: var(--c-green-50); }
+  .cons { background: var(--c-gray-50); }
+
+  .pros h3, .cons h3 {
+    font-size: 0.9375rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .pros h3 { color: var(--c-green-700); }
+  .cons h3 { color: var(--token-text-secondary); }
+
+  .pros ul, .cons ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .pros li, .cons li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .highlight-row td {
+    background: var(--c-green-50);
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .pros-cons { grid-template-columns: 1fr; }
+  }
+</style>

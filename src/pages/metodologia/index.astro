@@ -1,0 +1,380 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'Metodologia', url: '/metodologia/' },
+];
+
+const criterios = [
+  {
+    categoria: 'Resistência e mecânica',
+    itens: [
+      'Tipo de resistência: magnética, mecânica ou eletromagnética',
+      'Número de níveis de resistência',
+      'Peso do volante de inércia (kg) — quanto maior, mais suave o pedalada',
+      'Tipo de transmissão: correia ou corrente',
+    ],
+  },
+  {
+    categoria: 'Ergonomia e ajustes',
+    itens: [
+      'Amplitude de ajuste do selim: vertical e horizontal',
+      'Amplitude de ajuste do guidão',
+      'Peso máximo suportado (informado pelo fabricante vs. capacidade real do quadro)',
+      'Tipo de pedal e sistema de fixação',
+    ],
+  },
+  {
+    categoria: 'Monitor e conectividade',
+    itens: [
+      'Funções do console: velocidade, distância, tempo, calorias, frequência cardíaca',
+      'Tipo de sensor de frequência cardíaca: palmar ou telemetria',
+      'Conectividade: Bluetooth, ANT+, compatibilidade com apps (Zwift, Strava, Kinomap)',
+      'Número de programas de treino pré-definidos',
+    ],
+  },
+  {
+    categoria: 'Dimensões e logística',
+    itens: [
+      'Dimensões do produto montado (cm)',
+      'Peso do equipamento (kg) — relevante para deslocamento e instalação em apartamentos',
+      'Sistema de dobramento (quando aplicável)',
+      'Nível de ruído estimado — resistência magnética tende a ser mais silenciosa',
+    ],
+  },
+  {
+    categoria: 'Garantia e suporte',
+    itens: [
+      'Garantia do quadro (estrutura)',
+      'Garantia de peças e componentes',
+      'Garantia de mão de obra',
+      'Disponibilidade de assistência técnica no Brasil',
+      'Facilidade de reposição de peças',
+    ],
+  },
+  {
+    categoria: 'Avaliações de usuários',
+    itens: [
+      'Número de avaliações em plataformas brasileiras (Amazon, Shopee, Mercado Livre)',
+      'Nota média ponderada por volume',
+      'Padrões de reclamação recorrentes (ruído, peças, montagem, atendimento)',
+      'Padrões de elogio recorrentes',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Metodologia de Avaliação — Como Analisamos Bicicletas Ergométricas"
+  description="Conheça os critérios objetivos usados pelo BicicletasErgometricas.com para avaliar e recomendar bicicletas ergométricas: especificações técnicas, ergonomia, garantia e avaliações verificadas."
+  breadcrumbs={breadcrumbs}
+  hideDisclosure={true}
+  datePublished="2026-01-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Metodologia de Avaliação</h1>
+      <p class="lead">
+        Este documento descreve os critérios objetivos que utilizamos para analisar e recomendar bicicletas ergométricas. A transparência sobre o processo é fundamental para que você possa avaliar o peso das nossas recomendações.
+      </p>
+
+      <h2>O que avaliamos — e o que não avaliamos</h2>
+
+      <div class="method-grid">
+        <div class="method-card method-do">
+          <h3>O que fazemos</h3>
+          <ul>
+            <li>Análise das especificações técnicas oficiais dos fabricantes</li>
+            <li>Comparação sistemática entre modelos na mesma faixa de preço</li>
+            <li>Revisão de avaliações de compradores verificados em múltiplas plataformas</li>
+            <li>Consulta a estudos de fisiologia do exercício (ACSM, Harvard Health, literatura científica)</li>
+            <li>Verificação de dados de garantia e disponibilidade de suporte no Brasil</li>
+          </ul>
+        </div>
+
+        <div class="method-card method-dont">
+          <h3>O que não fazemos</h3>
+          <ul>
+            <li>Não testamos fisicamente os produtos — isso é declarado explicitamente</li>
+            <li>Não recebemos produtos para avaliação das marcas</li>
+            <li>Não coletamos medições próprias de ruído, torque ou consumo</li>
+            <li>Não realizamos testes com usuários em laboratório</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        A ausência de teste físico é uma limitação real, compensada pela profundidade da análise documental e pelo volume de avaliações de usuários reais analisadas. Quando dados objetivos de terceiros (laudos, vídeos de desmontagem, fóruns especializados) estão disponíveis, são incorporados à análise.
+      </p>
+
+      <h2>Critérios de avaliação por categoria</h2>
+      <p>
+        Para cada modelo avaliado, levantamos os seguintes atributos:
+      </p>
+
+      {criterios.map(grupo => (
+        <div class="criterio-grupo">
+          <h3>{grupo.categoria}</h3>
+          <ul>
+            {grupo.itens.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <h2>Como classificamos os modelos</h2>
+
+      <div class="tier-table">
+        <div class="tier-row">
+          <div class="tier-badge tier-entry">Entrada</div>
+          <div class="tier-desc">Até R$ 1.000 — resistência mecânica ou magnética básica, 8 a 12 níveis, peso suportado até 100 kg, console simples</div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-mid">Intermediário</div>
+          <div class="tier-desc">R$ 1.000 a R$ 2.500 — resistência magnética, 16+ níveis, bluetooth, programas de treino, peso suportado 110–120 kg</div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-premium">Premium</div>
+          <div class="tier-desc">Acima de R$ 2.500 — volante pesado (5 kg+), conectividade completa, programas avançados, estrutura reforçada, garantia estendida</div>
+        </div>
+      </div>
+
+      <h2>Fontes externas utilizadas</h2>
+      <p>
+        Nossas análises de benefícios e uso correto referenciam fontes externas autoritativas:
+      </p>
+      <ul>
+        <li><strong>ACSM (American College of Sports Medicine)</strong> — diretrizes de atividade física, gasto calórico e protocolos de treino</li>
+        <li><strong>Harvard Health Publishing</strong> — benefícios cardiovasculares, recomendações para populações especiais</li>
+        <li><strong>Literatura de MET (Equivalente Metabólico de Tarefa)</strong> — base para estimativas de gasto calórico por intensidade</li>
+        <li><strong>Fichas técnicas e manuais dos fabricantes</strong> — especificações declaradas de cada modelo</li>
+        <li><strong>ANVISA e ABNT</strong> — normas brasileiras aplicáveis a equipamentos de ginástica</li>
+      </ul>
+
+      <h2>Atualização das recomendações</h2>
+      <p>
+        Revisamos as recomendações quando:
+      </p>
+      <ul>
+        <li>Um modelo é descontinuado ou substituído pelo fabricante</li>
+        <li>Há variação significativa de preço que muda o posicionamento de custo-benefício</li>
+        <li>Acumulamos evidência suficiente de problemas recorrentes em avaliações de usuários</li>
+        <li>Um novo modelo entra no mercado com especificações superiores na mesma faixa de preço</li>
+      </ul>
+      <p>
+        A data de última atualização é exibida em todas as páginas do site.
+      </p>
+
+      <div class="about-cta">
+        <a href="/sobre/" class="btn-secondary">Sobre o portal →</a>
+        <a href="/melhores-bicicletas-ergometricas/" class="btn-primary">Ver melhores modelos →</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--token-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--token-brand);
+    padding-left: 1.25rem;
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .method-card {
+    padding: 1.5rem;
+    border-radius: var(--token-radius-lg);
+    border: 1px solid var(--token-border);
+  }
+
+  .method-card ul {
+    margin: 0;
+  }
+
+  .method-do {
+    background: var(--c-green-50);
+    border-color: var(--c-green-100);
+  }
+
+  .method-do h3 {
+    color: var(--c-green-700);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .method-dont {
+    background: var(--c-gray-50);
+    border-color: var(--token-border);
+  }
+
+  .method-dont h3 {
+    color: var(--token-text-secondary);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .criterio-grupo {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--token-surface);
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+  }
+
+  .criterio-grupo h3 {
+    font-size: 0.9375rem;
+    color: var(--token-brand);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .criterio-grupo ul {
+    margin: 0;
+  }
+
+  .criterio-grupo li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .tier-table {
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+
+  .tier-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--token-border);
+  }
+
+  .tier-row:last-child {
+    border-bottom: none;
+  }
+
+  .tier-badge {
+    flex-shrink: 0;
+    width: 110px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .tier-entry {
+    background: var(--c-gray-100);
+    color: var(--token-text-secondary);
+  }
+
+  .tier-mid {
+    background: var(--c-green-100);
+    color: var(--c-green-700);
+  }
+
+  .tier-premium {
+    background: var(--c-green-500);
+    color: #fff;
+  }
+
+  .tier-desc {
+    font-size: 0.9375rem;
+    color: var(--token-text-secondary);
+    line-height: 1.5;
+  }
+
+  .about-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--token-border);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--token-brand);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    text-decoration: none;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--token-brand-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--token-brand);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    border: 2px solid var(--token-brand);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--token-brand-light);
+  }
+
+  @media (max-width: 640px) {
+    .method-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tier-badge {
+      width: 90px;
+      font-size: 0.6875rem;
+    }
+  }
+</style>

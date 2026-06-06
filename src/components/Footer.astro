@@ -39,6 +39,15 @@ const silos = [
       { href: '/blog/erros-bicicleta-ergometrica/', label: '10 Erros Comuns' },
     ],
   },
+  {
+    title: 'Portal',
+    links: [
+      { href: '/sobre/', label: 'Sobre nós' },
+      { href: '/metodologia/', label: 'Metodologia' },
+      { href: '/politica-de-privacidade/', label: 'Privacidade' },
+      { href: '/termos-de-uso/', label: 'Termos de Uso' },
+    ],
+  },
 ];
 ---
 
@@ -49,7 +58,7 @@ const silos = [
 
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <span>🚴</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
           <span>BicicletasErgometricas<strong>.com</strong></span>
         </a>
         <p>
@@ -79,7 +88,11 @@ const silos = [
       <p>&copy; {year} BicicletasErgometricas.com. Todos os direitos reservados.</p>
       <p>Site de comparação e afiliados. Preços e disponibilidade sujeitos a alteração.</p>
       <p>
-        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/sobre/">Sobre</a>
+        &nbsp;·&nbsp;
+        <a href="/metodologia/">Metodologia</a>
+        &nbsp;·&nbsp;
+        <a href="/politica-de-privacidade/">Privacidade</a>
         &nbsp;·&nbsp;
         <a href="/termos-de-uso/">Termos de Uso</a>
       </p>
@@ -121,7 +134,7 @@ const silos = [
     letter-spacing: -0.01em;
   }
 
-  .footer-logo span:first-child { font-size: 1.25rem; }
+  .footer-logo svg { color: var(--c-green-300); flex-shrink: 0; }
   .footer-logo strong { color: var(--c-green-300); }
 
   .footer-brand p {

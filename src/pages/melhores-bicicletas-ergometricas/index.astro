@@ -59,6 +59,33 @@ const marcasPrincipais = [
         As <strong>melhores bicicletas ergométricas</strong> disponíveis no Brasil em 2026 cobrem desde modelos de entrada como o <strong>Polimet POLI-163</strong> (R$ 430) até bikes semiprofissionais como o <strong>Gallant Smart 18kg</strong> (R$ 5.599). As marcas com maior presença na Amazon BR são <strong>Gallant</strong>, <strong>Dream Fitness</strong>, <strong>Kikos</strong>, <strong>WCT Fitness</strong>, <strong>Odin Fit</strong> e <strong>Poli Sports</strong>, com modelos para todos os perfis de uso e orçamento.
       </p>
 
+      <div class="top-picks-grid">
+        <div class="top-pick-item">
+          <span class="pick-label">Melhor geral</span>
+          <strong><a href="/melhores-bicicletas-ergometricas/gallant/">Gallant Elite Pro 13kg</a></strong>
+          <span class="pick-price">R$ 1.199 – R$ 1.799</span>
+          <p>Spinning com volante de 13 kg, resistência por fricção ajustável e estrutura reforçada. Melhor custo-benefício para uso regular intenso.</p>
+        </div>
+        <div class="top-pick-item">
+          <span class="pick-label">Melhor com bluetooth</span>
+          <strong><a href="/melhores-bicicletas-ergometricas/kikos/fb-180i/">Kikos FB 180i</a></strong>
+          <span class="pick-price">R$ 1.700 – R$ 2.200</span>
+          <p>16 níveis magnéticos, app FitShow via BLE e 16 programas. Melhor opção para quem acompanha o treino pelo celular.</p>
+        </div>
+        <div class="top-pick-item">
+          <span class="pick-label">Melhor custo-benefício entrada</span>
+          <strong><a href="/melhores-bicicletas-ergometricas/dream-fitness/">Dream Fitness EX 450</a></strong>
+          <span class="pick-price">R$ 429 – R$ 699</span>
+          <p>+3.700 avaliações na Amazon BR, resistência magnética simples e montagem acessível. Ideal para quem está começando.</p>
+        </div>
+        <div class="top-pick-item">
+          <span class="pick-label">Melhor para apartamento</span>
+          <strong><a href="/melhores-bicicletas-ergometricas/poli-sports/">Polimet POLI-163</a></strong>
+          <span class="pick-price">R$ 330 – R$ 550</span>
+          <p>+5.700 avaliações, footprint compacto e nível de ruído baixo. Melhor opção de menor preço para espaço reduzido.</p>
+        </div>
+      </div>
+
       <p>
         A bicicleta ergométrica certa não é necessariamente a mais cara. Cada marca foi projetada para um perfil de usuário específico. Este guia organiza as opções por marca, faixa de preço e critério técnico para facilitar a comparação antes da compra.
       </p>
@@ -189,5 +216,62 @@ const marcasPrincipais = [
       gap: 0.5rem;
     }
     .marca-row-destaque { display: none; }
+  }
+
+  .top-picks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .top-pick-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.125rem 1.25rem;
+    background: var(--token-surface);
+    border: 1px solid var(--token-border);
+    border-top: 3px solid var(--token-brand);
+    border-radius: var(--token-radius-md);
+  }
+
+  .pick-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--token-brand);
+  }
+
+  .top-pick-item strong a {
+    font-size: 1rem;
+    color: var(--token-text-primary);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .top-pick-item strong a:hover {
+    color: var(--token-brand);
+    text-decoration: underline;
+  }
+
+  .pick-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-orange-700);
+  }
+
+  .top-pick-item p {
+    font-size: 0.875rem;
+    color: var(--token-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .top-picks-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

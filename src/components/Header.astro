@@ -14,7 +14,9 @@ const navLinks = [
   <div class="header-inner container">
 
     <a href="/" class="site-logo" aria-label="BicicletasErgometricas.com - Página inicial">
-      <span class="logo-icon">🚴</span>
+      <span class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+      </span>
       <span class="logo-text">BicicletasErgometricas<span class="logo-dot">.com</span></span>
     </a>
 
@@ -81,8 +83,9 @@ const navLinks = [
   }
 
   .logo-icon {
-    font-size: 1.375rem;
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    color: var(--token-brand);
   }
 
   .logo-text {

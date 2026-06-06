@@ -40,28 +40,28 @@ const faqItems = [
 
 const perfis = [
   {
-    icon: '🏃',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
     titulo: 'Quero emagrecer',
     desc: 'Modelos com 12+ níveis de resistência e programas de queima de gordura. Sessões de 40 min em intensidade moderada queimam até 500 kcal.',
     href: '/beneficios-bicicleta-ergometrica/',
     cta: 'Ver modelos para emagrecimento →',
   },
   {
-    icon: '🦵',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
     titulo: 'Tenho problema de joelho',
     desc: 'Bicicleta horizontal ou recumbente: baixo impacto articular, encosto com suporte lombar, movimento controlado sem risco de lesão.',
     href: '/tipos-de-bicicleta-ergometrica/',
     cta: 'Ver tipos recomendados →',
   },
   {
-    icon: '🏠',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
     titulo: 'Uso domiciliar leve',
     desc: 'Até 3x por semana, espaço reduzido, orçamento até R$ 1.500. Modelos compactos das marcas Dream Fitness, Gallant e Poli Sports atendem bem esse perfil.',
     href: '/melhores-bicicletas-ergometricas/',
     cta: 'Ver modelos compactos →',
   },
   {
-    icon: '💪',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
     titulo: 'Treino intenso / diário',
     desc: 'Uso de 5x/semana ou mais exige estrutura robusta, suporte de 120 kg+, inércia pesada. WCT Fitness 13kg, Gallant Elite Pro e Kikos são as marcas certas.',
     href: '/melhores-bicicletas-ergometricas/',
@@ -119,8 +119,9 @@ const marcas = [
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content">
-          <span class="badge badge-brand" style="margin-bottom:1rem;display:inline-flex;">
-            🚴 Portal de Referência no Brasil
+          <span class="badge badge-brand" style="margin-bottom:1rem;display:inline-flex;gap:0.375rem;align-items:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+            Portal de Referência no Brasil
           </span>
           <h1 id="hero-heading">
             A bicicleta ergométrica certa para o seu objetivo
@@ -130,7 +131,7 @@ const marcas = [
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:1rem;">
             <a href="/melhores-bicicletas-ergometricas/" class="btn-cta">Ver Melhores Modelos</a>
-            <a href="/como-escolher-bicicleta-ergometrica/" class="btn-primary" style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);">Como Escolher</a>
+            <a href="/como-escolher-bicicleta-ergometrica/" class="btn-hero-outline">Como Escolher</a>
           </div>
         </div>
         {heroImage && (
@@ -208,7 +209,7 @@ const marcas = [
       <div class="perfis-grid">
         {perfis.map(p => (
           <article class="perfil-card">
-            <div class="perfil-icon">{p.icon}</div>
+            <div class="perfil-icon" set:html={p.icon}></div>
             <h3>{p.titulo}</h3>
             <p>{p.desc}</p>
             <a href={p.href}>{p.cta}</a>
@@ -322,22 +323,32 @@ const marcas = [
 <style>
   .hero-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 3rem;
     align-items: center;
   }
 
-  .hero-content { max-width: 560px; }
+  .hero-content { max-width: 580px; }
 
   .hero-image {
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.32);
+    position: relative;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--c-green-900) 0%, transparent 45%);
+    border-radius: 16px;
+    pointer-events: none;
   }
 
   .hero-image img {
     width: 100%;
-    height: 320px;
+    height: 340px;
     object-fit: cover;
     display: block;
   }
@@ -356,6 +367,31 @@ const marcas = [
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-image { display: none; }
+  }
+
+  .btn-hero-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-family: var(--token-font);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-hero-outline:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    transform: translateY(-1px);
+    text-decoration: none;
   }
 
   .stats-bar {
@@ -419,7 +455,16 @@ const marcas = [
     transform: translateY(-2px);
   }
 
-  .perfil-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .perfil-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--token-brand, #2D6A4F);
+    margin-bottom: 0.75rem;
+  }
+  .perfil-icon svg { width: 2rem; height: 2rem; }
 
   .perfil-card h3 {
     font-size: 1.0625rem;

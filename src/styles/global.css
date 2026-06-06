@@ -61,6 +61,7 @@
 
   /* ── Tipografia ── */
   --token-font: 'Inter', system-ui, sans-serif;
+  --token-font-display: 'Syne', system-ui, sans-serif;
   --token-weight-normal:  400;
   --token-weight-medium:  500;
   --token-weight-semibold:600;
@@ -158,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 var(--token-space-4);
 }
 
-h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h1 { font-family: var(--token-font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -0.03em; }
 h2 { font-size: clamp(1.375rem, 3vw, 2rem); }
 h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
 
@@ -278,6 +279,31 @@ tr:hover td { background: var(--c-gray-50); }
   text-decoration: none;
 }
 
+/* ── Botao secundario (outline verde — acoes de navegacao de menor prioridade) ── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--token-space-2);
+  padding: var(--token-space-3) var(--token-space-6);
+  background: transparent;
+  color: var(--token-brand);
+  font-family: var(--token-font);
+  font-size: 0.9375rem;
+  font-weight: var(--token-weight-bold);
+  border: 2px solid var(--token-brand);
+  border-radius: var(--token-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  background: var(--token-brand);
+  color: var(--c-white);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
 /* ── Card ── */
 .card {
   background: var(--token-surface);
@@ -322,7 +348,19 @@ tr:hover td { background: var(--c-gray-50); }
   background: linear-gradient(135deg, var(--c-green-900) 0%, var(--c-green-500) 100%);
   color: var(--c-white);
   padding: var(--token-space-20) 0;
+  position: relative;
+  overflow: hidden;
 }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
 .hero h1 { color: var(--c-white); }
 .hero p { color: rgba(255,255,255,0.85); }
 
@@ -478,6 +516,35 @@ tr:hover td { background: var(--c-gray-50); }
   margin: var(--token-space-6) 0;
 }
 .highlight-box p { color: var(--token-text-primary); margin: 0; }
+
+/* ── Seção de referências ── */
+.references-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--token-border);
+}
+
+.references-section h2 {
+  font-size: 1rem;
+  color: var(--token-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.references-list {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.references-list li {
+  font-size: 0.8125rem;
+  color: var(--token-text-subtle);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.references-list em {
+  font-style: italic;
+}
 
 /* ── Blog ── */
 .prose-container { max-width: 760px; }

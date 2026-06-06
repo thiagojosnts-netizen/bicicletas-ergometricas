@@ -1,0 +1,289 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Para Iniciantes', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-iniciantes/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual bicicleta ergométrica é boa para iniciantes?',
+    answer: 'Para iniciantes, a bicicleta ergométrica vertical com 8 a 12 níveis de resistência magnética, monitor de frequência cardíaca e suporte de ao menos 100 kg é suficiente. Modelos como a Dream Fitness EX 450 (R$ 430–R$ 699), Polimet POLI-163 (R$ 330–R$ 550) e Randers BRF-800 (R$ 800–R$ 1.000) atendem bem a esse perfil. Não há necessidade de bluetooth ou muitos programas para quem está começando.',
+  },
+  {
+    question: 'Quanto tempo usar a bicicleta ergométrica como iniciante?',
+    answer: 'Iniciantes devem começar com sessões de 15 a 20 minutos, entre 3 e 4 vezes por semana. A cada duas semanas, aumentar 5 minutos ou uma sessão adicional. O objetivo nas primeiras 4 semanas é construir o hábito e adaptar o sistema cardiovascular — a intensidade vem depois. Frequência cardíaca alvo: 55–65% da FCmáx (FCmáx = 220 − idade).',
+  },
+  {
+    question: 'Qual é a diferença entre resistência magnética e mecânica para iniciantes?',
+    answer: 'Para iniciantes, a resistência magnética é mais recomendada. Ela ajusta a carga com precisão (cada nível é consistente), é silenciosa e não exige troca de peças por desgaste de atrito. A resistência mecânica (por fricção) é encontrada em modelos de spinning e bicicletas mais baratas — ajuste é impreciso e o sistema desgasta mais rápido. Para iniciantes que querem praticar spinning, há modelos de spinning com resistência por fricção a partir de R$ 500.',
+  },
+  {
+    question: 'Vale a pena gastar mais em uma primeira bicicleta ergométrica?',
+    answer: 'Nem sempre. Para iniciantes sem certeza sobre a continuidade do hábito, um modelo de entrada (R$ 400–R$ 800) é mais prudente. Se o hábito se consolidar após 3 meses, o upgrade para um modelo intermediário (R$ 1.000–R$ 2.500) faz sentido. Gastar R$ 2.000 em um primeiro modelo que ficará parado não é um bom investimento — a maioria dos benefícios cardiovasculares se obtém com resistência magnética básica e boa regularidade.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica para Iniciantes: Qual Comprar e Como Começar"
+  description="Guia completo para iniciantes: qual tipo de bicicleta ergométrica comprar, resistência magnética vs mecânica, quanto investir e como montar a rotina das primeiras semanas."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-03-10"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Bicicleta Ergométrica para Iniciantes: Qual Comprar e Como Começar</h1>
+
+      <p class="summarization">
+        Para iniciantes, a melhor <strong>bicicleta ergométrica</strong> é uma vertical com <strong>resistência magnética</strong>, <strong>8 a 12 níveis de carga</strong> e <strong>monitor de frequência cardíaca</strong> — sem necessidade de bluetooth ou muitos programas. O orçamento adequado para um primeiro equipamento fica entre <strong>R$ 400 e R$ 1.000</strong>. Nas primeiras semanas, o foco deve ser na regularidade: <strong>3 sessões de 20 minutos</strong> por semana são suficientes para gerar adaptação cardiovascular.
+      </p>
+
+      <h2>O que importa para iniciantes (e o que não importa)</h2>
+
+      <div class="needs-grid">
+        <div class="needs-item needs-do">
+          <h3>Priorize</h3>
+          <ul>
+            <li><strong>Resistência magnética</strong> — ajuste preciso e silencioso</li>
+            <li><strong>8 a 12 níveis de resistência</strong> — suficiente para 12 a 18 meses de progressão</li>
+            <li><strong>Monitor de FC por sensor de mão</strong> — para controlar a intensidade</li>
+            <li><strong>Suporte de ao menos 100 kg</strong> — com margem de segurança</li>
+            <li><strong>Selim ajustável em altura</strong> — essencial para a regulagem correta</li>
+          </ul>
+        </div>
+        <div class="needs-item needs-dont">
+          <h3>Não precisa (para começar)</h3>
+          <ul>
+            <li>Bluetooth e integração com app</li>
+            <li>16+ programas de treino automáticos</li>
+            <li>Volante acima de 6 kg</li>
+            <li>Tela colorida ou touchscreen</li>
+            <li>Carga mínima de spinning profissional</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Modelos recomendados para iniciantes</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Preço</th>
+            <th>Resistência</th>
+            <th>Níveis</th>
+            <th>Suporte</th>
+            <th>Ponto forte</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/dream-fitness/">Dream Fitness EX 450</a></td>
+            <td>R$ 430–R$ 699</td>
+            <td>Magnética</td>
+            <td>8</td>
+            <td>100 kg</td>
+            <td>+3.700 avaliações, boa reputação</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/poli-sports/">Polimet POLI-163</a></td>
+            <td>R$ 330–R$ 550</td>
+            <td>Magnética</td>
+            <td>8</td>
+            <td>100 kg</td>
+            <td>Menor preço com avaliações positivas</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/randers/">Randers BRF-800</a></td>
+            <td>R$ 800–R$ 1.000</td>
+            <td>Magnética</td>
+            <td>8</td>
+            <td>90 kg</td>
+            <td>Marca com suporte técnico amplo</td>
+          </tr>
+          <tr>
+            <td><a href="/melhores-bicicletas-ergometricas/podiumfit/">PodiumFit V100</a></td>
+            <td>R$ 599–R$ 799</td>
+            <td>Magnética</td>
+            <td>8</td>
+            <td>100 kg</td>
+            <td>Boa estrutura para peso</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Quanto investir na primeira bicicleta</h2>
+
+      <div class="investment-boxes">
+        <div class="investment-item">
+          <span class="inv-label">R$ 300 – R$ 800</span>
+          <p><strong>Ideal para testar o hábito.</strong> Resistência magnética básica, 8 níveis, monitor simples. Suficiente para os primeiros 6 a 12 meses. Se o hábito se consolidar, o upgrade faz sentido.</p>
+        </div>
+        <div class="investment-item inv-mid">
+          <span class="inv-label">R$ 800 – R$ 1.500</span>
+          <p><strong>Melhor custo-benefício para início.</strong> 12 a 16 níveis, suporte maior, mais programas. Para quem já tem algum histórico de exercício e quer um equipamento que acompanhe por mais tempo.</p>
+        </div>
+        <div class="investment-item inv-skip">
+          <span class="inv-label">Acima de R$ 1.500 (primeiro equipamento)</span>
+          <p><strong>Só se houver certeza do uso.</strong> Os recursos extras (bluetooth, 24 programas, volante pesado) só fazem diferença na prática com uso regular por mais de 6 meses.</p>
+        </div>
+      </div>
+
+      <h2>Protocolo de início para as primeiras 8 semanas</h2>
+
+      <p>
+        O maior erro de iniciantes é começar com intensidade alta e frequência excessiva, gerando fadiga e abandono. O protocolo abaixo é baseado nas diretrizes do ACSM para sedentários iniciando atividade aeróbica:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semanas</th>
+            <th>Duração/sessão</th>
+            <th>Frequência</th>
+            <th>Intensidade</th>
+            <th>Nível de resistência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 – 2</td>
+            <td>15–20 min</td>
+            <td>3×/semana</td>
+            <td>Leve (50–60% FCmáx)</td>
+            <td>2 – 3</td>
+          </tr>
+          <tr>
+            <td>3 – 4</td>
+            <td>20–25 min</td>
+            <td>3×/semana</td>
+            <td>Leve-moderada (55–65%)</td>
+            <td>3 – 4</td>
+          </tr>
+          <tr>
+            <td>5 – 6</td>
+            <td>25–35 min</td>
+            <td>3–4×/semana</td>
+            <td>Moderada (60–70%)</td>
+            <td>4 – 5</td>
+          </tr>
+          <tr>
+            <td>7 – 8</td>
+            <td>30–40 min</td>
+            <td>4×/semana</td>
+            <td>Moderada (60–70%)</td>
+            <td>4 – 6</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>FCmáx estimada = 220 − sua idade. Para 30 anos: FCmáx = 190 bpm; 60% = 114 bpm; 70% = 133 bpm.</p>
+
+      <h2>Como regular a bicicleta antes da primeira sessão</h2>
+
+      <p>
+        A regulagem correta é o fator mais importante para conforto e segurança. O passo principal é a altura do selim: fique de pé ao lado da bicicleta e posicione o selim na altura do quadril. Ao sentar e colocar o <strong>calcanhar no pedal</strong> na posição mais baixa, a perna deve estar quase completamente estendida. Na pedalagem normal (antepé no pedal), o joelho ficará com 25 a 35 graus de flexão — o ângulo correto.
+      </p>
+
+      <p>
+        Para o guia completo de regulagem, veja <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">como regular a bicicleta ergométrica</a>.
+      </p>
+
+      <p style="margin-top: 2rem;">
+        Para ver os melhores modelos por faixa de preço, acesse o <a href="/melhores-bicicletas-ergometricas/">ranking completo de bicicletas ergométricas</a>. Para entender os tipos disponíveis, veja o <a href="/tipos-de-bicicleta-ergometrica/">guia de tipos de bicicleta ergométrica</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: bicicleta ergométrica para iniciantes" />
+</Layout>
+
+<style>
+  .needs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .needs-item {
+    padding: 1.25rem;
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+  }
+
+  .needs-do { background: var(--c-green-50); }
+  .needs-dont { background: var(--c-gray-50); }
+
+  .needs-item h3 {
+    font-size: 0.9375rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .needs-do h3 { color: var(--c-green-700); }
+  .needs-dont h3 { color: var(--token-text-secondary); }
+
+  .needs-item ul { margin: 0; padding-left: 1.25rem; }
+  .needs-item li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .investment-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .investment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--c-green-50);
+    border: 1px solid var(--c-green-100);
+    border-radius: var(--token-radius-md);
+  }
+
+  .investment-item.inv-mid {
+    background: var(--c-gray-50);
+    border-color: var(--token-border);
+  }
+
+  .investment-item.inv-skip {
+    background: #fff8e1;
+    border-color: #fde68a;
+  }
+
+  .inv-label {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--token-text-primary);
+    min-width: 180px;
+    padding-top: 0.125rem;
+  }
+
+  .investment-item p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .needs-grid { grid-template-columns: 1fr; }
+    .investment-item { flex-direction: column; gap: 0.375rem; }
+    .inv-label { min-width: unset; }
+  }
+</style>

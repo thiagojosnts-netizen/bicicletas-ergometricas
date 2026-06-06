@@ -1,0 +1,336 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Vertical vs Horizontal', url: '/tipos-de-bicicleta-ergometrica/vertical-vs-horizontal/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica vertical ou horizontal: qual emagrece mais?',
+    answer: 'A bicicleta vertical tende a promover maior gasto calórico por ativar mais grupos musculares — incluindo o core e os músculos estabilizadores. Uma sessão de 45 minutos em intensidade moderada na vertical queima entre 350 e 500 kcal para uma pessoa de 70 kg. Na horizontal, o gasto fica entre 280 e 420 kcal no mesmo período, por causa do menor recrutamento muscular.',
+  },
+  {
+    question: 'Qual é a diferença entre bicicleta ergométrica vertical e horizontal?',
+    answer: 'A bicicleta ergométrica vertical posiciona o usuário sentado com o tronco ereto ou levemente inclinado, pedais abaixo do corpo, ativando quadríceps, glúteos, posteriores e core. A horizontal tem encosto reclinado com pedais à frente, reduzindo a pressão sobre coluna, joelhos e quadril. A vertical ocupa menos espaço e gera maior intensidade; a horizontal é mais confortável para sessões longas e recomendada em reabilitação.',
+  },
+  {
+    question: 'Bicicleta horizontal faz mal para os joelhos?',
+    answer: 'Não — pelo contrário. A bicicleta horizontal é especialmente indicada para quem tem problemas nos joelhos, pois o posicionamento dos pedais à frente reduz a flexão máxima da articulação e distribui melhor a carga. Segundo o ACSM (American College of Sports Medicine), o exercício aeróbico em bike horizontal é um dos mais seguros para reabilitação de artrose e lesões meniscais.',
+  },
+  {
+    question: 'Bicicleta vertical e horizontal ativam os mesmos músculos?',
+    answer: 'Não completamente. Ambas ativam quadríceps, isquiotibiais e glúteos. A vertical também recruta o core (abdome e lombares) para manter a postura, o que aumenta o gasto calórico e a ativação total. A horizontal foca mais nos membros inferiores com menor demanda postural, o que a torna mais adequada para pessoas com limitações de coluna ou equilíbrio.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Vertical vs Horizontal: Qual Escolher?"
+  description="Comparativo completo entre bicicleta ergométrica vertical e horizontal: diferenças técnicas, gasto calórico, músculos ativados e para qual perfil cada tipo é indicado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-03-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+
+      <h1 id="page-heading">Bicicleta Ergométrica Vertical vs Horizontal: Qual é a Certa para Você?</h1>
+
+      <div class="verdict-box">
+        <div class="verdict-col verdict-vertical">
+          <div class="verdict-label">Maior intensidade</div>
+          <div class="verdict-brand">Bicicleta Vertical</div>
+          <p>Postura ereta, pedais abaixo do corpo. Mais gasto calórico, mais ativação muscular. Ideal para emagrecimento e condicionamento.</p>
+          <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-vertical/" class="verdict-link">Ver tipos verticais →</a>
+        </div>
+        <div class="verdict-divider">vs</div>
+        <div class="verdict-col verdict-horizontal">
+          <div class="verdict-label">Maior conforto</div>
+          <div class="verdict-brand">Bicicleta Horizontal</div>
+          <p>Encosto reclinado, pedais à frente. Menor pressão em joelhos e coluna. Ideal para reabilitação, idosos e sessões longas.</p>
+          <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/" class="verdict-link">Ver tipos horizontais →</a>
+        </div>
+      </div>
+
+      <h2>Comparativo técnico</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Vertical</th>
+            <th>Horizontal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Posição do usuário</td>
+            <td>Sentado, tronco ereto ou levemente inclinado</td>
+            <td>Reclinado, encosto com apoio lombar</td>
+          </tr>
+          <tr>
+            <td>Posição dos pedais</td>
+            <td>Abaixo do corpo</td>
+            <td>À frente do corpo</td>
+          </tr>
+          <tr>
+            <td>Pressão nos joelhos</td>
+            <td>Moderada</td>
+            <td class="highlight-cell">Baixa</td>
+          </tr>
+          <tr>
+            <td>Pressão na coluna</td>
+            <td>Moderada (depende da postura)</td>
+            <td class="highlight-cell">Muito baixa</td>
+          </tr>
+          <tr>
+            <td>Gasto calórico estimado*</td>
+            <td class="highlight-cell">350–500 kcal / 45 min</td>
+            <td>280–420 kcal / 45 min</td>
+          </tr>
+          <tr>
+            <td>Ativação do core</td>
+            <td class="highlight-cell">Alta</td>
+            <td>Baixa</td>
+          </tr>
+          <tr>
+            <td>Músculos principais</td>
+            <td class="highlight-cell">Quadríceps, glúteos, isquiotibiais, core</td>
+            <td>Quadríceps, glúteos, isquiotibiais</td>
+          </tr>
+          <tr>
+            <td>Espaço ocupado</td>
+            <td class="highlight-cell">Menor</td>
+            <td>Maior</td>
+          </tr>
+          <tr>
+            <td>Faixa de preço</td>
+            <td>R$ 400 – R$ 5.000+</td>
+            <td>R$ 600 – R$ 4.000+</td>
+          </tr>
+          <tr>
+            <td>Indicada para reabilitação</td>
+            <td>Parcialmente</td>
+            <td class="highlight-cell">Sim</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="table-note">*Estimativa baseada em referências do ACSM para usuário de 70 kg em intensidade moderada (55–70% FCmáx). Valores variam com peso, intensidade e condicionamento individual.</p>
+
+      <h2>Para quem é indicada cada tipo</h2>
+
+      <div class="profile-grid">
+
+        <div class="profile-card profile-vertical">
+          <h3>Escolha a bicicleta vertical se você:</h3>
+          <ul>
+            <li>Quer maior gasto calórico por sessão</li>
+            <li>Tem espaço reduzido (menor footprint)</li>
+            <li>Está em bom estado físico sem limitações articulares</li>
+            <li>Quer treino de condicionamento cardiovascular de moderado a intenso</li>
+            <li>Considera treino de spinning (tipo específico de vertical)</li>
+          </ul>
+        </div>
+
+        <div class="profile-card profile-horizontal">
+          <h3>Escolha a bicicleta horizontal se você:</h3>
+          <ul>
+            <li>Tem problemas nos joelhos, quadril ou coluna lombar</li>
+            <li>É idoso ou está em reabilitação pós-lesão</li>
+            <li>Quer sessões longas (45–90 min) com mais conforto postural</li>
+            <li>Tem limitações de equilíbrio ou dificuldade em subir em bike vertical</li>
+            <li>Busca exercício indicado para artrose ou osteoporose</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <h2>Qual emagrece mais: vertical ou horizontal?</h2>
+
+      <p>
+        A <strong>bicicleta ergométrica vertical</strong> gera maior gasto calórico porque recruta mais grupos musculares — incluindo o <strong>core</strong> (abdome e lombares) para manutenção da postura. Uma sessão de 45 minutos em intensidade moderada (55–70% da frequência cardíaca máxima) queima entre <strong>350 e 500 kcal</strong> para um usuário de 70 kg, segundo parâmetros do ACSM.
+      </p>
+
+      <p>
+        Na <strong>bicicleta horizontal</strong>, o encosto elimina a demanda postural, reduzindo a ativação total. O gasto fica entre <strong>280 e 420 kcal</strong> no mesmo período e perfil. Para emagrecimento prioritário, a vertical tem vantagem. Para quem não pode usar a vertical por limitações articulares, a horizontal ainda é um excelente instrumento de exercício aeróbico — com frequência é a única opção viável.
+      </p>
+
+      <h2>Qual ocupa menos espaço?</h2>
+
+      <p>
+        A <strong>bicicleta vertical</strong> tem pegada menor: o footprint típico fica entre <strong>85×50 cm</strong> e <strong>110×60 cm</strong>. A <strong>bicicleta horizontal</strong> é mais longa por causa do assento reclinado e dos pedais à frente, com dimensões típicas de <strong>120×60 cm</strong> a <strong>170×70 cm</strong>. Para apartamentos com espaço limitado, a vertical é mais prática.
+      </p>
+
+      <h2>Existe diferença de preço?</h2>
+
+      <p>
+        Bicicletas verticais de entrada custam a partir de R$ 400 (modelos Polimet, Dream Fitness), enquanto horizontais de entrada começam em torno de R$ 600. A diferença se deve ao mecanismo mais complexo do assento reclinado com trilho ajustável. Em categorias intermediária e premium, a diferença de preço diminui significativamente.
+      </p>
+
+      <h2>Existe um terceiro tipo: a recumbente</h2>
+
+      <p>
+        A <strong>bicicleta recumbente</strong> é uma variante da horizontal com encosto ainda mais reclinado e pedais quase ao nível do assento. Oferece o maior conforto postural dos três tipos e é frequentemente usada em programas de reabilitação cardíaca e fisioterapia. Veja mais em <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">bicicleta ergométrica recumbente</a>.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-vertical/" class="btn-primary">Ver bicicletas verticais →</a>
+        <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/" class="btn-secondary">Ver bicicletas horizontais →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: bicicleta vertical vs horizontal" />
+</Layout>
+
+<style>
+  .verdict-box {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0 2.5rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-lg);
+    overflow: hidden;
+  }
+
+  .verdict-col { padding: 1.5rem; }
+  .verdict-col p {
+    font-size: 0.9375rem;
+    color: var(--token-text-secondary);
+    line-height: 1.5;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .verdict-vertical { background: var(--c-green-50); }
+  .verdict-horizontal { background: #eff6ff; }
+
+  .verdict-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--token-text-subtle);
+    margin-bottom: 0.375rem;
+  }
+
+  .verdict-brand {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--token-text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .verdict-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--token-brand);
+    text-decoration: none;
+  }
+
+  .verdict-link:hover { text-decoration: underline; }
+
+  .verdict-divider {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--token-text-subtle);
+    padding: 0 0.5rem;
+  }
+
+  .highlight-cell {
+    background: var(--c-green-50);
+    color: var(--c-green-700);
+    font-weight: 600;
+  }
+
+  .table-note {
+    font-size: 0.8125rem;
+    color: var(--token-text-subtle);
+    font-style: italic;
+    margin-top: -0.5rem;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .profile-card {
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    border: 1px solid var(--token-border);
+  }
+
+  .profile-vertical { background: var(--c-green-50); }
+  .profile-horizontal { background: #eff6ff; }
+
+  .profile-card h3 {
+    font-size: 0.9375rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .profile-card ul { margin: 0; padding-left: 1.25rem; }
+  .profile-card li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .cta-pair {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--token-border);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--token-brand);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--token-brand-hover); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--token-brand);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    border: 2px solid var(--token-brand);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .btn-secondary:hover { background: var(--token-brand-light); }
+
+  @media (max-width: 640px) {
+    .verdict-box { grid-template-columns: 1fr; }
+    .verdict-divider { text-align: center; padding: 0.5rem; }
+    .profile-grid { grid-template-columns: 1fr; }
+  }
+</style>

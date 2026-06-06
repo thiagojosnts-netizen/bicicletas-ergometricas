@@ -1,0 +1,95 @@
+---
+interface Props {
+  dateModified?: string;
+}
+
+const { dateModified } = Astro.props;
+
+function formatDate(iso: string) {
+  const months = [
+    'janeiro','fevereiro','março','abril','maio','junho',
+    'julho','agosto','setembro','outubro','novembro','dezembro',
+  ];
+  const d = new Date(iso + 'T12:00:00');
+  return `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
+}
+---
+
+<div class="disclosure-bar">
+  <div class="container disclosure-inner">
+    <p class="disclosure-text">
+      <svg class="disclosure-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" />
+      </svg>
+      <span>
+        <strong>Transparência:</strong> este site pode receber comissão quando você compra por nossos links, sem custo adicional para você. Nenhuma marca paga para ser recomendada.
+        <a href="/sobre/" class="disclosure-link">Como trabalhamos →</a>
+      </span>
+    </p>
+    {dateModified && (
+      <p class="disclosure-date">
+        Atualizado em {formatDate(dateModified)}
+      </p>
+    )}
+  </div>
+</div>
+
+<style>
+  .disclosure-bar {
+    background: var(--c-green-50);
+    border-bottom: 1px solid var(--c-green-100);
+    padding: 0.625rem 0;
+  }
+
+  .disclosure-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .disclosure-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--token-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .disclosure-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: var(--token-brand);
+  }
+
+  .disclosure-link {
+    color: var(--token-brand);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 0.25rem;
+  }
+
+  .disclosure-link:hover {
+    text-decoration: underline;
+  }
+
+  .disclosure-date {
+    font-size: 0.8125rem;
+    color: var(--token-text-subtle);
+    white-space: nowrap;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .disclosure-date {
+      width: 100%;
+    }
+  }
+</style>

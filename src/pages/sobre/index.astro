@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'Sobre', url: '/sobre/' },
+];
+---
+
+<Layout
+  title="Sobre o BicicletasErgometricas.com"
+  description="Conheça a missão, o processo editorial e os critérios de curadoria do BicicletasErgometricas.com — o portal de referência em bicicletas ergométricas no Brasil."
+  breadcrumbs={breadcrumbs}
+  hideDisclosure={true}
+  datePublished="2026-01-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:800px;">
+
+      <h1 id="page-heading">Sobre o BicicletasErgometricas.com</h1>
+      <p class="lead">
+        O <strong>BicicletasErgometricas.com</strong> é um portal editorial independente especializado em bicicletas ergométricas no Brasil. Nossa missão é ajudar consumidores a tomar decisões de compra fundamentadas — sem publicidade disfarçada de conteúdo e sem recomendações motivadas por comissões.
+      </p>
+
+      <h2>O que fazemos</h2>
+      <p>
+        Produzimos análises, comparativos e guias de uso com base em três fontes principais:
+      </p>
+      <ul>
+        <li><strong>Especificações técnicas dos fabricantes</strong> — manuais, fichas técnicas e laudos oficiais</li>
+        <li><strong>Avaliações de usuários verificados</strong> — revisadas em múltiplas plataformas de e-commerce brasileiras</li>
+        <li><strong>Estudos de fisiologia do exercício</strong> — referências de organismos como o ACSM (American College of Sports Medicine) e Harvard Health</li>
+      </ul>
+      <p>
+        Não recebemos produtos para teste físico. Nossa curadoria é baseada em critérios objetivos documentados na nossa <a href="/metodologia/">página de metodologia</a>.
+      </p>
+
+      <h2>Independência editorial</h2>
+      <p>
+        Nenhuma marca paga para ser recomendada ou listada neste site. As recomendações refletem exclusivamente nossa análise técnica e editorial. Quando um produto recebe destaque, é porque os dados o justificam — não porque existe um acordo comercial.
+      </p>
+      <p>
+        O modelo de negócio do portal é baseado em <strong>links de afiliado</strong>: quando você clica em um link e realiza uma compra, podemos receber uma comissão da loja parceira (Amazon, Shopee, entre outras), sem custo adicional para você. Esse modelo é o que nos permite manter o conteúdo gratuito e atualizado.
+      </p>
+      <p>
+        A existência de links de afiliado <strong>não influencia</strong> quais produtos são recomendados nem o conteúdo dos artigos. Um produto pode ser recomendado mesmo sem link de afiliado disponível, e um produto com link de afiliado pode ser desrecomendado se os dados não o justificarem.
+      </p>
+
+      <h2>Processo de curadoria</h2>
+      <p>
+        Cada recomendação passa por um processo estruturado:
+      </p>
+      <ol>
+        <li>Levantamento de especificações técnicas oficiais do fabricante</li>
+        <li>Análise de avaliações de compradores verificados em múltiplas plataformas</li>
+        <li>Comparação com produtos concorrentes na mesma faixa de preço e perfil de uso</li>
+        <li>Verificação de dados de garantia, assistência técnica e disponibilidade no Brasil</li>
+        <li>Revisão periódica para atualização de preços e modelos</li>
+      </ol>
+      <p>
+        Detalhes completos sobre os critérios técnicos avaliados estão na <a href="/metodologia/">metodologia de avaliação</a>.
+      </p>
+
+      <h2>Atualização do conteúdo</h2>
+      <p>
+        O mercado de bicicletas ergométricas no Brasil muda com frequência — modelos são descontinuados, preços variam e novos lançamentos chegam. Revisamos nossos artigos periodicamente e exibimos a data de última atualização em todas as páginas.
+      </p>
+      <p>
+        Se você identificar uma informação desatualizada ou incorreta, entre em contato pelo e-mail <strong>contato@bicicletasergometricas.com</strong>.
+      </p>
+
+      <div class="about-cta">
+        <a href="/metodologia/" class="btn-secondary">Ver metodologia de avaliação →</a>
+        <a href="/melhores-bicicletas-ergometricas/" class="btn-primary">Ver melhores modelos →</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--token-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--token-brand);
+    padding-left: 1.25rem;
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .about-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--token-border);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--token-brand);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    text-decoration: none;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--token-brand-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--token-brand);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--token-radius-md);
+    border: 2px solid var(--token-brand);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--token-brand-light);
+  }
+</style>

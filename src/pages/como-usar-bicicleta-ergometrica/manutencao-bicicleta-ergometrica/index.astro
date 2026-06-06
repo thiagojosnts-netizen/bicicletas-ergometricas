@@ -1,0 +1,334 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Manutenção', url: '/como-usar-bicicleta-ergometrica/manutencao-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Com que frequência devo lubrificar a bicicleta ergométrica?',
+    answer: 'Depende do tipo de transmissão. Correia: raramente precisa de lubrificação — inspecione a cada 6 meses e aplique lubrificante específico se houver ruído seco. Corrente: lubrificar a cada 2 a 4 semanas de uso regular (3–5 vezes por semana). Use lubrificante seco para corrente de bicicleta, evite óleo multiuso (WD-40 não é lubrificante — é solvente).',
+  },
+  {
+    question: 'A bicicleta ergométrica começou a fazer barulho. O que pode ser?',
+    answer: 'Os ruídos mais comuns têm causas específicas: chiado metálico = corrente ou correia seca (lubrificar); rangido ao pedalar = parafusos frouxos nos pedais ou manivelas (apertar); barulho vindo do volante = desgaste do freio de fricção ou sujeira na trilha magnética (limpar e verificar); clique nos pedais = estribo frouxo ou desgastado (apertar ou substituir). Identifique a fonte antes de tentar corrigir.',
+  },
+  {
+    question: 'Qual é a vida útil de uma bicicleta ergométrica doméstica?',
+    answer: 'Uma bicicleta ergométrica doméstica de qualidade intermediária (R$ 1.000–R$ 2.500), com manutenção regular, dura de 5 a 10 anos de uso domiciliar (3–5 sessões semanais). As peças que mais desgastam são: correia ou corrente, pedais e estribos, almofada do selim e sistema de ajuste de resistência. Modelos de entrada (abaixo de R$ 800) têm vida útil estimada de 2 a 5 anos.',
+  },
+  {
+    question: 'Posso usar WD-40 para lubrificar a corrente da bicicleta ergométrica?',
+    answer: 'Não. O WD-40 é um solvente e desengripante, não um lubrificante. Ele remove a graxa original da corrente e seca rapidamente, aumentando o desgaste. Use lubrificante seco específico para corrente de bicicleta (marcas como Finish Line, Squirt ou lubrificantes PTFE). Para correia, use lubrificante de silicone se necessário.',
+  },
+  {
+    question: 'Como limpar a bicicleta ergométrica sem danificar os componentes eletrônicos?',
+    answer: 'Use um pano de microfibra úmido (não molhado) para limpar o quadro, selim e guidão. Para o console eletrônico, use pano levemente úmido sem produtos químicos — nunca borrife spray diretamente no painel. Para peças metálicas e pedais, álcool isopropílico (70%) é seguro. Nunca use água em jato, vapor ou produtos abrasivos.',
+  },
+];
+---
+
+<Layout
+  title="Manutenção de Bicicleta Ergométrica: Guia Completo"
+  description="Como fazer manutenção da bicicleta ergométrica em casa: limpeza, lubrificação, aperto de parafusos, peças que desgastam e vida útil por faixa de preço."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-03-10"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Manutenção de Bicicleta Ergométrica: Guia Completo para Uso Doméstico</h1>
+
+      <p class="summarization">
+        A manutenção de uma <strong>bicicleta ergométrica doméstica</strong> envolve quatro rotinas principais: <strong>limpeza após uso</strong>, <strong>lubrificação da transmissão</strong> (correia ou corrente), <strong>aperto de parafusos</strong> a cada 30 dias e <strong>inspeção de desgaste</strong> a cada 6 meses. Com essas práticas, um modelo intermediário de R$ 1.000 a R$ 2.500 dura de <strong>5 a 10 anos</strong> de uso regular.
+      </p>
+
+      <h2>Rotina de manutenção: frequência por tarefa</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Frequência</th>
+            <th>Material necessário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Limpeza do quadro e selim</td>
+            <td>Após cada uso (ou semanalmente)</td>
+            <td>Pano de microfibra úmido</td>
+          </tr>
+          <tr>
+            <td>Limpeza do console eletrônico</td>
+            <td>Semanalmente</td>
+            <td>Pano seco ou levemente úmido, sem produtos</td>
+          </tr>
+          <tr>
+            <td>Lubrificação da corrente</td>
+            <td>A cada 2–4 semanas (uso regular)</td>
+            <td>Lubrificante seco para corrente (PTFE)</td>
+          </tr>
+          <tr>
+            <td>Lubrificação da correia</td>
+            <td>A cada 6 meses (se houver ruído)</td>
+            <td>Lubrificante de silicone</td>
+          </tr>
+          <tr>
+            <td>Aperto de parafusos (pedais, manivelas, selim)</td>
+            <td>Mensalmente</td>
+            <td>Chave Allen (geralmente inclusa) e chave de boca</td>
+          </tr>
+          <tr>
+            <td>Inspeção de desgaste geral</td>
+            <td>A cada 6 meses</td>
+            <td>Visual + teste de folga nas peças</td>
+          </tr>
+          <tr>
+            <td>Calibração do sistema de resistência</td>
+            <td>Anual ou quando houver inconsistência</td>
+            <td>Manual do fabricante</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Limpeza: como fazer sem danificar</h2>
+
+      <p>
+        A limpeza regular previne o acúmulo de suor — que é corrosivo para componentes metálicos — e de poeira sobre o console eletrônico.
+      </p>
+
+      <ul>
+        <li><strong>Quadro e guidão:</strong> pano de microfibra úmido com água ou álcool 70%. Seque em seguida</li>
+        <li><strong>Selim e almofada:</strong> pano úmido; evite produtos com solvente que ressequem o material</li>
+        <li><strong>Console eletrônico:</strong> pano seco ou levemente úmido — nunca borrife spray direto no painel</li>
+        <li><strong>Pedais e estribos:</strong> álcool isopropílico 70% ou pano úmido para remover sujeira</li>
+        <li><strong>Base e rodinhas:</strong> pano úmido; verifique se há folga ou desgaste nas rodinhas de transporte</li>
+      </ul>
+
+      <div class="alert-box">
+        Nunca use água em jato, vapor, produtos abrasivos ou WD-40 em componentes internos. WD-40 é solvente, não lubrificante — remove a graxa original das engrenagens e acelera o desgaste.
+      </div>
+
+      <h2>Lubrificação: correia vs corrente</h2>
+
+      <p>
+        A lubrificação correta depende do tipo de transmissão do modelo. A maioria das bicicletas ergométricas domésticas usa <strong>correia</strong> (mais silenciosa, menos manutenção) ou <strong>corrente</strong> (mais durável, mais manutenção).
+      </p>
+
+      <div class="compare-boxes">
+        <div class="compare-item">
+          <h3>Bicicleta com correia</h3>
+          <ul>
+            <li>Não precisa de lubrificação frequente</li>
+            <li>Inspecione a tensão a cada 6 meses — correia frouxa causa patinagem</li>
+            <li>Se houver ruído seco, aplique lubrificante de silicone em spray na superfície interna</li>
+            <li>Correia esticada ou desgastada: substituir (peça disponível em lojas de fitness ou fabricante)</li>
+          </ul>
+        </div>
+        <div class="compare-item">
+          <h3>Bicicleta com corrente</h3>
+          <ul>
+            <li>Lubrificar a cada 2 a 4 semanas de uso regular</li>
+            <li>Limpar a corrente com pano seco antes de lubrificar</li>
+            <li>Aplicar lubrificante seco (PTFE) em cada elo, girar o pedal para distribuir</li>
+            <li>Corrente enferrujada ou esticada: substituir por corrente de bicicleta padrão 1/2" × 3/32"</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Aperto de parafusos: quais verificar</h2>
+
+      <p>
+        O uso regular provoca micro-vibrações que afrouxam parafusos gradualmente. O aperto mensal evita folgas que geram ruído e comprometem a estrutura.
+      </p>
+
+      <ol>
+        <li><strong>Pedais:</strong> rosca inversa no pedal esquerdo (gira para apertar no sentido anti-horário). Use chave de 15mm ou Allen de 8mm</li>
+        <li><strong>Manivelas (braços do pedal):</strong> parafuso central com Allen. Folga aqui causa desgaste rápido</li>
+        <li><strong>Pino de ajuste do selim:</strong> aperto manual é suficiente; verifique se não há folga lateral</li>
+        <li><strong>Pino de ajuste do guidão:</strong> mesmo critério do selim</li>
+        <li><strong>Parafusos da base:</strong> verifique se a bicicleta não balança ao sentar — estabilizadores traseiros podem precisar de ajuste</li>
+      </ol>
+
+      <h2>Peças que mais desgastam</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peça</th>
+            <th>Vida útil estimada</th>
+            <th>Sinal de desgaste</th>
+            <th>Onde substituir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Correia de transmissão</td>
+            <td>3–5 anos (uso regular)</td>
+            <td>Rangido, patinagem, esticamento visível</td>
+            <td>Fabricante, lojas de fitness</td>
+          </tr>
+          <tr>
+            <td>Corrente</td>
+            <td>2–4 anos</td>
+            <td>Ferrugem, ruído, "pulo" ao pedalar</td>
+            <td>Lojas de bicicleta (padrão 1/2" × 3/32")</td>
+          </tr>
+          <tr>
+            <td>Almofada do selim</td>
+            <td>2–5 anos</td>
+            <td>Afundamento, desconforto crescente</td>
+            <td>Fabricante ou selim universal</td>
+          </tr>
+          <tr>
+            <td>Estribos dos pedais</td>
+            <td>2–4 anos</td>
+            <td>Folga, tira rasgada</td>
+            <td>Lojas de bicicleta</td>
+          </tr>
+          <tr>
+            <td>Pastilha de freio (resistência por fricção)</td>
+            <td>1–3 anos</td>
+            <td>Ruído ao aumentar resistência, inconsistência de carga</td>
+            <td>Fabricante</td>
+          </tr>
+          <tr>
+            <td>Rolamentos do eixo do pedal</td>
+            <td>4–8 anos</td>
+            <td>Ruído metálico, folga lateral no pedal</td>
+            <td>Oficina de bicicleta ou fabricante</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Vida útil por faixa de preço</h2>
+
+      <div class="tier-boxes">
+        <div class="tier-item">
+          <span class="tier-badge tier-entry">Entrada (até R$ 800)</span>
+          <p>Vida útil estimada de <strong>2 a 4 anos</strong> com uso regular. Estrutura mais leve, peças de reposição menos disponíveis. A manutenção preventiva tem impacto maior nessa faixa.</p>
+        </div>
+        <div class="tier-item">
+          <span class="tier-badge tier-mid">Intermediário (R$ 1.000–R$ 2.500)</span>
+          <p>Vida útil estimada de <strong>5 a 8 anos</strong>. Estrutura mais robusta, peças de reposição mais acessíveis via fabricante. Manutenção regular garante durabilidade próxima ao limite superior.</p>
+        </div>
+        <div class="tier-item">
+          <span class="tier-badge tier-premium">Premium (acima de R$ 2.500)</span>
+          <p>Vida útil estimada de <strong>8 a 15 anos</strong>. Componentes de maior qualidade, rolamentos mais duráveis, garantias estendidas. Estrutura próxima a equipamentos semiprofissionais.</p>
+        </div>
+      </div>
+
+      <h2>Quando chamar assistência técnica</h2>
+
+      <p>Chame o suporte técnico autorizado quando:</p>
+      <ul>
+        <li>O sistema de resistência travou ou não ajusta mais os níveis</li>
+        <li>O console eletrônico parou de funcionar parcial ou totalmente</li>
+        <li>Há folga estrutural no quadro (não apenas parafusos)</li>
+        <li>Rolamentos do volante geram vibração perceptível no assento</li>
+        <li>O equipamento está na garantia — qualquer intervenção não autorizada pode anulá-la</li>
+      </ul>
+
+      <p>
+        Para encontrar assistência autorizada, consulte o site do fabricante. As marcas com melhor cobertura de suporte no Brasil incluem <a href="/melhores-bicicletas-ergometricas/kikos/">Kikos</a>, <a href="/melhores-bicicletas-ergometricas/randers/">Randers</a>, <a href="/melhores-bicicletas-ergometricas/gallant/">Gallant</a> e <a href="/melhores-bicicletas-ergometricas/dream-fitness/">Dream Fitness</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre manutenção de bicicleta ergométrica" />
+</Layout>
+
+<style>
+  .alert-box {
+    background: #fff8e1;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--token-radius-md) var(--token-radius-md) 0;
+    font-size: 0.9375rem;
+    color: var(--token-text-primary);
+    margin: 1.5rem 0;
+    line-height: 1.6;
+  }
+
+  .compare-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .compare-item {
+    padding: 1.25rem;
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+    background: var(--c-gray-50);
+  }
+
+  .compare-item h3 {
+    font-size: 0.9375rem;
+    color: var(--token-brand);
+    margin: 0 0 0.75rem;
+  }
+
+  .compare-item ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .compare-item li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .tier-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .tier-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--token-border);
+    border-radius: var(--token-radius-md);
+  }
+
+  .tier-item p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .tier-badge {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .tier-entry { background: var(--c-gray-100); color: var(--token-text-secondary); }
+  .tier-mid   { background: var(--c-green-100); color: var(--c-green-700); }
+  .tier-premium { background: var(--c-green-500); color: #fff; }
+
+  @media (max-width: 600px) {
+    .compare-boxes { grid-template-columns: 1fr; }
+    .tier-item { flex-direction: column; gap: 0.5rem; }
+  }
+</style>

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 
 interface BreadcrumbItem {
   name: string;
@@ -21,6 +22,7 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[];
   faqItems?: FAQItem[];
   isHomepage?: boolean;
+  hideDisclosure?: boolean;
   datePublished?: string;
   dateModified?: string;
 }
@@ -33,6 +35,7 @@ const {
   breadcrumbs = [],
   faqItems = [],
   isHomepage = false,
+  hideDisclosure = false,
   datePublished = '2026-01-01',
   dateModified = new Date().toISOString().split('T')[0],
 } = Astro.props;
@@ -143,7 +146,7 @@ const articleSchema = !isHomepage && breadcrumbs.length > 0 ? {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -182,6 +185,10 @@ const articleSchema = !isHomepage && breadcrumbs.length > 0 ? {
     <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
 
     <Header />
+
+    {!isHomepage && !hideDisclosure && (
+      <AffiliateDisclosure dateModified={dateModified} />
+    )}
 
     <main id="main-content">
       <slot />
