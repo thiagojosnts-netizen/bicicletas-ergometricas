@@ -7,21 +7,21 @@ import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
-  { name: 'Moviment', url: '/melhores-bicicletas-ergometricas/moviment/' },
+  { name: 'Movement', url: '/melhores-bicicletas-ergometricas/moviment/' },
 ];
 
 const faqItems = [
   {
-    question: 'Moviment é uma boa marca de bicicleta ergométrica?',
-    answer: 'Sim. A Moviment é uma das marcas mais reconhecidas no Brasil para equipamentos de exercício domiciliar, com linha BEX completa de bicicletas ergométricas verticais e horizontais. Seus modelos são conhecidos pela durabilidade da estrutura e pelo suporte pós-venda com peças de reposição disponíveis.',
+    question: 'Movement é uma boa marca de bicicleta ergométrica?',
+    answer: 'Sim. A Movement é uma das marcas brasileiras mais reconhecidas no segmento fitness, com presença consolidada em academias e uso domiciliar. Seus modelos de bikes verticais e spinning são conhecidos pela durabilidade estrutural, qualidade dos componentes e disponibilidade de peças de reposição no Brasil.',
   },
   {
-    question: 'Qual é a diferença entre Moviment BEX-1800 e BEX-2300?',
-    answer: 'O BEX-1800 tem 12 níveis de resistência magnética e suporte de 100 kg, adequado para uso moderado. O BEX-2300 tem 16 níveis, suporte de 120 kg, mais programas automáticos e acabamento superior. A diferença de preço é de aproximadamente R$ 500 a R$ 800, valendo o investimento para usuários acima de 80 kg ou com frequência acima de 4x/semana.',
+    question: 'Qual é a diferença entre a bike V4 e a C2 da Movement?',
+    answer: 'A V4 é uma bike vertical com resistência magnética, indicada para treinos aeróbicos em casa. A C2 é uma spinning mecânica com roda de inércia de 12 kg, mais voltada para treinos de alta intensidade. A escolha depende do objetivo: cardio regular (V4) ou simulação de pedal mais intenso (C2).',
   },
   {
-    question: 'Moviment tem loja física no Brasil?',
-    answer: 'A Moviment opera principalmente via e-commerce e revendedores autorizados. Não tem lojas físicas próprias na maioria das cidades, mas possui centros de assistência técnica e revendedores em várias capitais brasileiras.',
+    question: 'Movement tem assistência técnica no Brasil?',
+    answer: 'Sim. A Movement é uma empresa brasileira com rede de assistência técnica nas principais capitais e regiões metropolitanas. Peças de reposição originais estão disponíveis diretamente pela marca e por revendedores autorizados.',
   },
 ];
 
@@ -29,8 +29,8 @@ const imagem = await fetchBikeImage("indoor cycling bike vertical");
 ---
 
 <Layout
-  title="Moviment BEX: Bicicleta Ergométrica"
-  description="Análise da linha BEX da Moviment no Brasil: modelos 800, 1800 e 2300. Durabilidade, resistência magnética e melhor opção por frequência de uso."
+  title="Movement: Bicicleta Ergométrica e Spinning"
+  description="Análise das bikes Movement no Brasil: modelos C2, V4 e C3. Resistência magnética, spinning e melhor opção por perfil de uso e orçamento."
   breadcrumbs={breadcrumbs}
   faqItems={faqItems}
   datePublished="2026-02-04"
@@ -39,57 +39,58 @@ const imagem = await fetchBikeImage("indoor cycling bike vertical");
 
   <section class="section" aria-labelledby="page-heading">
     <div class="container" style="max-width:860px;">
-      <h1 id="page-heading">Bicicleta Ergométrica Moviment: Análise da Linha BEX</h1>
+      <h1 id="page-heading">Bicicleta Ergométrica Movement: Análise dos Modelos</h1>
 
       <p class="summarization">
-        A <strong>bicicleta ergométrica Moviment</strong> é produzida com foco na durabilidade estrutural, com linha BEX que oferece modelos de <strong>R$ 900 a R$ 2.500</strong> com resistência magnética, suporte de <strong>90 a 130 kg</strong> e entre <strong>8 e 16 níveis de carga</strong>. O modelo <strong>BEX-2300</strong> é o mais completo da linha para uso familiar intensivo, com garantia de 2 anos para estrutura.
+        A <strong>bicicleta ergométrica Movement</strong> é produzida no Brasil com foco em durabilidade e uso intensivo, com modelos de <strong>R$ 2.100 a R$ 6.000</strong> cobrindo spinning mecânica, vertical magnética e spinning eletromagnética. O modelo <strong>V4 Vertical Magnético</strong> é o mais indicado para uso domiciliar regular, e a <strong>C2 Spinning</strong> é a opção mais acessível da linha com roda de inércia de 12 kg.
       </p>
 
       <p>
-        A <strong>Moviment</strong> tem boa reputação no mercado brasileiro de equipamentos fitness domiciliar, especialmente pela durabilidade dos quadros de aço e pela disponibilidade de peças de reposição.
+        A <strong>Movement</strong> tem presença consolidada no mercado brasileiro de equipamentos fitness, com linha de bikes usada tanto em academias quanto em residências. A marca se destaca pela qualidade da estrutura em aço nacional, pela disponibilidade de peças de reposição e pela rede de assistência técnica.
       </p>
 
-      <h2>Linha BEX: comparativo técnico</h2>
+      <h2>Linha Movement: comparativo técnico</h2>
 
       <table>
         <thead>
           <tr>
             <th>Modelo</th>
+            <th>Tipo</th>
             <th>Resistência</th>
-            <th>Níveis</th>
-            <th>Peso suportado</th>
-            <th>Programas</th>
-            <th>Preço</th>
+            <th>Roda de inércia</th>
+            <th>Bluetooth</th>
+            <th>Preço aprox.</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td><strong>BEX-800</strong></td><td>Magnética</td><td>8</td><td>90 kg</td><td>5</td><td>R$ 900-R$ 1.200</td></tr>
-          <tr><td><strong>BEX-1800</strong></td><td>Magnética</td><td>12</td><td>100 kg</td><td>8</td><td>R$ 1.400-R$ 1.800</td></tr>
-          <tr><td><strong>BEX-2300</strong></td><td>Magnética</td><td>16</td><td>120 kg</td><td>12</td><td>R$ 2.000-R$ 2.500</td></tr>
+          <tr><td><strong>C2</strong></td><td>Spinning</td><td>Mecânica</td><td>12 kg</td><td>Não</td><td>R$ 2.100–R$ 2.500</td></tr>
+          <tr><td><strong>V4</strong></td><td>Vertical</td><td>Magnética</td><td>—</td><td>Não</td><td>R$ 2.700–R$ 3.200</td></tr>
+          <tr><td><strong>C3</strong></td><td>Spinning</td><td>Magnética</td><td>—</td><td>Sim</td><td>R$ 2.900–R$ 3.500</td></tr>
+          <tr><td><strong>C7</strong></td><td>Spinning</td><td>Eletromagnética</td><td>—</td><td>Sim</td><td>R$ 5.500–R$ 6.500</td></tr>
         </tbody>
       </table>
 
       <div class="highlight-box">
         <p>
-          <strong>Recomendação:</strong> O <strong>BEX-1800</strong> é o melhor custo-benefício da linha para usuários de até 80 kg com frequência de 3 a 4 sessões semanais. Para uso mais intensivo, o <strong>BEX-2300</strong> oferece margem estrutural superior sem sair do segmento acessível.
+          <strong>Recomendação:</strong> Para uso domiciliar de cardio regular (3 a 5x/semana), a <strong>V4 Vertical Magnética</strong> é a escolha mais equilibrada — silenciosa, durável e sem necessidade de ajuste de freio. Para treino de spinning com maior intensidade, a <strong>C2</strong> entrega melhor relação custo-benefício com a roda de 12 kg.
         </p>
       </div>
 
       <div style="margin-top: 2rem;">
         <ProductCard product={{
-          name: "Bicicleta Ergométrica Moviment BEX-2300",
-          description: "16 níveis de resistência magnética, 12 programas automáticos e suporte até 120 kg. Garantia de 2 anos na estrutura para uso familiar intensivo.",
-          price: "R$ 2.000 – R$ 2.500",
-          rating: 4.1,
-          reviewCount: 742,
-          affiliateUrl: "https://www.amazon.com.br/s?k=bicicleta+ergometrica+moviment",
+          name: "Bike Spinning Vertical V4 Movement Nacional Carga Magnética",
+          description: "Bike vertical com resistência magnética, estrutura nacional em aço, ajuste de assento e guidão. Indicada para cardio domiciliar regular com silêncio e durabilidade.",
+          price: "R$ 2.700 – R$ 3.200",
+          rating: 4.5,
+          reviewCount: 120,
+          affiliateUrl: "https://www.amazon.com.br/s?k=bicicleta+ergometrica+movement",
           image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Moviment BEX-2300",
+          imageAlt: "Bike vertical Movement V4",
           features: [
-            "16 níveis de resistência magnética",
-            "12 programas automáticos",
-            "Suporte até 120 kg",
-            "Garantia 2 anos na estrutura",
+            "Resistência magnética silenciosa",
+            "Estrutura em aço nacional",
+            "Assento e guidão ajustáveis",
+            "Marca brasileira com assistência técnica",
           ],
         }} />
       </div>
@@ -106,5 +107,5 @@ const imagem = await fetchBikeImage("indoor cycling bike vertical");
     </div>
   </section>
 
-  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Moviment" />
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Movement" />
 </Layout>
