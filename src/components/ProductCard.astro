@@ -11,6 +11,7 @@ export interface Props {
     rating?: number;
     reviewCount?: number;
     affiliateUrl: string;       // Link gerado pelo SiteStripe
+    store?: string;             // Ex: "Amazon", "Mercado Livre" (default: "Amazon")
     image?: string;             // URL da imagem (Pexels ou manual)
     imageAlt?: string;
     badge?: string;             // Ex: "Mais Vendido", "Melhor Custo-Benefício"
@@ -19,6 +20,7 @@ export interface Props {
 }
 
 const { product } = Astro.props;
+const store = product.store ?? "Amazon";
 const stars = product.rating ? Math.round(product.rating) : 0;
 ---
 
@@ -79,9 +81,9 @@ const stars = product.rating ? Math.round(product.rating) : 0;
         class="cta-button"
         target="_blank"
         rel="noopener nofollow sponsored"
-        aria-label={`Ver ${product.name} na Amazon`}
+        aria-label={`Ver ${product.name} no ${store}`}
       >
-        Ver na Amazon
+        Ver no {store}
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
