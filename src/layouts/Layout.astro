@@ -41,6 +41,7 @@ const {
 } = Astro.props;
 
 const SITE_NAME = 'BicicletasErgometricas.com';
+const TITLE_SUFFIX = 'BicErgometricas.com';
 const SITE_URL = 'https://bicicletasergometricas.com';
 const CANONICAL = canonical.startsWith('http') ? canonical : `${SITE_URL}${canonical}`;
 
@@ -145,7 +146,7 @@ const articleSchema = !isHomepage && breadcrumbs.length > 0 ? {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{title} | {SITE_NAME}</title>
+    <title>{title} | {TITLE_SUFFIX}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={CANONICAL} />
 
