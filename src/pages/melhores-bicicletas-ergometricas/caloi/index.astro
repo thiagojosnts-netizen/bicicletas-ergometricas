@@ -1,0 +1,139 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Caloi', url: '/melhores-bicicletas-ergometricas/caloi/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica Caloi é boa?',
+    answer: 'Sim. A Caloi é uma das marcas mais tradicionais do mercado brasileiro de ciclismo, com mais de 100 anos de atuação. Seus modelos de bicicleta ergométrica são bem avaliados pela durabilidade estrutural e pela disponibilidade de assistência técnica em todo o país. A linha de ergométricas é voltada para uso domiciliar de entrada e intermediário — não há modelos premium de alta performance na linha domiciliar.',
+  },
+  {
+    question: 'Qual o preço da bicicleta ergométrica Caloi?',
+    answer: 'Os modelos de bicicleta ergométrica Caloi disponíveis no Brasil custam entre R$ 800 e R$ 2.500, dependendo do tipo (vertical ou horizontal) e das especificações técnicas. Os modelos de entrada com resistência magnética básica ficam na faixa de R$ 800 a R$ 1.200; os modelos intermediários com mais níveis de resistência e painel digital ficam entre R$ 1.200 e R$ 2.500.',
+  },
+  {
+    question: 'Caloi tem assistência técnica para bicicleta ergométrica?',
+    answer: 'Sim. A Caloi possui uma das redes de assistência técnica mais abrangentes do Brasil para equipamentos de ciclismo, incluindo bicicletas ergométricas. A rede inclui pontos autorizados nas principais capitais e cidades do interior. A garantia varia por modelo, geralmente entre 12 e 24 meses para estrutura. Peças de reposição têm disponibilidade acima da média em relação a marcas menores.',
+  },
+  {
+    question: 'Bicicleta ergométrica Caloi ou Gallant: qual escolher?',
+    answer: 'Para o mesmo orçamento, a Gallant tende a oferecer mais opções de modelo e especificações técnicas ligeiramente superiores (maior variedade de níveis de resistência, mais programas de treino). A Caloi tem vantagem em rede de assistência técnica — mais fácil de encontrar suporte em cidades menores. Se assistência técnica local é prioridade, Caloi é a escolha mais segura; se custo-benefício técnico é prioritário, Gallant tende a ganhar na mesma faixa de preço.',
+  },
+];
+---
+
+<Layout
+  title="Caloi: Bicicleta Ergométrica — Análise dos Modelos"
+  description="Análise das bicicletas ergométricas Caloi no Brasil: modelos disponíveis, especificações técnicas, preços e para qual perfil de uso cada modelo é indicado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Caloi: Análise Completa dos Modelos Disponíveis</h1>
+
+      <p class="summarization">
+        A <strong>Caloi</strong> é uma das marcas de ciclismo mais tradicionais do Brasil, com mais de 100 anos de mercado. Sua linha de bicicletas ergométricas é voltada para <strong>uso domiciliar de entrada e intermediário</strong>, com modelos de resistência magnética entre <strong>R$ 800 e R$ 2.500</strong>. A marca se destaca pela <strong>durabilidade da estrutura</strong> e pela <strong>rede de assistência técnica</strong> presente em todo o país — vantagem importante para quem precisa de suporte local fora das capitais.
+      </p>
+
+      <p>
+        A Caloi não é a primeira escolha para quem busca especificações técnicas avançadas ou conectividade com apps — marcas como <a href="/melhores-bicicletas-ergometricas/gallant/">Gallant</a> e <a href="/melhores-bicicletas-ergometricas/dream-fitness/">Dream Fitness</a> tendem a oferecer mais recursos na mesma faixa de preço. O diferencial da Caloi está na confiança da marca e na capilaridade da assistência técnica no território brasileiro.
+      </p>
+
+      <h2>Modelos de Bicicleta Ergométrica Caloi</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Resistência</th>
+            <th>Capacidade</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Moving</strong></td><td>Vertical</td><td>Magnética, 8 níveis</td><td>100 kg</td><td>R$ 800–1.100</td></tr>
+          <tr><td><strong>Speed</strong></td><td>Vertical</td><td>Magnética, 12 níveis</td><td>110 kg</td><td>R$ 1.100–1.600</td></tr>
+          <tr><td><strong>Speed Pro</strong></td><td>Vertical</td><td>Magnética, 16 níveis</td><td>120 kg</td><td>R$ 1.500–2.200</td></tr>
+          <tr><td><strong>Horizontal</strong></td><td>Horizontal</td><td>Magnética, 8 níveis</td><td>110 kg</td><td>R$ 1.400–2.000</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:0.875rem;color:var(--token-text-secondary);">Modelos e especificações sujeitos a atualização pela Caloi. Verifique a linha atual no site oficial ou nos revendedores autorizados.</p>
+
+      <p style="margin-top:1rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+caloi&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver bicicletas ergométricas Caloi na Amazon →
+        </a>
+      </p>
+
+      <h2>Pontos Fortes da Caloi</h2>
+
+      <ul>
+        <li><strong>Tradição de marca:</strong> mais de 100 anos no mercado brasileiro de ciclismo geram confiança e reconhecimento — relevante para quem valoriza marcas estabelecidas com histórico de produto.</li>
+        <li><strong>Rede de assistência técnica:</strong> cobertura nacional com pontos autorizados em capitais e cidades do interior, facilitando o atendimento em caso de defeito ou necessidade de peças.</li>
+        <li><strong>Durabilidade estrutural:</strong> o quadro de aço dos modelos Caloi é consistentemente elogiado por usuários em avaliações — a estrutura tende a durar mais do que em marcas de menor tradição na mesma faixa de preço.</li>
+        <li><strong>Relação qualidade/preço no segmento de entrada:</strong> os modelos Moving e Speed oferecem boa relação custo-benefício para uso de 2 a 3 vezes por semana em intensidade moderada.</li>
+      </ul>
+
+      <h2>Pontos de Atenção</h2>
+
+      <ul>
+        <li><strong>Linha menos diversificada:</strong> a Caloi oferece menos variação de modelos que concorrentes como Gallant e Kikos — menos opções de spinning, sem modelos recumbentes e linha premium limitada.</li>
+        <li><strong>Modelos avançados limitados:</strong> para usuários que buscam conectividade Bluetooth, programas de treino avançados ou volante de inércia pesado (acima de 10 kg), a Caloi tem poucas opções.</li>
+        <li><strong>Painel digital mais simples:</strong> os modelos de entrada e intermediário têm consoles com funções básicas (tempo, velocidade, calorias, FC) — sem programas automáticos ou integração com apps.</li>
+      </ul>
+
+      <h2>Caloi vs Concorrentes</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Caloi</th>
+            <th>Gallant</th>
+            <th>Dream Fitness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Preço de entrada (magnética)</td><td>~R$ 800</td><td>~R$ 574</td><td>~R$ 430</td></tr>
+          <tr><td>Variedade de modelos</td><td>Limitada</td><td>Alta (+15 modelos)</td><td>Moderada</td></tr>
+          <tr><td>Assistência técnica</td><td>Excelente</td><td>Boa</td><td>Regular</td></tr>
+          <tr><td>Conectividade</td><td>Básica</td><td>Bluetooth (magnéticos)</td><td>Básica</td></tr>
+          <tr><td>Avaliação média (Amazon)</td><td>4.2–4.4 ★</td><td>4.3–4.5 ★</td><td>4.1–4.4 ★</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para Quem é Indicada a Caloi</h2>
+
+      <ul>
+        <li><strong>Usuário que valoriza marca estabelecida:</strong> quem prefere a segurança de uma marca centenária com histórico comprovado no mercado brasileiro.</li>
+        <li><strong>Quem precisa de assistência técnica local:</strong> especialmente em cidades do interior, onde marcas menos conhecidas podem não ter suporte técnico disponível.</li>
+        <li><strong>Iniciante com orçamento até R$ 1.500:</strong> os modelos Moving e Speed atendem bem usuários que estão começando e precisam de equipamento confiável sem recursos avançados.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          Para comparar com outras marcas e decidir com base em especificações técnicas completas, acesse o <a href="/melhores-bicicletas-ergometricas/">comparativo completo de marcas</a>. Para quem está decidindo entre Caloi e modelos mais baratos, veja os <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">melhores modelos baratos</a> disponíveis no mercado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Caloi" />
+</Layout>

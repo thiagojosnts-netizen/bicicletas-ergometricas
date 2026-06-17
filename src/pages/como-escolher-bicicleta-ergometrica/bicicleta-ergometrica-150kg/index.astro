@@ -1,0 +1,125 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica 150 kg', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-150kg/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual bicicleta ergométrica suporta 150 kg?',
+    answer: 'Modelos com capacidade declarada de 150 kg incluem o Gallant Smart Spinning 18kg, a Wellness Health Bike Premium e a WCT Fitness Spinning 20kg. Para uso seguro, aplique a regra dos 80%: para um usuário de 130 kg, o modelo deve declarar capacidade de no mínimo 163 kg. Modelos com capacidade declarada de 150 kg são adequados para usuários de até 120 kg em uso regular.',
+  },
+  {
+    question: 'Bicicleta ergométrica 150 kg: quais marcas têm?',
+    answer: 'No Brasil, as marcas com modelos de alta capacidade incluem Gallant (Smart Spinning 18kg, 150 kg), Wellness (Health Bike Premium, 150 kg) e WCT Fitness (Spinning 20kg, 150 kg). Para capacidade acima de 150 kg, é necessário buscar modelos semiprofissionais ou de academia, com estrutura de aço de maior espessura e preço acima de R$ 3.000.',
+  },
+  {
+    question: 'Como saber se uma bicicleta ergométrica aguenta meu peso?',
+    answer: 'Regra prática: o modelo deve ter capacidade declarada de pelo menos 25% acima do seu peso corporal. Para 130 kg, busque modelos com capacidade de 163 kg ou mais. Verifique a capacidade no manual técnico do fabricante, não apenas na página de produto — alguns anúncios online exageram a capacidade declarada. Prefira modelos com quadro de aço e solda em pontos críticos visíveis nas fotos técnicas.',
+  },
+  {
+    question: 'Bicicleta ergométrica profissional 150 kg vale a pena para uso doméstico?',
+    answer: 'Depende do uso. Modelos profissionais com capacidade de 150 kg têm estrutura reforçada que dura muito mais em uso frequente por usuários acima de 100 kg. O custo é maior (R$ 2.000 a R$ 5.000), mas a vida útil pode ser 2 a 3 vezes superior. Para uso doméstico de 3 a 5 vezes por semana por usuários acima de 110 kg, o investimento em um modelo semiprofissional se justifica ao longo do tempo.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica 150 kg: Modelos com Alta Capacidade"
+  description="Bicicleta ergométrica com capacidade para 150 kg: modelos disponíveis no Brasil, marcas recomendadas, o que verificar na estrutura e critérios de segurança."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica para 150 kg: Quais Modelos Suportam e Como Escolher</h1>
+
+      <p class="summarization">
+        A maioria das bicicletas ergométricas domiciliares suporta entre <strong>90 e 120 kg</strong>. Para usuários com <strong>130 a 150 kg</strong>, é necessário buscar modelos semiprofissionais com estrutura de aço reforçado e capacidade declarada de 150 kg ou mais. A <strong>regra dos 80%</strong> é fundamental: para usar o equipamento com segurança, o peso do usuário não deve ultrapassar 80% da capacidade declarada — para 130 kg de peso corporal, o modelo deve suportar ao menos <strong>163 kg</strong>.
+      </p>
+
+      <p>
+        O <a href="/como-escolher-bicicleta-ergometrica/peso-suportado-bicicleta-ergometrica/">guia completo de peso suportado</a> explica por que a capacidade declarada pelos fabricantes nem sempre corresponde à capacidade de uso seguro a longo prazo. A diferença entre capacidade estática (peso parado) e dinâmica (peso em movimento com impacto da pedalagem) pode ser significativa, especialmente em modelos de estrutura mais leve.
+      </p>
+
+      <h2>Por que a Capacidade de Carga Importa</h2>
+
+      <p>
+        A capacidade de carga declarada representa o limite máximo para uso seguro segundo o fabricante. Ultrapassar esse limite compromete a garantia e pode causar falha estrutural — geralmente na solda do quadro ou no eixo do pedivela. A diferença entre capacidade estática e dinâmica existe porque durante a pedalagem o corpo gera forças de impacto de 1,5 a 2 vezes o peso corporal em cada pedalada, especialmente em resistência alta.
+      </p>
+
+      <p>
+        Por esse motivo, a <strong>regra dos 80%</strong> é o padrão adotado pela maioria dos fisioterapeutas e técnicos de equipamentos: nunca use mais de 80% da capacidade declarada. Para 120 kg de peso corporal, o modelo mínimo deve declarar capacidade de 150 kg.
+      </p>
+
+      <h2>Modelos com Capacidade para 150 kg no Brasil</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Marca / Modelo</th>
+            <th>Capacidade declarada</th>
+            <th>Tipo</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Gallant Smart Spinning 18kg</strong></td><td>150 kg</td><td>Spinning magnética</td><td>R$ 4.500–5.600</td></tr>
+          <tr><td><strong>Wellness Health Bike Premium</strong></td><td>150 kg</td><td>Vertical magnética</td><td>R$ 2.500–3.200</td></tr>
+          <tr><td><strong>WCT Fitness Spinning 20kg</strong></td><td>150 kg</td><td>Spinning mecânica</td><td>R$ 2.000–2.800</td></tr>
+          <tr><td><strong>Athletic Bike Pro</strong></td><td>130 kg</td><td>Vertical magnética</td><td>R$ 1.800–2.500</td></tr>
+          <tr><td><strong>Kikos FB 180i</strong></td><td>110 kg</td><td>Vertical magnética</td><td>R$ 1.700–2.200</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+150kg&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver modelos de alta capacidade na Amazon →
+        </a>
+      </p>
+
+      <h2>O que Verificar na Estrutura</h2>
+
+      <ol>
+        <li><strong>Material do quadro:</strong> prefira aço carbono ou aço inox sobre alumínio — o alumínio é mais leve mas menos resistente a cargas elevadas e ao desgaste por vibração contínua.</li>
+        <li><strong>Espessura dos tubos:</strong> tubos com parede mínima de 2 mm são mais robustos. Essa informação raramente está no anúncio — busque no manual técnico ou entre em contato com o fabricante.</li>
+        <li><strong>Tipo de solda:</strong> soldas contínuas (não pontilhadas) em pontos críticos como a junção do guidão com o corpo e o suporte do pedivela indicam maior resistência estrutural.</li>
+        <li><strong>Largura do selim:</strong> selins mais largos (acima de 26 cm) e com espuma de alta densidade distribuem melhor o peso em usuários acima de 100 kg.</li>
+        <li><strong>Capacidade do pedivela:</strong> o eixo do pedivela deve ser de aço maciço, não vazado. Pedivelas com eixo de 8 mm ou mais são mais resistentes para usuários mais pesados.</li>
+        <li><strong>Garantia de estrutura:</strong> modelos com garantia de estrutura de 2 anos ou mais indicam maior confiança do fabricante na resistência do quadro.</li>
+      </ol>
+
+      <h2>Bicicleta Horizontal ou Vertical para Usuários Acima de 130 kg?</h2>
+
+      <p>
+        Para usuários acima de 130 kg, a <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/">bicicleta horizontal</a> é a recomendação técnica mais comum por três razões:
+      </p>
+
+      <ul>
+        <li><strong>Distribuição de peso:</strong> o encosto distribui o peso corporal pelo assento e pelas costas, reduzindo a concentração de carga sobre o quadril e o selim.</li>
+        <li><strong>Conforto articular:</strong> o ângulo de pedalagem na horizontal (pedais à frente do corpo) reduz a carga sobre os joelhos, que já estão sob maior estresse em usuários com sobrepeso.</li>
+        <li><strong>Estabilidade:</strong> a base mais ampla da horizontal oferece maior estabilidade durante a entrada e saída do equipamento.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Recomendação:</strong> Para usuários entre 120 e 150 kg, priorize modelos com capacidade declarada de 150 kg, quadro de aço e garantia de estrutura de pelo menos 2 anos. Veja análises completas de <a href="/melhores-bicicletas-ergometricas/wellness/">Wellness</a>, <a href="/melhores-bicicletas-ergometricas/wct-fitness/">WCT Fitness</a> e <a href="/melhores-bicicletas-ergometricas/kikos/">Kikos</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica para 150 kg" />
+</Layout>

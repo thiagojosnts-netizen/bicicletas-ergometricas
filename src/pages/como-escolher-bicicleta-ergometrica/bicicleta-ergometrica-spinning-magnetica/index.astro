@@ -1,0 +1,148 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Spinning Magnética', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-spinning-magnetica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta de spinning magnética vale a pena?',
+    answer: 'Sim, especialmente para uso domiciliar. A resistência magnética elimina o ruído do atrito, oferece ajuste de carga mais preciso e exige muito menos manutenção que a resistência mecânica. O custo é maior — modelos de entrada com magneto custam R$ 1.500 a R$ 2.500 contra R$ 500 a R$ 1.200 dos mecânicos —, mas a vida útil e a experiência de uso são significativamente superiores. Para uso de 3 ou mais vezes por semana, o magnético se paga a longo prazo.',
+  },
+  {
+    question: 'Qual a diferença entre spinning magnética e mecânica?',
+    answer: 'A spinning magnética usa eletroímãs para criar resistência sem contato físico com o volante. A mecânica usa uma pastilha de feltro ou borracha que pressiona fisicamente o volante. O resultado: a magnética é silenciosa (abaixo de 30 dB), tem ajuste preciso e não desgasta o volante. A mecânica gera ruído (40–60 dB), tem ajuste impreciso e requer troca da pastilha após 6 a 18 meses de uso regular.',
+  },
+  {
+    question: 'Spinning magnética faz barulho?',
+    answer: 'Muito pouco. Modelos de spinning com resistência magnética operam abaixo de 30 dB — o som equivalente a uma conversa suave. O som predominante é o das pedaleiras e da correia de transmissão, não da resistência. Em apartamentos, a vibração da estrutura no piso pode ser atenuada com tapete emborrachado sob o equipamento. Comparado ao modelo mecânico, a redução de ruído é significativa.',
+  },
+  {
+    question: 'Qual a melhor bicicleta de spinning magnética no Brasil?',
+    answer: 'Para uso domiciliar até R$ 2.000, a WCT Fitness 13kg com resistência magnética é uma das opções mais bem avaliadas. Para uso intensivo até R$ 3.000, a Gallant Smart Spinning se destaca pelo volante de 18kg e suporte de 150 kg. Para quem busca conectividade Bluetooth, a Kikos tem modelos compatíveis com apps de treino. A escolha depende do volante mínimo necessário para seu nível de treino — prefira volante de 8 kg ou mais para uso regular.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta de Spinning Magnética: Como Escolher"
+  description="Bicicleta de spinning magnética: diferença para a mecânica, critérios de escolha, melhores modelos no Brasil e faixas de preço por nível de uso."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta de Spinning Magnética: Como Funciona e Como Escolher a Certa</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta de spinning magnética</strong> usa eletroímãs para criar resistência sem contato físico com o volante — o que a torna <strong>silenciosa</strong> (abaixo de 30 dB), com <strong>ajuste de carga preciso</strong> e sem desgaste mecânico por atrito. Para uso domiciliar, é a tecnologia recomendada. Os modelos de entrada custam entre <strong>R$ 1.500 e R$ 2.500</strong>; os de uso intensivo, entre <strong>R$ 2.500 e R$ 4.500</strong>.
+      </p>
+
+      <p>
+        O <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia da bicicleta de spinning</a> explica as diferenças entre todos os tipos. Esta página foca especificamente nos modelos magnéticos e nos critérios para escolher o certo para o seu nível de treino e orçamento.
+      </p>
+
+      <h2>Como Funciona a Resistência Magnética</h2>
+
+      <p>
+        O sistema de resistência magnética usa um par de eletroímãs (ou imãs permanentes com ajuste mecânico) posicionados próximos ao volante de inércia. Ao aproximar os ímãs do volante, o campo magnético cria uma força de frenagem — sem qualquer contato físico entre as peças. Isso significa que não há atrito, não há desgaste e não há ruído de raspagem.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Resistência magnética</th>
+            <th>Resistência mecânica (atrito)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nível de ruído</td><td>Abaixo de 30 dB</td><td>40–60 dB</td></tr>
+          <tr><td>Precisão de ajuste</td><td>Alta (níveis consistentes)</td><td>Baixa (imprecisa)</td></tr>
+          <tr><td>Desgaste mecânico</td><td>Nenhum no sistema de resistência</td><td>Pastilha desgasta em 6–18 meses</td></tr>
+          <tr><td>Manutenção necessária</td><td>Mínima (correia e pedaleiras)</td><td>Troca periódica de pastilha</td></tr>
+          <tr><td>Preço de entrada</td><td>R$ 1.500–2.500</td><td>R$ 500–1.200</td></tr>
+          <tr><td>Vida útil do sistema</td><td>8–12 anos (uso domiciliar)</td><td>3–5 anos com manutenção</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Critérios para Escolher</h2>
+
+      <ol>
+        <li><strong>Peso do volante (mínimo 8 kg para uso domiciliar):</strong> o volante de inércia define a suavidade do pedal. Abaixo de 8 kg, o movimento é mais "chocante" e menos fluido. Para treinos de alta intensidade, prefira 13 kg ou mais.</li>
+        <li><strong>Tipo de ajuste de resistência (manual vs digital):</strong> ajuste manual por knob é mais simples e resistente. Ajuste digital (com botões no guidão) oferece mais precisão e compatibilidade com apps — mas é mais caro e pode apresentar mais falhas eletrônicas.</li>
+        <li><strong>Conectividade (Bluetooth, ANT+):</strong> para integração com Zwift, Kinomap ou apps de frequência cardíaca, verifique se o modelo tem transmissor Bluetooth BLE. Nem todos os modelos "magnéticos" têm conectividade.</li>
+        <li><strong>Suporte de peso:</strong> verifique a capacidade declarada e aplique a regra dos 80%. Para 80 kg de peso corporal, o modelo deve suportar ao menos 100 kg.</li>
+        <li><strong>Regulagem de guidão e selim:</strong> guiã ajustável em altura e profundidade permite configurar a posição correta independente da estatura do usuário. Selim com trilho de regulagem horizontal é importante para ajustar o alcance dos pedais.</li>
+        <li><strong>Garantia:</strong> prefira modelos com garantia de estrutura de pelo menos 12 meses e garantia de peças de 6 meses ou mais.</li>
+      </ol>
+
+      <h2>Melhores Bicicletas de Spinning Magnética no Brasil</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Marca / Modelo</th>
+            <th>Volante</th>
+            <th>Conectividade</th>
+            <th>Capacidade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>WCT Fitness Spinning 13kg Magnética</strong></td><td>13 kg</td><td>Não</td><td>120 kg</td><td>R$ 1.500–2.200</td></tr>
+          <tr><td><strong>Gallant Elite X Magnética</strong></td><td>8 kg</td><td>Bluetooth BLE</td><td>110 kg</td><td>R$ 574–699</td></tr>
+          <tr><td><strong>Gallant Smart Spinning 18kg</strong></td><td>18 kg</td><td>Bluetooth BLE</td><td>150 kg</td><td>R$ 4.500–5.600</td></tr>
+          <tr><td><strong>Kikos FB 180i</strong></td><td>—</td><td>Bluetooth BLE</td><td>110 kg</td><td>R$ 1.700–2.200</td></tr>
+          <tr><td><strong>Odin Fit Sprint 13kg</strong></td><td>13 kg</td><td>Não</td><td>130 kg</td><td>R$ 2.000–2.800</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+spinning+magnetica&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver spinning magnéticas na Amazon →
+        </a>
+      </p>
+
+      <h2>Spinning Magnética vs Spinning Mecânica</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Magnética</th>
+            <th>Mecânica (atrito)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Ruído</td><td>Muito baixo (&lt;30 dB)</td><td>Moderado a alto (40–60 dB)</td></tr>
+          <tr><td>Precisão de resistência</td><td>Alta — níveis consistentes</td><td>Baixa — varia com desgaste da pastilha</td></tr>
+          <tr><td>Manutenção</td><td>Mínima (correia a cada 2 anos)</td><td>Troca de pastilha a cada 6–18 meses</td></tr>
+          <tr><td>Vida útil</td><td>8–12 anos</td><td>3–5 anos com manutenção regular</td></tr>
+          <tr><td>Preço médio domiciliar</td><td>R$ 1.500–3.000</td><td>R$ 500–1.500</td></tr>
+          <tr><td>Indicação</td><td>Uso regular, apartamento, conectividade</td><td>Uso esporádico, orçamento reduzido</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Recomendação:</strong> Para uso domiciliar de 3 ou mais vezes por semana, a spinning magnética se paga em 2 a 3 anos de uso — pela economia em manutenção e pela vida útil maior. O <a href="/como-escolher-bicicleta-ergometrica/">guia completo de como escolher</a> tem os demais critérios para comparar modelos. Veja também análises de <a href="/melhores-bicicletas-ergometricas/wct-fitness/">WCT Fitness</a>, <a href="/melhores-bicicletas-ergometricas/gallant/">Gallant</a> e <a href="/melhores-bicicletas-ergometricas/kikos/">Kikos</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta de Spinning Magnética" />
+</Layout>

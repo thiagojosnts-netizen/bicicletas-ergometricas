@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Aluguel de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/aluguel-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quanto custa alugar uma bicicleta ergométrica por mês?',
+    answer: 'O aluguel de bicicleta ergométrica no Brasil custa entre R$ 150 e R$ 400 por mês, dependendo do modelo e da cidade. Bicicletas verticais básicas saem por R$ 150 a R$ 250/mês; modelos horizontais e de spinning custam R$ 200 a R$ 400/mês. A maioria dos contratos exige prazo mínimo de 1 a 3 meses e inclui entrega e retirada. Manutenção pode ou não estar incluída — verifique no contrato.',
+  },
+  {
+    question: 'Vale a pena alugar ou comprar bicicleta ergométrica?',
+    answer: 'Depende do prazo e da certeza de uso. Para uso de até 3 meses (reabilitação temporária, teste de hábito), o aluguel pode ser mais econômico. Para uso acima de 6 meses, a compra quase sempre compensa: em 6 meses de aluguel de uma vertical a R$ 200/mês você paga R$ 1.200, equivalente ao preço de compra de um modelo de entrada com resistência magnética. Se o objetivo é uso permanente, compre.',
+  },
+  {
+    question: 'Onde alugar bicicleta ergométrica?',
+    answer: 'As principais opções são: (1) empresas especializadas em locação de equipamentos de saúde e fitness, que entregam e instalam o equipamento; (2) OLX e Facebook Marketplace, onde pessoas físicas oferecem aluguel mensal; (3) clínicas de fisioterapia, que frequentemente alugam equipamentos para pacientes em reabilitação domiciliar. Para a maioria dos casos, empresas especializadas oferecem mais garantias de manutenção e higienização.',
+  },
+  {
+    question: 'Aluguel de bicicleta ergométrica para reabilitação: como funciona?',
+    answer: 'Para reabilitação, o aluguel é indicado quando o uso tem prazo definido — geralmente 1 a 6 meses após cirurgia ou lesão. Algumas clínicas de fisioterapia oferecem o aluguel diretamente para pacientes com prescrição, com entrega em domicílio e modelo adequado ao protocolo de reabilitação. Certifique-se de que o modelo alugado é compatível com as orientações do seu fisioterapeuta (horizontal ou recumbente para joelhos, por exemplo).',
+  },
+];
+---
+
+<Layout
+  title="Aluguel de Bicicleta Ergométrica: Vale a Pena?"
+  description="Aluguel de bicicleta ergométrica no Brasil: preços mensais, empresas que alugam, quando vale a pena alugar vs comprar e o que verificar antes de fechar contrato."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Aluguel de Bicicleta Ergométrica: Vale a Pena ou Compensa Comprar?</h1>
+
+      <p class="summarization">
+        O <strong>aluguel de bicicleta ergométrica</strong> custa entre <strong>R$ 150 e R$ 400 por mês</strong> no Brasil, dependendo do modelo e da cidade. É uma alternativa viável para <strong>reabilitação temporária</strong>, para quem quer testar o hábito antes de comprar ou para quem está em moradia temporária. O ponto de equilíbrio é <strong>3 a 6 meses</strong>: a partir daí, a compra de um modelo de entrada tende a custar menos no total acumulado.
+      </p>
+
+      <p>
+        O aluguel faz sentido em situações específicas, mas não é a escolha mais econômica para uso de longo prazo. Para a maioria dos usuários brasileiros que planejam praticar por mais de 6 meses, as <a href="/preco-bicicleta-ergometrica/">faixas de preço por categoria</a> mostram que a compra compensa. Para quem tem dúvida sobre o modelo ideal, veja o guia de <a href="/como-escolher-bicicleta-ergometrica/">como escolher a bicicleta certa</a>.
+      </p>
+
+      <h2>Quanto Custa Alugar uma Bicicleta Ergométrica?</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo de bicicleta</th>
+            <th>Aluguel mensal</th>
+            <th>Prazo mínimo</th>
+            <th>Inclui manutenção?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Vertical básica</td><td>R$ 150–250/mês</td><td>1–3 meses</td><td>Varia por empresa</td></tr>
+          <tr><td>Vertical intermediária</td><td>R$ 200–300/mês</td><td>1–3 meses</td><td>Geralmente não</td></tr>
+          <tr><td>Horizontal</td><td>R$ 200–350/mês</td><td>2–3 meses</td><td>Às vezes incluída</td></tr>
+          <tr><td>Spinning</td><td>R$ 250–400/mês</td><td>2–3 meses</td><td>Geralmente não</td></tr>
+          <tr><td>Recumbente</td><td>R$ 300–450/mês</td><td>3 meses</td><td>Às vezes incluída</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quando Vale a Pena Alugar</h2>
+
+      <p><strong>1. Reabilitação com prazo definido (3 a 6 meses)</strong></p>
+      <p>
+        Para protocolos de fisioterapia pós-cirúrgica ou pós-lesão com prazo estimado, o aluguel evita a compra de equipamento que pode ficar sem uso após a alta. <em>Limitação:</em> certifique-se de que o modelo disponível para aluguel é o indicado pelo fisioterapeuta — horizontal ou recumbente para joelhos, vertical para condicionamento geral.
+      </p>
+
+      <p><strong>2. Teste antes de comprar</strong></p>
+      <p>
+        Um mês de aluguel (R$ 150 a R$ 250) permite avaliar se o hábito se sustenta e qual tipo de bicicleta é mais confortável, antes de investir R$ 1.000 a R$ 2.500 em uma compra permanente. <em>Limitação:</em> o modelo disponível para aluguel pode não ser o mesmo que você compraria — use como referência de uso, não de modelo específico.
+      </p>
+
+      <p><strong>3. Moradia temporária</strong></p>
+      <p>
+        Quem está em apartamento alugado ou em cidade temporária por 3 a 12 meses pode preferir o aluguel para evitar o custo de transporte do equipamento na mudança. <em>Limitação:</em> a partir de 12 meses, o custo acumulado supera amplamente o de compra.
+      </p>
+
+      <p><strong>4. Orçamento restrito no momento</strong></p>
+      <p>
+        O aluguel distribui o custo em parcelas mensais sem comprometer o orçamento com uma compra à vista. <em>Limitação:</em> o custo total ao final de 12 meses (R$ 1.800 a R$ 4.800) é muito superior ao preço de compra de um modelo equivalente (R$ 700 a R$ 2.000).
+      </p>
+
+      <h2>Quando Compensa Comprar</h2>
+
+      <p>A conta é direta: somando os valores de aluguel ao longo do tempo, a compra se paga em poucos meses.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Período</th>
+            <th>Custo aluguel (vertical, R$ 200/mês)</th>
+            <th>Custo de compra (modelo entrada)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>3 meses</td><td>R$ 600</td><td rowspan="4">R$ 700 a R$ 1.200 (uma vez)</td></tr>
+          <tr><td>6 meses</td><td>R$ 1.200</td></tr>
+          <tr><td>12 meses</td><td>R$ 2.400</td></tr>
+          <tr><td>24 meses</td><td>R$ 4.800</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        A partir do 6º mês, a compra já é mais econômica na maioria dos casos. Veja os <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">modelos de entrada até R$ 1.200</a> que entram na conta.
+      </p>
+
+      <h2>O que Verificar Antes de Alugar</h2>
+
+      <ol>
+        <li><strong>Contrato de prazo:</strong> verifique multa por rescisão antecipada e condições de renovação automática.</li>
+        <li><strong>Cobertura de manutenção:</strong> quem paga por peças ou mão de obra se o equipamento apresentar problema durante o período de aluguel?</li>
+        <li><strong>Política de devolução:</strong> como funciona a devolução ao final do contrato — quem faz a retirada e qual o prazo?</li>
+        <li><strong>Higienização:</strong> o equipamento foi higienizado antes da entrega? Solicite isso por escrito no contrato.</li>
+        <li><strong>Modelo disponível:</strong> o tipo de bicicleta disponível (vertical, horizontal, spinning) é adequado ao seu objetivo?</li>
+        <li><strong>Frete de entrega e retirada:</strong> o custo de entrega e retirada está incluído no valor mensal ou é cobrado à parte?</li>
+      </ol>
+
+      <h2>Onde Alugar Bicicleta Ergométrica no Brasil</h2>
+
+      <p>
+        As principais opções para alugar são: empresas especializadas em locação de equipamentos de saúde e fitness (buscáveis no Google por "aluguel bicicleta ergométrica + sua cidade"), anúncios em OLX e Facebook Marketplace, e clínicas de fisioterapia que alugam equipamentos para pacientes em reabilitação domiciliar.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Alternativa ao aluguel:</strong> Se o aluguel disponível na sua cidade está acima de R$ 250/mês, a compra de um modelo de entrada pode ser mais vantajosa já no 3º mês. Veja abaixo as opções de compra com entrega rápida.
+        </p>
+      </div>
+
+      <p style="margin-top:1.5rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver modelos para compra na Amazon →
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Aluguel de Bicicleta Ergométrica" />
+</Layout>

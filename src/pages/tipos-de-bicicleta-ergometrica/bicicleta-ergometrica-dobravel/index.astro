@@ -1,0 +1,167 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica Dobrável', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-dobravel/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica dobrável é boa?',
+    answer: 'Depende do uso. Para usuários até 90 kg com frequência de 2 a 3 vezes por semana em intensidade moderada, os modelos dobráveis oferecem performance adequada com a vantagem de guardar em espaços menores. Para uso intensivo (5+ vezes/semana), alta intensidade ou usuários acima de 100 kg, modelos convencionais são mais indicados pela maior estabilidade e durabilidade estrutural.',
+  },
+  {
+    question: 'Bicicleta ergométrica dobrável suporta quanto peso?',
+    answer: 'A maioria dos modelos dobráveis disponíveis no Brasil suporta entre 80 e 110 kg. Aplicando a regra dos 80% (use no máximo 80% da capacidade declarada), um modelo declarado para 100 kg é seguro para usuários de até 80 kg. Para usuários acima de 90 kg, busque modelos com capacidade declarada de pelo menos 120 kg — que são mais raros na linha dobrável.',
+  },
+  {
+    question: 'Vale a pena comprar bicicleta ergométrica dobrável?',
+    answer: 'Vale a pena se o espaço disponível é genuinamente limitado e não há possibilidade de deixar o equipamento montado permanentemente. Se o espaço existe mas parece pequeno, uma bicicleta vertical compacta convencional é melhor: mais estável, maior capacidade de carga e durabilidade superior pelo mesmo preço. O principal benefício da dobrável é o armazenamento — não a performance.',
+  },
+  {
+    question: 'Qual a menor bicicleta ergométrica disponível?',
+    answer: 'A menor opção são as mini bicicletas (apenas pedais, sem selim ou guidão), que ocupam cerca de 30 × 45 cm. Entre as bicicletas ergométricas completas, os modelos dobráveis compactos dobrados chegam a 40 × 50 cm de base. Entre as bicicletas verticais não dobráveis, as mais compactas ocupam cerca de 60 × 90 cm montadas.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Dobrável: Guia Completo"
+  description="Bicicleta ergométrica dobrável: como funciona, vantagens para apartamentos pequenos, limitações técnicas e melhores modelos disponíveis no Brasil em 2026."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Dobrável: Como Funciona, Vantagens e Melhores Modelos</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica dobrável</strong> tem estrutura articulada que permite dobrar o guidão e/ou o corpo principal para reduzir o espaço de armazenamento. Dobrada, ocupa entre <strong>40 × 50 cm</strong> de base — cabendo embaixo de camas ou em armários. A principal limitação é a <strong>menor estabilidade estrutural</strong> e capacidade de carga reduzida (geralmente até 100–110 kg) em comparação com modelos convencionais. É indicada para apartamentos muito pequenos e usuários até 90 kg.
+      </p>
+
+      <p>
+        A dobrável é um compromisso entre espaço e performance — ela entrega menos que um modelo convencional, mas resolve o problema de armazenamento em apartamentos compactos. Para quem não precisa guardar o equipamento, uma bicicleta vertical convencional do <a href="/tipos-de-bicicleta-ergometrica/">comparativo dos 4 tipos</a> oferece melhor custo-benefício no mesmo orçamento.
+      </p>
+
+      <h2>Como Funciona a Bicicleta Dobrável</h2>
+
+      <p>
+        Existem três tipos de mecanismo de dobramento disponíveis no mercado:
+      </p>
+
+      <ul>
+        <li><strong>Guidão dobrável:</strong> apenas o guidão abaixa, reduzindo a altura do equipamento. O corpo principal permanece montado. Redução de espaço moderada.</li>
+        <li><strong>Corpo dobrável:</strong> a coluna principal do equipamento dobra pela metade, reduzindo o comprimento. É o tipo mais comum nos modelos compactos. Redução de espaço significativa.</li>
+        <li><strong>Totalmente dobrável:</strong> guidão, corpo e pedivela dobram simultaneamente. Ocupa o menor espaço possível dobrado, mas tem mais pontos de articulação que podem desgastar.</li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Configuração</th>
+            <th>Montada (base)</th>
+            <th>Dobrada (base)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bicicleta vertical convencional</td><td>60 × 100 cm</td><td>Não dobra</td></tr>
+          <tr><td>Dobrável (guidão)</td><td>55 × 95 cm</td><td>55 × 95 cm (apenas altura reduz)</td></tr>
+          <tr><td>Dobrável (corpo)</td><td>55 × 90 cm</td><td>45 × 55 cm</td></tr>
+          <tr><td>Totalmente dobrável</td><td>50 × 85 cm</td><td>40 × 45 cm</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Vantagens e Desvantagens</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Vantagens</th>
+            <th>Desvantagens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cabe em espaços muito pequenos</td><td>Menor estabilidade durante o uso</td></tr>
+          <tr><td>Pode ser guardada após o uso</td><td>Capacidade de carga reduzida (80–110 kg)</td></tr>
+          <tr><td>Fácil de transportar entre cômodos</td><td>Pontos de articulação desgastam mais rápido</td></tr>
+          <tr><td>Preço de entrada acessível</td><td>Estrutura menos robusta para uso intensivo</td></tr>
+          <tr><td>Disponível em modelos magnéticos</td><td>Menos opções de modelo e marca</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para Quem é Indicada</h2>
+
+      <p><strong>1. Apartamento estúdio ou quarto compartilhado</strong></p>
+      <p>Quando o único espaço disponível precisa ser reaproveitado após o uso (ex.: guardar embaixo da cama para liberar o corredor), a dobrável resolve o problema que uma convencional não consegue.</p>
+
+      <p><strong>2. Quem divide o equipamento entre cômodos</strong></p>
+      <p>Transportar a bicicleta da sala para o quarto é viável com modelos dobráveis leves (15–20 kg) e rodízios de transporte. Modelos convencionais pesam 22–35 kg e raramente têm rodízios adequados.</p>
+
+      <p><strong>3. Usuário leve (até 90 kg) com uso moderado (até 3x/semana)</strong></p>
+      <p>Para esse perfil, a dobrável entrega performance adequada. Para uso mais frequente ou intenso, a menor estabilidade começa a comprometer o treino e a vida útil do equipamento.</p>
+
+      <h2>Melhores Bicicletas Ergométricas Dobráveis no Brasil</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>Capacidade típica</th>
+            <th>Dobrada (base aprox.)</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Entrada (mecânica)</strong></td><td>80–100 kg</td><td>45 × 55 cm</td><td>R$ 400–700</td></tr>
+          <tr><td><strong>Intermediária (magnética)</strong></td><td>100–110 kg</td><td>42 × 50 cm</td><td>R$ 700–1.200</td></tr>
+          <tr><td><strong>Compacta premium</strong></td><td>110 kg</td><td>40 × 45 cm</td><td>R$ 1.200–1.800</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+dobravel&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver bicicletas dobráveis na Amazon →
+        </a>
+      </p>
+
+      <h2>Bicicleta Dobrável vs Convencional</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Dobrável</th>
+            <th>Convencional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Estabilidade</td><td>Moderada</td><td>Alta</td></tr>
+          <tr><td>Capacidade máxima</td><td>80–110 kg</td><td>100–150 kg</td></tr>
+          <tr><td>Espaço de armazenamento</td><td>40 × 45 cm dobrada</td><td>Permanente (60 × 100 cm)</td></tr>
+          <tr><td>Preço (mesma faixa)</td><td>Similar</td><td>Similar</td></tr>
+          <tr><td>Vida útil (uso regular)</td><td>4–6 anos</td><td>6–10 anos</td></tr>
+          <tr><td>Indicação</td><td>Espaço muito limitado</td><td>Uso geral</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Alternativa mais compacta:</strong> Se o espaço é o problema principal, a <a href="/tipos-de-bicicleta-ergometrica/mini-bicicleta-ergometrica/">mini bicicleta ergométrica</a> ocupa apenas 30 × 45 cm — mas com performance muito inferior. Para apartamentos compactos com espaço mínimo, veja também o guia de <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/">bicicleta ergométrica para apartamento</a> com todas as opções disponíveis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica Dobrável" />
+</Layout>

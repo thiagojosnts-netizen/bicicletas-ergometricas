@@ -1,0 +1,142 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Melhor para Uso Doméstico', url: '/melhores-bicicletas-ergometricas/melhor-para-uso-domestico/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual a melhor bicicleta ergométrica para usar em casa?',
+    answer: 'Para uso domiciliar regular (3 a 5 vezes/semana), a melhor escolha depende do objetivo: emagrecer e condicionar (vertical magnética R$ 800–1.500), reabilitação (horizontal ou recumbente R$ 1.500–2.500) ou alta performance (spinning magnética R$ 2.000–3.500). Para a maioria dos usuários sem restrições específicas, uma vertical magnética com 12 a 16 níveis de resistência entre R$ 1.000 e R$ 1.500 é a escolha mais equilibrada.',
+  },
+  {
+    question: 'Bicicleta ergométrica para apartamento: qual escolher?',
+    answer: 'Para apartamento, os critérios prioritários são: resistência magnética (abaixo de 30 dB), dimensões de base abaixo de 65 × 110 cm e peso do equipamento abaixo de 30 kg para facilitar o transporte. Modelos verticais magnéticos são os mais indicados. Se o espaço for muito limitado, modelos dobráveis ou a mini bicicleta são alternativas — com performance inferior. Ver o guia completo para apartamento.',
+  },
+  {
+    question: 'Qual bicicleta ergométrica dura mais para uso diário?',
+    answer: 'Para uso diário (7 vezes/semana), invista em modelos com estrutura de aço robusto, capacidade de carga declarada pelo menos 25% acima do seu peso e garantia de estrutura de 2 anos ou mais. Marcas como Kikos (FB 180i), Athletic e WCT Fitness têm modelos bem avaliados para uso intensivo. O volante de inércia mais pesado (acima de 10 kg nos verticais) também indica maior qualidade construtiva.',
+  },
+  {
+    question: 'Quanto gastar numa bicicleta ergométrica para uso doméstico?',
+    answer: 'Para uso de 2 a 3 vezes por semana: R$ 600 a R$ 1.000. Para uso de 4 a 5 vezes por semana: R$ 1.000 a R$ 2.000. Para uso diário ou por múltiplos usuários da família: R$ 1.500 a R$ 3.000. O gasto maior em durabilidade se paga em alguns meses de uso — equipamentos baratos para uso frequente tendem a falhar em 1 a 2 anos, gerando custo maior no longo prazo.',
+  },
+];
+---
+
+<Layout
+  title="Melhor Bicicleta Ergométrica para Uso Doméstico"
+  description="Melhor bicicleta ergométrica para uso doméstico no Brasil: comparativo por perfil de usuário, orçamento e objetivo. Modelos testados e avaliados em 2026."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Melhor Bicicleta Ergométrica para Uso Doméstico: Guia por Perfil e Orçamento</h1>
+
+      <p class="summarization">
+        A melhor bicicleta ergométrica para uso doméstico depende de três fatores: <strong>objetivo</strong> (emagrecer, condicionar ou reabilitar), <strong>espaço disponível</strong> e <strong>orçamento</strong>. Para uso domiciliar regular de 3 a 5 vezes por semana, o <strong>investimento mínimo recomendado é R$ 800 a R$ 1.000</strong> em modelo com resistência magnética. Abaixo disso, o equipamento tende a não suportar o uso frequente por mais de 1 a 2 anos.
+      </p>
+
+      <p>
+        Esta página sintetiza as recomendações do <a href="/melhores-bicicletas-ergometricas/">comparativo completo de modelos</a> com foco exclusivo em uso domiciliar — considerando ruído, espaço, facilidade de montagem e durabilidade para o contexto de casa.
+      </p>
+
+      <h2>Critérios Específicos para Uso Doméstico</h2>
+
+      <ol>
+        <li><strong>Nível de ruído (magnética abaixo de 30 dB):</strong> fundamental para apartamentos e para uso em horários noturnos. Modelos com resistência magnética são praticamente silenciosos — o único som é o das pedaleiras e da correia de transmissão.</li>
+        <li><strong>Dimensões compatíveis com o espaço disponível:</strong> meça o espaço antes de comprar. Modelos verticais ocupam 60–70 × 100–120 cm; horizontais, 65–75 × 140–160 cm; spinning, 50–60 × 100–110 cm.</li>
+        <li><strong>Capacidade de carga adequada ao usuário:</strong> use a regra dos 80% — para 80 kg de peso, o modelo deve suportar ao menos 100 kg declarados.</li>
+        <li><strong>Facilidade de montagem:</strong> a maioria das bicicletas domiciliares vem com instruções e ferramentas. Prefira marcas com manual em português e suporte por telefone ou chat para dúvidas na montagem.</li>
+        <li><strong>Garantia de estrutura mínima de 1 ano:</strong> modelos domiciliares de qualidade oferecem pelo menos 12 meses de garantia de estrutura. Menos que isso é sinal de baixa confiança do fabricante na durabilidade.</li>
+      </ol>
+
+      <h2>Melhor por Objetivo</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Tipo recomendado</th>
+            <th>Modelo sugerido</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Emagrecer e condicionar</td><td>Vertical magnética</td><td>Kikos FB 180i ou Randers BRF-1200</td><td>R$ 800–1.500</td></tr>
+          <tr><td>Reabilitação articular</td><td>Horizontal ou recumbente</td><td>Gallant Horizontal Elite X</td><td>R$ 1.500–2.500</td></tr>
+          <tr><td>Alta performance / HIIT</td><td>Spinning magnética</td><td>WCT Fitness 13kg ou Odin Fit Sprint</td><td>R$ 1.500–3.000</td></tr>
+          <tr><td>Espaço muito pequeno</td><td>Vertical compacta ou dobrável</td><td>Gallant Elite X Magnética dobrável</td><td>R$ 600–1.200</td></tr>
+          <tr><td>Idosos / mobilidade reduzida</td><td>Horizontal ou recumbente</td><td>Modelos horizontais de entrada</td><td>R$ 1.400–2.200</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1rem;">
+        <a
+          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+uso+domiciliar&tag=bicicletase0d-20"
+          style="display:inline-flex;align-items:center;background:#FF9900;color:#111;font-size:0.9375rem;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;transition:background 0.15s;"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ver melhores modelos para uso doméstico na Amazon →
+        </a>
+      </p>
+
+      <h2>Melhor por Orçamento</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Orçamento</th>
+            <th>Melhor opção</th>
+            <th>Justificativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Até R$ 800</strong></td><td>Dream Fitness EX 450 ou Gallant Elite X Magnética</td><td>Resistência magnética, 8 níveis, suporte 110 kg. Adequado para 2 a 3 vezes/semana.</td></tr>
+          <tr><td><strong>R$ 800–1.500</strong></td><td>Randers BRF-1200 ou Kikos FB 180i</td><td>16 níveis, suporte 120 kg, Bluetooth (Kikos). Melhor faixa de custo-benefício domiciliar.</td></tr>
+          <tr><td><strong>R$ 1.500–2.500</strong></td><td>Kikos Premium 2200 ou Wellness Health Bike</td><td>Estrutura reforçada, mais programas, garantia estendida. Indicado para uso diário ou múltiplos usuários.</td></tr>
+          <tr><td><strong>Acima de R$ 2.500</strong></td><td>Gallant Smart Spinning 18kg ou Athletic Pro</td><td>Volante pesado, conectividade completa, estrutura semiprofissional. Para uso intensivo ou spinning.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>O que Evitar no Uso Doméstico</h2>
+
+      <ol>
+        <li><strong>Comprar modelo de academia (superdimensionado):</strong> modelos de academia pesam 60 a 120 kg e custam R$ 5.000 a R$ 20.000. São projetados para 8 a 12 horas de uso diário por múltiplos usuários — desnecessário e impraticável para casa.</li>
+        <li><strong>Ignorar o nível de ruído:</strong> modelos mecânicos geram 40 a 60 dB — o suficiente para incomodar vizinhos em apartamentos e limitar o uso a horários comerciais. Verifique sempre se o modelo é magnético antes de comprar para uso em apartamento.</li>
+        <li><strong>Não testar a regulagem antes de comprar:</strong> se possível, visite uma loja física para verificar a regulagem do selim e guidão no seu corpo antes de comprar online. A regulagem correta é o principal fator de conforto e segurança no uso domiciliar.</li>
+        <li><strong>Comprar sem espaço planejado:</strong> meça o espaço disponível com fita métrica antes de comprar, considerando o espaço de uso (não apenas o espaço de instalação). Você precisa de espaço para sentar, pedalar e descer do equipamento com segurança.</li>
+      </ol>
+
+      <h2>Manutenção para Uso Doméstico</h2>
+
+      <ol>
+        <li><strong>Lubrificação da corrente/correia a cada 3 meses:</strong> use lubrificante específico para correias de transmissão. A correia não deve estar seca nem com excesso de lubrificante.</li>
+        <li><strong>Limpeza após cada uso:</strong> suor é corrosivo para componentes metálicos. Limpe o guidão, selim e console com pano úmido e seco após cada sessão.</li>
+        <li><strong>Verificação de parafusos mensalmente:</strong> o uso regular afrouxa parafusos de selim, guidão e pedivela. Use a chave de fenda fornecida na montagem para apertar os parafusos que possam estar soltos.</li>
+        <li><strong>Armazenamento longe de umidade:</strong> não deixe a bicicleta em locais com umidade alta (varanda exposta à chuva, área de serviço com vazamento). A umidade oxida os componentes metálicos e reduz a vida útil.</li>
+      </ol>
+
+      <p>
+        Para um guia completo de manutenção preventiva, acesse o <a href="/como-usar-bicicleta-ergometrica/manutencao-bicicleta-ergometrica/">guia de manutenção da bicicleta ergométrica</a>. Para decidir entre modelos específicos, acesse o <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/">guia para apartamento</a> e o comparativo de <a href="/preco-bicicleta-ergometrica/">faixas de preço por categoria</a>.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Resumo:</strong> Para uso domiciliar de 3 a 5 vezes por semana, o melhor ponto de entrada é uma vertical magnética com 12 a 16 níveis de resistência, entre R$ 1.000 e R$ 1.500. Para reabilitação ou usuários com restrições articulares, o horizontal ou recumbente entre R$ 1.500 e R$ 2.500 é a escolha mais segura e confortável.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Melhor Bicicleta Ergométrica para Uso Doméstico" />
+</Layout>
