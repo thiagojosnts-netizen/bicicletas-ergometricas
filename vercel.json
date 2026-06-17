@@ -7,5 +7,29 @@
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" }
       ]
     }
+  ],
+  "redirects": [
+    { "source": "/bicicleta-de-spinning/", "destination": "/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-spinning/", "destination": "/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-horizontal/", "destination": "/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-vertical/", "destination": "/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-vertical/", "permanent": true },
+    { "source": "/tipos-de-bicicletas-ergometricas/", "destination": "/tipos-de-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/tipos/", "destination": "/tipos-de-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/melhores/", "destination": "/melhores-bicicletas-ergometricas/", "permanent": true },
+    { "source": "/beneficios-da-bicicleta-ergometrica/", "destination": "/beneficios-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-magnetica/", "destination": "/como-escolher-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-mecanica/", "destination": "/tipos-de-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/comparativo-bicicleta-ergometrica/", "destination": "/melhores-bicicletas-ergometricas/", "permanent": true },
+    { "source": "/bicicletas-ergometricas/", "destination": "/", "permanent": true },
+    { "source": "/sobre-nos/", "destination": "/sobre/", "permanent": true },
+    { "source": "/politicas-de-privacidade/", "destination": "/politica-de-privacidade/", "permanent": true },
+    { "source": "/sample-page/", "destination": "/", "permanent": true },
+    { "source": "/hello-world/", "destination": "/blog/", "permanent": true },
+    { "source": "/blog/", "destination": "/blog/", "permanent": true },
+    { "source": "/author/guilherme-fernandes/", "destination": "/sobre/", "permanent": true },
+    { "source": "/author/lordbuth/", "destination": "/sobre/", "permanent": true },
+    { "source": "/category/uncategorized/", "destination": "/blog/", "permanent": true },
+    { "source": "/bicicleta-ergometrica-dobravel/", "destination": "/tipos-de-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/acessorios-bicicleta-ergometrica/", "destination": "/como-escolher-bicicleta-ergometrica/", "permanent": true }
   ]
 }
