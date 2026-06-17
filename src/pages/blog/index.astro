@@ -10,21 +10,89 @@ const breadcrumbs = [
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.datePublished).valueOf() - new Date(a.data.datePublished).valueOf()
 );
+
+const SITE_URL = 'https://bicicletasergometricas.com';
+
+const collectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${SITE_URL}/blog/#collectionpage`,
+  name: 'Blog: Guias e Artigos sobre Bicicleta Ergométrica',
+  description: 'Artigos práticos sobre treino, montagem, comparativos de equipamentos e dicas para quem usa bicicleta ergométrica no Brasil.',
+  url: `${SITE_URL}/blog/`,
+  inLanguage: 'pt-BR',
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: 'BicicletasErgometricas.com',
+  },
+  hasPart: posts.map(post => ({
+    '@type': 'Article',
+    headline: post.data.title,
+    description: post.data.description,
+    url: `${SITE_URL}/blog/${post.id.replace(/\.md$/, '')}/`,
+    datePublished: post.data.datePublished,
+  })),
+};
 ---
 
 <Layout
   title="Blog: Bicicleta Ergométrica"
-  description="Artigos e guias sobre bicicleta ergométrica: montagem, treinos, bicicleta vs esteira e dicas para maximizar seus resultados."
+  description="Artigos e guias sobre bicicleta ergométrica: comparativos, erros comuns, manutenção, montagem e treinos para iniciantes e usuários experientes."
   breadcrumbs={breadcrumbs}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(collectionPageSchema)} />
+
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="blog-heading">
     <div class="container" style="max-width:860px;">
       <h1 id="blog-heading">Blog: Guias e Artigos sobre Bicicleta Ergométrica</h1>
-      <p style="margin-bottom:2.5rem;">
-        Artigos práticos sobre treino, montagem, comparativos de equipamentos e dicas para quem usa bicicleta ergométrica no Brasil.
+
+      <p class="blog-intro">
+        O blog do BicicletasErgometricas.com reúne conteúdo prático para quem está pesquisando antes de comprar uma bicicleta ergométrica — e para quem já tem uma e quer aproveitar melhor. Os artigos cobrem comparativos entre equipamentos, guias de uso, erros comuns de iniciantes, manutenção e dúvidas frequentes que surgem no dia a dia de uso.
       </p>
+
+      <h2>O que você encontra aqui</h2>
+
+      <p>
+        O conteúdo do blog é dividido em quatro categorias principais:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Comparativos:</strong> análises lado a lado entre bicicleta ergométrica e outros equipamentos de cardio — esteira, elíptico, remo — com tabelas de gasto calórico, impacto articular, espaço necessário e custo. Útil para quem está decidindo qual equipamento comprar.
+        </li>
+        <li>
+          <strong>Guias de montagem e manutenção:</strong> passo a passo para montar a bicicleta corretamente, identificar ruídos, lubrificar componentes e estimar vida útil por faixa de preço. Pensado para quem comprou e quer garantir que o equipamento dure.
+        </li>
+        <li>
+          <strong>Erros e correções:</strong> os erros mais comuns ao usar bicicleta ergométrica — regulagem incorreta, intensidade excessiva desde o início, postura inadequada — e como identificar e corrigir cada um antes que causem lesão ou frustração.
+        </li>
+        <li>
+          <strong>Datas e promoções:</strong> guias específicos para períodos de desconto como o Amazon Prime Day, com análise de descontos históricos, marcas que mais aparecem em promoção e como identificar se o desconto é real ou inflado.
+        </li>
+      </ul>
+
+      <h2>Para quem é este blog</h2>
+
+      <p>
+        O blog é útil para dois perfis distintos de leitor:
+      </p>
+
+      <p>
+        <strong>Quem está pesquisando antes de comprar:</strong> os comparativos (bicicleta vs esteira, bicicleta vs elíptico) e os guias de escolha ajudam a definir qual tipo de equipamento faz mais sentido para o seu objetivo, espaço e orçamento. Se você está em dúvida entre dois ou mais equipamentos de cardio, os artigos de comparativo são o ponto de partida.
+      </p>
+
+      <p>
+        <strong>Quem já tem uma bicicleta e quer usá-la melhor:</strong> os guias de montagem, regulagem e erros comuns são voltados para quem comprou o equipamento e quer garantir que está usando corretamente. Regulagem incorreta do selim, por exemplo, é a causa mais comum de dor no joelho em usuários de bicicleta ergométrica — e é corrigível em menos de dois minutos.
+      </p>
+
+      <p>
+        Para entender em detalhes como usar a bicicleta ergométrica com segurança e eficiência, acesse o <a href="/como-usar-bicicleta-ergometrica/">guia completo de como usar a bicicleta ergométrica</a>. Para entender as diferenças entre os tipos disponíveis no mercado, veja o <a href="/tipos-de-bicicleta-ergometrica/">guia de tipos de bicicleta ergométrica</a> — vertical, horizontal, spinning e recumbente têm aplicações distintas dependendo do objetivo e do perfil físico do usuário.
+      </p>
+
+      <h2>Artigos disponíveis</h2>
 
       <div class="blog-list">
         {posts.map(post => {
@@ -59,3 +127,12 @@ const posts = (await getCollection('blog')).sort(
     </div>
   </section>
 </Layout>
+
+<style>
+  .blog-intro {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--token-text-secondary);
+    margin-bottom: 2rem;
+  }
+</style>
