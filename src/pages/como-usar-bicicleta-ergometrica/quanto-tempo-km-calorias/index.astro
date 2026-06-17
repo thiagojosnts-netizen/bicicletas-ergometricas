@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Quantos KM e Calorias', url: '/como-usar-bicicleta-ergometrica/quanto-tempo-km-calorias/' },
+];
+
+const faqItems = [
+  {
+    question: '20 minutos de bicicleta ergométrica equivale a quantos km?',
+    answer: 'Em intensidade moderada (65–75% da FCmax), 20 minutos na bicicleta ergométrica equivalem a aproximadamente 6 a 8 km no painel do equipamento. Em intensidade leve, a estimativa fica entre 3 e 5 km; em alta intensidade, pode chegar a 9 a 11 km. Esses valores são estimativas do console com base em cadência e resistência — não refletem km percorridos em terreno real.',
+  },
+  {
+    question: '10 minutos de bicicleta ergométrica equivale a quantos km?',
+    answer: 'Em intensidade moderada, 10 minutos na bicicleta ergométrica equivalem a cerca de 3 a 4 km segundo o painel do equipamento. Em intensidade leve, a estimativa é de 1,5 a 2,5 km; em alta intensidade, de 4 a 5 km. Esses 10 minutos correspondem ao aquecimento recomendado antes de sessões mais longas.',
+  },
+  {
+    question: '1 hora de bicicleta ergométrica equivale a quantos km?',
+    answer: 'Em intensidade moderada, 1 hora de bicicleta ergométrica equivale a aproximadamente 18 a 24 km segundo a estimativa do painel. Em alta intensidade, esse valor pode chegar a 28 a 35 km. Em intensidade leve, fica entre 10 e 14 km. O painel calcula com base em cadência e resistência configurada — não é equivalente a 1 hora de ciclismo em via pública.',
+  },
+  {
+    question: '30 minutos de bicicleta ergométrica queima quantas calorias?',
+    answer: 'Em intensidade moderada (65–75% da FCmax), 30 minutos de bicicleta ergométrica queimam entre 174 kcal (60 kg) e 290 kcal (100 kg). Para uma pessoa de 70 kg, o gasto estimado é de aproximadamente 200 a 210 kcal. Esses valores são baseados no Compêndio de Atividades Físicas (MET 5,8 para ciclismo estacionário moderado).',
+  },
+  {
+    question: 'Bicicleta ergométrica emagrece quantos quilos por mês?',
+    answer: 'Com 5 sessões semanais de 45 minutos em intensidade moderada, o gasto calórico estimado é de 1.100 a 1.500 kcal/semana — ou 4.400 a 6.000 kcal/mês. Como 1 kg de gordura equivale a aproximadamente 7.700 kcal, o resultado esperado sem mudança alimentar é de 0,6 a 0,8 kg/mês. Com ajuste dietético moderado, esse valor pode dobrar para 1,2 a 1,5 kg/mês.',
+  },
+  {
+    question: '1 hora de bicicleta ergométrica queima quantas calorias?',
+    answer: 'Em intensidade moderada, 1 hora de bicicleta ergométrica queima entre 348 kcal (60 kg) e 580 kcal (100 kg). Para 70 kg, o gasto estimado é de cerca de 400 a 420 kcal. Em alta intensidade (como treino HIIT ou spinning), esse valor pode chegar a 550 a 700 kcal por hora para o mesmo perfil de peso.',
+  },
+];
+---
+
+<Layout
+  title="Quantos KM e Calorias na Bicicleta Ergométrica por Duração"
+  description="Tabelas completas de km e calorias na bicicleta ergométrica: 10, 15, 20, 30, 40, 60 minutos por peso corporal e intensidade. Dados baseados no ACSM e Compêndio de Atividades Físicas."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-16"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Quantos KM e Calorias Você Queima na Bicicleta Ergométrica: Tabelas por Duração e Peso</h1>
+
+      <p class="summarization">
+        Em <strong>30 minutos de intensidade moderada</strong> (65–75% da frequência cardíaca máxima), uma pessoa de <strong>70 kg</strong> percorre entre <strong>10 e 14 km equivalentes</strong> no painel e queima aproximadamente <strong>200 a 210 kcal</strong>. Os valores variam conforme o peso corporal, a intensidade configurada e o tipo de bicicleta. As tabelas abaixo são baseadas no <strong>Compêndio de Atividades Físicas</strong> (Ainsworth et al., 2011) e nas diretrizes do ACSM.
+      </p>
+
+      <p>
+        A bicicleta ergométrica não mede km reais — o painel estima a distância com base na cadência de pedalagem e na resistência configurada. O gasto calórico exibido no console também é uma estimativa, frequentemente subestimada. Os valores desta página foram calculados a partir do MET (Equivalente Metabólico de Tarefa) de 5,8 para ciclismo estacionário em intensidade moderada, conforme o <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener noreferrer">Compêndio de Atividades Físicas (Ainsworth et al., 2011)</a>. Consulte o <a href="/como-usar-bicicleta-ergometrica/">guia de uso da bicicleta ergométrica</a> para entender como estruturar suas sessões.
+      </p>
+
+      <h2>Tabela de Calorias por Duração e Peso Corporal</h2>
+
+      <p>Valores em kcal. Intensidade moderada (65–75% FCmax). MET 5,8 — ciclismo estacionário moderado.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peso corporal</th>
+            <th>10 min</th>
+            <th>20 min</th>
+            <th>30 min</th>
+            <th>40 min</th>
+            <th>60 min</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>60 kg</strong></td><td>58 kcal</td><td>116 kcal</td><td>174 kcal</td><td>232 kcal</td><td>348 kcal</td></tr>
+          <tr><td><strong>70 kg</strong></td><td>68 kcal</td><td>135 kcal</td><td>203 kcal</td><td>271 kcal</td><td>406 kcal</td></tr>
+          <tr><td><strong>80 kg</strong></td><td>77 kcal</td><td>155 kcal</td><td>232 kcal</td><td>309 kcal</td><td>464 kcal</td></tr>
+          <tr><td><strong>90 kg</strong></td><td>87 kcal</td><td>174 kcal</td><td>261 kcal</td><td>348 kcal</td><td>522 kcal</td></tr>
+          <tr><td><strong>100 kg</strong></td><td>97 kcal</td><td>193 kcal</td><td>290 kcal</td><td>387 kcal</td><td>580 kcal</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:0.875rem;color:var(--token-text-secondary);">Fonte: <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener noreferrer">Compêndio de Atividades Físicas — Ainsworth et al., 2011</a>. Fórmula: kcal = MET × peso (kg) × tempo (horas).</p>
+
+      <h2>Tabela de KM Equivalente por Duração</h2>
+
+      <p>A bicicleta ergométrica não percorre distância real. O painel calcula km com base na cadência e resistência configurada — os valores abaixo representam a estimativa típica exibida no console.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Intensidade</th>
+            <th>10 min</th>
+            <th>20 min</th>
+            <th>30 min</th>
+            <th>60 min</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Leve</strong> (50–60% FCmax)</td><td>1,5–2,5 km</td><td>3,0–5,0 km</td><td>5,0–7,0 km</td><td>10–14 km</td></tr>
+          <tr><td><strong>Moderada</strong> (65–75% FCmax)</td><td>3,0–4,0 km</td><td>6,0–8,0 km</td><td>10–12 km</td><td>20–24 km</td></tr>
+          <tr><td><strong>Alta</strong> (80–90% FCmax)</td><td>4,5–5,5 km</td><td>9,0–11,0 km</td><td>13–16 km</td><td>26–35 km</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Atenção:</strong> Os km exibidos no painel da bicicleta ergométrica não são comparáveis a km percorridos de bicicleta em via pública. Em terreno real, variáveis como vento, desnível e atrito mudam completamente o gasto energético. Use as <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">zonas de frequência cardíaca</a> como referência de intensidade — elas são mais precisas que a distância estimada.
+        </p>
+      </div>
+
+      <h2>30 Minutos de Bicicleta Ergométrica Queima Quantas Calorias?</h2>
+
+      <p>
+        Em intensidade moderada, 30 minutos de bicicleta ergométrica queimam entre <strong>174 kcal</strong> (60 kg) e <strong>290 kcal</strong> (100 kg). Para facilitar a comparação, veja os valores para 30 minutos ao lado de outras atividades aeróbicas para uma pessoa de 70 kg:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Atividade (30 min, 70 kg)</th>
+            <th>kcal estimadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Caminhada moderada</td><td>~122 kcal</td></tr>
+          <tr><td><strong>Bicicleta ergométrica (moderada)</strong></td><td><strong>~203 kcal</strong></td></tr>
+          <tr><td>Bicicleta ergométrica (alta/spinning)</td><td>~308 kcal</td></tr>
+          <tr><td>Corrida (9 km/h)</td><td>~294 kcal</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        Para uma análise mais detalhada do gasto calórico por tipo de treino, acesse a <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/">tabela de queima calórica</a> com valores por intensidade e duração.
+      </p>
+
+      <h2>Bicicleta Ergométrica Emagrece Quantos Quilos por Mês?</h2>
+
+      <p>
+        Para emagrecer 1 kg de gordura corporal, é necessário um déficit calórico acumulado de aproximadamente <strong>7.700 kcal</strong>. Com 5 sessões semanais de 45 minutos em intensidade moderada, o gasto estimado por semana é de 1.100 a 1.500 kcal — o que equivale a 4.400 a 6.000 kcal por mês, ou <strong>0,6 a 0,8 kg/mês</strong> sem nenhuma mudança na alimentação.
+      </p>
+
+      <p>
+        Na prática, o resultado real depende fortemente da dieta. Combinando o treino com um déficit alimentar de 300 a 500 kcal/dia, a perda total pode chegar a <strong>1,2 a 1,8 kg/mês</strong>. Para um protocolo estruturado de emagrecimento com progressão de intensidade, acesse o <a href="/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/">protocolo de emagrecimento</a>.
+      </p>
+
+      <h2>Diferença entre Tipos de Bicicleta no Gasto Calórico</h2>
+
+      <p>O tipo de bicicleta influencia o gasto calórico principalmente porque afeta a posição corporal, os grupos musculares recrutados e a intensidade máxima alcançável.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>kcal/hora (70 kg, moderado)</th>
+            <th>Intensidade máxima</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Spinning</strong></td><td>550–700 kcal</td><td>Alta</td></tr>
+          <tr><td><strong>Vertical</strong></td><td>400–450 kcal</td><td>Moderada a alta</td></tr>
+          <tr><td><strong>Horizontal</strong></td><td>300–380 kcal</td><td>Moderada</td></tr>
+          <tr><td><strong>Recumbente</strong></td><td>260–340 kcal</td><td>Leve a moderada</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Como Aumentar o Gasto Calórico na Bicicleta Ergométrica</h2>
+
+      <ol>
+        <li>
+          <strong>Aumentar a resistência:</strong> pedalar em resistência maior recruta mais fibras musculares e eleva a frequência cardíaca. Um aumento de 2 a 3 níveis pode elevar o gasto calórico em 15 a 25% para a mesma duração.
+        </li>
+        <li>
+          <strong>Fazer treino HIIT:</strong> alternar 30 segundos em alta intensidade com 60 segundos de recuperação ativa gera EPOC (consumo excessivo de oxigênio pós-exercício), elevando o metabolismo por 24 a 48 horas após o treino. Uma sessão de 20 minutos de HIIT pode ser equivalente a 35 a 40 minutos de treino contínuo em gasto calórico total.
+        </li>
+        <li>
+          <strong>Aumentar a duração gradualmente:</strong> cada 10 minutos adicionais em intensidade moderada representa aproximadamente 68 a 97 kcal extras, dependendo do peso. A progressão semanal recomendada é de 5 a 10 minutos por semana.
+        </li>
+        <li>
+          <strong>Combinar com treino de força:</strong> sessões de musculação nos dias alternados aumentam a massa muscular, que eleva o metabolismo basal. O resultado é maior gasto calórico em repouso — não apenas durante o treino aeróbico.
+        </li>
+      </ol>
+
+      <p>
+        Para estruturar o treino com controle preciso de intensidade, consulte o guia de <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">zonas de frequência cardíaca na bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre KM e Calorias na Bicicleta Ergométrica" />
+</Layout>
