@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Resistência Magnética vs Mecânica', url: '/como-escolher-bicicleta-ergometrica/resistencia-magnetica-vs-mecanica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Resistência magnética é melhor que mecânica?',
+    answer: 'Para uso domiciliar, sim. A resistência magnética é silenciosa, não desgasta peças por atrito e exige menos manutenção. A mecânica é mais barata e funciona bem para uso leve e ocasional. Para uso frequente (4x ou mais por semana), a magnética é a escolha certa.',
+  },
+  {
+    question: 'Qual a diferença entre magnética e eletromagnética?',
+    answer: 'Na magnética manual, você ajusta a resistência girando um knob que aproxima ou afasta o ímã da roda. Na eletromagnética, o ajuste é feito eletronicamente pelo painel ou app, permitindo programas automáticos de treino com variação de carga. A eletromagnética oferece mais precisão e recursos, mas custa mais.',
+  },
+  {
+    question: 'Bicicleta mecânica dura menos?',
+    answer: 'A pastilha de freio da resistência mecânica se desgasta com o uso e precisa ser substituída periodicamente. Em uso intenso, o custo de manutenção pode superar a diferença de preço em relação a um modelo magnético. Para uso leve (até 2x por semana), a mecânica é aceitável.',
+  },
+];
+---
+
+<Layout
+  title="Resistência Magnética vs Mecânica: Diferença na Prática"
+  description="Qual a diferença entre resistência magnética e mecânica em bicicletas ergométricas? Silêncio, durabilidade, manutenção e quando vale a pena pagar mais pelo magnético."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Resistência Magnética vs Mecânica: Diferença na Prática</h1>
+
+      <p>
+        O sistema de resistência define o silêncio, a durabilidade e o custo de manutenção de uma bicicleta ergométrica. Existem três tipos principais no mercado brasileiro: <strong>mecânica por atrito</strong>, <strong>magnética manual</strong> e <strong>eletromagnética</strong>. Cada uma atende a um perfil diferente de uso.
+      </p>
+
+      <h2>Comparativo direto</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Mecânica</th>
+            <th>Magnética</th>
+            <th>Eletromagnética</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Silêncio</td><td>Baixo</td><td class="highlight-cell">Alto</td><td class="highlight-cell">Alto</td></tr>
+          <tr><td>Desgaste de peças</td><td>Alto (pastilha)</td><td class="highlight-cell">Mínimo</td><td class="highlight-cell">Mínimo</td></tr>
+          <tr><td>Precisão de carga</td><td>Baixa</td><td>Média</td><td class="highlight-cell">Alta</td></tr>
+          <tr><td>Programas automáticos</td><td>Não</td><td>Não</td><td class="highlight-cell">Sim</td></tr>
+          <tr><td>Manutenção</td><td>Frequente</td><td class="highlight-cell">Baixa</td><td class="highlight-cell">Baixa</td></tr>
+          <tr><td>Faixa de preço</td><td class="highlight-cell">R$ 300–R$ 800</td><td>R$ 700–R$ 3.000</td><td>R$ 2.500–R$ 20.000+</td></tr>
+          <tr><td>Indicação</td><td>Uso leve ocasional</td><td>Uso domiciliar regular</td><td>Semiprofissional / clínica</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quando a mecânica ainda vale</h2>
+      <p>
+        Se o uso for de até 2 vezes por semana em intensidade leve, um modelo mecânico de entrada (R$ 330–R$ 700) cumpre o objetivo com custo inicial menor. O problema aparece com uso mais frequente: a pastilha de atrito desgasta, aumenta o ruído e exige substituição.
+      </p>
+
+      <h2>Por que a magnética domina o mercado intermediário</h2>
+      <p>
+        A resistência magnética eliminou o principal ponto de falha das bicicletas de entrada — o desgaste por atrito. Com ímãs permanentes que ajustam a carga sem contato com a roda, o sistema é silencioso, preciso e praticamente livre de manutenção. Por isso, todos os modelos intermediários e premium do mercado brasileiro usam sistema magnético.
+      </p>
+
+      <h2>Eletromagnética: quando faz sentido</h2>
+      <p>
+        A versão eletromagnética adiciona controle eletrônico da resistência via painel ou app, permitindo programas automáticos com variação de carga. É o padrão em equipamentos semiprofissionais (Kikos linha premium, TRG Fitness) e em academias. Para uso domiciliar, só faz sentido acima de R$ 2.500 se houver real necessidade de programas automáticos de treino.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/como-escolher-bicicleta-ergometrica/" class="btn-primary">Guia completo de escolha →</a>
+        <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-silenciosa/" class="btn-secondary">Modelos silenciosos →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: resistência magnética vs mecânica" />
+</Layout>
+
+<style>
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+  .cta-pair { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--token-border); }
+  .btn-primary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--token-brand); color: #fff; border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .btn-secondary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--c-gray-100); color: var(--token-text-primary); border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+</style>

@@ -1,0 +1,149 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Kikos vs Athletic', url: '/melhores-bicicletas-ergometricas/kikos-vs-athletic/' },
+];
+
+const faqItems = [
+  {
+    question: 'Kikos ou Athletic: qual é a melhor bicicleta ergométrica?',
+    answer: 'Na faixa intermediária (R$ 1.500–R$ 2.500), a Kikos leva vantagem em conectividade bluetooth e número de programas. A Athletic tem vantagem em garantia (2 anos) e recomendação por fisioterapeutas. Para uso clínico ou reabilitação, a Athletic é mais indicada. Para quem quer apps e mais tecnologia, a Kikos.',
+  },
+  {
+    question: 'A Athletic tem garantia de 2 anos?',
+    answer: 'Sim. A Athletic oferece 2 anos de garantia na estrutura, diferencial relevante nessa faixa de preço onde a maioria das marcas oferece apenas 12 meses. Isso reduz o risco de custo pós-compra em caso de defeito.',
+  },
+  {
+    question: 'Fisioterapeutas recomendam a Athletic?',
+    answer: 'A Athletic posiciona seus produtos com linguagem voltada a fisioterapeutas e personal trainers, destacando presilhas nos pedais, porta-garrafa e simulação de condições reais de pedalada. A marca tem presença em clínicas e é citada em guias de reabilitação.',
+  },
+  {
+    question: 'A Kikos tem modelos eletromagnéticos acessíveis?',
+    answer: 'Sim. A Kikos é uma das poucas marcas com modelos eletromagnéticos voltados ao público geral, com 24 níveis de tensão e suporte de até 150 kg. Esses modelos ficam na faixa de R$ 3.500 a R$ 8.000 e são indicados para uso semiprofissional.',
+  },
+];
+---
+
+<Layout
+  title="Kikos vs Athletic: Qual Bicicleta Ergométrica Comprar?"
+  description="Kikos vs Athletic: comparativo técnico, bluetooth, garantia, recomendação por fisioterapeutas e qual marca é melhor para uso intermediário e premium."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+
+      <h1 id="page-heading">Kikos vs Athletic: Qual Bicicleta Ergométrica Comprar?</h1>
+
+      <div class="verdict-box">
+        <div class="verdict-col verdict-a">
+          <div class="verdict-label">Melhor em tecnologia e conectividade</div>
+          <div class="verdict-brand">Kikos FB 180i</div>
+          <p>Bluetooth BLE, app FitShow, 16 programas, modelos eletromagnéticos — para quem quer mais tecnologia e dados de treino.</p>
+          <a href="/melhores-bicicletas-ergometricas/kikos/" class="verdict-link">Ver análise completa →</a>
+        </div>
+        <div class="verdict-divider">vs</div>
+        <div class="verdict-col verdict-b">
+          <div class="verdict-label">Melhor em garantia e reabilitação</div>
+          <div class="verdict-brand">Athletic Ergométrica</div>
+          <p>2 anos de garantia, recomendada por fisioterapeutas, kit cardio disponível — para uso clínico ou intenso com segurança.</p>
+          <a href="/melhores-bicicletas-ergometricas/athletic/" class="verdict-link">Ver análise completa →</a>
+        </div>
+      </div>
+
+      <h2>Comparativo técnico por modelo equivalente</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Kikos FB 180i</th>
+            <th>Athletic 2.0</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Faixa de preço</td><td>R$ 1.700–R$ 2.200</td><td>R$ 1.600–R$ 2.500</td></tr>
+          <tr><td>Resistência</td><td>Magnética</td><td>Magnética</td></tr>
+          <tr><td>Níveis de resistência</td><td>16</td><td>16</td></tr>
+          <tr><td>Peso suportado</td><td>110 kg</td><td class="highlight-cell">120 kg</td></tr>
+          <tr><td>Bluetooth</td><td class="highlight-cell">Sim (BLE)</td><td>Não</td></tr>
+          <tr><td>App compatível</td><td class="highlight-cell">FitShow</td><td>Não</td></tr>
+          <tr><td>Garantia estrutura</td><td>12 meses</td><td class="highlight-cell">24 meses</td></tr>
+          <tr><td>Pedais com presilha</td><td>Não</td><td class="highlight-cell">Sim</td></tr>
+          <tr><td>Recomendação clínica</td><td>Não</td><td class="highlight-cell">Sim</td></tr>
+          <tr><td>Segmento</td><td>Intermediário</td><td>Intermediário–Premium</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para quem cada marca é indicada</h2>
+
+      <div class="profile-grid">
+        <div class="profile-card profile-a">
+          <h3>Escolha a Kikos se você:</h3>
+          <ul>
+            <li>Quer acompanhar treinos via app (FitShow)</li>
+            <li>Precisa de bluetooth para integração digital</li>
+            <li>Quer modelos eletromagnéticos de alto desempenho</li>
+            <li>Pesa até 88 kg e treina regularmente em casa</li>
+            <li>Prioriza tecnologia sobre garantia estendida</li>
+          </ul>
+        </div>
+        <div class="profile-card profile-b">
+          <h3>Escolha a Athletic se você:</h3>
+          <ul>
+            <li>Está em reabilitação ou fisioterapia</li>
+            <li>Quer garantia de 2 anos na estrutura</li>
+            <li>Prefere pedais com presilha para maior eficiência</li>
+            <li>Treina diariamente e precisa de durabilidade comprovada</li>
+            <li>Seu fisioterapeuta ou personal trainer recomendou</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Onde comprar</h2>
+      <p>
+        A Kikos está disponível no site oficial com parcelamento em até 10x e descontos frequentes de até 60%. A Athletic vende pelo site próprio e na <strong>Amazon BR</strong>. Para ambas, verifique vendedores autorizados para garantia válida.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/melhores-bicicletas-ergometricas/kikos/" class="btn-primary">Análise Kikos →</a>
+        <a href="/melhores-bicicletas-ergometricas/athletic/" class="btn-secondary">Análise Athletic →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: Kikos vs Athletic" />
+</Layout>
+
+<style>
+  .verdict-box { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin: 1.5rem 0 2.5rem; background: var(--c-gray-50); border: 1px solid var(--token-border); border-radius: var(--token-radius-lg); overflow: hidden; }
+  .verdict-col { padding: 1.5rem; }
+  .verdict-col p { font-size: 0.9375rem; color: var(--token-text-secondary); line-height: 1.5; margin: 0.5rem 0 1rem; }
+  .verdict-a { background: var(--c-green-50); }
+  .verdict-b { background: var(--c-orange-50); }
+  .verdict-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--token-text-subtle); margin-bottom: 0.375rem; }
+  .verdict-brand { font-size: 1.25rem; font-weight: 700; color: var(--token-text-primary); }
+  .verdict-link { font-size: 0.875rem; font-weight: 600; color: var(--token-brand); text-decoration: none; }
+  .verdict-link:hover { text-decoration: underline; }
+  .verdict-divider { font-size: 1.25rem; font-weight: 800; text-align: center; padding: 0 0.5rem; }
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  .profile-card { padding: 1.25rem 1.5rem; border-radius: var(--token-radius-md); border: 1px solid var(--token-border); }
+  .profile-a { background: var(--c-green-50); }
+  .profile-b { background: var(--c-orange-50); }
+  .profile-card h3 { font-size: 0.9375rem; margin: 0 0 0.75rem; color: var(--token-text-primary); }
+  .profile-card ul { margin: 0; padding-left: 1.25rem; }
+  .profile-card li { font-size: 0.9375rem; color: var(--token-text-secondary); margin-bottom: 0.375rem; }
+  .cta-pair { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--token-border); }
+  .btn-primary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--token-brand); color: #fff; border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .btn-secondary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--c-gray-100); color: var(--token-text-primary); border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  @media (max-width: 640px) { .verdict-box { grid-template-columns: 1fr; } .verdict-divider { text-align: center; padding: 0.5rem; } .profile-grid { grid-template-columns: 1fr; } }
+</style>

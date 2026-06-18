@@ -1,0 +1,149 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Gallant vs WCT Fitness', url: '/melhores-bicicletas-ergometricas/gallant-vs-wct-fitness/' },
+];
+
+const faqItems = [
+  {
+    question: 'Gallant ou WCT Fitness: qual é a melhor bicicleta ergométrica?',
+    answer: 'Para uso domiciliar leve, a Gallant Trainer oferece melhor custo-benefício na faixa de entrada. Para spinning com roda pesada, a WCT Fitness com volante de 13 kg ou 20 kg entrega mais performance. A escolha depende da intensidade de uso: cardio moderado vai para Gallant, spinning intenso vai para WCT.',
+  },
+  {
+    question: 'A WCT Fitness tem boa avaliação?',
+    answer: 'Sim. Os modelos WCT Fitness acumulam notas de 4,8 a 4,9 estrelas na Amazon BR, entre as mais altas do segmento. O destaque é o volante de inércia pesado (13 kg e 20 kg) com preço competitivo — relação custo-benefício muito bem avaliada pelos usuários.',
+  },
+  {
+    question: 'A Gallant tem mais modelos que a WCT?',
+    answer: 'Sim. A Gallant oferece linha mais ampla: Trainer (entrada), Elite e Elite Pro, cobrindo de R$ 400 a R$ 5.599. A WCT Fitness é mais focada no segmento de spinning intermediário, com menos variações mas maior especialização nesse nicho.',
+  },
+];
+---
+
+<Layout
+  title="Gallant vs WCT Fitness: Qual Bicicleta Ergométrica Comprar?"
+  description="Gallant vs WCT Fitness: comparativo técnico, roda de inércia, avaliações de usuários e qual marca é melhor para cada perfil de uso e orçamento."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+
+      <h1 id="page-heading">Gallant vs WCT Fitness: Qual Bicicleta Ergométrica Comprar?</h1>
+
+      <div class="verdict-box">
+        <div class="verdict-col verdict-a">
+          <div class="verdict-label">Melhor para variedade e entrada</div>
+          <div class="verdict-brand">Gallant Elite</div>
+          <p>Linha completa de R$ 400 a R$ 5.599, maior variedade de modelos e boa presença em marketplaces.</p>
+          <a href="/melhores-bicicletas-ergometricas/gallant/" class="verdict-link">Ver análise completa →</a>
+        </div>
+        <div class="verdict-divider">vs</div>
+        <div class="verdict-col verdict-b">
+          <div class="verdict-label">Melhor avaliação e spinning</div>
+          <div class="verdict-brand">WCT Fitness 13kg</div>
+          <p>Volante de 13 kg ou 20 kg, notas 4,8–4,9 estrelas — melhor custo-benefício para spinning intermediário.</p>
+          <a href="/melhores-bicicletas-ergometricas/wct-fitness/" class="verdict-link">Ver análise completa →</a>
+        </div>
+      </div>
+
+      <h2>Comparativo técnico por modelo equivalente</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Gallant Elite Pro</th>
+            <th>WCT Fitness 13kg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Faixa de preço</td><td>R$ 800–R$ 1.500</td><td>R$ 900–R$ 1.600</td></tr>
+          <tr><td>Resistência</td><td>Magnética</td><td>Magnética</td></tr>
+          <tr><td>Roda de inércia</td><td>8–10 kg</td><td class="highlight-cell">13 kg</td></tr>
+          <tr><td>Níveis de resistência</td><td>8</td><td>8</td></tr>
+          <tr><td>Peso suportado</td><td>110 kg</td><td class="highlight-cell">120 kg</td></tr>
+          <tr><td>Avaliação Amazon</td><td>4,3 estrelas</td><td class="highlight-cell">4,8–4,9 estrelas</td></tr>
+          <tr><td>Bluetooth</td><td>Não</td><td>Não</td></tr>
+          <tr><td>Garantia</td><td>12 meses</td><td>12 meses</td></tr>
+          <tr><td>Segmento</td><td>Entrada–Intermediário</td><td>Intermediário</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para quem cada marca é indicada</h2>
+
+      <div class="profile-grid">
+        <div class="profile-card profile-a">
+          <h3>Escolha a Gallant se você:</h3>
+          <ul>
+            <li>Quer variedade de modelos e faixas de preço</li>
+            <li>Está começando e quer modelo de entrada confiável</li>
+            <li>Prefere pagar via PIX com desconto</li>
+            <li>Faz cardio leve a moderado (até 4x por semana)</li>
+            <li>Quer maior disponibilidade em marketplaces</li>
+          </ul>
+        </div>
+        <div class="profile-card profile-b">
+          <h3>Escolha a WCT Fitness se você:</h3>
+          <ul>
+            <li>Quer spinning com roda de inércia pesada (13–20 kg)</li>
+            <li>Prioriza a melhor avaliação de usuários do segmento</li>
+            <li>Pesa até 96 kg e treina com intensidade</li>
+            <li>Quer o melhor custo-benefício em spinning intermediário</li>
+            <li>Treina 5 ou mais vezes por semana</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Qual tem mais avaliações de usuários?</h2>
+      <p>
+        A Gallant tem maior volume absoluto de avaliações pelo portfólio mais amplo e maior penetração no segmento de entrada. A WCT Fitness tem as notas mais altas do segmento — 4,8 a 4,9 estrelas — com usuários elogiando principalmente a estabilidade da pedalada e o silêncio relativo para uma roda pesada.
+      </p>
+
+      <h2>Onde comprar</h2>
+      <p>
+        Ambas estão disponíveis na <strong>Amazon BR</strong>, <strong>Mercado Livre</strong> e <strong>Shopee</strong>. A Gallant oferece desconto via PIX no site oficial. Para a WCT Fitness, a Amazon BR costuma ter os preços mais estáveis e entrega mais rápida.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/melhores-bicicletas-ergometricas/gallant/" class="btn-primary">Análise Gallant →</a>
+        <a href="/melhores-bicicletas-ergometricas/wct-fitness/" class="btn-secondary">Análise WCT Fitness →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: Gallant vs WCT Fitness" />
+</Layout>
+
+<style>
+  .verdict-box { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin: 1.5rem 0 2.5rem; background: var(--c-gray-50); border: 1px solid var(--token-border); border-radius: var(--token-radius-lg); overflow: hidden; }
+  .verdict-col { padding: 1.5rem; }
+  .verdict-col p { font-size: 0.9375rem; color: var(--token-text-secondary); line-height: 1.5; margin: 0.5rem 0 1rem; }
+  .verdict-a { background: var(--c-green-50); }
+  .verdict-b { background: var(--c-orange-50); }
+  .verdict-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--token-text-subtle); margin-bottom: 0.375rem; }
+  .verdict-brand { font-size: 1.25rem; font-weight: 700; color: var(--token-text-primary); }
+  .verdict-link { font-size: 0.875rem; font-weight: 600; color: var(--token-brand); text-decoration: none; }
+  .verdict-link:hover { text-decoration: underline; }
+  .verdict-divider { font-size: 1.25rem; font-weight: 800; text-align: center; padding: 0 0.5rem; }
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  .profile-card { padding: 1.25rem 1.5rem; border-radius: var(--token-radius-md); border: 1px solid var(--token-border); }
+  .profile-a { background: var(--c-green-50); }
+  .profile-b { background: var(--c-orange-50); }
+  .profile-card h3 { font-size: 0.9375rem; margin: 0 0 0.75rem; color: var(--token-text-primary); }
+  .profile-card ul { margin: 0; padding-left: 1.25rem; }
+  .profile-card li { font-size: 0.9375rem; color: var(--token-text-secondary); margin-bottom: 0.375rem; }
+  .cta-pair { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--token-border); }
+  .btn-primary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--token-brand); color: #fff; border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .btn-secondary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--c-gray-100); color: var(--token-text-primary); border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  @media (max-width: 640px) { .verdict-box { grid-template-columns: 1fr; } .verdict-divider { text-align: center; padding: 0.5rem; } .profile-grid { grid-template-columns: 1fr; } }
+</style>

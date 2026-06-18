@@ -1,0 +1,105 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Roda de Inércia', url: '/como-escolher-bicicleta-ergometrica/roda-de-inercia-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual o peso ideal da roda de inércia?',
+    answer: 'Para uso domiciliar leve (cardio 3x por semana): 5–8 kg. Para spinning moderado (4–5x por semana): 10–13 kg. Para spinning intenso ou uso semiprofissional: 18–22 kg. Quanto mais pesada a roda, mais fluida e estável é a pedalada — mas maior o peso total do equipamento e a vibração no piso.',
+  },
+  {
+    question: 'Roda de inércia mais pesada é sempre melhor?',
+    answer: 'Não necessariamente. Uma roda de 20 kg em treino leve gera vibração desnecessária e dificulta a parada brusca. O peso ideal depende da intensidade e frequência do treino. Para apartamentos, rodas de até 8 kg são mais indicadas pelo menor impacto no piso.',
+  },
+  {
+    question: 'Qual a diferença entre roda de inércia de 8kg e 13kg?',
+    answer: 'A roda de 13 kg mantém o momento angular por mais tempo — a pedalada é mais fluida em alta cadência e simula melhor o ciclismo real. A roda de 8 kg é mais responsiva para paradas e arranques, adequada para treinos intervalados leves. Em spinning HIIT, a roda de 13 kg ou mais faz diferença perceptível.',
+  },
+];
+---
+
+<Layout
+  title="Roda de Inércia: O que é e Como Escolher o Peso Certo"
+  description="O que é roda de inércia em bicicletas ergométricas? Como o peso de 5kg a 22kg afeta a pedalada, o silêncio e qual escolher para cada tipo de treino."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Roda de Inércia: O que é e Como Escolher o Peso Certo</h1>
+
+      <p>
+        A <strong>roda de inércia</strong> (também chamada de volante de inércia ou flywheel) é o disco metálico giratório que armazena e libera energia cinética durante a pedalada. Seu peso determina diretamente a <strong>suavidade do movimento</strong>, a simulação de ciclismo real e o nível de vibração gerado pelo equipamento.
+      </p>
+
+      <h2>Como o peso da roda afeta a pedalada</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Peso da roda</th>
+            <th>Fluidez</th>
+            <th>Vibração</th>
+            <th>Indicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>5–6 kg</td><td>Básica</td><td>Baixa</td><td>Cardio leve, apartamento</td></tr>
+          <tr><td>8 kg</td><td>Boa</td><td>Baixa</td><td class="highlight-cell">Uso domiciliar regular</td></tr>
+          <tr><td>10–13 kg</td><td class="highlight-cell">Muito boa</td><td>Média</td><td class="highlight-cell">Spinning moderado a intenso</td></tr>
+          <tr><td>18–20 kg</td><td class="highlight-cell">Excelente</td><td>Alta</td><td>Spinning intenso / semiprofissional</td></tr>
+          <tr><td>22 kg+</td><td class="highlight-cell">Profissional</td><td>Alta</td><td>Academia / uso profissional</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Marcas e pesos disponíveis no Brasil</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Marca / Modelo</th>
+            <th>Roda de inércia</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Poli Sports / Dream Fitness</td><td>5–6 kg</td><td>R$ 330–R$ 800</td></tr>
+          <tr><td>PodiumFit V200 / Kikos FB 180i</td><td>6–8 kg</td><td>R$ 800–R$ 2.200</td></tr>
+          <tr><td>Gallant Elite Pro / Odin Fit Sprint</td><td>8–13 kg</td><td>R$ 800–R$ 1.500</td></tr>
+          <tr><td>WCT Fitness</td><td>13–20 kg</td><td>R$ 900–R$ 1.900</td></tr>
+          <tr><td>Odin Fit Sprint 18kg</td><td>18 kg</td><td>R$ 1.400–R$ 1.900</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Roda de inércia vs resistência magnética</h2>
+      <p>
+        São componentes distintos e complementares. A <strong>roda de inércia</strong> armazena energia cinética e define a fluidez da pedalada. A <strong>resistência magnética</strong> controla a carga aplicada sobre a roda. Um bom equipamento combina os dois: roda pesada para pedalada fluida e resistência magnética para silêncio e precisão de carga.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/como-escolher-bicicleta-ergometrica/resistencia-magnetica-vs-mecanica/" class="btn-primary">Magnética vs Mecânica →</a>
+        <a href="/como-escolher-bicicleta-ergometrica/" class="btn-secondary">Guia completo de escolha →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: roda de inércia" />
+</Layout>
+
+<style>
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+  .cta-pair { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--token-border); }
+  .btn-primary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--token-brand); color: #fff; border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .btn-secondary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--c-gray-100); color: var(--token-text-primary); border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+</style>

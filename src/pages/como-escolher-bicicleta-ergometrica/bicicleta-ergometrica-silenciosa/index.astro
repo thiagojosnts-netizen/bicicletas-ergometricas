@@ -1,0 +1,116 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Como Escolher', url: '/como-escolher-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica Silenciosa', url: '/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-silenciosa/' },
+];
+
+const faqItems = [
+  {
+    question: 'Qual bicicleta ergométrica faz menos barulho?',
+    answer: 'Bicicletas com resistência magnética são as mais silenciosas — o freio age por campo magnético sem contato mecânico com a roda. Entre as marcas disponíveis no Brasil, a PodiumFit é a mais citada por silêncio em apartamentos. Modelos eletromagnéticos como a Kikos também têm ruído muito baixo.',
+  },
+  {
+    question: 'Bicicleta magnética é silenciosa?',
+    answer: 'Sim. O sistema de resistência magnética não gera atrito mecânico, eliminando o ruído característico de modelos com pastilha de freio. O único som produzido é da correia de transmissão e do movimento do pedal — ambos de baixa intensidade.',
+  },
+  {
+    question: 'Posso usar bicicleta ergométrica em apartamento?',
+    answer: 'Sim, desde que escolha um modelo com resistência magnética. Modelos mecânicos com atrito geram ruído e vibração que podem incomodar vizinhos. Modelos magnéticos com roda de inércia de até 8 kg são ideais para apartamentos — acima disso, a vibração estrutural aumenta mesmo com pouco ruído.',
+  },
+  {
+    question: 'Qual roda de inércia é mais silenciosa?',
+    answer: 'Rodas menores (6–8 kg) com resistência magnética geram menos vibração e são mais indicadas para apartamentos. Rodas pesadas (13–20 kg) entregam pedalada mais fluida e são menos ruidosas em velocidade constante, mas geram mais vibração na estrutura do piso.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Silenciosa: Como Escolher para Apartamento"
+  description="Qual bicicleta ergométrica faz menos barulho? Resistência magnética, roda de inércia e os 4 critérios que realmente determinam o silêncio no uso domiciliar."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-06-01"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+
+      <h1 id="page-heading">Bicicleta Ergométrica Silenciosa: Como Escolher para Apartamento</h1>
+
+      <p>
+        O principal critério de silêncio em uma bicicleta ergométrica é o <strong>tipo de resistência</strong>. Modelos com resistência magnética eliminam o atrito mecânico e reduzem o ruído ao mínimo. Modelos mecânicos por atrito (pastilha sobre volante) geram chiado contínuo durante o treino — inadequados para uso em apartamento.
+      </p>
+
+      <h2>Os 4 critérios que determinam o silêncio</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>O que verificar</th>
+            <th>Impacto no ruído</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tipo de resistência</td><td>Magnética ou eletromagnética</td><td class="highlight-cell">Alto</td></tr>
+          <tr><td>Peso da roda de inércia</td><td>Até 8 kg para apartamento</td><td class="highlight-cell">Alto</td></tr>
+          <tr><td>Transmissão</td><td>Correia (silenciosa) vs corrente (ruidosa)</td><td>Médio</td></tr>
+          <tr><td>Estabilizadores de piso</td><td>Presença de borrachas antivibração</td><td>Médio</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Marcas mais silenciosas disponíveis no Brasil</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Marca / Modelo</th>
+            <th>Resistência</th>
+            <th>Roda de inércia</th>
+            <th>Indicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>PodiumFit V200</td><td>Magnética</td><td>8 kg</td><td class="highlight-cell">Apartamento</td></tr>
+          <tr><td>Kikos FB 180i</td><td>Magnética</td><td>6 kg</td><td class="highlight-cell">Apartamento</td></tr>
+          <tr><td>Gallant Elite</td><td>Magnética</td><td>8 kg</td><td>Apartamento / Casa</td></tr>
+          <tr><td>Dream Fitness EX 450</td><td>Magnética</td><td>6 kg</td><td>Apartamento</td></tr>
+          <tr><td>Odin Fit Sprint 13kg</td><td>Magnética</td><td>13 kg</td><td>Casa (mais vibração)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>O que evitar em apartamento</h2>
+      <ul>
+        <li><strong>Resistência mecânica por atrito</strong> — gera chiado contínuo durante o treino</li>
+        <li><strong>Roda de inércia acima de 13 kg</strong> — vibração estrutural perceptível no piso</li>
+        <li><strong>Transmissão por corrente</strong> — mais ruidosa que correia</li>
+        <li><strong>Sem estabilizadores de borracha</strong> — vibração transmitida diretamente ao piso</li>
+      </ul>
+
+      <h2>Recomendação por perfil</h2>
+      <p>
+        Para <strong>apartamento com vizinhos abaixo</strong>: PodiumFit V200 ou Kikos FB 180i — resistência magnética, roda de até 8 kg, correia de transmissão. Para <strong>casa com maior liberdade de ruído</strong>: Odin Fit Sprint 13kg ou WCT Fitness 13kg entregam mais performance sem restrição de vibração.
+      </p>
+
+      <div class="cta-pair">
+        <a href="/melhores-bicicletas-ergometricas/podiumfit/" class="btn-primary">Ver PodiumFit →</a>
+        <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/" class="btn-secondary">Guia para Apartamento →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: bicicleta ergométrica silenciosa" />
+</Layout>
+
+<style>
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+  .cta-pair { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--token-border); }
+  .btn-primary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--token-brand); color: #fff; border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .btn-secondary { display: inline-flex; align-items: center; padding: 0.625rem 1.25rem; background: var(--c-gray-100); color: var(--token-text-primary); border-radius: var(--token-radius-md); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+</style>
