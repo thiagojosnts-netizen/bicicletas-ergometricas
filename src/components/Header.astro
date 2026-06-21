@@ -14,10 +14,22 @@ const navLinks = [
   <div class="header-inner container">
 
     <a href="/" class="site-logo" aria-label="BicicletasErgometricas.com - Página inicial">
-      <span class="logo-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
-      </span>
-      <span class="logo-text">BicicletasErgometricas<span class="logo-dot">.com</span></span>
+      <svg class="logo-svg" viewBox="0 0 230 50" height="38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="2" y="17"
+          font-family="'Geist Variable', system-ui, sans-serif"
+          font-size="12"
+          font-weight="600"
+          fill="#374151"
+          letter-spacing="3">BICICLETAS</text>
+        <rect x="2" y="21" width="30" height="2" rx="1" fill="#2D6A4F"/>
+        <text x="1" y="45"
+          font-family="'Geist Variable', system-ui, sans-serif"
+          font-size="24"
+          font-weight="800"
+          letter-spacing="-0.5">
+          <tspan fill="#111827">ERGOMÉTRICAS</tspan><tspan fill="#2D6A4F" font-size="14" font-weight="400">.com</tspan>
+        </text>
+      </svg>
     </a>
 
     <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
@@ -77,27 +89,13 @@ const navLinks = [
   .site-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     text-decoration: none;
     flex-shrink: 0;
   }
 
-  .logo-icon {
-    display: flex;
-    align-items: center;
-    color: var(--token-brand);
-  }
-
-  .logo-text {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--token-text-primary);
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-  }
-
-  .logo-dot {
-    color: var(--token-brand);
+  .logo-svg {
+    display: block;
+    overflow: visible;
   }
 
   /* NAV */
@@ -219,7 +217,7 @@ const navLinks = [
 
   @media (max-width: 1024px) and (min-width: 901px) {
     .nav-link { font-size: 0.8125rem; padding: 0.375rem 0.5rem; }
-    .logo-text { font-size: 0.9rem; }
+    .logo-svg { height: 32px; }
   }
 </style>
 
