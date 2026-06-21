@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import FAQ from '../../components/FAQ.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ const breadcrumbs = [
   breadcrumbs={breadcrumbs}
   datePublished={post.data.datePublished}
   dateModified={post.data.dateModified ?? post.data.datePublished}
-  faqItems={[]}
+  faqItems={post.data.faqItems ?? []}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -63,4 +64,8 @@ const breadcrumbs = [
       </footer>
     </div>
   </article>
+
+  {post.data.faqItems && post.data.faqItems.length > 0 && (
+    <FAQ items={post.data.faqItems} title="Perguntas Frequentes" />
+  )}
 </Layout>
