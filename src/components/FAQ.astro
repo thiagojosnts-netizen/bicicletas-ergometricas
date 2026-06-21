@@ -30,3 +30,69 @@ const { items, title = 'Perguntas Frequentes' } = Astro.props;
     </div>
   </div>
 </section>
+
+<style>
+  .faq-section {
+    padding: 3rem 0 4rem;
+    background: var(--c-gray-50, #F8F9FA);
+  }
+
+  .faq-section h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-item {
+    border: none;
+    border-top: 1px solid var(--token-border, #E8E8E8);
+    border-radius: 0;
+    margin-bottom: 0;
+    background: none;
+  }
+
+  .faq-item:first-of-type {
+    border-top: 2px solid var(--token-brand, #2D6A4F);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1.25rem 0;
+    cursor: default;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--token-text-primary, #1A1A2E);
+    line-height: 1.35;
+  }
+
+  .faq-question::before {
+    content: 'P';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--token-brand, #2D6A4F);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    letter-spacing: 0;
+  }
+
+  .faq-answer {
+    padding: 0 0 1.5rem 2.375rem;
+    font-size: 0.9375rem;
+    color: var(--token-text-secondary, #4B5563);
+    line-height: 1.75;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+</style>
