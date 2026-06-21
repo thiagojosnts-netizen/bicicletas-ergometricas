@@ -22,6 +22,7 @@ export interface Props {
 const { product } = Astro.props;
 const store = product.store ?? "Amazon";
 const stars = product.rating ? Math.round(product.rating) : 0;
+const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-amazon";
 ---
 
 <article class="product-card">
@@ -78,7 +79,7 @@ const stars = product.rating ? Math.round(product.rating) : 0;
       <div class="price">{product.price}</div>
       <a
         href={product.affiliateUrl}
-        class="cta-button"
+        class={btnClass}
         target="_blank"
         rel="noopener nofollow sponsored"
         aria-label={`Ver ${product.name} no ${store}`}
@@ -244,22 +245,4 @@ const stars = product.rating ? Math.round(product.rating) : 0;
     color: #b12704;
   }
 
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #ff9900;
-    color: #111;
-    font-size: 0.875rem;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .cta-button:hover {
-    background: #e68900;
-  }
 </style>
