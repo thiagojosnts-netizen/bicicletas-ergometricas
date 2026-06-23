@@ -2,6 +2,22 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import HowToSchema from '../../../components/schema/HowToSchema.astro';
+
+const howToSteps = [
+  {
+    name: 'Ajuste da Altura do Selim',
+    text: 'Fique de pé com o ombro alinhado ao selim e eleve ou abaixe o selim até a altura do trocânter maior (proeminência óssea lateral do quadril). Sente-se e coloque o calcanhar no pedal na posição de 6 horas com a perna quase completamente estendida. Na posição de pedalagem normal (antepé no pedal), o joelho deve ter 25 a 35 graus de flexão no ponto mais baixo. Trave o selim com firmeza.',
+  },
+  {
+    name: 'Ajuste do Guidão',
+    text: 'Posicione o guidão na altura em que os cotovelos fiquem levemente flexionados ao segurar os punhos, com os ombros relaxados e sem encolher em direção às orelhas. Para usuários com dor cervical ou lombar, eleve o guidão até que a postura seja confortável sem tensão no pescoço.',
+  },
+  {
+    name: 'Posição dos Pés nos Pedais',
+    text: 'Apoie o antepé (área dos dedos e articulações dos dedos) sobre o centro do pedal — nunca o calcanhar ou o arco do pé. Os pés devem estar paralelos ao solo, sem pronação (inclinação para dentro) nem supinação (inclinação para fora). Essa posição permite usar a panturrilha para impulso adicional durante o pedalamento.',
+  },
+];
 
 const breadcrumbs = [
   { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
@@ -31,6 +47,13 @@ const faqItems = [
   faqItems={faqItems}
   datePublished="2026-02-17"
 >
+  <HowToSchema
+    slot="head"
+    name="Como Regular a Bicicleta Ergométrica"
+    description="Como regular a bicicleta ergométrica passo a passo: altura do selim, guidão e posição dos pés nos pedais. Erros comuns e como corrigir cada um."
+    totalTime="PT15M"
+    steps={howToSteps}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

@@ -24,6 +24,7 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[];
   faqItems?: FAQItem[];
   isHomepage?: boolean;
+  isArticle?: boolean;
   hideDisclosure?: boolean;
   datePublished?: string;
   dateModified?: string;
@@ -37,6 +38,7 @@ const {
   breadcrumbs = [],
   faqItems = [],
   isHomepage = false,
+  isArticle = false,
   hideDisclosure = false,
   datePublished = '2026-01-01',
   dateModified = new Date().toISOString().split('T')[0],
@@ -79,7 +81,7 @@ const faqSchema = faqItems.length > 0 ? {
   })),
 } : null;
 
-const articleSchema = !isHomepage && breadcrumbs.length > 0 ? {
+const articleSchema = isArticle && breadcrumbs.length > 0 ? {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': `${CANONICAL}#article`,
@@ -138,10 +140,11 @@ const articleSchema = !isHomepage && breadcrumbs.length > 0 ? {
     <meta name="generator" content={Astro.generator} />
 
     <SchemaBase />
-    {(isHomepage || articleSchema !== null) && <PersonSchema />}
+    {(isHomepage || breadcrumbs.length > 0) && <PersonSchema />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
     {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+    <slot name="head" />
   </head>
 
   <body>
