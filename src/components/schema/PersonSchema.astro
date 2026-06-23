@@ -1,0 +1,26 @@
+---
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://bicicletasergometricas.com/sobre/#rafael-souza',
+  name: 'Rafael Souza',
+  jobTitle: 'Analista de Equipamentos Fitness',
+  description:
+    'Especialista em equipamentos de fitness com foco em bicicletas ergométricas. Avalia modelos desde 2022 com base em especificações técnicas, dados do Reclame Aqui e testes práticos.',
+  url: 'https://bicicletasergometricas.com/sobre/',
+  knowsAbout: [
+    'Bicicletas ergométricas',
+    'Equipamentos de fitness',
+    'Treino cardiovascular',
+    'Avaliação de equipamentos esportivos',
+    'Ergometria',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    '@id': 'https://bicicletasergometricas.com/#organization',
+  },
+  sameAs: [],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

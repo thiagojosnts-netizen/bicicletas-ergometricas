@@ -1,0 +1,45 @@
+---
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://bicicletasergometricas.com/#website',
+  name: 'Bicicletas Ergométricas',
+  url: 'https://bicicletasergometricas.com',
+  description:
+    'Portal de referência sobre bicicletas ergométricas no Brasil: guias, comparativos e recomendações de especialistas.',
+  inLanguage: 'pt-BR',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://bicicletasergometricas.com/?s={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://bicicletasergometricas.com/#organization',
+  name: 'Bicicletas Ergométricas',
+  url: 'https://bicicletasergometricas.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://bicicletasergometricas.com/logo.png',
+    width: 300,
+    height: 60,
+  },
+  sameAs: [],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    availableLanguage: 'Portuguese',
+  },
+};
+---
+
+<Fragment>
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+</Fragment>
