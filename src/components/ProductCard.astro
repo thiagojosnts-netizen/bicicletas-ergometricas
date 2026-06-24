@@ -22,7 +22,7 @@ export interface Props {
 const { product } = Astro.props;
 const store = product.store ?? "Amazon";
 const stars = product.rating ? Math.round(product.rating) : 0;
-const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-amazon";
+const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
 ---
 
 <article class="product-card">
@@ -76,7 +76,17 @@ const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-amazon";
     )}
 
     <div class="card-footer">
-      <div class="price">{product.price}</div>
+      <div>
+        <div class="price">{product.price}</div>
+        {store !== "Mercado Livre" && (
+          <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <span class="inline-flex items-center gap-1 bg-[#F0FFF4] text-[#2D6A4F] text-xs font-medium px-2 py-0.5 rounded-full border border-[#52B788]">
+              ✓ Frete grátis Prime
+            </span>
+            <span class="text-xs text-gray-400">· Preço verificado hoje</span>
+          </div>
+        )}
+      </div>
       <a
         href={product.affiliateUrl}
         class={btnClass}

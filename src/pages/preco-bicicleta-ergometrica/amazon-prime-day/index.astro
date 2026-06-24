@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
@@ -100,7 +100,7 @@ const modelos = [
               href={m.href}
               target="_blank"
               rel="noopener sponsored"
-              class="btn-amazon"
+              class="btn-cta"
             >
               {m.cta} →
             </a>
@@ -259,7 +259,7 @@ const modelos = [
     margin-bottom: 0.5rem;
   }
 
-  .btn-amazon {
+  .btn-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -274,7 +274,7 @@ const modelos = [
     margin-top: auto;
   }
 
-  .btn-amazon:hover {
+  .btn-cta:hover {
     background: #e68900;
     color: #111;
     text-decoration: none;
