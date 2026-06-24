@@ -3,6 +3,7 @@ title: "Como Montar Bicicleta Ergométrica: Guia Passo a Passo"
 description: "Guia completo de montagem de bicicleta ergométrica: ferramentas necessárias, ordem de montagem, regulagem inicial e os erros mais comuns que causam ruído e instabilidade."
 datePublished: "2026-05-17"
 tags: ["montagem", "iniciantes", "regulagem"]
+draft: true
 ---
 
 A montagem da bicicleta ergométrica é simples, mas erros nessa etapa causam ruído, instabilidade e até danos ao equipamento. Este guia cobre a montagem completa, da abertura da caixa à primeira pedalada.

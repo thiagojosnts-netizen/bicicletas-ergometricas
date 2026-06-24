@@ -25,6 +25,7 @@
     { "source": "/politicas-de-privacidade/", "destination": "/politica-de-privacidade/", "permanent": true },
     { "source": "/sample-page/", "destination": "/", "permanent": true },
     { "source": "/hello-world/", "destination": "/blog/", "permanent": true },
+    { "source": "/blog/como-montar-bicicleta-ergometrica/", "destination": "/como-usar-bicicleta-ergometrica/como-montar-bicicleta-ergometrica/", "permanent": true },
     { "source": "/author/guilherme-fernandes/", "destination": "/sobre/", "permanent": true },
     { "source": "/author/lordbuth/", "destination": "/sobre/", "permanent": true },
     { "source": "/category/uncategorized/", "destination": "/blog/", "permanent": true },

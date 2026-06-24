@@ -1,0 +1,242 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import HowToSchema from '../../../components/schema/HowToSchema.astro';
+
+const howToSteps = [
+  {
+    name: 'Organizar as Peças',
+    text: 'Antes de começar, espalhe todas as peças no chão e confira com a lista do manual. Agrupe os parafusos por tamanho — fabricantes frequentemente incluem parafusos sobressalentes, o que pode causar confusão. Identifique as peças principais: estrutura principal (base + suporte vertical), guidão, selim + haste do selim, pedais direito e esquerdo (verificar marcação R/L), painel eletrônico e cabo do painel.',
+  },
+  {
+    name: 'Montar a Estrutura Base',
+    text: 'Encaixe os estabilizadores horizontais na base conforme o manual. Aperte os parafusos da base em sequência cruzada (como na troca de pneu de carro) para garantir que a estrutura fique nivelada. Um aperto irregular causa vibração durante o uso. Verifique se os quatro pontos de contato com o chão tocam a superfície de forma igual — se a bicicleta balançar, ajuste os pés niveladores antes de continuar.',
+  },
+  {
+    name: 'Instalar o Suporte Vertical e o Guidão',
+    text: 'Encaixe o tubo vertical na base e aperte o parafuso de fixação. Na sequência, acople o guidão ao tubo e deixe frouxo — a altura será ajustada depois. O guidão tem marcações de profundidade no tubo: nunca posicione abaixo da marcação mínima de segurança (linha gravada ou impressa no tubo), pois essa marca garante comprimento de encaixe suficiente para suportar a carga.',
+  },
+  {
+    name: 'Instalar o Selim',
+    text: 'Encaixe a haste do selim no suporte e deixe frouxo. A altura correta é ajustada depois, em relação ao usuário. A mesma regra de segurança se aplica: nunca posicione a haste abaixo da marcação mínima de segurança gravada no tubo.',
+  },
+  {
+    name: 'Instalar os Pedais',
+    text: 'Os pedais têm rosca diferente: o pedal direito (R) aperta girando para a direita (rosca normal) e o pedal esquerdo (L) aperta girando para a esquerda (rosca invertida). Sempre verifique a marcação L/R antes de encaixar — instalar o pedal no lado errado destrói a rosca da manivela permanentemente. Aperte os pedais com firmeza usando chave Allen de 8 mm ou chave de boca de 15 mm.',
+  },
+  {
+    name: 'Conectar o Painel',
+    text: 'Passe o cabo do painel pelo canal interno do tubo vertical (se houver) e conecte nos dois terminais — geralmente um encaixe simples de plástico que trava com pressão. Ligue as pilhas ou conecte o cabo de energia conforme o modelo. Verifique se o painel liga antes de dar continuidade à regulagem.',
+  },
+  {
+    name: 'Regulagem Inicial',
+    text: 'Com a montagem concluída, faça a regulagem antes da primeira pedalada: ajuste a altura do selim na altura do quadril quando em pé ao lado da bicicleta; posicione o guidão com os cotovelos levemente flexionados ao segurar os punhos; percorra todos os parafusos e certifique-se de que nenhum ficou frouxo. Faça uma pedalada de 5 minutos em resistência mínima para verificar se há ruídos ou folgas antes de aumentar a intensidade.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
+  { name: 'Como Montar', url: '/como-usar-bicicleta-ergometrica/como-montar-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quais ferramentas são necessárias para montar uma bicicleta ergométrica?',
+    answer: 'A maioria dos modelos já inclui as ferramentas na caixa. Se não vier, você precisará de: chave Allen (hexagonal) nos tamanhos 4, 5 e 6 mm; chave de boca ou ajustável; e opcionalmente um nível de bolha para verificar o nivelamento da base. Não force parafusos sem antes verificar o tamanho correto da chave — cabeças danificadas são difíceis de recuperar.',
+  },
+  {
+    question: 'Como instalar os pedais da bicicleta ergométrica corretamente?',
+    answer: 'Os pedais têm rosca diferente: o pedal direito (R) aperta girando para a direita (rosca normal) e o pedal esquerdo (L) aperta girando para a esquerda (rosca invertida). Antes de encaixar, sempre verifique a marcação L/R gravada na rosca ou na lateral do pedal. Instalar o pedal errado no lado errado destrói a rosca da manivela permanentemente.',
+  },
+  {
+    question: 'Quanto tempo leva para montar uma bicicleta ergométrica?',
+    answer: 'A montagem de uma bicicleta ergométrica vertical leva entre 30 e 90 minutos, dependendo do modelo e da experiência. Bicicletas de entrada chegam 70 a 90% montadas, o que reduz o tempo. Não tente apressar — um parafuso danificado pode interromper a montagem e exigir peça de reposição do fabricante.',
+  },
+  {
+    question: 'O que verificar após a montagem da bicicleta ergométrica?',
+    answer: 'Após a montagem: (1) percorra todos os parafusos para confirmar que estão firmes; (2) ajuste a altura do selim e do guidão de acordo com sua estatura; (3) faça uma pedalada de 5 minutos em resistência mínima para identificar ruídos ou folgas; (4) confirme que a base está nivelada e não balança. Qualquer ruído metálico ou folga deve ser investigado antes do primeiro treino.',
+  },
+];
+---
+
+<Layout
+  title="Como Montar Bicicleta Ergométrica: Guia Passo a Passo"
+  description="Guia completo de montagem de bicicleta ergométrica: ferramentas necessárias, ordem de montagem, regulagem inicial e os erros mais comuns que causam ruído e instabilidade."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-05-17"
+>
+  <HowToSchema
+    slot="head"
+    name="Como Montar a Bicicleta Ergométrica"
+    description="Guia completo de montagem de bicicleta ergométrica: ferramentas necessárias, ordem de montagem, regulagem inicial e os erros mais comuns que causam ruído e instabilidade."
+    totalTime="PT30M"
+    steps={howToSteps}
+  />
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Como Montar Bicicleta Ergométrica: Guia Passo a Passo</h1>
+
+      <p class="summarization">
+        A montagem da <strong>bicicleta ergométrica</strong> envolve <strong>7 etapas</strong>: organizar as peças, montar a base, instalar o suporte vertical e o guidão, instalar o selim, fixar os pedais (atenção à rosca invertida do pedal esquerdo), conectar o painel e fazer a regulagem inicial. O processo leva entre <strong>30 e 90 minutos</strong> — erros comuns como pedal no lado errado ou parafusos abaixo da marcação mínima causam danos permanentes.
+      </p>
+
+      <p>
+        A maioria das bicicletas ergométricas chega com 70 a 90% da montagem concluída de fábrica. As etapas restantes são simples, mas exigem atenção a detalhes que os manuais frequentemente não enfatizam — especialmente a rosca invertida dos pedais e as marcações mínimas de segurança nas hastes.
+      </p>
+
+      <h2>Ferramentas Necessárias</h2>
+
+      <p>
+        A maioria dos modelos vem com ferramentas incluídas na caixa. Se não vier, você vai precisar de:
+      </p>
+
+      <ul>
+        <li>Chave Allen (hexagonal) tamanhos 4, 5 e 6 mm</li>
+        <li>Chave de boca ou ajustável</li>
+        <li>Nível de bolha (opcional, mas útil para verificar o nivelamento da base)</li>
+      </ul>
+
+      <p>
+        Não force parafusos sem antes verificar o tamanho correto da chave — cabeças danificadas são difíceis de recuperar e podem exigir ferramentas especiais ou substituição da peça.
+      </p>
+
+      <h2>Passo 1: Organizar as Peças</h2>
+
+      <p>
+        Antes de começar, espalhe todas as peças no chão e confira com a lista do manual. Agrupe os parafusos por tamanho — fabricantes frequentemente incluem parafusos sobressalentes, o que pode causar confusão.
+      </p>
+
+      <p><strong>Peças principais em qualquer bicicleta ergométrica vertical:</strong></p>
+      <ol>
+        <li>Estrutura principal (base + suporte vertical)</li>
+        <li>Guidão</li>
+        <li>Selim + haste do selim</li>
+        <li>Pedais (direito e esquerdo — verificar marcação R/L)</li>
+        <li>Painel eletrônico</li>
+        <li>Cabo do painel</li>
+      </ol>
+
+      <h2>Passo 2: Montar a Estrutura Base</h2>
+
+      <p>
+        Encaixe os estabilizadores horizontais na base conforme o manual. <strong>Aperte os parafusos da base em sequência cruzada</strong> (como na troca de pneu de carro) para garantir que a estrutura fique nivelada. Um aperto irregular causa vibração durante o uso.
+      </p>
+
+      <p>
+        Verifique se os quatro pontos de contato com o chão tocam a superfície de forma igual. Se a bicicleta balançar, ajuste os pés niveladores antes de continuar.
+      </p>
+
+      <h2>Passo 3: Instalar o Suporte Vertical e o Guidão</h2>
+
+      <p>
+        Encaixe o tubo vertical na base e aperte o parafuso de fixação. Na sequência, acople o guidão ao tubo e deixe frouxo — você vai ajustar a altura depois.
+      </p>
+
+      <p>
+        O guidão tem marcações de profundidade no tubo. <strong>Nunca posicione abaixo da marcação mínima de segurança</strong> (linha gravada ou impressa no tubo). Essa marca existe para garantir que o encaixe tenha comprimento suficiente para suportar a carga.
+      </p>
+
+      <h2>Passo 4: Instalar o Selim</h2>
+
+      <p>
+        Encaixe a haste do selim no suporte e deixe frouxo também. A altura correta é ajustada depois, em relação ao usuário. A mesma regra de segurança se aplica: nunca posicione abaixo da marcação mínima gravada no tubo.
+      </p>
+
+      <h2>Passo 5: Instalar os Pedais</h2>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Este é o erro mais comum na montagem:</strong> os pedais têm rosca diferente.
+        </p>
+        <ul>
+          <li><strong>Pedal direito (R):</strong> rosca normal — aperta girando para a direita</li>
+          <li><strong>Pedal esquerdo (L):</strong> rosca invertida — aperta girando para a esquerda</li>
+        </ul>
+      </div>
+
+      <p>
+        Instalar o pedal errado ou no lado errado vai arruinar a rosca da manivela permanentemente. Sempre verifique a marcação L/R antes de encaixar. Aperte os pedais com firmeza usando chave Allen de 8 mm ou chave de boca de 15 mm.
+      </p>
+
+      <h2>Passo 6: Conectar o Painel</h2>
+
+      <p>
+        Passe o cabo do painel pelo canal interno do tubo vertical (se houver) e conecte nos dois terminais — geralmente um encaixe simples de plástico que trava com pressão. Ligue as pilhas ou conecte o cabo de energia conforme o modelo.
+      </p>
+
+      <h2>Passo 7: Regulagem Inicial</h2>
+
+      <p>Com a montagem concluída, faça a regulagem antes da primeira pedalada:</p>
+
+      <ol>
+        <li><strong>Altura do selim:</strong> posicione na altura do quadril quando em pé ao lado da bicicleta</li>
+        <li><strong>Altura do guidão:</strong> cotovelos levemente flexionados ao segurar os punhos</li>
+        <li><strong>Aperto final:</strong> percorra todos os parafusos e certifique-se de que nenhum ficou frouxo</li>
+      </ol>
+
+      <p>
+        Veja o <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">guia completo de regulagem da bicicleta ergométrica</a> para os ângulos corretos de joelho e postura.
+      </p>
+
+      <h2>Erros Comuns e Como Evitar</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Erro</th>
+            <th>Consequência</th>
+            <th>Como evitar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pedal no lado errado</td>
+            <td>Rosca da manivela danificada permanentemente</td>
+            <td>Sempre verificar marcação L/R antes de encaixar</td>
+          </tr>
+          <tr>
+            <td>Haste abaixo da marca mínima</td>
+            <td>Risco de colapso estrutural durante o uso</td>
+            <td>Respeitar as marcações de segurança no tubo</td>
+          </tr>
+          <tr>
+            <td>Aperto irregular da base</td>
+            <td>Vibração e ruído durante o uso</td>
+            <td>Apertar parafusos em sequência cruzada</td>
+          </tr>
+          <tr>
+            <td>Parafusos frouxos após montagem</td>
+            <td>Barulho, instabilidade e risco de queda</td>
+            <td>Revisão geral de todos os parafusos antes de usar</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Tempo de Montagem</h2>
+
+      <p>
+        A montagem de uma bicicleta ergométrica vertical leva entre <strong>30 e 90 minutos</strong> dependendo do modelo e da experiência. Não tente apressar — um parafuso danificado pode interromper a montagem e exigir peça de reposição do fabricante.
+      </p>
+
+      <p>
+        Após a montagem, faça uma pedalada de 5 minutos em resistência mínima para verificar se há ruídos ou folgas antes de aumentar a intensidade.
+      </p>
+
+      <a
+        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
+        target="_blank"
+        rel="noopener sponsored"
+        class="btn-amazon"
+        style="margin-top:0.5rem"
+      >
+        Ver ergométricas na Amazon Brasil →
+      </a>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Montagem de Bicicleta Ergométrica" />
+</Layout>
