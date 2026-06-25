@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import ItemListSchema from '../../components/schema/ItemListSchema.astro';
 
 const breadcrumbs = [
   { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
@@ -61,6 +62,17 @@ const subpages = [
   faqItems={faqItems}
   datePublished="2026-02-20"
 >
+  <ItemListSchema
+    slot="head"
+    name="Preço de Bicicleta Ergométrica"
+    description="Preços de bicicleta ergométrica no Brasil em 2026: faixas de entrada, intermediário e premium. Onde comprar com segurança e como identificar o melhor custo-benefício."
+    items={[
+      { position: 1, name: 'Bicicleta Ergométrica Barata: Melhores Opções até R$ 1.200', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/', description: 'Os melhores modelos de entrada sem abrir mão da qualidade mínima necessária para uso regular.' },
+      { position: 2, name: 'Melhor Custo-Benefício por Faixa de Preço', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/', description: 'Análise de custo-benefício real: quais especificações valem mais em cada faixa de investimento.' },
+      { position: 3, name: 'Bicicleta Ergométrica no Mercado Livre', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/', description: 'Como comprar com segurança no Mercado Livre: filtros, avaliação de vendedores e garantia.' },
+      { position: 4, name: 'Bicicleta Ergométrica na Amazon', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/', description: 'Vantagens de comprar na Amazon Brasil: devolução facilitada, Prime e modelos com disponibilidade imediata.' },
+    ]}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

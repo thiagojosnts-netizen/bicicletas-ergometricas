@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import ItemListSchema from '../../components/schema/ItemListSchema.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -66,6 +67,18 @@ const subpages = [
   faqItems={faqItems}
   datePublished="2026-01-20"
 >
+  <ItemListSchema
+    slot="head"
+    name="Como Escolher Bicicleta Ergométrica"
+    description="Como escolher bicicleta ergométrica: tipo certo, peso suportado, níveis de resistência e orçamento. Guia completo para não errar na compra em 2026."
+    items={[
+      { position: 1, name: 'Peso Suportado: Como Calcular o Mínimo Necessário', url: 'https://bicicletasergometricas.com/como-escolher-bicicleta-ergometrica/peso-suportado-bicicleta-ergometrica/', description: 'Tabela de peso suportado por categoria de usuário e como a capacidade de carga afeta a durabilidade e a segurança do equipamento.' },
+      { position: 2, name: 'Bicicleta Ergométrica com Programas de Treino', url: 'https://bicicletasergometricas.com/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-programas/', description: 'Como funcionam os programas automáticos, quais são os mais úteis e em quais modelos encontrar protocolos de treino pré-configurados.' },
+      { position: 3, name: 'Bicicleta Ergométrica com Bluetooth', url: 'https://bicicletasergometricas.com/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-com-bluetooth/', description: 'Conectividade, aplicativos compatíveis, sensores ANT+ e como integrar o equipamento ao ecossistema digital de saúde.' },
+      { position: 4, name: 'Bicicleta Ergométrica para Apartamento', url: 'https://bicicletasergometricas.com/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-apartamento/', description: 'Modelos compactos, silenciosos e leves ideais para uso em espaços reduzidos sem incomodar vizinhos.' },
+      { position: 5, name: 'Bicicleta Ergométrica para Idosos', url: 'https://bicicletasergometricas.com/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-para-idosos/', description: 'Critérios de segurança, conforto e facilidade de uso para escolher o modelo ideal para usuários acima de 60 anos.' },
+    ]}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import ItemListSchema from '../../components/schema/ItemListSchema.astro';
 
 const breadcrumbs = [
   { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
@@ -66,6 +67,18 @@ const subpages = [
   faqItems={faqItems}
   datePublished="2026-02-10"
 >
+  <ItemListSchema
+    slot="head"
+    name="Benefícios da Bicicleta Ergométrica"
+    description="Benefícios da bicicleta ergométrica: emagrecimento, saúde cardiovascular, reabilitação articular e controle da hipertensão. Evidências científicas e protocolos."
+    items={[
+      { position: 1, name: 'Emagrecer com Bicicleta Ergométrica', url: 'https://bicicletasergometricas.com/beneficios-bicicleta-ergometrica/emagrecer-com-bicicleta-ergometrica/', description: 'Protocolo de emagrecimento, gasto calórico por intensidade e como combinar dieta e exercício para resultados reais.' },
+      { position: 2, name: 'Bicicleta Ergométrica para Joelho', url: 'https://bicicletasergometricas.com/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-joelho/', description: 'Como a pedalagem de baixo impacto beneficia articulações comprometidas e quais modelos são mais indicados para lesões de joelho.' },
+      { position: 3, name: 'Bicicleta Ergométrica para Hipertensão', url: 'https://bicicletasergometricas.com/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-hipertensao/', description: 'Protocolos de exercício aeróbico para controle da pressão arterial com evidência científica e orientações de intensidade.' },
+      { position: 4, name: 'Bicicleta Ergométrica para Coluna', url: 'https://bicicletasergometricas.com/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-para-coluna/', description: 'Como pedalar com hérnia de disco, escoliose ou dor lombar crônica: postura, regulagem e modelos recomendados.' },
+      { position: 5, name: 'Bicicleta Ergométrica e Queima de Calorias', url: 'https://bicicletasergometricas.com/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/', description: 'Tabela de gasto calórico por peso corporal, intensidade e duração da sessão para planejar seu déficit energético.' },
+    ]}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

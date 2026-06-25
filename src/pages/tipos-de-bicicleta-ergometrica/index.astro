@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import ItemListSchema from '../../components/schema/ItemListSchema.astro';
 
 const breadcrumbs = [
   { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
@@ -61,6 +62,17 @@ const subpages = [
   faqItems={faqItems}
   datePublished="2026-01-15"
 >
+  <ItemListSchema
+    slot="head"
+    name="Tipos de Bicicleta Ergométrica"
+    description="Diferenças entre bicicleta ergométrica vertical, horizontal, spinning e recumbente. Qual tipo escolher por objetivo e perfil físico do usuário."
+    items={[
+      { position: 1, name: 'Bicicleta Ergométrica Vertical', url: 'https://bicicletasergometricas.com/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-vertical/', description: 'O modelo mais popular no Brasil: postura ereta, compacto e eficiente para queima calórica e condicionamento cardiorrespiratório.' },
+      { position: 2, name: 'Bicicleta Ergométrica Horizontal', url: 'https://bicicletasergometricas.com/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/', description: 'Assento com encosto, menor impacto articular e maior conforto lombar, indicada para usuários com restrições físicas ou em reabilitação.' },
+      { position: 3, name: 'Bicicleta de Spinning', url: 'https://bicicletasergometricas.com/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/', description: 'Volante de inércia pesado, resistência ajustável e posição mais agressiva para treinos de alta intensidade e ciclismo indoor.' },
+      { position: 4, name: 'Bicicleta Ergométrica Recumbente', url: 'https://bicicletasergometricas.com/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/', description: 'Assento reclinado com encosto completo, ângulo de pedalagem suave e ideal para idosos, reabilitação e usuários com dores na coluna.' },
+    ]}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

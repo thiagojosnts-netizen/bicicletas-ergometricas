@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import ItemListSchema from '../../components/schema/ItemListSchema.astro';
 
 const breadcrumbs = [
   { name: 'Como Usar Bicicleta Ergometrica', url: '/como-usar-bicicleta-ergometrica/' },
@@ -66,6 +67,18 @@ const subpages = [
   faqItems={faqItems}
   datePublished="2024-02-15"
 >
+  <ItemListSchema
+    slot="head"
+    name="Como Usar Bicicleta Ergométrica"
+    description="Guia de uso da bicicleta ergométrica: regulagem do selim, zonas de frequência cardíaca, programas de treino e quanto tempo pedalar por objetivo."
+    items={[
+      { position: 1, name: 'Regulagem da Bicicleta Ergométrica', url: 'https://bicicletasergometricas.com/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/', description: 'Passo a passo para ajustar selim, guidão e pedais na posição correta para o seu biomecanismo de pedalagem.' },
+      { position: 2, name: 'Tempo Ideal na Bicicleta Ergométrica', url: 'https://bicicletasergometricas.com/como-usar-bicicleta-ergometrica/tempo-ideal-na-bicicleta-ergometrica/', description: 'Quanto tempo pedalar por dia, quantas vezes por semana e como progredir a duração ao longo do tempo.' },
+      { position: 3, name: 'Treino para Iniciantes', url: 'https://bicicletasergometricas.com/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/', description: 'Programa de 4 semanas para quem nunca usou bicicleta ergométrica: progressão de carga, duração e intensidade.' },
+      { position: 4, name: 'Frequência Cardíaca na Bicicleta Ergométrica', url: 'https://bicicletasergometricas.com/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/', description: 'Como calcular as zonas de frequência cardíaca e treinar na intensidade certa para cada objetivo.' },
+      { position: 5, name: 'Protocolo de Emagrecimento', url: 'https://bicicletasergometricas.com/como-usar-bicicleta-ergometrica/bicicleta-ergometrica-emagrecimento-protocolo/', description: 'Programa estruturado de 8 semanas combinando intervalar e contínuo para maximizar a queima de gordura.' },
+    ]}
+  />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">
