@@ -35,6 +35,14 @@ const imagem = await fetchBikeImage('spin bike flywheel indoor cycling');
   faqItems={faqItems}
   datePublished="2026-06-05"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "WCT Fitness",
+    "url": "https://www.wct.com.br",
+    "sameAs": ["https://www.wct.com.br"],
+    "description": "Fabricante brasileira de equipamentos fitness e esportivos com loja oficial em wct.com.br."
+  })} />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

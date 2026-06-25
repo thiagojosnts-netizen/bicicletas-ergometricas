@@ -35,6 +35,14 @@ const imagem = await fetchBikeImage('spinning bike indoor gym professional');
   faqItems={faqItems}
   datePublished="2026-06-05"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "Gallant",
+    "url": "https://www.gallantoficial.com.br",
+    "sameAs": ["https://www.gallantoficial.com.br"],
+    "description": "Marca brasileira de equipamentos fitness residenciais, pertencente à Webcontinental."
+  })} />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

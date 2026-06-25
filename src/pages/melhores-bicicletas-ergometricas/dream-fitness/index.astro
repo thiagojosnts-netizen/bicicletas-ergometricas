@@ -35,6 +35,14 @@ const imagem = await fetchBikeImage('exercise bike home beginner fitness');
   faqItems={faqItems}
   datePublished="2026-06-05"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "Dream Fitness",
+    "url": "https://www.dream.com.br",
+    "sameAs": ["https://www.dream.com.br", "https://www.instagram.com/dreamfitness_oficial"],
+    "description": "Fundada em 1998, maior fabricante de equipamentos de ginástica residencial do Brasil."
+  })} />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">

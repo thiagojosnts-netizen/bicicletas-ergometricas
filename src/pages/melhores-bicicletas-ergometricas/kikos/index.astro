@@ -37,6 +37,14 @@ console.log("Pexels resultado:", imagem);
   faqItems={faqItems}
   datePublished="2026-02-03"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "Kikos",
+    "url": "https://www.kikos.com.br",
+    "sameAs": ["https://www.kikos.com.br"],
+    "description": "Fabricante brasileira de equipamentos fitness com mais de 50 mil salas de ginástica equipadas no Brasil."
+  })} />
   <Breadcrumb items={breadcrumbs} />
 
   <section class="section" aria-labelledby="page-heading">
