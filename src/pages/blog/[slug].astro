@@ -36,22 +36,26 @@ const breadcrumbs = [
   <article class="section" aria-labelledby="post-heading">
     <div class="container prose-container">
       <header style="margin-bottom:2rem;">
-        <div class="blog-card-meta" style="margin-bottom:1rem;">
-          <time datetime={post.data.datePublished}>
-            {new Date(post.data.datePublished).toLocaleDateString('pt-BR', {
-              day: '2-digit', month: 'long', year: 'numeric'
-            })}
-          </time>
-          {post.data.tags && post.data.tags.length > 0 && (
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="blog-card-meta" style="margin-bottom:1rem;">
             <div class="blog-tags">
               {post.data.tags.map(tag => (
                 <span class="blog-tag">{tag}</span>
               ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
         <h1 id="post-heading">{post.data.title}</h1>
-        <p style="font-size:1.125rem;color:var(--token-text-secondary);">{post.data.description}</p>
+        <div class="article-byline">
+          <span class="byline-author">
+            Por <a href="/sobre/" class="byline-link">Rafael Souza</a>
+          </span>
+          <span class="byline-separator">·</span>
+          <time datetime={post.data.datePublished}>
+            {new Date(post.data.datePublished).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </time>
+        </div>
+        <p style="font-size:1.125rem;color:var(--token-text-secondary);margin-top:1rem;">{post.data.description}</p>
       </header>
 
       <div class="prose">
@@ -70,3 +74,27 @@ const breadcrumbs = [
     <FAQ items={post.data.faqItems} title="Perguntas Frequentes" />
   )}
 </Layout>
+
+<style>
+  .article-byline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.75rem;
+  }
+
+  .byline-link {
+    color: #2D6A4F;
+    text-decoration: none;
+  }
+
+  .byline-link:hover {
+    text-decoration: underline;
+  }
+
+  .byline-separator {
+    opacity: 0.5;
+  }
+</style>
