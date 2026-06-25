@@ -1,5 +1,5 @@
 ﻿---
-title: "Bicicleta Ergométrica para Fisioterapia: o que o Fisioterapeuta Observa"
+title: "Bicicleta Ergométrica para Fisioterapia: Guia Completo"
 description: "Qual bicicleta ergométrica é indicada para fisioterapia e reabilitação? Modelos horizontais, recumbentes e os critérios técnicos que fisioterapeutas consideram na escolha."
 datePublished: "2026-06-01"
 tags: ["fisioterapia", "reabilitação", "joelho", "horizontal"]

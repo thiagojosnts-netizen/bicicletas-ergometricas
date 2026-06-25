@@ -1,5 +1,5 @@
 ---
-title: "Bicicleta Ergométrica vs Esteira: Qual é Melhor para Emagrecer?"
+title: "Bicicleta vs Esteira: Qual é Melhor para Emagrecer?"
 description: "Comparativo completo entre bicicleta ergométrica e esteira: gasto calórico, impacto articular, espaço, preço e qual escolher para emagrecer, condicionamento ou reabilitação."
 datePublished: "2026-05-10"
 dateModified: "2026-06-21"

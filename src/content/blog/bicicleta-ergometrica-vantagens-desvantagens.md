@@ -1,5 +1,5 @@
 ---
-title: "Bicicleta Ergométrica: Vantagens e Desvantagens com Análise Honesta"
+title: "Bicicleta Ergométrica: Vantagens e Desvantagens Reais"
 description: "Vantagens e desvantagens da bicicleta ergométrica: análise honesta sobre benefícios reais, limitações, para quem vale a pena e quando outro equipamento pode ser melhor."
 datePublished: "2026-06-16"
 tags: ["vantagens", "desvantagens", "análise"]

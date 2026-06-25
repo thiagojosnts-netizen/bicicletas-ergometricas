@@ -1,5 +1,5 @@
 ---
-title: "Amazon Prime Day 2026: Melhores Ofertas em Bicicleta Ergométrica"
+title: "Bicicleta Ergométrica: Melhores Ofertas Prime Day 2026"
 description: "Guia completo para o Amazon Prime Day 2026 (1 a 7 de julho): quais bicicletas ergométricas esperar em promoção, como monitorar preços e como aproveitar os melhores descontos."
 datePublished: "2026-06-16"
 tags: ["prime day", "amazon", "promoção", "ofertas"]

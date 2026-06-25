@@ -1,5 +1,5 @@
 ﻿---
-title: "Bicicleta Ergométrica para Reabilitação de Joelho: Guia Completo"
+title: "Bicicleta Ergométrica e Reabilitação de Joelho: Guia"
 description: "Bicicleta ergométrica para reabilitação de joelho: como usar após cirurgia de LCA, menisco e artrose. Protocolo de uso, regulagem e modelos indicados por fisioterapeutas."
 datePublished: "2026-06-01"
 tags: ["reabilitação", "joelho", "LCA", "menisco", "artrose"]
