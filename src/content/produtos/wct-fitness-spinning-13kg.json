@@ -1,0 +1,32 @@
+{
+  "name": "WCT Fitness Spinning Roda de Inércia 13kg",
+  "description": "Spinning doméstico com roda de inércia 13kg, transmissão por correia, sensor cardíaco e suporte até 120 kg — silenciosa e estável.",
+  "descricaoLonga": "A WCT Fitness Spinning 13kg entrega experiência de ciclismo indoor confiável para uso doméstico regular. A roda de inércia de 13 kg garante fluidez no pedalamento e a transmissão por correia opera silenciosamente. O display exibe frequência cardíaca, distância e calorias em tempo real. Ajuste de resistência por fricção com canopla no guidão. Banco e guidão com regulagem independente. Suporta até 120 kg.",
+  "price": "R$ 1.519,00",
+  "rating": 4.4,
+  "reviewCount": 320,
+  "affiliateUrl": "https://www.amazon.com.br/dp/B09Z78CWXY?tag=bicicletase0d-20",
+  "store": "Amazon",
+  "image": "/produtos/wct-fitness-spinning-13kg.jpg",
+  "imageAlt": "Bicicleta de spinning WCT Fitness 13kg preta",
+  "badge": "Custo-Benefício",
+  "features": [
+    "Roda de inércia de 13 kg",
+    "Transmissão por correia silenciosa",
+    "Sensor cardíaco no guidão",
+    "Display: FC, distância e calorias",
+    "Ajuste de resistência no guidão",
+    "Suporta até 120 kg"
+  ],
+  "tipo": "Spinning",
+  "categoria": "Intermediário",
+  "marca": "WCT Fitness",
+  "topPick": true,
+  "especificacoes": {
+    "Peso máximo suportado": "120 kg",
+    "Roda de inércia": "13 kg",
+    "Tipo de resistência": "Mecânica por fricção",
+    "Transmissão": "Correia",
+    "Garantia": "12 meses"
+  }
+}

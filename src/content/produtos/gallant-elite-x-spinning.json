@@ -1,0 +1,32 @@
+{
+  "name": "Gallant Elite X Spinning Roda de Inércia 8kg",
+  "description": "Bicicleta de spinning de entrada com roda de inércia 8kg, transmissão por correia silenciosa e suporte até 110 kg.",
+  "descricaoLonga": "A Gallant Elite X Spinning 8kg é a porta de entrada para o ciclismo indoor em casa. A roda de inércia de 8 kg garante momentum constante e a transmissão por correia opera sem ruído. O sistema de resistência mecânica por fricção permite simular subidas com ajuste manual no guidão. Banco e guidão ajustáveis em múltiplas posições. Suporta usuários de até 110 kg com altura entre 1,55 m e 1,95 m.",
+  "price": "R$ 1.339,00",
+  "rating": 4.3,
+  "reviewCount": 210,
+  "affiliateUrl": "https://www.amazon.com.br/dp/B0C4B767KB?tag=bicicletase0d-20",
+  "store": "Amazon",
+  "image": "/produtos/gallant-elite-x-spinning.webp",
+  "imageAlt": "Bicicleta de spinning Gallant Elite X 8kg preta",
+  "badge": "Entrada Spinning",
+  "features": [
+    "Roda de inércia de 8 kg",
+    "Transmissão por correia silenciosa",
+    "Resistência mecânica por fricção",
+    "Suporta até 110 kg",
+    "Banco e guidão ajustáveis",
+    "Altura recomendada: 1,55–1,95 m"
+  ],
+  "tipo": "Spinning",
+  "categoria": "Entrada",
+  "marca": "Gallant",
+  "topPick": false,
+  "especificacoes": {
+    "Peso máximo suportado": "110 kg",
+    "Roda de inércia": "8 kg",
+    "Tipo de resistência": "Mecânica por fricção",
+    "Transmissão": "Correia",
+    "Garantia": "12 meses"
+  }
+}

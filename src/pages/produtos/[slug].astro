@@ -1,0 +1,263 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const produtos = await getCollection('produtos');
+  return produtos.map(p => ({
+    params: { slug: p.id },
+    props: { produto: p },
+  }));
+}
+
+const { produto } = Astro.props;
+const d = produto.data;
+
+const fullStars = Math.floor(d.rating ?? 0);
+const halfStar = (d.rating ?? 0) % 1 >= 0.5;
+const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+const breadcrumbs = [
+  { name: 'Produtos', url: '/produtos/' },
+  { name: d.name, url: `/produtos/${produto.id}/` },
+];
+---
+
+<Layout
+  title={`${d.name} — Ficha Completa e Preço | Bicicletas Ergométricas`}
+  description={d.description}
+  breadcrumbs={breadcrumbs}
+  isArticle={false}
+>
+  <div class="produto-detalhe container">
+
+    <div class="detalhe-grid">
+
+      <div class="detalhe-img-wrap">
+        {d.topPick && <span class="badge-top">Nossa Indicação</span>}
+        {d.badge && <span class="badge-destaque">{d.badge}</span>}
+        {d.image ? (
+          <img
+            src={d.image}
+            alt={d.imageAlt ?? d.name}
+            class="detalhe-img"
+            width="520"
+            height="360"
+          />
+        ) : (
+          <div class="detalhe-img-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="42" stroke="#52B788" stroke-width="4" fill="none"/>
+              <circle cx="60" cy="60" r="9" fill="#52B788"/>
+              <line x1="60" y1="18" x2="60" y2="36" stroke="#52B788" stroke-width="4" stroke-linecap="round"/>
+              <line x1="60" y1="84" x2="60" y2="102" stroke="#52B788" stroke-width="4" stroke-linecap="round"/>
+              <line x1="18" y1="60" x2="36" y2="60" stroke="#52B788" stroke-width="4" stroke-linecap="round"/>
+              <line x1="84" y1="60" x2="102" y2="60" stroke="#52B788" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <div class="detalhe-info">
+        <span class="detalhe-marca">{d.marca}</span>
+        <h1 class="detalhe-nome">{d.name}</h1>
+
+        {d.rating && (
+          <div class="detalhe-rating">
+            <span class="estrelas" aria-hidden="true">
+              {'★'.repeat(fullStars)}{halfStar ? '½' : ''}{'☆'.repeat(emptyStars)}
+            </span>
+            <span class="rating-valor">{d.rating.toFixed(1)}/5</span>
+            {d.reviewCount && (
+              <span class="rating-count">({d.reviewCount.toLocaleString('pt-BR')} avaliações)</span>
+            )}
+          </div>
+        )}
+
+        <p class="detalhe-desc">{d.descricaoLonga}</p>
+
+        {d.features && d.features.length > 0 && (
+          <ul class="detalhe-features">
+            {d.features.map(f => <li>✓ {f}</li>)}
+          </ul>
+        )}
+
+        <div class="detalhe-cta-box">
+          <div class="detalhe-preco-wrap">
+            <span class="detalhe-preco">{d.price}</span>
+            <div class="detalhe-frete">
+              <span class="frete-badge">✓ Frete grátis Prime</span>
+              <span class="frete-data">· Preço verificado hoje</span>
+            </div>
+          </div>
+          <a
+            href={d.affiliateUrl}
+            target="_blank"
+            rel="noopener nofollow sponsored"
+            class="btn-cta-detalhe"
+          >
+            Ver Preço na Amazon →
+          </a>
+        </div>
+
+        <p class="detalhe-aviso">
+          * Este site participa do programa de afiliados da Amazon. O preço pode variar. Clique para confirmar o valor atual.
+        </p>
+      </div>
+    </div>
+
+    {d.especificacoes && Object.keys(d.especificacoes).length > 0 && (
+      <section class="detalhe-specs">
+        <h2>Especificações Técnicas</h2>
+        <table class="specs-table">
+          <tbody>
+            {Object.entries(d.especificacoes).map(([k, v]) => (
+              <tr>
+                <th>{k}</th>
+                <td>{v}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <div class="detalhe-back">
+      <a href="/produtos/">&larr; Ver todos os produtos</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .detalhe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 768px) {
+    .detalhe-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .detalhe-img-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+  .badge-top {
+    position: absolute; top: 12px; left: 12px;
+    background: #2D6A4F; color: #fff;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.25rem 0.7rem; border-radius: 4px;
+    text-transform: uppercase; z-index: 2;
+  }
+  .badge-destaque {
+    position: absolute; top: 12px; right: 12px;
+    background: #F4721B; color: #fff;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.25rem 0.7rem; border-radius: 4px; z-index: 2;
+  }
+  .detalhe-img {
+    width: 100%; aspect-ratio: 16/11; object-fit: cover; display: block;
+  }
+  .detalhe-img-placeholder {
+    width: 100%; aspect-ratio: 16/11;
+    background: #f0fdf4;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .detalhe-img-placeholder svg { width: 100px; height: 100px; opacity: 0.35; }
+  .detalhe-info { display: flex; flex-direction: column; gap: 0.75rem; }
+  .detalhe-marca {
+    font-size: 0.75rem; font-weight: 700;
+    color: #52B788; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .detalhe-nome {
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 800; line-height: 1.25;
+    color: #111827; margin: 0;
+    font-family: Inter, sans-serif;
+  }
+  .detalhe-rating {
+    display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;
+  }
+  .estrelas { color: #f59e0b; font-size: 1rem; }
+  .rating-valor { font-weight: 700; color: #374151; }
+  .rating-count { color: #9ca3af; }
+  .detalhe-desc {
+    font-size: 0.95rem; color: #4b5563; line-height: 1.7; margin: 0;
+  }
+  .detalhe-features {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .detalhe-features li {
+    font-size: 0.88rem; color: #374151;
+    display: flex; align-items: flex-start; gap: 0.4rem;
+  }
+  .detalhe-cta-box {
+    background: #f9fafb; border: 1px solid #e5e7eb;
+    border-radius: 10px; padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .detalhe-preco-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
+  .detalhe-preco {
+    font-size: 1.75rem; font-weight: 800;
+    color: #111827; font-family: Inter, sans-serif;
+  }
+  .detalhe-frete { display: flex; align-items: center; gap: 0.4rem; }
+  .frete-badge {
+    display: inline-flex; align-items: center;
+    background: #f0fdf4; color: #2D6A4F;
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.2rem 0.5rem; border-radius: 999px;
+    border: 1px solid #52B788;
+  }
+  .frete-data { font-size: 0.72rem; color: #9ca3af; }
+  .btn-cta-detalhe {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #F4721B; color: #fff;
+    font-size: 1rem; font-weight: 700;
+    padding: 0.85rem 1.5rem; border-radius: 8px;
+    text-decoration: none; text-align: center;
+    transition: background 0.18s, transform 0.1s;
+    font-family: Inter, sans-serif;
+  }
+  .btn-cta-detalhe:hover { background: #d95f10; transform: scale(1.02); }
+  .detalhe-aviso {
+    font-size: 0.72rem; color: #9ca3af; line-height: 1.5; margin: 0;
+  }
+  .detalhe-specs { margin-bottom: 2.5rem; }
+  .detalhe-specs h2 {
+    font-size: 1.2rem; font-weight: 800;
+    color: #111827; margin-bottom: 1rem;
+    font-family: Inter, sans-serif;
+  }
+  .specs-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .specs-table tr { border-bottom: 1px solid #f3f4f6; }
+  .specs-table tr:last-child { border-bottom: none; }
+  .specs-table th {
+    text-align: left; padding: 0.6rem 0.75rem;
+    color: #6b7280; font-weight: 600; width: 45%;
+    background: #f9fafb;
+  }
+  .specs-table td {
+    padding: 0.6rem 0.75rem;
+    color: #111827; font-weight: 500;
+  }
+  .detalhe-back { margin-top: 1rem; }
+  .detalhe-back a {
+    color: #2D6A4F; font-size: 0.88rem;
+    font-weight: 600; text-decoration: none;
+  }
+  .detalhe-back a:hover { text-decoration: underline; }
+</style>

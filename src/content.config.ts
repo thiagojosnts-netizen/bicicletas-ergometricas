@@ -17,4 +17,27 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const produtos = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/produtos' }),
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    descricaoLonga: z.string(),
+    price: z.string(),
+    rating: z.number(),
+    reviewCount: z.number(),
+    affiliateUrl: z.string(),
+    store: z.string(),
+    image: z.string(),
+    imageAlt: z.string(),
+    badge: z.string(),
+    features: z.array(z.string()),
+    tipo: z.string(),
+    categoria: z.string(),
+    marca: z.string(),
+    topPick: z.boolean(),
+    especificacoes: z.record(z.string(), z.string()),
+  }),
+});
+
+export const collections = { blog, produtos };

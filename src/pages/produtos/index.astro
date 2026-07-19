@@ -1,0 +1,477 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const allProdutos = await getCollection('produtos');
+const produtos = allProdutos.sort((a, b) => (b.data.reviewCount ?? 0) - (a.data.reviewCount ?? 0));
+
+const tipos = [...new Set(produtos.map(p => p.data.tipo))].sort();
+const categorias = [...new Set(produtos.map(p => p.data.categoria))].sort();
+
+const breadcrumbs = [
+  { name: 'Produtos', url: '/produtos/' },
+];
+---
+
+<Layout
+  title="Bicicletas Ergométricas — Comparativo de Produtos | Bicicletas Ergométricas"
+  description="Compare as melhores bicicletas ergométricas com avaliações reais de compradores: verticais, reclinadas, spinning e dobráveis com preços atualizados."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="produtos-page">
+
+    <header class="produtos-hero">
+      <div class="container">
+        <h1>Bicicletas Ergométricas</h1>
+        <p class="produtos-subtitulo">
+          <strong>{produtos.length} modelos</strong> avaliados com dados reais de compradores.
+          Verticais, reclinadas, spinning e dobráveis — clique em qualquer modelo para ver
+          especificações completas e o melhor preço.
+        </p>
+      </div>
+    </header>
+
+    <section class="produtos-section container">
+
+      <div class="filtros-wrapper">
+        <div class="filtros-grupo">
+          <span class="filtros-label">Tipo:</span>
+          <div class="filtros-btns" id="filtro-tipo">
+            <button class="filtro-btn active" data-tipo="todos">Todos ({produtos.length})</button>
+            {tipos.map(tipo => (
+              <button class="filtro-btn" data-tipo={tipo}>
+                {tipo} ({produtos.filter(p => p.data.tipo === tipo).length})
+              </button>
+            ))}
+          </div>
+        </div>
+        <div class="filtros-grupo">
+          <span class="filtros-label">Categoria:</span>
+          <div class="filtros-btns" id="filtro-categoria">
+            <button class="filtro-cat active" data-cat="todas">Todas</button>
+            {categorias.map(cat => (
+              <button class="filtro-cat" data-cat={cat}>{cat}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="produtos-grid" id="produtos-grid">
+        {produtos.map(produto => {
+          const d = produto.data;
+          const fullStars = Math.floor(d.rating ?? 0);
+          const halfStar = (d.rating ?? 0) % 1 >= 0.5;
+          const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+          return (
+            <article
+              class="produto-card"
+              data-tipo={d.tipo}
+              data-cat={d.categoria}
+            >
+              {d.topPick && <span class="card-badge-top">Nossa Indicação</span>}
+              {d.badge && <span class="card-badge">{d.badge}</span>}
+
+              <a href={`/produtos/${produto.id}/`} class="card-img-link">
+                {d.image ? (
+                  <img
+                    src={d.image}
+                    alt={d.imageAlt ?? d.name}
+                    class="card-img"
+                    loading="lazy"
+                    width="320"
+                    height="200"
+                  />
+                ) : (
+                  <div class="card-img-placeholder" aria-hidden="true">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="40" cy="40" r="28" stroke="#52B788" stroke-width="3" fill="none"/>
+                      <circle cx="40" cy="40" r="6" fill="#52B788"/>
+                      <line x1="40" y1="12" x2="40" y2="24" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+                      <line x1="40" y1="56" x2="40" y2="68" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+                      <line x1="12" y1="40" x2="24" y2="40" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+                      <line x1="56" y1="40" x2="68" y2="40" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                )}
+              </a>
+
+              <div class="card-body">
+                <span class="card-marca">{d.marca}</span>
+                <h2 class="card-nome">
+                  <a href={`/produtos/${produto.id}/`}>{d.name}</a>
+                </h2>
+
+                {d.rating && (
+                  <div class="card-rating">
+                    <span class="estrelas" aria-hidden="true">
+                      {'★'.repeat(fullStars)}{halfStar ? '½' : ''}{'☆'.repeat(emptyStars)}
+                    </span>
+                    <span class="rating-valor">{d.rating.toFixed(1)}/5</span>
+                    {d.reviewCount && (
+                      <span class="rating-count">({d.reviewCount.toLocaleString('pt-BR')})</span>
+                    )}
+                  </div>
+                )}
+
+                <p class="card-desc">{d.description}</p>
+
+                <div class="card-footer">
+                  <div class="card-preco-wrap">
+                    <span class="card-preco">{d.price}</span>
+                    <div class="card-frete">
+                      <span class="frete-badge">✓ Frete grátis Prime</span>
+                      <span class="frete-data">· Preço verificado hoje</span>
+                    </div>
+                  </div>
+                  <a
+                    href={`/produtos/${produto.id}/`}
+                    class="btn-ver-produto"
+                    aria-label={`Ver detalhes de ${d.name}`}
+                  >
+                    Ver Produto
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <p class="produtos-vazio" id="produtos-vazio" style="display:none;">
+        Nenhum produto encontrado para esse filtro.
+      </p>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.filtro-btn');
+  const cats = document.querySelectorAll<HTMLButtonElement>('.filtro-cat');
+  const cards = document.querySelectorAll<HTMLElement>('.produto-card');
+  const vazio = document.getElementById('produtos-vazio')!;
+
+  let tipoAtivo = 'todos';
+  let catAtiva = 'todas';
+
+  function filtrar() {
+    let visiveis = 0;
+    cards.forEach(card => {
+      const tipo = card.dataset.tipo ?? '';
+      const cat = card.dataset.cat ?? '';
+      const mostra =
+        (tipoAtivo === 'todos' || tipo === tipoAtivo) &&
+        (catAtiva === 'todas' || cat === catAtiva);
+      card.style.display = mostra ? '' : 'none';
+      if (mostra) visiveis++;
+    });
+    vazio.style.display = visiveis === 0 ? 'block' : 'none';
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tipoAtivo = btn.dataset.tipo ?? 'todos';
+      filtrar();
+    });
+  });
+
+  cats.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cats.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      catAtiva = btn.dataset.cat ?? 'todas';
+      filtrar();
+    });
+  });
+</script>
+
+<style>
+  .produtos-page {
+    min-height: 60vh;
+  }
+  .produtos-hero {
+    background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
+    color: #fff;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  .produtos-hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    font-family: Inter, sans-serif;
+  }
+  .produtos-subtitulo {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .produtos-section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .filtros-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .filtros-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .filtros-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    min-width: 70px;
+  }
+  .filtros-btns {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .filtro-btn,
+  .filtro-cat {
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border: 1.5px solid #d1d5db;
+    background: #fff;
+    color: #374151;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+  }
+  .filtro-btn:hover,
+  .filtro-cat:hover {
+    border-color: #52B788;
+    color: #2D6A4F;
+  }
+  .filtro-btn.active,
+  .filtro-cat.active {
+    background: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+  }
+
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .produto-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .produto-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .card-badge-top {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #2D6A4F;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 2;
+  }
+  .card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #F4721B;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .card-img-link {
+    display: block;
+    text-decoration: none;
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .produto-card:hover .card-img {
+    transform: scale(1.03);
+  }
+  .card-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: #f0fdf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-img-placeholder svg {
+    width: 64px;
+    height: 64px;
+    opacity: 0.4;
+  }
+  .card-body {
+    padding: 1rem 1.1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+  }
+  .card-marca {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #52B788;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .card-nome {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    font-family: Inter, sans-serif;
+  }
+  .card-nome a {
+    color: #111827;
+    text-decoration: none;
+  }
+  .card-nome a:hover {
+    color: #2D6A4F;
+  }
+  .card-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+  .estrelas {
+    color: #f59e0b;
+    letter-spacing: -0.05em;
+    font-size: 0.9rem;
+  }
+  .rating-valor {
+    font-weight: 700;
+    color: #374151;
+  }
+  .rating-count {
+    color: #9ca3af;
+  }
+  .card-desc {
+    font-size: 0.83rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .card-preco-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .card-preco {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827;
+    font-family: Inter, sans-serif;
+  }
+  .card-frete {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .frete-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #f0fdf4;
+    color: #2D6A4F;
+    font-size: 0.67rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid #52B788;
+  }
+  .frete-data {
+    font-size: 0.67rem;
+    color: #9ca3af;
+  }
+  .btn-ver-produto {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4721B;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s, transform 0.1s;
+    font-family: Inter, sans-serif;
+  }
+  .btn-ver-produto:hover {
+    background: #d95f10;
+    transform: scale(1.03);
+  }
+  .produtos-vazio {
+    text-align: center;
+    color: #9ca3af;
+    padding: 3rem 0;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .filtros-grupo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .produtos-hero {
+      padding: 2rem 1rem 1.5rem;
+    }
+  }
+</style>

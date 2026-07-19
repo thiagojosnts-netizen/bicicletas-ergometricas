@@ -16,6 +16,7 @@ export interface Props {
     imageAlt?: string;
     badge?: string;             // Ex: "Mais Vendido", "Melhor Custo-Benefício"
     features?: string[];
+    internalUrl?: string;       // Link para a ficha completa em /produtos/
   };
 }
 
@@ -102,6 +103,10 @@ const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
         </svg>
       </a>
     </div>
+
+    {product.internalUrl && (
+      <a href={product.internalUrl} class="internal-link">Ver ficha completa e comparar preços →</a>
+    )}
   </div>
 </article>
 
@@ -255,4 +260,16 @@ const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
     color: #b12704;
   }
 
+  .internal-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #2D6A4F;
+    text-decoration: none;
+  }
+
+  .internal-link:hover {
+    text-decoration: underline;
+  }
 </style>
