@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'O que é Bicicleta Ergométrica', url: '/o-que-e-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que é bicicleta ergométrica?',
+    answer: 'É um equipamento de exercício aeróbico fixo que simula o movimento de pedalar sem deslocamento, permitindo controle preciso de carga, duração e frequência cardíaca. É usada para condicionamento cardiovascular, emagrecimento e reabilitação de lesões articulares.',
+  },
+  {
+    question: 'Qual a diferença entre bicicleta ergométrica e bicicleta comum?',
+    answer: 'A bicicleta ergométrica é fixa, não se desloca e tem sistema de resistência ajustável para controlar o esforço, independente de terreno ou vento. A bicicleta comum depende de fatores externos (relevo, tráfego, clima) e não oferece controle de carga tão preciso.',
+  },
+  {
+    question: 'Bicicleta ergométrica engorda ou emagrece?',
+    answer: 'A bicicleta ergométrica não engorda nem emagrece por si só. Ela gera gasto calórico, entre 250 e 600 kcal por hora dependendo da intensidade. O resultado (ganho ou perda de peso) depende do balanço entre calorias consumidas e gastas ao longo do tempo, não apenas do uso do equipamento.',
+  },
+  {
+    question: 'Quanto custa uma bicicleta ergométrica?',
+    answer: 'No mercado brasileiro, os preços vão de R$ 300 (modelos mecânicos de entrada) a mais de R$ 4.000 (modelos semiprofissionais eletromagnéticos). A faixa mais indicada para uso doméstico regular fica entre R$ 800 e R$ 1.500, com resistência magnética.',
+  },
+];
+---
+
+<Layout
+  title="O que é Bicicleta Ergométrica"
+  description="O que é bicicleta ergométrica, como funciona, tipos disponíveis, benefícios e para quem é indicada. Guia introdutório completo antes de comprar."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-20"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">O que é Bicicleta Ergométrica: Guia Introdutório Completo</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> é um equipamento de exercício aeróbico fixo, projetado para simular o pedalada de uma bicicleta de rua sem deslocamento. Permite ajustar a <strong>resistência</strong>, monitorar <strong>tempo, distância, calorias e frequência cardíaca</strong>, e é indicada para condicionamento cardiovascular, emagrecimento e reabilitação, classificada pelo ACSM como exercício aeróbico de baixo impacto.
+      </p>
+
+      <h2>Como Funciona</h2>
+
+      <p>
+        O mecanismo central é um volante de inércia, conectado aos pedais por corrente ou correia. Um sistema de resistência (mecânico, magnético ou eletromagnético) freia o volante, controlando o esforço necessário para pedalar. Um painel eletrônico monitora tempo, velocidade, distância, calorias estimadas e, em modelos com sensor, frequência cardíaca.
+      </p>
+
+      <h2>Para que Serve</h2>
+
+      <ul>
+        <li><strong>Condicionamento cardiovascular:</strong> fortalece coração e pulmões através de exercício aeróbico controlado.</li>
+        <li><strong>Emagrecimento:</strong> gera gasto calórico entre 250 e 600 kcal por hora, que contribui para o déficit calórico necessário à perda de peso.</li>
+        <li><strong>Reabilitação:</strong> é recomendada em fisioterapia para artrose, lesão de joelho e recuperação pós-cirúrgica, por ser exercício de baixo impacto articular.</li>
+        <li><strong>Manutenção de condicionamento:</strong> alternativa para dias de chuva ou quando não é possível pedalar ao ar livre.</li>
+      </ul>
+
+      <h2>Tipos de Bicicleta Ergométrica</h2>
+
+      <p>
+        Existem quatro tipos principais, diferenciados pela postura do usuário: <strong>vertical</strong> (mais comum, postura ereta), <strong>horizontal</strong> (encosto apoiado, menor impacto articular), <strong>spinning</strong> (volante pesado, alta intensidade) e <strong>recumbente</strong> (assento reclinado, indicada para idosos e reabilitação). Veja o <a href="/tipos-de-bicicleta-ergometrica/">guia completo dos tipos de bicicleta ergométrica</a> com o comparativo entre eles.
+      </p>
+
+      <h2>Quais Músculos Trabalha</h2>
+
+      <p>
+        Os músculos primários ativados são quadríceps, isquiotibiais, glúteos e panturrilhas, com ativação secundária do core para estabilização postural. Veja o detalhamento completo em <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-musculos-trabalhados/">quais músculos a bicicleta ergométrica trabalha</a>.
+      </p>
+
+      <h2>Para Quem é Indicada</h2>
+
+      <p>
+        A bicicleta ergométrica é indicada para praticamente todos os públicos: iniciantes no exercício físico, pessoas com restrição articular, idosos, gestantes (com orientação médica) e atletas em treino de alta intensidade, cada um com o tipo e a intensidade adequados ao seu perfil. É contraindicada apenas em casos específicos orientados por médico, como certas condições cardiovasculares agudas.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Antes de comprar:</strong> defina primeiro o objetivo (emagrecer, reabilitar ou treinar performance), depois o espaço disponível e o orçamento. Essas três variáveis determinam qual tipo e qual faixa de preço fazem sentido para o seu caso. Veja o <a href="/como-escolher-bicicleta-ergometrica/">guia completo de como escolher a bicicleta ergométrica ideal</a>.
+        </p>
+      </div>
+
+      <a
+        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
+        target="_blank"
+        rel="noopener sponsored"
+        class="btn-cta" style="margin-top:0.5rem"
+      >
+        Ver bicicletas ergométricas na Amazon →
+      </a>
+
+      <p style="margin-top:1.5rem;">
+        Para a resposta direta sobre qual modelo comprar, veja <a href="/melhores-bicicletas-ergometricas/qual-a-melhor/">qual a melhor bicicleta ergométrica</a>. Para entender preços por categoria, consulte o <a href="/preco-bicicleta-ergometrica/">guia de preços de bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre o que é Bicicleta Ergométrica" />
+</Layout>

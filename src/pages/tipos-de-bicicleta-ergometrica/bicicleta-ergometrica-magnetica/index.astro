@@ -1,0 +1,106 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica Magnética', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-magnetica/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que é bicicleta ergométrica magnética?',
+    answer: 'É a bicicleta ergométrica cujo sistema de resistência usa ímãs para frear o volante de inércia, sem contato físico direto. Isso elimina o desgaste por atrito, torna o equipamento silencioso e reduz a necessidade de manutenção, comparado ao sistema mecânico por pastilha.',
+  },
+  {
+    question: 'Bicicleta ergométrica magnética é boa para apartamento?',
+    answer: 'Sim, é a melhor opção para apartamento. O sistema magnético gera ruído abaixo de 30 dB, compatível com uso em qualquer horário sem incomodar vizinhos. É a característica técnica mais importante para quem mora em prédio.',
+  },
+  {
+    question: 'Qual a diferença entre bicicleta magnética e eletromagnética?',
+    answer: 'Na magnética manual, você ajusta a resistência girando um knob que aproxima ou afasta o ímã do volante. Na eletromagnética, o ajuste é eletrônico, feito pelo painel ou app, permitindo programas automáticos de treino. A eletromagnética custa mais e é encontrada em modelos intermediários e semiprofissionais.',
+  },
+  {
+    question: 'Vale a pena pagar mais caro por bicicleta magnética?',
+    answer: 'Sim, para uso frequente (3 vezes por semana ou mais). O sistema magnético elimina o custo recorrente de troca de pastilha da resistência mecânica e dura muito mais tempo sem perda de desempenho. Para uso ocasional (1 a 2 vezes por semana), a diferença de custo-benefício é menor.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Magnética: Como Funciona e Quando Vale a Pena"
+  description="O que é bicicleta ergométrica magnética, como funciona a resistência sem atrito, silêncio, durabilidade e modelos recomendados nos tipos vertical, horizontal e spinning."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-20"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Magnética: Como Funciona e Quando Vale a Pena</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica magnética</strong> usa ímãs para gerar resistência no volante de inércia, sem contato físico. É o sistema mais recomendado para uso doméstico por ser <strong>silencioso</strong> (abaixo de 30 dB), <strong>durável</strong> e de <strong>manutenção mínima</strong>. Está disponível nos modelos vertical, horizontal, recumbente e spinning, com preços entre <strong>R$ 700 e R$ 3.000</strong>.
+      </p>
+
+      <p>
+        "Magnética" não é um tipo de bicicleta por si só, é o sistema de resistência que pode estar presente em qualquer um dos tipos de postura (vertical, horizontal, recumbente ou spinning). Veja o <a href="/tipos-de-bicicleta-ergometrica/">guia completo dos tipos de bicicleta ergométrica</a> para entender a diferença entre postura e sistema de resistência.
+      </p>
+
+      <h2>Como Funciona a Resistência Magnética</h2>
+
+      <p>
+        Um ou mais ímãs permanentes ficam posicionados próximos ao volante de inércia metálico. Ao aproximar o ímã do volante (manualmente por um knob, ou eletronicamente por um motor), o campo magnético cria uma força de frenagem sem que nenhuma peça toque o volante fisicamente. Esse princípio, chamado de frenagem por correntes de Foucault, é o que elimina o desgaste por atrito presente no sistema mecânico.
+      </p>
+
+      <h2>Vantagens da Resistência Magnética</h2>
+
+      <ul>
+        <li><strong>Silêncio:</strong> operação abaixo de 30 dB, adequada para apartamentos e uso em qualquer horário.</li>
+        <li><strong>Zero desgaste por atrito:</strong> sem pastilha para trocar, sem perda de precisão de carga ao longo do tempo.</li>
+        <li><strong>Precisão de resistência:</strong> os níveis são consistentes entre uma sessão e outra, o que não acontece no sistema mecânico conforme a pastilha desgasta.</li>
+        <li><strong>Menor manutenção:</strong> não exige lubrificação ou ajuste periódico do sistema de frenagem.</li>
+      </ul>
+
+      <h2>Magnética por Tipo de Bicicleta</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Modelo magnético recomendado</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Vertical</td><td>Kikos FB 180i, Randers BRF-1200</td><td>R$ 800 - R$ 1.800</td></tr>
+          <tr><td>Horizontal</td><td>Gallant Elite Horizontal</td><td>R$ 1.500 - R$ 2.500</td></tr>
+          <tr><td>Spinning</td><td>WCT Fitness Spinning 13kg, Gallant Elite Pro Spinning</td><td>R$ 1.500 - R$ 3.000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Como confirmar se é magnética antes de comprar:</strong> procure no anúncio ou na ficha técnica o termo "resistência magnética" ou "eletromagnética". Anúncios que mencionam apenas "sistema de freio" ou "resistência ajustável" sem especificar o tipo geralmente são mecânicos por atrito.
+        </p>
+      </div>
+
+      <a
+        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+magnetica&tag=bicicletase0d-20"
+        target="_blank"
+        rel="noopener sponsored"
+        class="btn-cta" style="margin-top:0.5rem"
+      >
+        Ver bicicletas ergométricas magnéticas na Amazon →
+      </a>
+
+      <p style="margin-top:1.5rem;">
+        Para a comparação técnica completa com o sistema mecânico e eletromagnético, veja <a href="/como-escolher-bicicleta-ergometrica/resistencia-magnetica-vs-mecanica/">resistência magnética vs mecânica</a>. Para bicicletas silenciosas para apartamento, consulte o <a href="/como-escolher-bicicleta-ergometrica/bicicleta-ergometrica-silenciosa/">guia de bicicleta ergométrica silenciosa</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica Magnética" />
+</Layout>

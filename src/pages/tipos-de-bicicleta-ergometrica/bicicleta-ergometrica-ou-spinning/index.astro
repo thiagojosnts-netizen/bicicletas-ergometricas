@@ -1,0 +1,102 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
+  { name: 'Bicicleta Ergométrica ou Spinning', url: '/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-ou-spinning/' },
+];
+
+const faqItems = [
+  {
+    question: 'Bicicleta ergométrica comum ou de spinning: qual escolher?',
+    answer: 'Depende da intensidade que você busca. A bicicleta ergométrica vertical comum é mais confortável, mais barata e adequada para uso moderado diário. A bicicleta de spinning tem volante mais pesado, permite maior intensidade e simula melhor o pedalada de rua, mas exige mais condicionamento físico e postura mais agressiva.',
+  },
+  {
+    question: 'Spinning em casa substitui aula de spinning na academia?',
+    answer: 'Parcialmente. Uma bicicleta de spinning doméstica com volante de 8 a 18 kg entrega o essencial do treino, mas não replica o ambiente motivacional da aula em grupo com música e instrutor. Para quem treina sozinho, apps como Zwift e Kinomap ajudam a recriar parte dessa experiência.',
+  },
+  {
+    question: 'Qual queima mais calorias: bicicleta ergométrica ou spinning?',
+    answer: 'A spinning queima mais calorias por sessão, entre 400 e 600 kcal em 45 minutos de intensidade moderada-alta, contra 300 a 450 kcal na vertical comum na mesma duração. A diferença vem do volante mais pesado e da possibilidade de sprints e simulação de subidas.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica ou Spinning: Qual a Diferença"
+  description="Bicicleta ergométrica comum ou de spinning: diferenças de volante, postura, intensidade e gasto calórico. Qual escolher para cada objetivo e nível de condicionamento."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-20"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica ou Spinning: Qual a Diferença e Qual Escolher</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica vertical</strong> e a <strong>bicicleta de spinning</strong> são tecnicamente da mesma família, mas atendem perfis diferentes. A vertical comum tem volante mais leve, postura mais confortável e é indicada para uso moderado diário. A spinning tem <strong>volante de inércia entre 8 e 22 kg</strong>, postura mais agressiva e é voltada para treinos de <strong>alta intensidade</strong> e simulação de ciclismo de rua.
+      </p>
+
+      <h2>Comparativo Direto</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Vertical comum</th>
+            <th>Spinning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Peso do volante</td><td>3 - 10 kg</td><td class="highlight-cell">8 - 22 kg</td></tr>
+          <tr><td>Postura</td><td class="highlight-cell">Ereta, confortável</td><td>Agressiva, inclinada</td></tr>
+          <tr><td>Gasto calórico (45 min)</td><td>300 - 450 kcal</td><td class="highlight-cell">400 - 600 kcal</td></tr>
+          <tr><td>Curva de aprendizado</td><td class="highlight-cell">Baixa</td><td>Moderada</td></tr>
+          <tr><td>Indicação</td><td>Iniciantes, uso geral</td><td>Intermediário, avançado, HIIT</td></tr>
+          <tr><td>Faixa de preço</td><td class="highlight-cell">R$ 600 - R$ 1.500</td><td>R$ 1.200 - R$ 3.500</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quando Escolher a Vertical Comum</h2>
+
+      <p>
+        Se o objetivo é condicionamento cardiovascular geral, emagrecimento gradual ou você está começando a treinar, a vertical comum é a escolha mais segura. Ela custa menos, tem curva de aprendizado quase nula e a postura ereta é confortável para sessões longas de baixa a moderada intensidade.
+      </p>
+
+      <h2>Quando Escolher a Spinning</h2>
+
+      <p>
+        Se você já tem condicionamento físico razoável e busca treinos intensos com sprints e simulação de subidas, ou já praticou ciclismo indoor em academia e quer continuar em casa, a spinning entrega volume de treino superior. O volante mais pesado gera pedalada mais fluida em alta cadência, algo que a vertical comum não reproduz bem.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Na dúvida:</strong> comece pela vertical comum se você é iniciante ou tem mais de 6 meses sem treinar. Migre para spinning quando já estiver condicionado e sentir que a vertical não desafia mais o seu ritmo cardíaco.
+        </p>
+      </div>
+
+      <a
+        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+spinning&tag=bicicletase0d-20"
+        target="_blank"
+        rel="noopener sponsored"
+        class="btn-cta" style="margin-top:0.5rem"
+      >
+        Ver bicicletas de spinning na Amazon →
+      </a>
+
+      <p style="margin-top:1.5rem;">
+        Veja o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia completo da bicicleta de spinning</a> e o <a href="/tipos-de-bicicleta-ergometrica/">comparativo de todos os tipos de bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Bicicleta Ergométrica ou Spinning" />
+</Layout>
+
+<style>
+  .highlight-cell { background: var(--c-green-50); color: var(--c-green-700); font-weight: 600; }
+</style>

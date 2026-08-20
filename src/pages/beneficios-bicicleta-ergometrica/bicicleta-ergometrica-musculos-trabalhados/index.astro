@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
+  { name: 'Músculos Trabalhados', url: '/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-musculos-trabalhados/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quais músculos a bicicleta ergométrica trabalha?',
+    answer: 'Os músculos primários são quadríceps, isquiotibiais, glúteos e panturrilhas. Secundariamente, ativa o core (abdômen e lombar) para manutenção da postura e, em menor grau, os flexores do quadril. A ativação muscular específica varia conforme o tipo de bicicleta e a intensidade do pedalada.',
+  },
+  {
+    question: 'Bicicleta ergométrica define as pernas?',
+    answer: 'Sim, mas com resistência moderada a alta e uso regular. O pedalada contra carga desenvolve resistência muscular e leve hipertrofia em quadríceps e panturrilhas. Para definição visível, é necessário combinar com déficit calórico, já que o exercício aeróbico sozinho não reduz gordura localizada.',
+  },
+  {
+    question: 'Bicicleta ergométrica trabalha o abdômen?',
+    answer: 'Trabalha o core como estabilizador, não como músculo primário. Manter a postura ereta sobre o selim ativa o abdômen e a lombar continuamente durante o pedalada, mas o gasto de esforço nessa região é bem menor do que em quadríceps e glúteos.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica: Quais Músculos Trabalha"
+  description="Quais músculos a bicicleta ergométrica trabalha: quadríceps, isquiotibiais, glúteos, panturrilhas e core. Diferença de ativação entre vertical, horizontal e spinning."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-20"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica: Quais Músculos Trabalha</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica</strong> trabalha principalmente <strong>quadríceps, isquiotibiais, glúteos e panturrilhas</strong>, com ativação secundária do <strong>core</strong> para estabilização postural. A intensidade de ativação de cada grupo muscular varia conforme o tipo de bicicleta: a vertical ativa mais o core, enquanto a horizontal e a recumbente concentram o esforço nas pernas com menor exigência de estabilização do tronco.
+      </p>
+
+      <h2>Músculos Primários</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Músculo</th>
+            <th>Fase do movimento</th>
+            <th>Nível de ativação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Quadríceps</td><td>Empurrar o pedal para baixo</td><td>Alto</td></tr>
+          <tr><td>Glúteos</td><td>Empurrar o pedal para baixo, fase final</td><td>Alto</td></tr>
+          <tr><td>Isquiotibiais</td><td>Puxar o pedal para trás e para cima</td><td>Moderado a alto</td></tr>
+          <tr><td>Panturrilhas (gastrocnêmio e sóleo)</td><td>Estabilização do tornozelo durante todo o ciclo</td><td>Moderado</td></tr>
+          <tr><td>Core (abdômen e lombar)</td><td>Estabilização postural contínua</td><td>Moderado (mais em modelos verticais)</td></tr>
+          <tr><td>Flexores do quadril</td><td>Puxar o pedal para cima</td><td>Baixo a moderado</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Diferença de Ativação por Tipo de Bicicleta</h2>
+
+      <p>
+        Na <strong>bicicleta vertical</strong>, a postura ereta exige ativação constante do core para manter o equilíbrio e a estabilidade da coluna, além do trabalho normal de pernas. Na <strong>bicicleta horizontal e recumbente</strong>, o encosto sustenta o tronco, reduzindo a demanda sobre o core e concentrando praticamente todo o esforço em quadríceps, glúteos e isquiotibiais. Na <strong>spinning</strong>, a postura inclinada para frente ativa também os músculos do antebraço e ombro para sustentação do peso sobre o guidão, além de exigir mais dos glúteos em pedaladas em pé.
+      </p>
+
+      <h2>A Bicicleta Ergométrica Trabalha a Parte Superior do Corpo?</h2>
+
+      <p>
+        Minimamente. O tronco, braços e ombros atuam apenas como estabilizadores ao segurar o guidão, sem movimento ativo contra resistência. Para desenvolvimento de membros superiores, a bicicleta ergométrica não substitui treino de força específico. Alguns modelos de spinning com guidão móvel (manivela dianteira) adicionam leve ativação de braços e ombros, mas isso é exceção, não a regra.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Para maximizar a ativação muscular:</strong> aumente gradualmente o nível de resistência ao invés de pedalar rápido com carga baixa. Resistência mais alta recruta mais fibras musculares em quadríceps e glúteos, enquanto cadência alta com carga baixa prioriza o condicionamento cardiovascular sobre o ganho de força.
+        </p>
+      </div>
+
+      <a
+        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
+        target="_blank"
+        rel="noopener sponsored"
+        class="btn-cta" style="margin-top:0.5rem"
+      >
+        Ver bicicletas ergométricas na Amazon →
+      </a>
+
+      <p style="margin-top:1.5rem;">
+        Para entender o gasto calórico associado a esse trabalho muscular, veja <a href="/beneficios-bicicleta-ergometrica/bicicleta-ergometrica-queima-calorias/">queima de calorias na bicicleta ergométrica</a>. Para um protocolo estruturado de treino, consulte <a href="/como-usar-bicicleta-ergometrica/treino-bicicleta-ergometrica-iniciante/">treino de bicicleta ergométrica para iniciante</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas Frequentes sobre Músculos Trabalhados na Bicicleta Ergométrica" />
+</Layout>
