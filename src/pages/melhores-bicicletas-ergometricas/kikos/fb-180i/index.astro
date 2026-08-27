@@ -31,6 +31,23 @@ const faqItems = [
 ];
 
 const imagem = await fetchBikeImage("exercise bike bluetooth smart indoor");
+
+const kv31 = {
+  name: "Bicicleta Ergométrica Kikos KV3.1i Magnética",
+  description: "Resistência magnética silenciosa, 8 níveis, display LCD (tempo, velocidade, distância, calorias e odômetro) e monitor cardíaco por hand grip. Ideal para apartamento.",
+  rating: 4.3,
+  reviewCount: 480,
+  badge: "Magnética silenciosa",
+  image: imagem?.url,
+  imageAlt: "Bicicleta ergométrica Kikos KV3.1i magnética",
+  features: [
+    "Resistência magnética 100% silenciosa",
+    "8 níveis de resistência",
+    "Display LCD com 5 funções + odômetro",
+    "Monitor cardíaco via hand grip",
+  ],
+  internalUrl: "/produtos/kikos-kv3-1i-magnetica/",
+};
 ---
 
 <Layout
@@ -167,28 +184,11 @@ const imagem = await fetchBikeImage("exercise bike bluetooth smart indoor");
         A FB 180i tem oferta instável nos marketplaces. Para compra imediata dentro da Kikos, a opção com disponibilidade constante e resistência magnética silenciosa é a <strong>KV3.1i</strong>:
       </p>
 
-      <div style="margin-top: 1rem;">
-        <ProductCard product={{
-          name: "Bicicleta Ergométrica Kikos KV3.1i Magnética",
-          description: "Resistência magnética silenciosa, 8 níveis, display LCD (tempo, velocidade, distância, calorias e odômetro) e monitor cardíaco por hand grip. Ideal para apartamento.",
-          price: "R$ 1.960,19",
-          rating: 4.3,
-          reviewCount: 480,
-          badge: "Magnética silenciosa",
-          ofertas: [
-            { loja: "Amazon", url: "https://link.amazon/B071AhLkk", preco: "R$ 1.960,19" },
-            { loja: "Mercado Livre", url: "https://meli.la/1tX6pbg", preco: "R$ 2.324,12" },
-          ],
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Kikos KV3.1i magnética",
-          features: [
-            "Resistência magnética 100% silenciosa",
-            "8 níveis de resistência",
-            "Display LCD com 5 funções + odômetro",
-            "Monitor cardíaco via hand grip",
-          ],
-          internalUrl: "/produtos/kikos-kv3-1i-magnetica/",
-        }} />
+      <div class="ofertas-cards" style="margin-top: 1rem;">
+        <ProductCard product={{ ...kv31, lojaLabel: "Amazon", price: "R$ 1.960,19",
+          ofertas: [{ loja: "Amazon", url: "https://link.amazon/B071AhLkk", preco: "R$ 1.960,19" }] }} />
+        <ProductCard product={{ ...kv31, lojaLabel: "Mercado Livre", price: "R$ 2.324,12",
+          ofertas: [{ loja: "Mercado Livre", url: "https://meli.la/1tX6pbg", preco: "R$ 2.324,12" }] }} />
       </div>
 
       {imagem && (

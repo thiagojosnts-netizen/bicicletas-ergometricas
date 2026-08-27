@@ -13,6 +13,7 @@ export interface Props {
     rating?: number;
     reviewCount?: number;
     ofertas?: { loja: Loja; url: string; preco?: string }[];
+    lojaLabel?: Loja;           // mostra uma tag de loja no topo do card (para cards separados por loja)
     affiliateUrl?: string;      // legado — usar `ofertas`
     store?: string;             // legado — usar `ofertas`
     image?: string;
@@ -71,6 +72,11 @@ const lojaPrep: Record<Loja, string> = {
   </div>
 
   <div class="card-body">
+    {product.lojaLabel && (
+      <span class={`card-loja card-loja-${lojaSlug[product.lojaLabel]}`}>
+        Comprar {lojaPrep[product.lojaLabel]} {product.lojaLabel}
+      </span>
+    )}
     <h3 class="product-name">{product.name}</h3>
     <p class="product-description">{product.description}</p>
 
@@ -96,10 +102,12 @@ const lojaPrep: Record<Loja, string> = {
     )}
 
     <div class="card-footer">
-      <div class="price-row">
-        <span class="price">{product.price}</span>
-        {ofertas.length > 1 && <span class="price-hint">menor preço entre {ofertas.length} lojas</span>}
-      </div>
+      {product.price && (
+        <div class="price-row">
+          <span class="price">{product.price}</span>
+          {ofertas.length > 1 && <span class="price-hint">menor preço entre {ofertas.length} lojas</span>}
+        </div>
+      )}
 
       {ofertas.length > 0 && (
         <div class="ofertas">
@@ -111,7 +119,7 @@ const lojaPrep: Record<Loja, string> = {
               rel="noopener nofollow sponsored"
               aria-label={`Ver ${product.name} ${lojaPrep[o.loja]} ${o.loja}`}
             >
-              <span>Ver {lojaPrep[o.loja]} {o.loja}{o.preco ? ` · ${o.preco}` : ""}</span>
+              <span>Ver {lojaPrep[o.loja]} {o.loja}{!product.lojaLabel && o.preco ? ` · ${o.preco}` : ""}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                 <polyline points="15 3 21 3 21 9"/>
@@ -198,6 +206,20 @@ const lojaPrep: Record<Loja, string> = {
     flex: 1;
     gap: 8px;
   }
+
+  .card-loja {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+  }
+  .card-loja-amazon { color: #b45309; background: #fff7ed; }
+  .card-loja-ml { color: #2D3277; background: #fffbe6; }
+  .card-loja-shopee { color: #c2410c; background: #fff1ec; }
 
   .product-name {
     font-size: 1rem;

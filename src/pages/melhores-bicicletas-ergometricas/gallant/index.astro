@@ -26,6 +26,18 @@ const faqItems = [
 ];
 
 const imagem = await fetchBikeImage('spinning bike indoor gym professional');
+
+const gallantPro = {
+  name: "Gallant Elite Pro Spinning — Roda de Inércia 18kg",
+  description: "Roda de inércia de 18kg, transmissão por correia silenciosa, assento e guidão ajustáveis. Suporta até 120kg. Spinning mecânico com boa avaliação de compradores.",
+  rating: 4.4,
+  reviewCount: 160,
+  badge: "Mais Vendida",
+  image: imagem?.url,
+  imageAlt: "Bicicleta ergométrica Gallant Elite Pro Spinning",
+  features: ["Roda de inércia 18kg", "Transmissão por correia silenciosa", "Suporte até 120 kg", "Assento e guidão reguláveis"],
+  internalUrl: "/produtos/gallant-elite-pro-spinning/",
+};
 ---
 
 <Layout
@@ -113,23 +125,11 @@ const imagem = await fetchBikeImage('spinning bike indoor gym professional');
         <p>O <strong>Gallant Elite Pro Spinning Mecânica</strong> é a melhor opção custo-benefício da linha, com roda de inércia de 13kg, transmissão por correia silenciosa e suporte até 110kg. Para quem quer magnético, o <strong>Elite X Magnética</strong> oferece silêncio adicional a um preço acessível.</p>
       </div>
 
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Gallant Elite Pro Spinning — Roda de Inércia 18kg",
-          description: "Roda de inércia de 18kg, transmissão por correia silenciosa, assento e guidão ajustáveis. Suporta até 120kg. Spinning mecânico com boa avaliação de compradores.",
-          price: "R$ 1.999,80",
-          rating: 4.4,
-          reviewCount: 160,
-          badge: "Mais Vendida",
-          ofertas: [
-            { loja: "Amazon", url: "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20", preco: "R$ 1.999,80" },
-            { loja: "Mercado Livre", url: "https://meli.la/1x3irKm" },
-          ],
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Gallant Elite Pro Spinning",
-          features: ["Roda de inércia 18kg", "Transmissão por correia silenciosa", "Suporte até 120 kg", "Assento e guidão reguláveis"],
-          internalUrl: "/produtos/gallant-elite-pro-spinning/",
-        }} />
+      <div class="ofertas-cards">
+        <ProductCard product={{ ...gallantPro, lojaLabel: "Amazon", price: "R$ 1.999,80",
+          ofertas: [{ loja: "Amazon", url: "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20", preco: "R$ 1.999,80" }] }} />
+        <ProductCard product={{ ...gallantPro, lojaLabel: "Mercado Livre", price: "",
+          ofertas: [{ loja: "Mercado Livre", url: "https://meli.la/1x3irKm" }] }} />
       </div>
 
       <p style="margin-top:1rem;font-size:0.875rem;">
