@@ -26,18 +26,6 @@ const faqItems = [
 ];
 
 const imagem = await fetchBikeImage('spin bike flywheel indoor cycling');
-
-const wct13 = {
-  name: "Bicicleta Spinning WCT Fitness — Roda de Inércia 13kg",
-  description: "Roda de inércia de 13kg, transmissão por correia silenciosa, sensor cardíaco e monitor digital. Suporta até 120kg. Uma das mais vendidas do Mercado Livre na categoria.",
-  rating: 4.4,
-  reviewCount: 320,
-  badge: "Mais Vendida",
-  image: imagem?.url,
-  imageAlt: "Bicicleta ergométrica WCT Fitness roda de inércia 13kg",
-  features: ["Roda de inércia 13kg", "Transmissão por correia silenciosa", "Sensor cardíaco", "Suporte até 120 kg"],
-  internalUrl: "/produtos/wct-fitness-spinning-13kg/",
-};
 ---
 
 <Layout
@@ -124,11 +112,22 @@ const wct13 = {
         <p>O modelo <strong>WCT Fitness Spinning 13kg</strong> é o melhor custo-benefício da linha para quem quer experiência próxima de academia em casa. Para treinos de alta intensidade, o <strong>modelo 20kg</strong> oferece inércia superior com menor variação de resistência durante o pedal.</p>
       </div>
 
-      <div class="ofertas-cards">
-        <ProductCard product={{ ...wct13, lojaLabel: "Amazon", price: "",
-          ofertas: [{ loja: "Amazon", url: "https://link.amazon/B053BL2DM" }] }} />
-        <ProductCard product={{ ...wct13, lojaLabel: "Mercado Livre", price: "R$ 1.397,44",
-          ofertas: [{ loja: "Mercado Livre", url: "https://meli.la/1prAuY7", preco: "R$ 1.397,44" }] }} />
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Bicicleta Spinning WCT Fitness — Roda de Inércia 13kg",
+          description: "Roda de inércia de 13kg, transmissão por correia silenciosa, sensor cardíaco e monitor digital. Suporta até 120kg. Uma das mais vendidas do Mercado Livre na categoria.",
+          rating: 4.4,
+          reviewCount: 320,
+          badge: "Mais Vendida",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B053BL2DM" },
+            { loja: "Mercado Livre", url: "https://meli.la/1prAuY7" },
+          ],
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica WCT Fitness roda de inércia 13kg",
+          features: ["Roda de inércia 13kg", "Transmissão por correia silenciosa", "Sensor cardíaco", "Suporte até 120 kg"],
+          internalUrl: "/produtos/wct-fitness-spinning-13kg/",
+        }} />
       </div>
 
       {imagem && (

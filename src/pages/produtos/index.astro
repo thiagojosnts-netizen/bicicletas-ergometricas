@@ -15,7 +15,7 @@ const breadcrumbs = [
 
 <Layout
   title="Bicicletas Ergométricas — Comparativo de Produtos | Bicicletas Ergométricas"
-  description="Compare as melhores bicicletas ergométricas com avaliações reais de compradores: verticais, reclinadas, spinning e dobráveis com preços atualizados."
+  description="Compare as melhores bicicletas ergométricas com avaliações reais de compradores: verticais, reclinadas, spinning e dobráveis, e onde comprar cada uma."
   breadcrumbs={breadcrumbs}
 >
   <div class="produtos-page">
@@ -26,7 +26,7 @@ const breadcrumbs = [
         <p class="produtos-subtitulo">
           <strong>{produtos.length} modelos</strong> avaliados com dados reais de compradores.
           Verticais, reclinadas, spinning e dobráveis — clique em qualquer modelo para ver
-          especificações completas e o melhor preço.
+          as especificações completas e onde comprar.
         </p>
       </div>
     </header>
@@ -116,18 +116,12 @@ const breadcrumbs = [
                 <p class="card-desc">{d.description}</p>
 
                 <div class="card-footer">
-                  <div class="card-preco-wrap">
-                    <span class="card-preco">{d.price}</span>
-                    <div class="card-frete">
-                      <span class="frete-badge">✓ Frete grátis Prime</span>
-                    </div>
-                  </div>
                   <a
                     href={`/produtos/${produto.id}/`}
                     class="btn-ver-produto"
                     aria-label={`Ver detalhes de ${d.name}`}
                   >
-                    Ver Produto
+                    Ver ficha e onde comprar →
                   </a>
                 </div>
               </div>
@@ -401,44 +395,10 @@ const breadcrumbs = [
   }
   .card-footer {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  .card-preco-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .card-preco {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #111827;
-    font-family: Inter, sans-serif;
-  }
-  .card-frete {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-  }
-  .frete-badge {
-    display: inline-flex;
-    align-items: center;
-    background: #f0fdf4;
-    color: #2D6A4F;
-    font-size: 0.67rem;
-    font-weight: 600;
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
-    border: 1px solid #52B788;
-  }
-  .frete-data {
-    font-size: 0.67rem;
-    color: #9ca3af;
+    margin-top: 0.75rem;
   }
   .btn-ver-produto {
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;

@@ -2,14 +2,12 @@
   "name": "Gallant Elite Pro Spinning Roda de Inércia 18kg",
   "description": "Spinning intermediário com roda de inércia 18kg, sistema Comfort Motion e display multifuncional — para treinos diários intensos.",
   "descricaoLonga": "A Gallant Elite Pro Spinning 18kg é a referência de custo-benefício na categoria intermediária. A roda de inércia de 18 kg proporciona momentum real e o sistema Comfort Motion reduz vibrações, garantindo estabilidade mesmo em alta cadência. O display multifuncional acompanha distância, velocidade, tempo, calorias estimadas, frequência cardíaca e odômetro. Transmissão por correia silenciosa. Suporte até 120 kg para usuários de 1,55 a 1,85 m.",
-  "price": "R$ 1.999,80",
   "rating": 4.4,
   "reviewCount": 160,
   "ofertas": [
     {
       "loja": "Amazon",
-      "url": "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20",
-      "preco": "R$ 1.999,80"
+      "url": "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20"
     },
     {
       "loja": "Mercado Livre",
@@ -38,6 +36,5 @@
     "Transmissão": "Correia",
     "Dimensões": "64 x 122 x 115 cm",
     "Garantia": "12 meses"
-  },
-  "ofertasAtualizadoEm": "2026-08-27"
+  }
 }

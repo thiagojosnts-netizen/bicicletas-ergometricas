@@ -1,7 +1,9 @@
 ---
 // src/components/ProductCard.astro
 // Card de produto com links de afiliado (Amazon / Mercado Livre / Shopee)
-// Uso: <ProductCard product={{ ...campos, ofertas: [{ loja, url, preco }] }} />
+// Uso: <ProductCard product={{ ...campos, ofertas: [{ loja, url }] }} />
+
+import LojaLogo from "./LojaLogo.astro";
 
 type Loja = "Amazon" | "Mercado Livre" | "Shopee";
 
@@ -9,11 +11,10 @@ export interface Props {
   product: {
     name: string;
     description: string;
-    price: string;
+    price?: string;             // não é mais exibido — mantido por compatibilidade
     rating?: number;
     reviewCount?: number;
-    ofertas?: { loja: Loja; url: string; preco?: string }[];
-    lojaLabel?: Loja;           // mostra uma tag de loja no topo do card (para cards separados por loja)
+    ofertas?: { loja: Loja; url: string }[];
     affiliateUrl?: string;      // legado — usar `ofertas`
     store?: string;             // legado — usar `ofertas`
     image?: string;
@@ -27,7 +28,7 @@ export interface Props {
 const { product } = Astro.props;
 const stars = product.rating ? Math.round(product.rating) : 0;
 
-const ofertas: { loja: Loja; url: string; preco?: string }[] =
+const ofertas: { loja: Loja; url: string }[] =
   product.ofertas && product.ofertas.length > 0
     ? product.ofertas
     : product.affiliateUrl
@@ -72,11 +73,6 @@ const lojaPrep: Record<Loja, string> = {
   </div>
 
   <div class="card-body">
-    {product.lojaLabel && (
-      <span class={`card-loja card-loja-${lojaSlug[product.lojaLabel]}`}>
-        Comprar {lojaPrep[product.lojaLabel]} {product.lojaLabel}
-      </span>
-    )}
     <h3 class="product-name">{product.name}</h3>
     <p class="product-description">{product.description}</p>
 
@@ -101,15 +97,9 @@ const lojaPrep: Record<Loja, string> = {
       </div>
     )}
 
-    <div class="card-footer">
-      {product.price && (
-        <div class="price-row">
-          <span class="price">{product.price}</span>
-          {ofertas.length > 1 && <span class="price-hint">menor preço entre {ofertas.length} lojas</span>}
-        </div>
-      )}
-
-      {ofertas.length > 0 && (
+    {ofertas.length > 0 && (
+      <div class="card-footer">
+        <span class="ofertas-titulo">{ofertas.length > 1 ? "Veja nas lojas" : `Veja ${lojaPrep[ofertas[0].loja]} ${ofertas[0].loja}`}</span>
         <div class="ofertas">
           {ofertas.map((o) => (
             <a
@@ -119,20 +109,18 @@ const lojaPrep: Record<Loja, string> = {
               rel="noopener nofollow sponsored"
               aria-label={`Ver ${product.name} ${lojaPrep[o.loja]} ${o.loja}`}
             >
-              <span>Ver {lojaPrep[o.loja]} {o.loja}{!product.lojaLabel && o.preco ? ` · ${o.preco}` : ""}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
+              <LojaLogo loja={o.loja} />
+              <svg class="btn-loja-arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                <path d="M7 17 L17 7"/><path d="M8 7 h9 v9"/>
               </svg>
             </a>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    )}
 
     {product.internalUrl && (
-      <a href={product.internalUrl} class="internal-link">Ver ficha completa e comparar preços →</a>
+      <a href={product.internalUrl} class="internal-link">Ver ficha completa →</a>
     )}
   </div>
 </article>
@@ -207,19 +195,6 @@ const lojaPrep: Record<Loja, string> = {
     gap: 8px;
   }
 
-  .card-loja {
-    align-self: flex-start;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 999px;
-    border: 1px solid currentColor;
-  }
-  .card-loja-amazon { color: #b45309; background: #fff7ed; }
-  .card-loja-ml { color: #2D3277; background: #fffbe6; }
-  .card-loja-shopee { color: #c2410c; background: #fff1ec; }
 
   .product-name {
     font-size: 1rem;
@@ -289,27 +264,17 @@ const lojaPrep: Record<Loja, string> = {
   .card-footer {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     margin-top: auto;
     padding-top: 12px;
     border-top: 1px solid #f0f0f0;
   }
 
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #b12704;
-  }
-
-  .price-hint {
+  .ofertas-titulo {
     font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: #888;
   }
 

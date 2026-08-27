@@ -26,18 +26,6 @@ const faqItems = [
 ];
 
 const imagem = await fetchBikeImage('exercise bike home beginner fitness');
-
-const ex450 = {
-  name: "Dream Fitness EX 450 — Bicicleta Ergométrica Vertical",
-  description: "O modelo mais avaliado da Dream Fitness na Amazon BR. Resistência mecânica ajustável, assento regulável e painel de monitoramento básico. Ideal para iniciantes.",
-  rating: 4.2,
-  reviewCount: 3700,
-  badge: "Mais Avaliada",
-  image: imagem?.url,
-  imageAlt: "Bicicleta ergométrica Dream Fitness EX 450",
-  features: ["Resistência mecânica ajustável", "Assento regulável", "Painel monitor básico", "Compacta para uso domiciliar"],
-  internalUrl: "/produtos/dream-fitness-ex-450/",
-};
 ---
 
 <Layout
@@ -125,11 +113,22 @@ const ex450 = {
         <p>O <strong>Dream Fitness EX 450</strong> é ideal para iniciantes com orçamento até R$ 500, sendo o modelo com melhor relação custo-benefício da marca. Para quem quer resistência magnética, o <strong>Energy V</strong> oferece operação mais silenciosa a um preço ainda acessível.</p>
       </div>
 
-      <div class="ofertas-cards">
-        <ProductCard product={{ ...ex450, lojaLabel: "Amazon", price: "R$ 327,87",
-          ofertas: [{ loja: "Amazon", url: "https://link.amazon/B05aGxhNF", preco: "R$ 327,87" }] }} />
-        <ProductCard product={{ ...ex450, lojaLabel: "Mercado Livre", price: "R$ 433,23",
-          ofertas: [{ loja: "Mercado Livre", url: "https://meli.la/1jEg8FC", preco: "R$ 433,23" }] }} />
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Dream Fitness EX 450 — Bicicleta Ergométrica Vertical",
+          description: "O modelo mais avaliado da Dream Fitness na Amazon BR. Resistência mecânica ajustável, assento regulável e painel de monitoramento básico. Ideal para iniciantes.",
+          rating: 4.2,
+          reviewCount: 3700,
+          badge: "Mais Avaliada",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B05aGxhNF" },
+            { loja: "Mercado Livre", url: "https://meli.la/1jEg8FC" },
+          ],
+          image: imagem?.url,
+          imageAlt: "Bicicleta ergométrica Dream Fitness EX 450",
+          features: ["Resistência mecânica ajustável", "Assento regulável", "Painel monitor básico", "Compacta para uso domiciliar"],
+          internalUrl: "/produtos/dream-fitness-ex-450/",
+        }} />
       </div>
 
       {imagem && (

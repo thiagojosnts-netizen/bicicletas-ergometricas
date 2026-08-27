@@ -20,7 +20,6 @@ const blog = defineCollection({
 const oferta = z.object({
   loja: z.enum(['Amazon', 'Mercado Livre', 'Shopee']),
   url: z.string().url(),
-  preco: z.string().optional(),
 });
 
 const produtos = defineCollection({
@@ -29,11 +28,9 @@ const produtos = defineCollection({
     name: z.string(),
     description: z.string(),
     descricaoLonga: z.string(),
-    price: z.string(),
     rating: z.number(),
     reviewCount: z.number(),
     ofertas: z.array(oferta).min(1),
-    ofertasAtualizadoEm: z.string().optional(),
     image: z.string(),
     imageAlt: z.string(),
     badge: z.string(),

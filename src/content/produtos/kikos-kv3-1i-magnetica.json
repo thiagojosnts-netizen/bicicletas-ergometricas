@@ -2,19 +2,16 @@
   "name": "Kikos KV3.1i Bicicleta Ergométrica Magnética",
   "description": "Ergométrica magnética e silenciosa com display LCD, monitoramento cardíaco e 8 níveis de resistência — ideal para apartamentos.",
   "descricaoLonga": "A Kikos KV3.1i se destaca pela resistência magnética completamente silenciosa, tornando-a a escolha certa para quem mora em apartamento ou treina à noite. O display LCD exibe tempo, velocidade, distância, calorias e odômetro. O monitoramento cardíaco é feito via hand grip nas manoplas. Banco e guidão ajustáveis para diferentes estaturas. 8 níveis de resistência permitem progressão gradual do treino.",
-  "price": "R$ 1.960,19",
   "rating": 4.3,
   "reviewCount": 480,
   "ofertas": [
     {
       "loja": "Amazon",
-      "url": "https://link.amazon/B071AhLkk",
-      "preco": "R$ 1.960,19"
+      "url": "https://link.amazon/B071AhLkk"
     },
     {
       "loja": "Mercado Livre",
-      "url": "https://meli.la/1tX6pbg",
-      "preco": "R$ 2.324,12"
+      "url": "https://meli.la/1tX6pbg"
     }
   ],
   "image": "/produtos/kikos-kv3-1i-magnetica.png",
@@ -38,6 +35,5 @@
     "Tipo de resistência": "Magnética",
     "Monitor": "Tempo, velocidade, distância, calorias, odômetro",
     "Garantia": "12 meses"
-  },
-  "ofertasAtualizadoEm": "2026-08-27"
+  }
 }

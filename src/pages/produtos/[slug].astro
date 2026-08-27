@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import LojaLogo from '../../components/LojaLogo.astro';
 
 export async function getStaticPaths() {
   const produtos = await getCollection('produtos');
@@ -24,7 +25,7 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title={`${d.name} — Ficha Completa e Preço | Bicicletas Ergométricas`}
+  title={`${d.name} — Ficha Completa | Bicicletas Ergométricas`}
   description={d.description}
   breadcrumbs={breadcrumbs}
   isArticle={false}
@@ -82,31 +83,32 @@ const breadcrumbs = [
           </ul>
         )}
 
-        <div class="detalhe-ofertas-grid">
-          {d.ofertas.map((o) => {
-            const prep = o.loja === 'Mercado Livre' ? 'no' : 'na';
-            const slug = o.loja === 'Mercado Livre' ? 'ml' : o.loja === 'Shopee' ? 'shopee' : 'amazon';
-            return (
-              <div class="detalhe-cta-box">
-                <span class={`detalhe-loja-tag loja-${slug}`}>{o.loja}</span>
-                <span class="detalhe-preco">{o.preco ?? 'Ver preço'}</span>
+        <div class="detalhe-cta-box">
+          <span class="detalhe-cta-titulo">Onde comprar</span>
+          <div class="detalhe-ofertas">
+            {d.ofertas.map((o) => {
+              const prep = o.loja === 'Mercado Livre' ? 'no' : 'na';
+              const slug = o.loja === 'Mercado Livre' ? 'ml' : o.loja === 'Shopee' ? 'shopee' : 'amazon';
+              return (
                 <a
                   href={o.url}
                   target="_blank"
                   rel="noopener nofollow sponsored"
                   class={`btn-loja btn-${slug}`}
-                  aria-label={`Ver oferta ${prep} ${o.loja}`}
+                  aria-label={`Ver ${d.name} ${prep} ${o.loja}`}
                 >
-                  <span>Ver oferta</span>
-                  <span aria-hidden="true">→</span>
+                  <LojaLogo loja={o.loja} />
+                  <svg class="btn-loja-arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                    <path d="M7 17 L17 7"/><path d="M8 7 h9 v9"/>
+                  </svg>
                 </a>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         <p class="detalhe-aviso">
-          * Este site participa dos programas de afiliados da Amazon e do Mercado Livre. Os preços{d.ofertasAtualizadoEm ? ` foram conferidos em ${d.ofertasAtualizadoEm.split('-').reverse().join('/')} e` : ''} podem variar — clique para ver o valor atual.
+          * Este site participa dos programas de afiliados da Amazon e do Mercado Livre. Ao comprar por estes links podemos receber uma comissão, sem custo adicional para você.
         </p>
       </div>
     </div>
@@ -206,27 +208,16 @@ const breadcrumbs = [
     font-size: 0.88rem; color: #374151;
     display: flex; align-items: flex-start; gap: 0.4rem;
   }
-  .detalhe-ofertas-grid {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem;
-  }
-  @media (max-width: 520px) { .detalhe-ofertas-grid { grid-template-columns: 1fr; } }
   .detalhe-cta-box {
     background: #f9fafb; border: 1px solid #e5e7eb;
-    border-radius: 10px; padding: 1rem;
-    display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start;
+    border-radius: 10px; padding: 1.1rem;
+    display: flex; flex-direction: column; gap: 0.7rem;
   }
-  .detalhe-loja-tag {
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor;
+  .detalhe-cta-titulo {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; color: #6b7280;
   }
-  .detalhe-loja-tag.loja-amazon { color: #b45309; background: #fff7ed; }
-  .detalhe-loja-tag.loja-ml { color: #2D3277; background: #fffbe6; }
-  .detalhe-loja-tag.loja-shopee { color: #c2410c; background: #fff1ec; }
-  .detalhe-preco {
-    font-size: 1.5rem; font-weight: 800;
-    color: #111827; font-family: Inter, sans-serif;
-  }
-  .detalhe-cta-box .btn-loja { font-size: 0.9rem; padding: 0.7rem 1rem; }
+  .detalhe-ofertas { display: flex; flex-direction: column; gap: 0.5rem; }
   .detalhe-aviso {
     font-size: 0.72rem; color: #9ca3af; line-height: 1.5; margin: 0;
   }
