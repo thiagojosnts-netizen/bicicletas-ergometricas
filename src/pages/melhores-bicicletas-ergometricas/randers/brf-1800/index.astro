@@ -2,8 +2,6 @@
 import Layout from '../../../../layouts/Layout.astro';
 import Breadcrumb from '../../../../components/Breadcrumb.astro';
 import FAQ from '../../../../components/FAQ.astro';
-import ProductCard from '../../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -30,7 +28,6 @@ const faqItems = [
   },
 ];
 
-const imagem = await fetchBikeImage("indoor exercise bike magnetic resistance");
 ---
 
 <Layout
@@ -161,32 +158,6 @@ const imagem = await fetchBikeImage("indoor exercise bike magnetic resistance");
       <p>
         Para o comparativo direto entre as duas marcas mais procuradas, veja <a href="/melhores-bicicletas-ergometricas/randers-vs-kikos/">Randers vs Kikos: qual comprar?</a>
       </p>
-
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Bicicleta Ergométrica Randers BRF-1800",
-          description: "16 níveis de resistência magnética, 12 programas automáticos e suporte até 120 kg. Melhor opção da linha Randers para uso domiciliar regular.",
-          price: "R$ 1.600 – R$ 2.200",
-          rating: 4.2,
-          reviewCount: 3120,
-          badge: "Recomendada",
-          affiliateUrl: "https://www.amazon.com.br/s?k=randers+brf+1800&tag=bicicletase0d-20",
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Randers BRF-1800 resistência magnética",
-          features: [
-            "16 níveis de resistência magnética",
-            "12 programas automáticos",
-            "Suporte até 120 kg",
-            "Monitor com sensor de frequência cardíaca",
-          ],
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
 
     </div>
   </section>

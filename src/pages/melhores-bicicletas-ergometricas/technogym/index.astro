@@ -2,8 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -25,7 +23,6 @@ const faqItems = [
   },
 ];
 
-const imagem = await fetchBikeImage("professional gym equipment cycling");
 ---
 
 <Layout
@@ -85,32 +82,6 @@ const imagem = await fetchBikeImage("professional gym equipment cycling");
           <strong>Alternativa para usuários exigentes:</strong> Para quem busca qualidade próxima da Technogym sem o preço, os modelos <strong>Wellness Health Bike Premium</strong> e <strong>Athletic Bike Pro</strong> (R$ 3.500-R$ 4.000) oferecem boa parte dos benefícios a um quarto do preço.
         </p>
       </div>
-
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Bicicleta Ergométrica Technogym Excite Bike",
-          description: "Resistência eletromagnética contínua, plataforma Mywellness com WiFi e padrão de academia profissional. Para uso semiprofissional e academias.",
-          price: "R$ 8.000 – R$ 14.000",
-          rating: 4.8,
-          reviewCount: 214,
-          badge: "Premium Profissional",
-          affiliateUrl: "https://www.amazon.com.br/s?k=bicicleta+ergometrica+technogym&tag=bicicletase0d-20",
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Technogym Excite Bike",
-          features: [
-            "Resistência eletromagnética contínua",
-            "Plataforma Mywellness + WiFi",
-            "Padrão Olímpico",
-            "Vida útil para uso intensivo",
-          ],
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
 
       <p style="margin-top:1.5rem;">
         Para o comparativo completo, acesse a <a href="/melhores-bicicletas-ergometricas/">análise das melhores bicicletas ergométricas</a>.

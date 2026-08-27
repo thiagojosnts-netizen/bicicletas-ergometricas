@@ -2,8 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -24,8 +22,6 @@ const faqItems = [
     answer: 'Para quem quer experiência próxima de academia em casa, sim. O Pro Royale é adequado para uso de 5x/semana ou mais, com estrutura robusta e resistência por fricção de qualidade semiprofissional.',
   },
 ];
-
-const imagem = await fetchBikeImage('home gym exercise bike compact');
 ---
 
 <Layout
@@ -104,28 +100,6 @@ const imagem = await fetchBikeImage('home gym exercise bike compact');
       <div class="highlight-box">
         <p>O <strong>PodiumFit V90</strong> é o melhor custo-benefício da linha para uso domiciliar regular com resistência magnética. Para spinning de qualidade próxima ao nível acadêmico, o <strong>Pro Royale</strong> é a escolha certa dentro de um orçamento controlado.</p>
       </div>
-
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Bicicleta Ergométrica PodiumFit X-BIKE 100",
-          description: "Compacta e funcional para uso domiciliar. Resistência mecânica ajustável, assento regulável e painel monitor. Frequentemente com desconto expressivo.",
-          price: "R$ 699 – R$ 1.290",
-          rating: 4.3,
-          reviewCount: 38,
-          badge: "Entrada Premium",
-          affiliateUrl: "https://amzn.to/43hSw1p",
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica PodiumFit",
-          features: ["Design compacto", "Resistência ajustável", "Assento regulável", "Painel monitor incluso"],
-          internalUrl: "/produtos/podiumfit-v300/",
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
 
       <p style="margin-top:1.5rem;">
         Compare em <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>. Veja também o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta de spinning</a>.

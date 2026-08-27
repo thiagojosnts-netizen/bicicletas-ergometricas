@@ -2,8 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -21,7 +19,6 @@ const faqItems = [
   },
 ];
 
-const imagem = await fetchBikeImage("stationary bike gym fitness");
 ---
 
 <Layout
@@ -82,32 +79,6 @@ const imagem = await fetchBikeImage("stationary bike gym fitness");
           <strong>Indicação:</strong> O <strong>Athletic Bike Advanced</strong> é a melhor opção para usuários com peso acima de 90 kg ou para famílias onde vários membros usarão o equipamento. A margem de 130 kg com garantia de 2 anos representa o melhor equilíbrio entre preço e durabilidade nessa categoria.
         </p>
       </div>
-
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Bicicleta Ergométrica Athletic Bike Advanced",
-          description: "16 níveis de resistência magnética, suporte até 130 kg e garantia de 2 anos para estrutura. Ideal para uso intensivo e famílias com múltiplos usuários.",
-          price: "R$ 2.000 – R$ 2.800",
-          rating: 4.3,
-          reviewCount: 987,
-          badge: "Alta Durabilidade",
-          affiliateUrl: "https://amzn.to/4vpHSBK",
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Athletic Bike Advanced",
-          features: [
-            "16 níveis de resistência magnética",
-            "Suporte até 130 kg",
-            "Garantia 2 anos na estrutura",
-            "Monitor cardíaco integrado",
-          ],
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
 
       <p style="margin-top:1.5rem;">
         Compare com todas as marcas na <a href="/melhores-bicicletas-ergometricas/">análise completa das melhores bicicletas ergométricas</a>.

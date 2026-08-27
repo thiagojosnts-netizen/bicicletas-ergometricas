@@ -2,8 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -25,7 +23,6 @@ const faqItems = [
   },
 ];
 
-const imagem = await fetchBikeImage("indoor cycling bike vertical");
 ---
 
 <Layout
@@ -75,32 +72,6 @@ const imagem = await fetchBikeImage("indoor cycling bike vertical");
           <strong>Recomendação:</strong> Para uso domiciliar de cardio regular (3 a 5x/semana), a <strong>V4 Vertical Magnética</strong> é a escolha mais equilibrada — silenciosa, durável e sem necessidade de ajuste de freio. Para treino de spinning com maior intensidade, a <strong>C2</strong> entrega melhor relação custo-benefício com a roda de 12 kg.
         </p>
       </div>
-
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Bike Spinning Vertical V4 Movement Nacional Carga Magnética",
-          description: "Bike vertical com resistência magnética, estrutura nacional em aço, ajuste de assento e guidão. Indicada para cardio domiciliar regular com silêncio e durabilidade.",
-          price: "R$ 2.700 – R$ 3.200",
-          rating: 4.5,
-          reviewCount: 120,
-          affiliateUrl: "https://meli.la/1vPwXw9",
-          store: "Mercado Livre",
-          image: imagem?.url,
-          imageAlt: "Bike vertical Movement V4",
-          features: [
-            "Resistência magnética silenciosa",
-            "Estrutura em aço nacional",
-            "Assento e guidão ajustáveis",
-            "Marca brasileira com assistência técnica",
-          ],
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
 
       <p style="margin-top:1.5rem;">
         Veja o <a href="/melhores-bicicletas-ergometricas/">comparativo geral das melhores marcas</a> e o guia de <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">melhor custo-benefício por faixa de preço</a>.

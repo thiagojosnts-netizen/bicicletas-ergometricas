@@ -2,8 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { fetchBikeImage } from '../../../lib/pexels.js';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -24,8 +22,6 @@ const faqItems = [
     answer: 'Poli Sports e Polimet são linhas da mesma empresa, com Polimet sendo a denominação usada em modelos mais simples de tração mecânica e Poli Sports em modelos com mais recursos como o BH3800 horizontal magnético.',
   },
 ];
-
-const imagem = await fetchBikeImage('stationary bike beginner home exercise');
 ---
 
 <Layout
@@ -105,28 +101,6 @@ const imagem = await fetchBikeImage('stationary bike beginner home exercise');
         <p>O <strong>Polimet POLI-163</strong> é o modelo com melhor custo-benefício da linha para iniciantes, com mais de 5.700 avaliações na Amazon. Para usuários que precisam de baixo impacto articular, o <strong>BH3800 Horizontal</strong> com resistência magnética é a melhor opção da marca.</p>
       </div>
 
-      <div style="margin-top: 2rem;">
-        <ProductCard product={{
-          name: "Polimet POLI-163 — Bicicleta Ergométrica Tração Mecânica",
-          description: "O modelo mais avaliado da linha com mais de 5.700 reviews na Amazon BR. Tração mecânica, compacta e fácil de montar. Ideal para iniciantes e uso leve.",
-          price: "R$ 430 – R$ 683",
-          rating: 3.9,
-          reviewCount: 5700,
-          badge: "Mais Avaliada",
-          affiliateUrl: "https://amzn.to/4uhejRY",
-          image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Poli Sports",
-          features: ["Tração mecânica simples", "Design compacto", "Fácil montagem", "Ideal para iniciantes"],
-          internalUrl: "/produtos/poli-sports-poli-163/",
-        }} />
-      </div>
-
-      {imagem && (
-        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
-          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
-        </p>
-      )}
-
       <p style="margin-top:1.5rem;">
         Compare em <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>. Veja também o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">bicicletas ergométricas baratas</a>.
       </p>
@@ -140,7 +114,7 @@ const imagem = await fetchBikeImage('stationary bike beginner home exercise');
         A Poli Sports e Polimet são marcas de entrada com preços já baixos ao longo do ano, mas o Prime Day costuma trazer descontos adicionais de <strong>20% a 35%</strong> — suficientes para levar o POLI-163 abaixo de R$ 300 e o BP-770 para a faixa de R$ 320–R$ 360. Por serem modelos simples com boa avaliação média, tendem a esgotar rapidamente durante o evento. Para se preparar com antecedência e entender o calendário do Prime Day 2026, veja o <a href="/preco-bicicleta-ergometrica/amazon-prime-day/">guia completo de Prime Day 2026</a>.
       </p>
       <p>
-        Os modelos Poli Sports e Polimet para monitorar no evento de <strong>1 a 7 de julho</strong> são o <strong>POLI-163</strong> (mais de 5.700 avaliações, melhor relação custo-benefício da linha) e o <strong>BH3800 Horizontal</strong> (único modelo magnético da marca, com maior apelo para usuários com restrições articulares). Acesse os <a href="https://www.amazon.com.br/s?k=polimet+bicicleta+ergometrica&tag=bicicletase0d-20" target="_blank" rel="noopener sponsored">modelos Polimet disponíveis na Amazon</a> agora e adicione à lista de desejos para receber alertas.
+        Os modelos Poli Sports e Polimet para monitorar no evento de <strong>1 a 7 de julho</strong> são o <strong>POLI-163</strong> (mais de 5.700 avaliações, melhor relação custo-benefício da linha) e o <strong>BH3800 Horizontal</strong> (único modelo magnético da marca, com maior apelo para usuários com restrições articulares).
       </p>
       <a
         href="/preco-bicicleta-ergometrica/amazon-prime-day/"
