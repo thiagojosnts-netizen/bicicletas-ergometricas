@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import SchemaBase from '../components/schema/SchemaBase.astro';
-import PersonSchema from '../components/schema/PersonSchema.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface BreadcrumbItem {
   name: string;
@@ -97,8 +97,9 @@ const articleSchema = isArticle && breadcrumbs.length > 0 ? {
     name: SITE_NAME,
   },
   author: {
-    '@type': 'Person',
-    '@id': `${SITE_URL}/sobre/#rafael-souza`,
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: SITE_NAME,
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
@@ -112,6 +113,8 @@ const articleSchema = isArticle && breadcrumbs.length > 0 ? {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <Analytics />
 
     <title>{title} | {TITLE_SUFFIX}</title>
     <meta name="description" content={description} />
@@ -140,7 +143,6 @@ const articleSchema = isArticle && breadcrumbs.length > 0 ? {
     <meta name="generator" content={Astro.generator} />
 
     <SchemaBase />
-    {(isHomepage || breadcrumbs.length > 0) && <PersonSchema />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
     {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}

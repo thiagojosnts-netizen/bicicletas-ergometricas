@@ -1,0 +1,23 @@
+---
+/**
+ * Google Analytics 4
+ * Data stream: "Bicicletas Ergométricas"
+ * Measurement ID: G-KMSB0MEHRZ  (GA4 → Administrar → Fluxos de dados → Web)
+ *
+ * Injected only in production builds, so `astro dev` / preview traffic
+ * is not counted. Rendered as the first item in <head> for accurate
+ * page_view timing.
+ */
+---
+
+{import.meta.env.PROD && (
+  <Fragment>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KMSB0MEHRZ"></script>
+    <script is:inline set:html={`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KMSB0MEHRZ');
+    `}></script>
+  </Fragment>
+)}
