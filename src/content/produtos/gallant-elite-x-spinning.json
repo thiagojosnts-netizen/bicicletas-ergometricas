@@ -5,8 +5,13 @@
   "price": "R$ 1.339,00",
   "rating": 4.3,
   "reviewCount": 210,
-  "affiliateUrl": "https://www.amazon.com.br/dp/B0C4B767KB?tag=bicicletase0d-20",
-  "store": "Amazon",
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://www.amazon.com.br/dp/B0C4B767KB?tag=bicicletase0d-20",
+      "preco": "R$ 1.339,00"
+    }
+  ],
   "image": "/produtos/gallant-elite-x-spinning.webp",
   "imageAlt": "Bicicleta de spinning Gallant Elite X 8kg preta",
   "badge": "Entrada Spinning",

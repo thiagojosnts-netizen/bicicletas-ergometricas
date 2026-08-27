@@ -5,8 +5,13 @@
   "price": "R$ 1.599,40",
   "rating": 4.3,
   "reviewCount": 145,
-  "affiliateUrl": "https://www.amazon.com.br/dp/B0C4K5PRLB?tag=bicicletase0d-20",
-  "store": "Amazon",
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://www.amazon.com.br/dp/B0C4K5PRLB?tag=bicicletase0d-20",
+      "preco": "R$ 1.599,40"
+    }
+  ],
   "image": "/produtos/gallant-elite-horizontal.webp",
   "imageAlt": "Bicicleta ergométrica horizontal Gallant Elite magnética cinza",
   "badge": "Para Joelho",

@@ -85,22 +85,31 @@ const breadcrumbs = [
         <div class="detalhe-cta-box">
           <div class="detalhe-preco-wrap">
             <span class="detalhe-preco">{d.price}</span>
-            <div class="detalhe-frete">
-              <span class="frete-badge">✓ Frete grátis Prime</span>
-            </div>
+            {d.ofertas.length > 1 && (
+              <span class="detalhe-preco-nota">menor preço entre {d.ofertas.length} lojas</span>
+            )}
           </div>
-          <a
-            href={d.affiliateUrl}
-            target="_blank"
-            rel="noopener nofollow sponsored"
-            class="btn-cta-detalhe"
-          >
-            Ver Preço na Amazon →
-          </a>
+          <div class="detalhe-ofertas">
+            {d.ofertas.map((o) => {
+              const prep = o.loja === 'Mercado Livre' ? 'no' : 'na';
+              const slug = o.loja === 'Mercado Livre' ? 'ml' : o.loja === 'Shopee' ? 'shopee' : 'amazon';
+              return (
+                <a
+                  href={o.url}
+                  target="_blank"
+                  rel="noopener nofollow sponsored"
+                  class={`btn-loja btn-${slug}`}
+                >
+                  <span>Ver {prep} {o.loja}{o.preco ? ` · ${o.preco}` : ''}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              );
+            })}
+          </div>
         </div>
 
         <p class="detalhe-aviso">
-          * Este site participa do programa de afiliados da Amazon. O preço pode variar. Clique para confirmar o valor atual.
+          * Este site participa dos programas de afiliados da Amazon e do Mercado Livre. Os preços{d.ofertasAtualizadoEm ? ` foram conferidos em ${d.ofertasAtualizadoEm.split('-').reverse().join('/')} e` : ''} podem variar — clique para ver o valor atual.
         </p>
       </div>
     </div>
@@ -210,25 +219,9 @@ const breadcrumbs = [
     font-size: 1.75rem; font-weight: 800;
     color: #111827; font-family: Inter, sans-serif;
   }
-  .detalhe-frete { display: flex; align-items: center; gap: 0.4rem; }
-  .frete-badge {
-    display: inline-flex; align-items: center;
-    background: #f0fdf4; color: #2D6A4F;
-    font-size: 0.72rem; font-weight: 600;
-    padding: 0.2rem 0.5rem; border-radius: 999px;
-    border: 1px solid #52B788;
-  }
-  .frete-data { font-size: 0.72rem; color: #9ca3af; }
-  .btn-cta-detalhe {
-    display: inline-flex; align-items: center; justify-content: center;
-    background: #F4721B; color: #fff;
-    font-size: 1rem; font-weight: 700;
-    padding: 0.85rem 1.5rem; border-radius: 8px;
-    text-decoration: none; text-align: center;
-    transition: background 0.18s, transform 0.1s;
-    font-family: Inter, sans-serif;
-  }
-  .btn-cta-detalhe:hover { background: #d95f10; transform: scale(1.02); }
+  .detalhe-preco-nota { font-size: 0.72rem; color: #9ca3af; }
+  .detalhe-ofertas { display: flex; flex-direction: column; gap: 0.5rem; }
+  .detalhe-ofertas .btn-loja { font-size: 0.95rem; padding: 0.75rem 1.1rem; }
   .detalhe-aviso {
     font-size: 0.72rem; color: #9ca3af; line-height: 1.5; margin: 0;
   }

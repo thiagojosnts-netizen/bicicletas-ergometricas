@@ -17,6 +17,12 @@ const blog = defineCollection({
   }),
 });
 
+const oferta = z.object({
+  loja: z.enum(['Amazon', 'Mercado Livre', 'Shopee']),
+  url: z.string().url(),
+  preco: z.string().optional(),
+});
+
 const produtos = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/produtos' }),
   schema: z.object({
@@ -26,8 +32,8 @@ const produtos = defineCollection({
     price: z.string(),
     rating: z.number(),
     reviewCount: z.number(),
-    affiliateUrl: z.string(),
-    store: z.string(),
+    ofertas: z.array(oferta).min(1),
+    ofertasAtualizadoEm: z.string().optional(),
     image: z.string(),
     imageAlt: z.string(),
     badge: z.string(),

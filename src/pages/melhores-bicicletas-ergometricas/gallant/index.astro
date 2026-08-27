@@ -115,17 +115,19 @@ const imagem = await fetchBikeImage('spinning bike indoor gym professional');
 
       <div style="margin-top: 2rem;">
         <ProductCard product={{
-          name: "Bicicleta Ergométrica Gallant Elite Pro Spinning Mecânica",
-          description: "Roda de inércia 13kg, transmissão por correia silenciosa, assento e guidão ajustáveis. Suporta até 110kg. Mais de 160 avaliações na Amazon.",
-          price: "R$ 1.399 – R$ 2.019",
+          name: "Gallant Elite Pro Spinning — Roda de Inércia 18kg",
+          description: "Roda de inércia de 18kg, transmissão por correia silenciosa, assento e guidão ajustáveis. Suporta até 120kg. Spinning mecânico com boa avaliação de compradores.",
+          price: "R$ 1.999,80",
           rating: 4.4,
           reviewCount: 160,
           badge: "Mais Vendida",
-          affiliateUrl: "https://meli.la/1x3irKm",
-          store: "Mercado Livre",
+          ofertas: [
+            { loja: "Amazon", url: "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20", preco: "R$ 1.999,80" },
+            { loja: "Mercado Livre", url: "https://meli.la/1x3irKm" },
+          ],
           image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Gallant",
-          features: ["Roda de inércia 13kg", "Transmissão por correia silenciosa", "Suporte até 110 kg", "Assento e guidão reguláveis"],
+          imageAlt: "Bicicleta ergométrica Gallant Elite Pro Spinning",
+          features: ["Roda de inércia 18kg", "Transmissão por correia silenciosa", "Suporte até 120 kg", "Assento e guidão reguláveis"],
           internalUrl: "/produtos/gallant-elite-pro-spinning/",
         }} />
       </div>

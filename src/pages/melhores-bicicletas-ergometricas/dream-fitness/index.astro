@@ -117,11 +117,14 @@ const imagem = await fetchBikeImage('exercise bike home beginner fitness');
         <ProductCard product={{
           name: "Dream Fitness EX 450 — Bicicleta Ergométrica Vertical",
           description: "O modelo mais avaliado da Dream Fitness na Amazon BR. Resistência mecânica ajustável, assento regulável e painel de monitoramento básico. Ideal para iniciantes.",
-          price: "R$ 429 – R$ 499",
-          rating: 4.0,
+          price: "R$ 327,87",
+          rating: 4.2,
           reviewCount: 3700,
           badge: "Mais Avaliada",
-          affiliateUrl: "https://amzn.to/4g1PRR1",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B05aGxhNF", preco: "R$ 327,87" },
+            { loja: "Mercado Livre", url: "https://meli.la/1jEg8FC", preco: "R$ 433,23" },
+          ],
           image: imagem?.url,
           imageAlt: "Bicicleta ergométrica Dream Fitness",
           features: ["Resistência mecânica ajustável", "Assento regulável", "Painel monitor básico", "Compacta para uso domiciliar"],

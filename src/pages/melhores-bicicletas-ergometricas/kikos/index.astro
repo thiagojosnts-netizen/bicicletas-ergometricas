@@ -120,28 +120,30 @@ console.log("Pexels resultado:", imagem);
 
       <div class="highlight-box">
         <p>
-          <strong>Melhor escolha:</strong> O modelo <strong>Kikos FB 180i</strong> é recomendado para usuários que buscam conectividade bluetooth, uso regular de 3 a 5 vezes por semana e peso corporal de até 88 kg (20% abaixo do limite de 110 kg). Para usuários mais pesados ou com maior frequência de uso, o Premium 2200 oferece maior margem de segurança estrutural.
+          <strong>Melhor escolha:</strong> O modelo <strong>Kikos FB 180i</strong> é recomendado para quem busca conectividade bluetooth e uso regular de 3 a 5 vezes por semana. Para uso domiciliar mais leve com foco em silêncio e simplicidade, a <strong>KV3.1i magnética</strong> (abaixo) é a opção da marca com melhor equilíbrio entre preço e durabilidade.
         </p>
       </div>
 
       <!-- Card de produto com link de afiliado -->
       <div style="margin-top: 2rem;">
-        {/* TODO afiliado: decisão pendente — regra é dar CTA só a KV3.0 / F3i (avaliação forte). Hoje o card é FB 180i e o internalUrl aponta para a ficha da KV3.1i. Reconciliar quando os links vierem. */}
         <ProductCard product={{
-          name: "Bicicleta Ergométrica Kikos FB 180i",
-          description: "16 níveis de resistência magnética silenciosa, bluetooth BLE, 16 programas de treino e monitor cardíaco. Ideal para uso domiciliar intensivo.",
-          price: "R$ 1.700 – R$ 2.200",
-          rating: 4.4,
-          reviewCount: 1843,
-          badge: "Mais Vendida",
-          affiliateUrl: "https://amzn.to/4e6GmgM",
+          name: "Bicicleta Ergométrica Kikos KV3.1i Magnética",
+          description: "Resistência magnética silenciosa, 8 níveis, display LCD (tempo, velocidade, distância, calorias e odômetro) e monitor cardíaco por hand grip. Ideal para uso domiciliar em apartamento.",
+          price: "R$ 1.960,19",
+          rating: 4.3,
+          reviewCount: 480,
+          badge: "Magnética silenciosa",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B071AhLkk", preco: "R$ 1.960,19" },
+            { loja: "Mercado Livre", url: "https://meli.la/1tX6pbg", preco: "R$ 2.324,12" },
+          ],
           image: imagem?.url,
-          imageAlt: "Bicicleta ergométrica Kikos FB 180i",
+          imageAlt: "Bicicleta ergométrica Kikos KV3.1i magnética",
           features: [
-            "16 níveis de resistência magnética",
-            "Bluetooth BLE + app FitShow",
-            "Suporte até 110 kg",
-            "16 programas de treino",
+            "Resistência magnética 100% silenciosa",
+            "8 níveis de resistência",
+            "Display LCD com 5 funções + odômetro",
+            "Monitor cardíaco via hand grip",
           ],
           internalUrl: "/produtos/kikos-kv3-1i-magnetica/",
         }} />

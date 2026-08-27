@@ -2,11 +2,21 @@
   "name": "Dream Fitness EX 450 Bicicleta Ergométrica Vertical",
   "description": "Ergométrica vertical da Dream Fitness com regulagem em 3 alturas, monitor cardíaco e mais de 3.700 avaliações positivas na Amazon.",
   "descricaoLonga": "A Dream Fitness EX 450 é uma das ergométricas mais vendidas do Brasil na faixa de entrada. Com regulagem de banco em 3 posições de altura, atende usuários de diferentes estaturas. O monitor exibe velocidade, distância, tempo, calorias e frequência cardíaca via hand grip. Estrutura em aço carbono com pintura eletrostática a pó, suporta até 100 kg. Funcionamento praticamente silencioso, ideal para uso em apartamento.",
-  "price": "R$ 499,00",
+  "price": "R$ 327,87",
   "rating": 4.2,
   "reviewCount": 3700,
-  "affiliateUrl": "https://www.amazon.com.br/dp/B07BK5WHD3?tag=bicicletase0d-20",
-  "store": "Amazon",
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://link.amazon/B05aGxhNF",
+      "preco": "R$ 327,87"
+    },
+    {
+      "loja": "Mercado Livre",
+      "url": "https://meli.la/1jEg8FC",
+      "preco": "R$ 433,23"
+    }
+  ],
   "image": "/produtos/dream-fitness-ex-450.jpg",
   "imageAlt": "Bicicleta ergométrica Dream Fitness EX 450 cor chumbo",
   "badge": "Mais Vendida",
@@ -28,5 +38,6 @@
     "Regulagem do banco": "3 posições",
     "Monitor": "Velocidade, distância, tempo, calorias e FC",
     "Garantia": "12 meses"
-  }
+  },
+  "ofertasAtualizadoEm": "2026-08-27"
 }

@@ -1,7 +1,9 @@
 ---
 // src/components/ProductCard.astro
-// Card de produto com link de afiliado Amazon + imagem Pexels
-// Uso: <ProductCard product={...} />
+// Card de produto com links de afiliado (Amazon / Mercado Livre / Shopee)
+// Uso: <ProductCard product={{ ...campos, ofertas: [{ loja, url, preco }] }} />
+
+type Loja = "Amazon" | "Mercado Livre" | "Shopee";
 
 export interface Props {
   product: {
@@ -10,20 +12,37 @@ export interface Props {
     price: string;
     rating?: number;
     reviewCount?: number;
-    affiliateUrl: string;       // Link gerado pelo SiteStripe
-    store?: string;             // Ex: "Amazon", "Mercado Livre" (default: "Amazon")
-    image?: string;             // URL da imagem (Pexels ou manual)
+    ofertas?: { loja: Loja; url: string; preco?: string }[];
+    affiliateUrl?: string;      // legado — usar `ofertas`
+    store?: string;             // legado — usar `ofertas`
+    image?: string;
     imageAlt?: string;
-    badge?: string;             // Ex: "Mais Vendido", "Melhor Custo-Benefício"
+    badge?: string;
     features?: string[];
     internalUrl?: string;       // Link para a ficha completa em /produtos/
   };
 }
 
 const { product } = Astro.props;
-const store = product.store ?? "Amazon";
 const stars = product.rating ? Math.round(product.rating) : 0;
-const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
+
+const ofertas: { loja: Loja; url: string; preco?: string }[] =
+  product.ofertas && product.ofertas.length > 0
+    ? product.ofertas
+    : product.affiliateUrl
+      ? [{ loja: (product.store as Loja) ?? "Amazon", url: product.affiliateUrl }]
+      : [];
+
+const lojaSlug: Record<Loja, string> = {
+  "Amazon": "amazon",
+  "Mercado Livre": "ml",
+  "Shopee": "shopee",
+};
+const lojaPrep: Record<Loja, string> = {
+  "Amazon": "na",
+  "Mercado Livre": "no",
+  "Shopee": "na",
+};
 ---
 
 <article class="product-card">
@@ -77,30 +96,31 @@ const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
     )}
 
     <div class="card-footer">
-      <div>
-        <div class="price">{product.price}</div>
-        {store !== "Mercado Livre" && (
-          <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-            <span class="inline-flex items-center gap-1 bg-[#F0FFF4] text-[#2D6A4F] text-xs font-medium px-2 py-0.5 rounded-full border border-[#52B788]">
-              ✓ Frete grátis Prime
-            </span>
-          </div>
-        )}
+      <div class="price-row">
+        <span class="price">{product.price}</span>
+        {ofertas.length > 1 && <span class="price-hint">menor preço entre {ofertas.length} lojas</span>}
       </div>
-      <a
-        href={product.affiliateUrl}
-        class={btnClass}
-        target="_blank"
-        rel="noopener nofollow sponsored"
-        aria-label={`Ver ${product.name} no ${store}`}
-      >
-        Ver no {store}
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/>
-          <line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
-      </a>
+
+      {ofertas.length > 0 && (
+        <div class="ofertas">
+          {ofertas.map((o) => (
+            <a
+              href={o.url}
+              class={`btn-loja btn-${lojaSlug[o.loja]}`}
+              target="_blank"
+              rel="noopener nofollow sponsored"
+              aria-label={`Ver ${product.name} ${lojaPrep[o.loja]} ${o.loja}`}
+            >
+              <span>Ver {lojaPrep[o.loja]} {o.loja}{o.preco ? ` · ${o.preco}` : ""}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      )}
     </div>
 
     {product.internalUrl && (
@@ -246,17 +266,35 @@ const btnClass = store === "Mercado Livre" ? "btn-ml" : "btn-cta";
 
   .card-footer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
     margin-top: auto;
     padding-top: 12px;
     border-top: 1px solid #f0f0f0;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .price {
     font-size: 1.3rem;
     font-weight: 700;
     color: #b12704;
+  }
+
+  .price-hint {
+    font-size: 0.72rem;
+    color: #888;
+  }
+
+  .ofertas {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
   }
 
   .internal-link {

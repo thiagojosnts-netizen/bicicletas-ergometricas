@@ -5,8 +5,17 @@
   "price": "R$ 1.999,80",
   "rating": 4.4,
   "reviewCount": 160,
-  "affiliateUrl": "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20",
-  "store": "Amazon",
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20",
+      "preco": "R$ 1.999,80"
+    },
+    {
+      "loja": "Mercado Livre",
+      "url": "https://meli.la/1x3irKm"
+    }
+  ],
   "image": "/produtos/gallant-elite-pro-spinning.webp",
   "imageAlt": "Bicicleta de spinning Gallant Elite Pro 18kg preta e laranja",
   "badge": "Nossa Indicação",
@@ -29,5 +38,6 @@
     "Transmissão": "Correia",
     "Dimensões": "64 x 122 x 115 cm",
     "Garantia": "12 meses"
-  }
+  },
+  "ofertasAtualizadoEm": "2026-08-27"
 }
