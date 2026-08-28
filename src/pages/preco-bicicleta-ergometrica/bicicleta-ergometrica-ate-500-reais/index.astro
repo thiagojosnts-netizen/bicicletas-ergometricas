@@ -1,0 +1,97 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Até R$ 500', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-ate-500-reais/' },
+];
+
+const faqItems = [
+  {
+    question: 'Existe bicicleta ergométrica boa até R$ 500?',
+    answer: 'Não para uso regular. Abaixo de R$ 500, o padrão é resistência mecânica por atrito (pastilha que raspa o volante), estrutura de aço fino, painel só de tempo e calorias estimadas e suporte declarado de 90 kg que na prática vibra bastante acima de 75 kg. Serve para quem vai pedalar 1 vez por semana em intensidade leve durante um ou dois anos. Para qualquer coisa além disso, o modelo se paga em problema.',
+  },
+  {
+    question: 'Qual a bicicleta ergométrica mais barata que vale a pena?',
+    answer: 'O piso realista de qualidade fica entre R$ 600 e R$ 900: nessa faixa entram modelos de entrada de marcas conhecidas, ainda mecânicos, mas com estrutura mais rígida e reposição de peças fácil. É a diferença entre um aparelho que dura 4 ou 5 anos e um que range em seis meses. Se o orçamento hoje é R$ 500, quase sempre vale esperar mais um mês e esticar para essa faixa.',
+  },
+  {
+    question: 'Vale mais a pena uma bicicleta ergométrica usada de R$ 500?',
+    answer: 'Muitas vezes sim. Por R$ 500 no mercado de usados você encontra modelos que custaram R$ 1.200 a R$ 1.800 novos e foram pouco usados — justamente o perfil de quem comprou por impulso e desistiu. O risco é o painel eletrônico e o rolamento do eixo; teste os dois antes de fechar. Veja o guia de bicicleta ergométrica nova ou usada.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica até R$ 500: Vale a Pena?"
+  description="Bicicleta ergométrica até R$ 500 no Brasil: o que esperar da faixa mais barata, quais os limites reais de durabilidade e por que R$ 600 a R$ 900 costuma compensar mais."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica até R$ 500: O Que Dá para Esperar</h1>
+
+      <p class="summarization">
+        Na faixa <strong>até R$ 500</strong>, a bicicleta ergométrica é um equipamento de <strong>resistência mecânica por atrito</strong>, estrutura leve, painel básico e suporte real de cerca de <strong>75 kg</strong> em uso confortável. Funciona para <strong>uso leve e ocasional</strong>. Para quem vai pedalar 3 ou mais vezes por semana, o piso de qualidade começa por volta de <strong>R$ 700 a R$ 900</strong>, e a diferença aparece na durabilidade.
+      </p>
+
+      <p>
+        Essa é uma das buscas mais honestas do mercado: quem procura "bicicleta ergométrica até 500 reais" quase sempre quer testar o hábito antes de investir. É uma lógica defensável. Só que o aparelho de R$ 400 tem um problema embutido — se o hábito pegar, ele não acompanha, e você compra duas vezes.
+      </p>
+
+      <h2>O que muda de R$ 500 para R$ 900</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Até R$ 500</th>
+            <th>R$ 700 a R$ 900</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Resistência</td><td>Mecânica por atrito, 8 níveis</td><td>Mecânica reforçada ou magnética básica</td></tr>
+          <tr><td>Ruído</td><td>50 a 60 dB, incomoda em apartamento</td><td>40 a 50 dB, aceitável à noite nos magnéticos</td></tr>
+          <tr><td>Estrutura</td><td>Aço fino, vibra acima de 75 kg</td><td>Aço mais rígido, estável até 90 a 100 kg</td></tr>
+          <tr><td>Vida útil típica</td><td>1 a 2 anos em uso leve</td><td>4 a 5 anos em uso regular</td></tr>
+          <tr><td>Reposição de peças</td><td>Difícil, marca some do mercado</td><td>Fácil, marcas estabelecidas</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quando a bicicleta de até R$ 500 faz sentido</h2>
+
+      <ul>
+        <li>Você pesa menos de 75 kg e vai usar 1 a 2 vezes por semana em ritmo leve.</li>
+        <li>É para uma pessoa idosa fazer 15 minutos de movimento por dia, sem carga.</li>
+        <li>Você aceita que é um aparelho descartável e não pretende consertá-lo.</li>
+      </ul>
+
+      <h2>Quando não faz</h2>
+
+      <p>
+        Se o plano é pedalar para emagrecer, treinar 4 vezes por semana ou dividir o equipamento com mais alguém, a faixa até R$ 500 vai frustrar em poucos meses — pastilha de atrito gasta, painel falha, o quadro range. Nesse caso, ou você espera e junta para a <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/">faixa de R$ 1.000</a>, ou considera uma <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-nova-ou-usada/">usada em bom estado</a>, onde o mesmo dinheiro compra um modelo bem melhor.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Alternativa realista:</strong> o mercado de usados é onde R$ 500 rende mais. Modelos que custaram R$ 1.200 a R$ 1.800 novos aparecem nessa faixa com pouco uso — o abandono precoce é comum. Teste painel e rolamento antes de fechar.
+        </p>
+      </div>
+
+      <p>
+        Para entender o que cada faixa entrega, veja o <a href="/preco-bicicleta-ergometrica/">guia completo de preço de bicicleta ergométrica</a> e o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">comparativo de opções baratas até R$ 1.200</a>.
+      </p>
+
+      <CompreCTA modelo="dream-ex450" contexto="A opção de entrada para esticar um pouco o orçamento" />
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica até R$ 500" />
+</Layout>

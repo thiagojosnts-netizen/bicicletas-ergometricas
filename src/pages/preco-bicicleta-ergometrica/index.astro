@@ -31,16 +31,49 @@ const faqItems = [
   },
 ];
 
-const subpages = [
+const faixaPages = [
+  {
+    href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-ate-500-reais/',
+    title: 'Bicicleta Ergométrica até R$ 500',
+    desc: 'O que a faixa mais barata realmente entrega e por que R$ 700 a R$ 900 costuma compensar mais.',
+  },
   {
     href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/',
-    title: 'Bicicleta Ergométrica Barata: Melhores Opções até R$ 1.200',
-    desc: 'Os melhores modelos de entrada sem abrir mão da qualidade mínima necessária para uso regular.',
+    title: 'Bicicleta Ergométrica Barata (até R$ 1.200)',
+    desc: 'Os melhores modelos de entrada sem abrir mão da qualidade mínima para uso regular.',
   },
+  {
+    href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/',
+    title: 'Bicicleta Ergométrica de R$ 1.000',
+    desc: 'O piso recomendado para uso de 3 a 4 vezes por semana: o que essa faixa cobre e o que ainda não cobre.',
+  },
+  {
+    href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-2000-reais/',
+    title: 'Bicicleta Ergométrica de R$ 2.000',
+    desc: 'A categoria intermediária: magnética ou spinning, e para qual perfil o investimento se justifica.',
+  },
+];
+
+const subpages = [
   {
     href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/',
     title: 'Melhor Custo-Benefício por Faixa de Preço',
     desc: 'Análise de custo-benefício real: quais especificações valem mais em cada faixa de investimento.',
+  },
+  {
+    href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-nova-ou-usada/',
+    title: 'Bicicleta Ergométrica Nova ou Usada',
+    desc: 'Quando a usada compensa, o que testar antes de comprar e quanto o equipamento desvaloriza.',
+  },
+  {
+    href: '/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/',
+    title: 'Bicicleta Ergométrica na Black Friday 2026',
+    desc: 'Desconto real esperado por faixa, alvos de preço e como não cair em preço inflado.',
+  },
+  {
+    href: '/preco-bicicleta-ergometrica/amazon-prime-day/',
+    title: 'Bicicleta Ergométrica no Amazon Prime Day 2026',
+    desc: 'A janela de preço de julho: descontos por faixa e como identificar promoção real.',
   },
   {
     href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/',
@@ -50,7 +83,7 @@ const subpages = [
   {
     href: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/',
     title: 'Bicicleta Ergométrica na Amazon',
-    desc: 'Vantagens de comprar na Amazon Brasil: devolução facilitada, Prime e modelos com disponibilidade imediata.',
+    desc: 'Vantagens de comprar na Amazon Brasil: devolução facilitada, Prime e disponibilidade imediata.',
   },
 ];
 ---
@@ -67,10 +100,16 @@ const subpages = [
     name="Preço de Bicicleta Ergométrica"
     description="Preços de bicicleta ergométrica no Brasil em 2026: faixas de entrada, intermediário e premium. Onde comprar com segurança e como identificar o melhor custo-benefício."
     items={[
-      { position: 1, name: 'Bicicleta Ergométrica Barata: Melhores Opções até R$ 1.200', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/', description: 'Os melhores modelos de entrada sem abrir mão da qualidade mínima necessária para uso regular.' },
-      { position: 2, name: 'Melhor Custo-Benefício por Faixa de Preço', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/', description: 'Análise de custo-benefício real: quais especificações valem mais em cada faixa de investimento.' },
-      { position: 3, name: 'Bicicleta Ergométrica no Mercado Livre', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/', description: 'Como comprar com segurança no Mercado Livre: filtros, avaliação de vendedores e garantia.' },
-      { position: 4, name: 'Bicicleta Ergométrica na Amazon', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/', description: 'Vantagens de comprar na Amazon Brasil: devolução facilitada, Prime e modelos com disponibilidade imediata.' },
+      { position: 1, name: 'Bicicleta Ergométrica até R$ 500', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-ate-500-reais/', description: 'O que a faixa mais barata realmente entrega e por que R$ 700 a R$ 900 costuma compensar mais.' },
+      { position: 2, name: 'Bicicleta Ergométrica Barata (até R$ 1.200)', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/', description: 'Os melhores modelos de entrada sem abrir mão da qualidade mínima necessária para uso regular.' },
+      { position: 3, name: 'Bicicleta Ergométrica de R$ 1.000', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/', description: 'O piso recomendado para uso de 3 a 4 vezes por semana.' },
+      { position: 4, name: 'Bicicleta Ergométrica de R$ 2.000', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-2000-reais/', description: 'A categoria intermediária: magnética ou spinning, e para qual perfil se justifica.' },
+      { position: 5, name: 'Melhor Custo-Benefício por Faixa de Preço', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/', description: 'Análise de custo-benefício real: quais especificações valem mais em cada faixa de investimento.' },
+      { position: 6, name: 'Bicicleta Ergométrica Nova ou Usada', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-nova-ou-usada/', description: 'Quando a usada compensa, o que testar antes de comprar e quanto o equipamento desvaloriza.' },
+      { position: 7, name: 'Bicicleta Ergométrica na Black Friday 2026', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/', description: 'Desconto real esperado por faixa, alvos de preço e como não cair em preço inflado.' },
+      { position: 8, name: 'Bicicleta Ergométrica no Amazon Prime Day 2026', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/amazon-prime-day/', description: 'A janela de preço de julho: descontos por faixa e como identificar promoção real.' },
+      { position: 9, name: 'Bicicleta Ergométrica no Mercado Livre', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-mercado-livre/', description: 'Como comprar com segurança no Mercado Livre: filtros, avaliação de vendedores e garantia.' },
+      { position: 10, name: 'Bicicleta Ergométrica na Amazon', url: 'https://bicicletasergometricas.com/preco-bicicleta-ergometrica/bicicleta-ergometrica-amazon/', description: 'Vantagens de comprar na Amazon Brasil: devolução facilitada, Prime e disponibilidade imediata.' },
     ]}
   />
   <Breadcrumb items={breadcrumbs} />
@@ -138,6 +177,19 @@ const subpages = [
         </tbody>
       </table>
 
+      <h2>Guias por faixa de preço</h2>
+      <div class="cards-grid">
+        {faixaPages.map(sub => (
+          <article class="card">
+            <h3 style="margin-bottom:0.5rem;">
+              <a href={sub.href} style="text-decoration:none;color:var(--token-text-primary);">{sub.title}</a>
+            </h3>
+            <p style="font-size:0.9375rem;">{sub.desc}</p>
+            <a href={sub.href} class="btn-primary" style="font-size:0.875rem;margin-top:0.5rem;">Ver guia</a>
+          </article>
+        ))}
+      </div>
+
       <h2>Onde comprar com segurança</h2>
 
       <p>
@@ -160,7 +212,7 @@ const subpages = [
 
       <div class="highlight-box">
         <p>
-          <strong>Dica de compra:</strong> Acompanhe o preço por pelo menos 2 semanas antes de comprar. Bicicletas ergométricas têm promoções recorrentes em datas como Black Friday, dia do consumidor (15 de março) e aniversários das lojas, com descontos de 15% a 35% sobre o preço normal.
+          <strong>Dica de compra:</strong> Acompanhe o preço por pelo menos 2 semanas antes de comprar. Bicicletas ergométricas têm promoções recorrentes em datas como <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">Black Friday</a>, <a href="/preco-bicicleta-ergometrica/amazon-prime-day/">Prime Day</a>, dia do consumidor (15 de março) e aniversários das lojas, com descontos de 15% a 35% sobre o preço normal.
         </p>
       </div>
 

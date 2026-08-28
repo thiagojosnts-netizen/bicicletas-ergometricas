@@ -1,0 +1,97 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'R$ 1.000', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que dá para comprar de bicicleta ergométrica com R$ 1.000?',
+    answer: 'Na faixa de R$ 800 a R$ 1.200 estão os modelos verticais de entrada de marcas conhecidas: resistência magnética básica ou mecânica reforçada, 8 a 10 níveis de carga, painel com frequência cardíaca por contato e suporte de 90 a 100 kg. É a faixa mínima recomendada para quem vai usar de 3 a 4 vezes por semana.',
+  },
+  {
+    question: 'R$ 1.000 é suficiente para uma bicicleta ergométrica magnética?',
+    answer: 'É a faixa de transição. Até R$ 1.000 você encontra magnéticas de entrada, com poucos níveis e volante leve. A partir de R$ 1.200 a R$ 1.500 a resistência magnética fica mais consistente e o volante mais pesado, o que dá pedalada mais fluida. Se silêncio é prioridade, vale esticar até essa faixa.',
+  },
+  {
+    question: 'Bicicleta ergométrica de R$ 1.000 aguenta uso diário?',
+    answer: 'Aguenta uso regular de 3 a 5 vezes por semana por um usuário de até cerca de 85 kg, com vida útil de 4 a 5 anos e manutenção básica anual. Para uso diário por mais de uma pessoa, ou para usuários acima de 100 kg, a faixa de R$ 1.500 a R$ 2.500 oferece estrutura com margem de segurança maior.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica R$ 1.000: O Que Comprar"
+  description="Bicicleta ergométrica por volta de R$ 1.000: o que essa faixa entrega, quais modelos de entrada valem a pena e quando compensa esticar o orçamento para R$ 1.500."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica de R$ 1.000: O Que Essa Faixa Entrega</h1>
+
+      <p class="summarization">
+        Com cerca de <strong>R$ 1.000</strong> você compra uma <strong>vertical de entrada de marca conhecida</strong>: resistência magnética básica ou mecânica reforçada, <strong>8 a 10 níveis</strong>, monitor com frequência cardíaca por contato e suporte de <strong>90 a 100 kg</strong>. É o <strong>piso recomendado</strong> para uso de 3 a 4 vezes por semana. Abaixo disso, a durabilidade cai rápido; acima de R$ 1.500, a pedalada fica mais fluida.
+      </p>
+
+      <p>
+        A faixa de R$ 1.000 é onde a maioria das compras domésticas acontece, e por um bom motivo: é o ponto em que a bicicleta deixa de ser descartável sem ainda exigir um investimento alto. O que você precisa saber é o que essa faixa entrega e o que ela ainda não entrega.
+      </p>
+
+      <h2>O que R$ 1.000 compra — e o que não compra</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Entrega</th>
+            <th>Ainda não entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Resistência magnética de entrada ou mecânica reforçada</td><td>Volante pesado (acima de 8 kg) para pedalada fluida</td></tr>
+          <tr><td>8 a 10 níveis de carga</td><td>Programas de treino automáticos</td></tr>
+          <tr><td>Estrutura estável até 90 a 100 kg</td><td>Bluetooth e integração com apps</td></tr>
+          <tr><td>Frequência cardíaca por contato no guidão</td><td>Cinta cardíaca e precisão de zona</td></tr>
+          <tr><td>Vida útil de 4 a 5 anos em uso regular</td><td>Margem para uso intensivo por vários usuários</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Para quem essa faixa é suficiente</h2>
+
+      <ul>
+        <li>Uso de 3 a 4 vezes por semana, sessões de 30 a 45 minutos.</li>
+        <li>Um único usuário, até cerca de 85 kg.</li>
+        <li>Objetivo de condicionamento e apoio ao emagrecimento, sem meta de performance.</li>
+        <li>Espaço de apartamento — os modelos verticais dessa faixa são compactos.</li>
+      </ul>
+
+      <h2>Quando vale esticar para R$ 1.500 ou R$ 2.000</h2>
+
+      <p>
+        Se você quer resistência magnética silenciosa de verdade, volante mais pesado ou vai dividir o equipamento, a <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-2000-reais/">faixa de R$ 2.000</a> resolve. A diferença de preço para o modelo de entrada é de R$ 500 a R$ 800, e o ganho em conforto de pedalada e durabilidade costuma justificar em uso frequente. Para comparar as duas pontas, veja o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/">guia de custo-benefício por faixa</a>.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Antes de comprar:</strong> confirme o tipo de resistência no anúncio. Alguns modelos vendidos como "magnéticos" nessa faixa são, na prática, mecânicos com ímã fixo. Veja a diferença em <a href="/como-escolher-bicicleta-ergometrica/resistencia-magnetica-vs-mecanica/">resistência magnética vs mecânica</a>.
+        </p>
+      </div>
+
+      <p>
+        Para o panorama completo, veja o <a href="/preco-bicicleta-ergometrica/">guia de preço de bicicleta ergométrica</a> e as <a href="/melhores-bicicletas-ergometricas/">melhores bicicletas ergométricas por marca</a>.
+      </p>
+
+      <CompreCTA modelo="dream-ex450" contexto="Vertical de entrada dentro dessa faixa" />
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica de R$ 1.000" />
+</Layout>

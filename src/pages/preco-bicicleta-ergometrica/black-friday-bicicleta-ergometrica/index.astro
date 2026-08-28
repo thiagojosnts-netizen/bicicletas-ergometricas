@@ -1,0 +1,177 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Black Friday', url: '/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/' },
+];
+
+const faqItems = [
+  {
+    question: 'Quando é a Black Friday 2026?',
+    answer: 'A Black Friday 2026 no Brasil é em 27 de novembro, a última sexta-feira do mês, seguida pela Cyber Monday em 30 de novembro. Na prática, as lojas começam a antecipar ofertas na primeira quinzena de novembro ("Esquenta Black Friday") e mantêm alguns preços durante todo o fim de semana.',
+  },
+  {
+    question: 'A Black Friday tem desconto real em bicicleta ergométrica?',
+    answer: 'Tem, mas convive com preços inflados artificialmente nas semanas anteriores. O desconto real médio em bicicletas ergométricas fica entre 15% e 35%. A faixa intermediária (R$ 1.500 a R$ 2.500) é a que mais cai. Use o histórico de preço (extensão Keepa ou similar) para confirmar que o valor de Black Friday está abaixo do praticado nos últimos meses.',
+  },
+  {
+    question: 'Black Friday ou Prime Day: qual tem preço melhor para bicicleta ergométrica?',
+    answer: 'A Black Friday costuma ter o menor preço do ano e mais participantes (Amazon, Mercado Livre, Magazine Luiza, Centauro). O Prime Day, em julho, é exclusivo da Amazon e serve para quem não quer esperar até novembro. Se a compra não é urgente, novembro tende a valer mais a pena.',
+  },
+  {
+    question: 'Vale a pena esperar a Black Friday para comprar bicicleta ergométrica?',
+    answer: 'Se faltam menos de 2 meses para novembro e a compra não é urgente, vale. A economia em um modelo intermediário pode chegar a R$ 500 a R$ 800. Se você precisa começar a treinar agora, o custo de adiar semanas de exercício não compensa o desconto — compre e monitore o preço só para acompanhar.',
+  },
+];
+
+const faixas = [
+  {
+    faixa: 'Entrada — alvo abaixo de R$ 800 na Black Friday',
+    perfil: 'Iniciante, uso 1–3x/semana',
+    modelo: 'dream-ex450',
+    contexto: 'Vertical de entrada, a que mais desconta em datas promocionais',
+  },
+  {
+    faixa: 'Intermediária — alvo R$ 1.400 a R$ 1.800 na Black Friday',
+    perfil: 'Uso regular, silêncio, apartamento',
+    modelo: 'kikos-kv31',
+    contexto: 'Magnética silenciosa; a faixa de maior desconto absoluto',
+  },
+  {
+    faixa: 'Spinning — alvo R$ 1.500 a R$ 2.200 na Black Friday',
+    perfil: 'Treino intenso, HIIT, múltiplos usuários',
+    modelo: 'gallant-pro',
+    contexto: 'Volante de 18 kg para pedalada firme',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica na Black Friday 2026"
+  description="Black Friday 2026 (27 de novembro): guia de ofertas em bicicleta ergométrica, desconto real esperado por faixa de preço e como não cair em preço inflado."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:900px;">
+
+      <div class="bf-badge" aria-label="Evento em destaque">
+        Black Friday · 27 de novembro de 2026
+      </div>
+
+      <h1 id="page-heading">Bicicleta Ergométrica na Black Friday 2026</h1>
+
+      <p class="summarization">
+        A <strong>Black Friday 2026</strong> é em <strong>27 de novembro</strong> e costuma trazer o <strong>menor preço do ano</strong> para bicicleta ergométrica, com desconto real de <strong>15% a 35%</strong>. A faixa <strong>intermediária (R$ 1.500 a R$ 2.500)</strong> é a que mais cai. O cuidado principal é o preço inflado nas semanas anteriores — sem checar o histórico, o "desconto" pode ser só encenação.
+      </p>
+
+      <p>
+        Bicicleta ergométrica é um bom item para comprar na Black Friday: o desconto absoluto em modelos de R$ 1.500 a R$ 2.500 chega a R$ 500 a R$ 800, e não é um produto que muda de geração todo ano, então o modelo do estoque de novembro continua atual em janeiro. O que estraga a compra é a pressa: decidir o modelo na hora, sem referência de preço.
+      </p>
+
+      <h2>Alvos de preço por faixa</h2>
+
+      <div class="bf-grid">
+        {faixas.map(f => (
+          <div class="bf-card">
+            <div class="bf-faixa">{f.faixa}</div>
+            <div class="bf-perfil">{f.perfil}</div>
+            <CompreCTA modelo={f.modelo} contexto={f.contexto} />
+          </div>
+        ))}
+      </div>
+
+      <h2>Como não cair em desconto falso</h2>
+
+      <ol>
+        <li><strong>Decida o modelo agora.</strong> Chegue a novembro com a escolha feita — consulte o <a href="/melhores-bicicletas-ergometricas/">comparativo de melhores bicicletas</a> e o <a href="/como-escolher-bicicleta-ergometrica/">guia de como escolher</a>.</li>
+        <li><strong>Registre o preço em outubro.</strong> Anote o valor do modelo escolhido agora. É a sua referência para saber se o preço de Black Friday é real.</li>
+        <li><strong>Instale um rastreador de preço.</strong> Extensões como Keepa mostram o histórico e denunciam o preço inflado antes do evento.</li>
+        <li><strong>Compare entre lojas no dia.</strong> Amazon, Mercado Livre, Magazine Luiza e Centauro participam. O mesmo modelo varia bastante entre elas na Black Friday.</li>
+        <li><strong>Confira o frete e a montagem.</strong> Um preço menor com frete de R$ 200 para o interior pode sair mais caro que a concorrência.</li>
+      </ol>
+
+      <h2>Desconto médio por marca na Black Friday</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Segmento</th>
+            <th>Desconto médio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Dream Fitness</strong></td><td>Entrada</td><td>20–35%</td></tr>
+          <tr><td><strong>Gallant</strong></td><td>Entrada – Intermediário</td><td>15–30%</td></tr>
+          <tr><td><strong>WCT Fitness</strong></td><td>Intermediário</td><td>20–30%</td></tr>
+          <tr><td><strong>Kikos</strong></td><td>Intermediário – Premium</td><td>15–25%</td></tr>
+          <tr><td><strong>Acte Sports</strong></td><td>Intermediário</td><td>15–25%</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Black Friday ou comprar agora?</h2>
+
+      <p>
+        Se falta pouco para novembro e a compra não é urgente, esperar rende. Se você quer começar a treinar já, compre agora — semanas de exercício perdidas custam mais que o desconto. Para quem não quer esperar novembro, o <a href="/preco-bicicleta-ergometrica/amazon-prime-day/">Prime Day de julho</a> é a outra janela de preço do ano.
+      </p>
+
+      <p>
+        Para as faixas de preço fora de promoção, veja o <a href="/preco-bicicleta-ergometrica/">guia de preço de bicicleta ergométrica</a>. Considerando usada? Veja <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-nova-ou-usada/">nova ou usada</a>.
+      </p>
+
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre Black Friday e bicicleta ergométrica" />
+</Layout>
+
+<style>
+  .bf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #111;
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .bf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .bf-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .bf-faixa {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--token-text-primary, #1a1a1a);
+    margin-bottom: 0.25rem;
+  }
+
+  .bf-perfil {
+    font-size: 0.875rem;
+    color: var(--token-text-secondary, #666);
+    margin-bottom: 0.75rem;
+  }
+</style>

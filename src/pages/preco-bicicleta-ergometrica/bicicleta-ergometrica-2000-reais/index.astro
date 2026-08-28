@@ -1,0 +1,102 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'R$ 2.000', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-2000-reais/' },
+];
+
+const faqItems = [
+  {
+    question: 'O que dá para comprar de bicicleta ergométrica com R$ 2.000?',
+    answer: 'Na faixa de R$ 1.500 a R$ 2.500 estão os modelos intermediários: resistência magnética consistente com 12 a 16 níveis, volante de 8 a 18 kg dependendo do tipo, painel com programas de treino, frequência cardíaca e, em muitos, Bluetooth. Suporte de 100 a 120 kg. É a faixa recomendada para uso de 4 a 7 vezes por semana e para dividir o equipamento entre dois usuários.',
+  },
+  {
+    question: 'Vale a pena pagar R$ 2.000 numa bicicleta ergométrica?',
+    answer: 'Vale se o uso for frequente ou compartilhado. O salto de R$ 1.000 para R$ 2.000 melhora três coisas que se sentem todo dia: a fluidez da pedalada (volante mais pesado), o silêncio (magnética de qualidade) e a durabilidade da estrutura. Para uso de 1 a 2 vezes por semana por uma pessoa leve, é mais equipamento do que o necessário.',
+  },
+  {
+    question: 'Bicicleta ergométrica de R$ 2.000 é magnética ou de spinning?',
+    answer: 'Existem os dois nessa faixa. As verticais e horizontais magnéticas de R$ 1.500 a R$ 2.500 têm volante de 6 a 10 kg e foco em conforto e silêncio. As de spinning da mesma faixa têm volante de 13 a 18 kg e foco em intensidade, com posição mais inclinada. A escolha depende do objetivo: condicionamento geral e reabilitação pedem magnética; treino intenso pede spinning.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica R$ 2.000: Vale a Pena?"
+  description="Bicicleta ergométrica na faixa de R$ 2.000: o que a categoria intermediária entrega, magnética ou spinning, e para qual perfil de uso o investimento se justifica."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica de R$ 2.000: O Que a Faixa Intermediária Entrega</h1>
+
+      <p class="summarization">
+        Com cerca de <strong>R$ 2.000</strong> (faixa de R$ 1.500 a R$ 2.500) você compra a <strong>categoria intermediária</strong>: resistência magnética consistente com <strong>12 a 16 níveis</strong>, volante mais pesado, <strong>programas de treino</strong>, Bluetooth na maioria e suporte de <strong>100 a 120 kg</strong>. É a faixa certa para <strong>uso frequente ou compartilhado</strong>. Para uso leve de uma pessoa, é mais do que o necessário.
+      </p>
+
+      <p>
+        O que separa essa faixa da anterior não é a lista de recursos — é o que se percebe pedalando. A pedalada é mais fluida porque o volante é mais pesado. O aparelho é mais silencioso porque a resistência magnética é de qualidade. E a estrutura não range depois de um ano, porque o aço é mais espesso. São três coisas que você sente em toda sessão.
+      </p>
+
+      <h2>Magnética ou spinning nessa faixa?</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Magnética (vertical / horizontal)</th>
+            <th>Spinning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Volante de inércia</td><td>6 a 10 kg</td><td>13 a 18 kg</td></tr>
+          <tr><td>Posição</td><td>Ereta ou reclinada, confortável</td><td>Inclinada, mais exigente</td></tr>
+          <tr><td>Melhor para</td><td>Condicionamento, reabilitação, sessão longa</td><td>Treino intenso, HIIT, simulação de subida</td></tr>
+          <tr><td>Ruído</td><td>Muito baixo</td><td>Baixo a moderado</td></tr>
+          <tr><td>Painel</td><td>Programas e métricas completas</td><td>Simples, foco na pedalada</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        Se a dúvida for essa, veja o comparativo em <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-ou-spinning/">bicicleta ergométrica ou spinning</a> e, para o formato do assento, <a href="/tipos-de-bicicleta-ergometrica/vertical-vs-horizontal/">vertical vs horizontal</a>.
+      </p>
+
+      <h2>Para quem essa faixa se justifica</h2>
+
+      <ul>
+        <li>Uso de 4 a 7 vezes por semana.</li>
+        <li>Dois usuários com pesos e alturas diferentes — o ajuste dessa faixa acomoda melhor.</li>
+        <li>Usuário entre 90 e 120 kg que precisa de margem estrutural.</li>
+        <li>Quem quer acompanhar métricas por app ou seguir programas de treino.</li>
+      </ul>
+
+      <h2>Quando não precisa dessa faixa</h2>
+
+      <p>
+        Para uso de 1 a 3 vezes por semana por uma pessoa até 85 kg, a <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/">faixa de R$ 1.000</a> cobre bem. O dinheiro extra só compensa quando a frequência ou o número de usuários sobe. Acima de R$ 2.500, os ganhos passam a ser marginais para uso doméstico — mais níveis, acabamento melhor, garantia mais longa.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Melhor época para comprar:</strong> essa faixa é a que mais cai em datas promocionais. Na Black Friday e no Prime Day, modelos de R$ 2.200 chegam a R$ 1.600 a R$ 1.800. Veja o <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">guia de Black Friday</a>.
+        </p>
+      </div>
+
+      <p>
+        Para o panorama de todas as faixas, veja o <a href="/preco-bicicleta-ergometrica/">guia de preço de bicicleta ergométrica</a>. Para escolher a marca, as <a href="/melhores-bicicletas-ergometricas/">melhores bicicletas ergométricas</a>.
+      </p>
+
+      <CompreCTA modelo="kikos-kv31" contexto="Vertical magnética silenciosa nessa faixa" />
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica de R$ 2.000" />
+</Layout>

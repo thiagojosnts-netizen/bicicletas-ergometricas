@@ -1,0 +1,103 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Nova ou Usada', url: '/preco-bicicleta-ergometrica/bicicleta-ergometrica-nova-ou-usada/' },
+];
+
+const faqItems = [
+  {
+    question: 'Vale a pena comprar bicicleta ergométrica usada?',
+    answer: 'Vale quando o modelo usado é de uma categoria acima da que você compraria novo pelo mesmo valor e você consegue testá-lo antes. O mercado de usados é cheio de aparelhos pouco usados de gente que comprou por impulso e desistiu — um modelo de R$ 1.800 novo sai por R$ 700 a R$ 900 com um ano de uso leve. Não vale quando a economia é pequena (menos de 30%) ou quando você não pode ver o equipamento funcionando.',
+  },
+  {
+    question: 'O que verificar ao comprar uma bicicleta ergométrica usada?',
+    answer: 'Teste pedalando por alguns minutos: o painel deve ligar e registrar velocidade e tempo; a resistência deve variar em todos os níveis; não deve haver rangido, folga no pedivela nem trepidação no quadro. Peça para ver a nota fiscal ou o manual, confirme o peso suportado e verifique se a marca ainda vende peças de reposição. Rejeite modelos de marcas que sumiram do mercado.',
+  },
+  {
+    question: 'Quanto desvaloriza uma bicicleta ergométrica?',
+    answer: 'Uma bicicleta ergométrica perde de 30% a 50% do valor no primeiro ano e se estabiliza depois disso. Modelos de marcas conhecidas seguram melhor o preço; modelos de marca obscura despencam porque não há confiança na durabilidade nem reposição de peças. Aparelhos de academia desativados são exceção: chegam ao mercado com muito uso e preço baixo.',
+  },
+];
+---
+
+<Layout
+  title="Bicicleta Ergométrica Nova ou Usada: Qual Compensa?"
+  description="Bicicleta ergométrica nova ou usada: quando a usada compensa, o que testar antes de comprar, quanto o equipamento desvaloriza e os sinais de que é melhor comprar nova."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Nova ou Usada: Qual Compensa Mais</h1>
+
+      <p class="summarization">
+        A <strong>usada compensa</strong> quando ela é de uma categoria acima da que você compraria nova pelo mesmo dinheiro <strong>e você pode testá-la antes</strong>. Como muita gente compra por impulso e desiste, o mercado tem modelos de <strong>R$ 1.500 a R$ 2.000</strong> saindo por <strong>R$ 700 a R$ 900</strong> com pouco uso. A <strong>nova compensa</strong> quando a economia é menor que 30%, quando você não pode ver o aparelho funcionando ou quando a diferença de preço é pequena por causa de uma promoção.
+      </p>
+
+      <h2>Quando a usada é a melhor escolha</h2>
+
+      <ul>
+        <li><strong>A economia é real:</strong> o modelo usado custa 40% ou menos do valor de um equivalente novo.</li>
+        <li><strong>É de marca conhecida:</strong> Gallant, Kikos, WCT, Acte, Movement, Dream Fitness — marcas que ainda vendem peças.</li>
+        <li><strong>Você pode testar:</strong> pedalar por 5 minutos revela quase todos os defeitos que importam.</li>
+        <li><strong>Tem menos de 3 anos:</strong> a estrutura de aço dura, mas painel e rolamentos têm vida finita.</li>
+      </ul>
+
+      <h2>Quando comprar nova</h2>
+
+      <ul>
+        <li>A diferença de preço para a nova é menor que 30% — a garantia vale mais que isso.</li>
+        <li>A venda é à distância, sem possibilidade de testar antes de pagar.</li>
+        <li>Você quer um modelo específico e ele está em promoção de Black Friday ou Prime Day.</li>
+        <li>O usado é de marca que sumiu do mercado — sem reposição, um defeito simples aposenta o aparelho.</li>
+      </ul>
+
+      <h2>Checklist para comprar usada</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>O que testar</th>
+            <th>Sinal de problema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Painel eletrônico</td><td>Não liga, trava, não registra velocidade ou tempo</td></tr>
+          <tr><td>Ajuste de resistência</td><td>Níveis sem diferença perceptível, manípulo solto</td></tr>
+          <tr><td>Pedivela e pedais</td><td>Folga lateral, rangido, pedal bambo</td></tr>
+          <tr><td>Quadro</td><td>Trepidação ou barulho ao pedalar em pé</td></tr>
+          <tr><td>Selim e regulagens</td><td>Trava de altura não fixa, rosca espanada</td></tr>
+          <tr><td>Documentação</td><td>Sem nota, sem manual, marca não identificável</td></tr>
+        </tbody>
+      </table>
+
+      <h2>A conta que costuma decidir</h2>
+
+      <p>
+        Uma vertical de entrada nova custa por volta de <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-1000-reais/">R$ 1.000</a> e vem com garantia. Uma <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-2000-reais/">intermediária</a> usada em bom estado sai pela mesma faixa. Se você tem como testar, a usada entrega mais equipamento. Se não tem, a nova de entrada é a aposta segura — e na <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">Black Friday</a> a diferença para a usada quase some.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Cuidado com aparelho de academia:</strong> equipamentos semiprofissionais desativados aparecem baratos, mas chegam com anos de uso intenso. A estrutura costuma aguentar; o sistema eletromagnético e os rolamentos, nem sempre. Só vale com desconto grande e teste demorado.
+        </p>
+      </div>
+
+      <p>
+        Para as faixas de preço de equipamento novo, veja o <a href="/preco-bicicleta-ergometrica/">guia de preço de bicicleta ergométrica</a>.
+      </p>
+
+      <CompreCTA modelo="dream-ex450" contexto="Vertical de entrada nova, com garantia, quando a usada não compensa" />
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes: bicicleta ergométrica nova ou usada" />
+</Layout>
