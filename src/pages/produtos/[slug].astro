@@ -14,9 +14,28 @@ export async function getStaticPaths() {
 const { produto } = Astro.props;
 const d = produto.data;
 
-const fullStars = Math.floor(d.rating ?? 0);
-const halfStar = (d.rating ?? 0) % 1 >= 0.5;
-const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+const SITE_URL = 'https://bicicletasergometricas.com';
+const pageUrl = `${SITE_URL}/produtos/${produto.id}/`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  '@id': `${pageUrl}#product`,
+  name: d.name,
+  description: d.description,
+  category: `Bicicleta ergométrica ${d.tipo}`,
+  brand: { '@type': 'Brand', name: d.marca },
+  ...(d.image ? { image: `${SITE_URL}${d.image}` } : {}),
+  additionalProperty: Object.entries(d.especificacoes ?? {}).map(([name, value]) => ({
+    '@type': 'PropertyValue', name, value,
+  })),
+  offers: d.ofertas.map((o) => ({
+    '@type': 'Offer',
+    url: o.url,
+    availability: 'https://schema.org/InStock',
+    seller: { '@type': 'Organization', name: o.loja },
+  })),
+};
 
 const breadcrumbs = [
   { name: 'Produtos', url: '/produtos/' },
@@ -25,11 +44,13 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title={`${d.name} — Ficha Completa | Bicicletas Ergométricas`}
+  title={`${d.name} — Ficha Completa`}
   description={d.description}
   breadcrumbs={breadcrumbs}
   isArticle={false}
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
+
   <div class="produto-detalhe container">
 
     <div class="detalhe-grid">
@@ -62,18 +83,6 @@ const breadcrumbs = [
       <div class="detalhe-info">
         <span class="detalhe-marca">{d.marca}</span>
         <h1 class="detalhe-nome">{d.name}</h1>
-
-        {d.rating && (
-          <div class="detalhe-rating">
-            <span class="estrelas" aria-hidden="true">
-              {'★'.repeat(fullStars)}{halfStar ? '½' : ''}{'☆'.repeat(emptyStars)}
-            </span>
-            <span class="rating-valor">{d.rating.toFixed(1)}/5</span>
-            {d.reviewCount && (
-              <span class="rating-count">({d.reviewCount.toLocaleString('pt-BR')} avaliações)</span>
-            )}
-          </div>
-        )}
 
         <p class="detalhe-desc">{d.descricaoLonga}</p>
 

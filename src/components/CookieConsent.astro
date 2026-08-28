@@ -1,0 +1,98 @@
+---
+// src/components/CookieConsent.astro
+// Banner de consentimento (LGPD). Fica escondido até o JS decidir se mostra.
+// Guarda a escolha em localStorage['cookie-consent'] = 'granted' | 'denied'.
+---
+
+<div id="cookie-consent" class="cc" hidden>
+  <p class="cc-text">
+    Usamos cookies para medir o tráfego do site com o Google Analytics. Nada é
+    coletado até você aceitar. Veja a <a href="/politica-de-privacidade/">política de privacidade</a>.
+  </p>
+  <div class="cc-actions">
+    <button type="button" id="cc-reject" class="cc-btn cc-btn-ghost">Rejeitar</button>
+    <button type="button" id="cc-accept" class="cc-btn cc-btn-solid">Aceitar</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'cookie-consent';
+    var el = document.getElementById('cookie-consent');
+    if (!el) return;
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+
+    function updateGtag(value) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: value === 'granted' ? 'granted' : 'denied'
+        });
+      }
+    }
+
+    if (saved === 'granted' || saved === 'denied') {
+      updateGtag(saved);
+      return; // já decidiu, não mostra o banner
+    }
+
+    el.hidden = false;
+
+    function choose(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+      updateGtag(value);
+      el.hidden = true;
+    }
+    document.getElementById('cc-accept').addEventListener('click', function () { choose('granted'); });
+    document.getElementById('cc-reject').addEventListener('click', function () { choose('denied'); });
+  })();
+</script>
+
+<style>
+  .cc {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 9999;
+    max-width: 640px;
+    margin: 0 auto;
+    background: #1b1e17;
+    color: #f2f2ee;
+    border: 1px solid #333930;
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+  }
+  .cc[hidden] { display: none; }
+  .cc-text {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    flex: 1 1 260px;
+  }
+  .cc-text a { color: #8fd4c0; }
+  .cc-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+  }
+  .cc-btn {
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .cc-btn-solid { background: #2D6A4F; color: #fff; }
+  .cc-btn-solid:hover { background: #245a42; }
+  .cc-btn-ghost { background: transparent; color: #cfcfca; border-color: #454c40; }
+  .cc-btn-ghost:hover { color: #fff; }
+  :focus-visible { outline: 2px solid #8fd4c0; outline-offset: 2px; }
+</style>

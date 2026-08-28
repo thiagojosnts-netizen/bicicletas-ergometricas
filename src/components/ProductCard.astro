@@ -26,7 +26,6 @@ export interface Props {
 }
 
 const { product } = Astro.props;
-const stars = product.rating ? Math.round(product.rating) : 0;
 
 const ofertas: { loja: Loja; url: string }[] =
   product.ofertas && product.ofertas.length > 0
@@ -82,19 +81,6 @@ const lojaPrep: Record<Loja, string> = {
           <li>{f}</li>
         ))}
       </ul>
-    )}
-
-    {product.rating && (
-      <div class="rating">
-        <div class="stars" aria-label={`${product.rating} de 5 estrelas`}>
-          {Array.from({ length: 5 }, (_, i) => (
-            <span class={i < stars ? "star filled" : "star"}>★</span>
-          ))}
-        </div>
-        {product.reviewCount && (
-          <span class="review-count">({product.reviewCount.toLocaleString('pt-BR')} avaliações)</span>
-        )}
-      </div>
     )}
 
     {ofertas.length > 0 && (

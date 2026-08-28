@@ -1,23 +1,33 @@
 ---
 /**
- * Google Analytics 4
- * Data stream: "Bicicletas Ergométricas"
- * Measurement ID: G-KMSB0MEHRZ  (GA4 → Administrar → Fluxos de dados → Web)
+ * Google Analytics 4 com Consent Mode v2 (LGPD).
+ * Measurement ID: G-KMSB0MEHRZ
  *
- * Injected only in production builds, so `astro dev` / preview traffic
- * is not counted. Rendered as the first item in <head> for accurate
- * page_view timing.
+ * O gtag carrega sempre (em produção), mas com analytics_storage = 'denied'
+ * por padrão. Nenhum cookie de análise é gravado até o visitante aceitar
+ * no banner (src/components/CookieConsent.astro), que chama
+ * gtag('consent','update',{ analytics_storage: 'granted' }).
+ * Só conta tráfego de produção — dev/preview ficam de fora.
  */
 ---
 
 {import.meta.env.PROD && (
   <Fragment>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KMSB0MEHRZ"></script>
     <script is:inline set:html={`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-KMSB0MEHRZ');
+      var stored = null;
+      try { stored = localStorage.getItem('cookie-consent'); } catch (e) {}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: stored === 'granted' ? 'granted' : 'denied',
+        wait_for_update: 500
+      });
+      gtag('config', 'G-KMSB0MEHRZ', { anonymize_ip: true });
     `}></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KMSB0MEHRZ"></script>
   </Fragment>
 )}

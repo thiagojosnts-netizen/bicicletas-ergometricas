@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import SchemaBase from '../components/schema/SchemaBase.astro';
 import Analytics from '../components/Analytics.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface BreadcrumbItem {
   name: string;
@@ -45,7 +46,7 @@ const {
 } = Astro.props;
 
 const SITE_NAME = 'BicicletasErgometricas.com';
-const TITLE_SUFFIX = 'BicErgometricas.com';
+const TITLE_SUFFIX = SITE_NAME;
 const SITE_URL = 'https://bicicletasergometricas.com';
 const CANONICAL = canonical.startsWith('http') ? canonical : `${SITE_URL}${canonical}`;
 
@@ -131,14 +132,15 @@ const articleSchema = isArticle && breadcrumbs.length > 0 ? {
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:image" content={`${SITE_URL}/og-image.svg`} />
+    <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${SITE_URL}/og-image.svg`} />
+    <meta name="twitter:image" content={`${SITE_URL}/og-image.png`} />
 
     <meta name="generator" content={Astro.generator} />
 
@@ -163,5 +165,6 @@ const articleSchema = isArticle && breadcrumbs.length > 0 ? {
     </main>
 
     <Footer />
+    <CookieConsent />
   </body>
 </html>

@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'Contato', url: '/contato/' },
+];
+
+const email = 'contato@bicicletasergometricas.com';
+---
+
+<Layout
+  title="Contato"
+  description="Fale com a redação do BicicletasErgometricas.com: correções, sugestões de modelos para analisar, imprensa e parcerias."
+  breadcrumbs={breadcrumbs}
+  hideDisclosure={true}
+  datePublished="2026-08-28"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:760px;">
+      <h1 id="page-heading">Contato</h1>
+
+      <p>
+        O <strong>BicicletasErgometricas.com</strong> é produzido por uma redação independente
+        especializada em equipamentos de fitness para uso doméstico. Todo o contato é feito por
+        e-mail e respondido em até 3 dias úteis.
+      </p>
+
+      <p style="margin:1.5rem 0;font-size:1.05rem;">
+        <a href={`mailto:${email}`}><strong>{email}</strong></a>
+      </p>
+
+      <h2>Sobre o que escrever</h2>
+      <ul>
+        <li><strong>Correção de informação</strong>: encontrou um dado desatualizado, um preço fora de faixa ou uma especificação errada? Diga a página e o ponto exato.</li>
+        <li><strong>Sugestão de modelo para analisar</strong>: indique a marca, o modelo e onde ele é vendido.</li>
+        <li><strong>Imprensa e citação de conteúdo</strong>: pedidos de entrevista, uso de dados ou de tabelas do site.</li>
+        <li><strong>Privacidade e LGPD</strong>: solicitações de acesso, correção ou exclusão de dados pessoais, conforme a <a href="/politica-de-privacidade/">política de privacidade</a>.</li>
+      </ul>
+
+      <h2>O que não fazemos</h2>
+      <ul>
+        <li>Não publicamos conteúdo patrocinado nem aceitamos pagamento para incluir ou melhorar a posição de uma marca. Veja a <a href="/metodologia/">metodologia de avaliação</a>.</li>
+        <li>Não vendemos bicicletas ergométricas. Somos um site de análise que participa de programas de afiliados (Amazon e Mercado Livre).</li>
+        <li>Não prestamos assistência técnica. Para defeito ou peça, procure a assistência da marca.</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

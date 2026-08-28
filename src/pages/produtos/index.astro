@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const allProdutos = await getCollection('produtos');
-const produtos = allProdutos.sort((a, b) => (b.data.reviewCount ?? 0) - (a.data.reviewCount ?? 0));
+const produtos = allProdutos.sort((a, b) =>
+  (b.data.topPick ? 1 : 0) - (a.data.topPick ? 1 : 0) || a.data.name.localeCompare(b.data.name)
+);
 
 const tipos = [...new Set(produtos.map(p => p.data.tipo))].sort();
 const categorias = [...new Set(produtos.map(p => p.data.categoria))].sort();
@@ -14,7 +16,7 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title="Bicicletas Ergométricas — Comparativo de Produtos | Bicicletas Ergométricas"
+  title="Bicicletas Ergométricas — Comparativo de Produtos"
   description="Compare as melhores bicicletas ergométricas com avaliações reais de compradores: verticais, reclinadas, spinning e dobráveis, e onde comprar cada uma."
   breadcrumbs={breadcrumbs}
 >
@@ -59,9 +61,6 @@ const breadcrumbs = [
       <div class="produtos-grid" id="produtos-grid">
         {produtos.map(produto => {
           const d = produto.data;
-          const fullStars = Math.floor(d.rating ?? 0);
-          const halfStar = (d.rating ?? 0) % 1 >= 0.5;
-          const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
           return (
             <article
               class="produto-card"
@@ -100,18 +99,6 @@ const breadcrumbs = [
                 <h2 class="card-nome">
                   <a href={`/produtos/${produto.id}/`}>{d.name}</a>
                 </h2>
-
-                {d.rating && (
-                  <div class="card-rating">
-                    <span class="estrelas" aria-hidden="true">
-                      {'★'.repeat(fullStars)}{halfStar ? '½' : ''}{'☆'.repeat(emptyStars)}
-                    </span>
-                    <span class="rating-valor">{d.rating.toFixed(1)}/5</span>
-                    {d.reviewCount && (
-                      <span class="rating-count">({d.reviewCount.toLocaleString('pt-BR')})</span>
-                    )}
-                  </div>
-                )}
 
                 <p class="card-desc">{d.description}</p>
 
