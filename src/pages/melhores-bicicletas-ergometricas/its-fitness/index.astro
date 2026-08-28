@@ -1,0 +1,142 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'Its Fitness', url: '/melhores-bicicletas-ergometricas/its-fitness/' },
+];
+
+const faqItems = [
+  {
+    question: 'Its Fitness é uma boa marca de bicicleta ergométrica?',
+    answer: 'Para o segmento de entrada, sim. A Its Fitness é uma das marcas com maior volume de vendas de bicicletas de spinning nos marketplaces brasileiros. Seus modelos são simples e mecânicos, com bom custo-benefício para uso doméstico leve a moderado — não são indicados para uso intensivo diário.',
+  },
+  {
+    question: 'Its Fitness Pro 818 vale a pena?',
+    answer: 'É um dos modelos de spinning mais vendidos da Amazon Brasil, geralmente com desconto expressivo. A roda de inércia de 13 kg e o suporte de 150 kg são pontos fortes para a faixa de preço. A limitação é a resistência mecânica por fricção, que exige manutenção e é mais ruidosa que a magnética.',
+  },
+  {
+    question: 'Qual a diferença entre Its Fitness e Liftness?',
+    answer: 'Liftness é uma linha vendida pela mesma empresa da Its Fitness nos marketplaces, geralmente em modelos de entrada ainda mais básicos. As especificações e a estrutura são semelhantes; a escolha costuma ser pelo preço do momento.',
+  },
+];
+
+const imagem = await fetchBikeImage('indoor cycling spin bike home workout');
+---
+
+<Layout
+  title="Its Fitness: Bicicleta Ergométrica Spinning Pro 818"
+  description="Análise da bicicleta ergométrica Its Fitness Pro 818: spinning mecânica com roda de inércia de 13 kg e suporte de 150 kg. Uma das mais vendidas da Amazon Brasil."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-27"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica Its Fitness: Análise do Modelo Pro 818</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica Its Fitness</strong> é uma das marcas de spinning de entrada com maior volume de vendas nos marketplaces brasileiros. O modelo <strong>Pro 818</strong> tem roda de inércia de <strong>13 kg</strong>, estrutura em aço com suporte de <strong>150 kg</strong> e costuma aparecer entre os mais vendidos da Amazon Brasil com desconto expressivo.
+      </p>
+
+      <p>A <strong>Its Fitness</strong> concentra sua linha em bicicletas de spinning mecânicas para uso doméstico e de academia. São equipamentos simples, sem conectividade, mas com estrutura robusta para o preço. A marca também vende modelos sob o nome <strong>Liftness</strong> nos marketplaces, com especificações semelhantes.</p>
+
+      <h2>Modelos Its Fitness: o que considerar</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Roda de inércia</th>
+            <th>Peso suportado</th>
+            <th>Faixa de preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Pro 818</strong></td><td>Spinning</td><td>13 kg</td><td>150 kg</td><td>R$ 800 – R$ 950</td></tr>
+          <tr><td>Roda 8 kg (Pro)</td><td>Spinning</td><td>8 kg</td><td>120 kg</td><td>R$ 440 – R$ 550</td></tr>
+          <tr><td>Liftness X11</td><td>Spinning</td><td>—</td><td>120 kg</td><td>R$ 420 – R$ 520</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.875rem;color:var(--token-text-secondary);">Modelos e especificações sujeitos a atualização pela marca. Confirme a ficha atual no anúncio.</p>
+
+      <h2>Características técnicas a considerar</h2>
+      <table>
+        <thead>
+          <tr><th>Atributo</th><th>Especificação</th><th>Impacto no uso</th><th>Nível</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resistência</td>
+            <td>Mecânica por fricção, ajuste por manípulo no quadro</td>
+            <td>Precisa de regulagem e troca eventual da pastilha de freio; transição de carga menos precisa</td>
+            <td>Básico</td>
+          </tr>
+          <tr>
+            <td>Nível de ruído</td>
+            <td>Fricção com transmissão por correia: operação audível em alta intensidade</td>
+            <td>Tolerável para uso diurno; menos indicada para treino noturno em apartamento</td>
+            <td>Moderado</td>
+          </tr>
+          <tr>
+            <td>Estrutura</td>
+            <td>Aço com suporte declarado de 150 kg no Pro 818</td>
+            <td>Capacidade acima da média da faixa; boa margem de segurança</td>
+            <td>Alto</td>
+          </tr>
+          <tr>
+            <td>Conectividade</td>
+            <td>Sem bluetooth e sem programas automáticos</td>
+            <td>Monitor exibe apenas tempo, velocidade, distância e calorias</td>
+            <td>Não disponível</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p>A <strong>Its Fitness Pro 818</strong> é a escolha da linha para quem quer uma bike de spinning de baixo custo com volante mais pesado e boa capacidade de carga. Para uso intensivo diário ou treino noturno em apartamento, um modelo com <a href="/como-escolher-bicicleta-ergometrica/">resistência magnética</a> é mais adequado.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "Its Fitness Pro 818 — Bicicleta Spinning Roda de Inércia 13kg",
+          description: "Spinning mecânica com roda de inércia de 13 kg e estrutura reforçada até 150 kg. Uma das mais vendidas da categoria na Amazon Brasil.",
+          rating: 4.4,
+          reviewCount: 47,
+          badge: "Mais vendida da categoria",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B0f21cEEt" },
+          ],
+          image: imagem?.url,
+          imageAlt: "Bicicleta de spinning Its Fitness Pro 818",
+          features: [
+            "Roda de inércia de 13 kg",
+            "Resistência mecânica por fricção",
+            "Suporta até 150 kg",
+            "Estrutura em aço reforçado",
+          ],
+          internalUrl: "/produtos/its-fitness-pro-818/",
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare no <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta de spinning</a> e no <a href="/melhores-bicicletas-ergometricas/">comparativo das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica Its Fitness" />
+</Layout>

@@ -1,0 +1,112 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { fetchBikeImage } from '../../../lib/pexels.js';
+
+const breadcrumbs = [
+  { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
+  { name: 'KNakasaki', url: '/melhores-bicicletas-ergometricas/knakasaki/' },
+];
+
+const faqItems = [
+  {
+    question: 'KNakasaki é uma boa marca de bicicleta ergométrica?',
+    answer: 'É uma marca de marketplace focada em modelos de spinning de entrada. Para treino leve a moderado em casa, o modelo NK2019 cumpre bem a função e tem boa avaliação de usuários. Não é indicada para uso intensivo diário ou para quem já tem bom condicionamento.',
+  },
+  {
+    question: 'KNakasaki NK2019 é silenciosa?',
+    answer: 'Sim. A transmissão por correia mantém o funcionamento silencioso, adequado para apartamentos. A roda de inércia de 4 kg é leve, o que reduz o esforço e o ruído, mas também limita a intensidade máxima do treino.',
+  },
+  {
+    question: 'Para quem a KNakasaki NK2019 é indicada?',
+    answer: 'Para iniciantes com até cerca de 1,70 m e 110 kg que querem começar a pedalar em casa com baixo investimento. Quem pesa mais, é mais alto ou pretende treinar com alta intensidade deve considerar um modelo com roda de inércia mais pesada.',
+  },
+];
+
+const imagem = await fetchBikeImage('quiet spin bike apartment home fitness');
+---
+
+<Layout
+  title="KNakasaki: Bicicleta Ergométrica Spinning NK2019"
+  description="Análise da bicicleta ergométrica KNakasaki NK2019: spinning silenciosa de entrada com transmissão por correia e roda de inércia de 4 kg. Para quem está começando."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-08-27"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Bicicleta Ergométrica KNakasaki: Análise do Modelo NK2019</h1>
+
+      <p class="summarization">
+        A <strong>bicicleta ergométrica KNakasaki NK2019</strong> é uma bike de spinning de entrada com <strong>transmissão por correia silenciosa</strong> e roda de inércia de <strong>4 kg</strong>. Suporta até <strong>110 kg</strong> e atende usuários de até cerca de 1,70 m. É uma das mais avaliadas da categoria na Amazon Brasil na faixa abaixo de R$ 650.
+      </p>
+
+      <p>A <strong>KNakasaki</strong> é uma marca de marketplace com linha concentrada em bicicletas de spinning de baixo custo. O foco é o público iniciante que quer começar a pedalar em casa sem investir alto — o preço e o funcionamento silencioso são os principais diferenciais, e a contrapartida é uma roda de inércia leve e recursos básicos.</p>
+
+      <h2>KNakasaki NK2019: ficha técnica</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Atributo</th>
+            <th>Especificação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tipo</td><td>Spinning (ciclismo indoor)</td></tr>
+          <tr><td>Resistência</td><td>Mecânica, ajuste por manípulo — 9 níveis</td></tr>
+          <tr><td>Roda de inércia</td><td>4 kg</td></tr>
+          <tr><td>Transmissão</td><td>Correia (silenciosa)</td></tr>
+          <tr><td>Peso suportado</td><td>110 kg</td></tr>
+          <tr><td>Altura recomendada</td><td>até ~1,70 m</td></tr>
+          <tr><td>Estrutura</td><td>Aço, aprox. 19 kg</td></tr>
+          <tr><td>Monitor</td><td>Tempo, velocidade, distância e calorias</td></tr>
+          <tr><td>Faixa de preço</td><td>R$ 500 – R$ 650</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.875rem;color:var(--token-text-secondary);">Especificações sujeitas a atualização pela marca. Confirme a ficha atual no anúncio.</p>
+
+      <div class="highlight-box">
+        <p>A <strong>KNakasaki NK2019</strong> é uma opção de baixo custo para quem está começando e prioriza silêncio. A roda de inércia de 4 kg é o principal limite: para treino de maior intensidade ou usuários mais pesados, vale considerar um modelo com volante de 8 kg ou mais. Veja alternativas no <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-barata/">guia de bicicletas ergométricas baratas</a>.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <ProductCard product={{
+          name: "KNakasaki NK2019 — Bicicleta Spinning Silenciosa",
+          description: "Spinning de entrada com transmissão por correia silenciosa e roda de inércia de 4 kg. Para treino leve a moderado em casa.",
+          rating: 4.2,
+          reviewCount: 744,
+          badge: "Entrada silenciosa",
+          ofertas: [
+            { loja: "Amazon", url: "https://link.amazon/B08cHgDiq" },
+          ],
+          image: imagem?.url,
+          imageAlt: "Bicicleta de spinning KNakasaki NK2019",
+          features: [
+            "Transmissão por correia silenciosa",
+            "Roda de inércia de 4 kg (treino leve)",
+            "9 níveis de resistência",
+            "Suporta até 110 kg",
+          ],
+          internalUrl: "/produtos/knakasaki-nk2019/",
+        }} />
+      </div>
+
+      {imagem && (
+        <p style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+          Foto: <a href={imagem.photographerUrl} target="_blank" rel="noopener">{imagem.photographer}</a> via <a href={imagem.pexelsUrl} target="_blank" rel="noopener">Pexels</a>
+        </p>
+      )}
+
+      <p style="margin-top:1.5rem;">
+        Compare no <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia de bicicleta de spinning</a> e no <a href="/melhores-bicicletas-ergometricas/">comparativo das melhores bicicletas ergométricas</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre bicicleta ergométrica KNakasaki" />
+</Layout>

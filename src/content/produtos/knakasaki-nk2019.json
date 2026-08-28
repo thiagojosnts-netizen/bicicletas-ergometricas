@@ -1,0 +1,35 @@
+{
+  "name": "KNakasaki NK2019 — Bicicleta Spinning Silenciosa",
+  "description": "Bike de spinning de entrada com transmissão por correia silenciosa e roda de inércia de 4 kg. Indicada para treino leve a moderado em casa.",
+  "descricaoLonga": "A KNakasaki NK2019 é uma bicicleta de spinning de baixo custo pensada para quem está começando. A transmissão por correia mantém o funcionamento silencioso e a roda de inércia de 4 kg deixa o pedal leve — adequada para treino de intensidade leve a moderada, não para uso pesado ou muito frequente. A estrutura em aço suporta até 110 kg e atende usuários de até cerca de 1,70 m. Banco e guidão reguláveis, monitor simples com tempo, velocidade, distância e calorias, e nove níveis de resistência ajustados por manípulo.",
+  "rating": 4.2,
+  "reviewCount": 744,
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://link.amazon/B08cHgDiq"
+    }
+  ],
+  "image": "",
+  "imageAlt": "Bicicleta de spinning KNakasaki NK2019",
+  "badge": "Entrada silenciosa",
+  "features": [
+    "Transmissão por correia silenciosa",
+    "Roda de inércia de 4 kg (treino leve)",
+    "9 níveis de resistência",
+    "Suporta até 110 kg",
+    "Altura do usuário até ~1,70 m",
+    "Monitor com tempo, velocidade, distância e calorias"
+  ],
+  "tipo": "Spinning",
+  "categoria": "Entrada",
+  "marca": "KNakasaki",
+  "topPick": false,
+  "especificacoes": {
+    "Peso máximo suportado": "110 kg",
+    "Roda de inércia": "4 kg",
+    "Tipo de resistência": "Mecânica (manípulo)",
+    "Transmissão": "Correia",
+    "Altura recomendada": "até ~1,70 m"
+  }
+}

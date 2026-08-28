@@ -1,0 +1,35 @@
+{
+  "name": "Its Fitness Pro 818 — Bicicleta Spinning Roda de Inércia 13kg",
+  "description": "Spinning mecânica de entrada com roda de inércia de 13 kg e estrutura reforçada até 150 kg. Uma das mais vendidas da categoria na Amazon Brasil.",
+  "descricaoLonga": "A Its Fitness Pro 818 é uma bicicleta de spinning mecânica para uso doméstico e de academia. A roda de inércia de 13 kg dá peso e continuidade ao pedal, com resistência ajustada por fricção através de manípulo no quadro. A estrutura em aço suporta até 150 kg, acima da média da faixa de preço. Banco e guidão com regulagem, pedais com gaiola e monitor simples com tempo, velocidade, distância e calorias. É uma das bicicletas ergométricas mais vendidas da Amazon Brasil, geralmente encontrada com desconto expressivo.",
+  "rating": 4.4,
+  "reviewCount": 47,
+  "ofertas": [
+    {
+      "loja": "Amazon",
+      "url": "https://link.amazon/B0f21cEEt"
+    }
+  ],
+  "image": "",
+  "imageAlt": "Bicicleta de spinning Its Fitness Pro 818",
+  "badge": "Mais vendida da categoria",
+  "features": [
+    "Roda de inércia de 13 kg",
+    "Resistência mecânica por fricção",
+    "Suporta até 150 kg",
+    "Estrutura em aço reforçado",
+    "Banco e guidão reguláveis",
+    "Monitor com tempo, velocidade, distância e calorias"
+  ],
+  "tipo": "Spinning",
+  "categoria": "Entrada",
+  "marca": "Its Fitness",
+  "topPick": false,
+  "especificacoes": {
+    "Peso máximo suportado": "150 kg",
+    "Roda de inércia": "13 kg",
+    "Tipo de resistência": "Mecânica por fricção",
+    "Transmissão": "Correia",
+    "Garantia": "12 meses"
+  }
+}
