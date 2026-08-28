@@ -36,5 +36,35 @@
     "Transmissão": "Correia",
     "Dimensões": "64 x 122 x 115 cm",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Roda de inércia de 18 kg, uma das mais pesadas da faixa intermediária",
+    "Transmissão por correia silenciosa",
+    "Suporta 120 kg",
+    "Disponível na Amazon e no Mercado Livre",
+    "Estrutura de aço reforçada"
+  ],
+  "contras": [
+    "Resistência mecânica por fricção",
+    "Volante de 18 kg deixa o equipamento pesado para reposicionar",
+    "Preço acima dos spinnings de entrada",
+    "Sem eletrônica avançada"
+  ],
+  "problemasRelatados": "O volante de 18 kg dá uma inércia excelente, mas concentra massa: a bike fica pesada para mover e a montagem pede duas pessoas. Como em todo spinning mecânico, a pastilha de fricção é item de desgaste. Relatos de usuários da linha Gallant apontam necessidade de reaperto dos parafusos da base nas primeiras semanas e troca do selim original, que muitos consideram duro. A correia costuma durar bem.",
+  "paraQuem": "quem treina spinning com regularidade e intensidade, pesa até 100 kg, quer o volante mais pesado possível na faixa intermediária e não pretende mover a bike com frequência.",
+  "naoIndicadoPara": "quem tem pouco espaço, precisa mover o equipamento com frequência, quer resistência magnética silenciosa ou busca o menor preço.",
+  "faqItems": [
+    {
+      "question": "Qual a diferença entre a roda de 18 kg da Gallant e as de 13 kg?",
+      "answer": "O volante mais pesado mantém a rotação por mais tempo a cada pedalada, deixando o movimento mais contínuo e próximo de uma bike de rua. A contrapartida é o peso total maior do equipamento."
+    },
+    {
+      "question": "A Gallant Elite Pro Spinning é difícil de montar?",
+      "answer": "A montagem em si é padrão, mas o volante de 18 kg e a estrutura reforçada tornam recomendável fazer com duas pessoas. Reserve cerca de 40 minutos."
+    },
+    {
+      "question": "Ela é silenciosa?",
+      "answer": "A transmissão por correia é silenciosa. A resistência é por fricção, que tem um atrito perceptível em intensidade alta. Fica entre a WCT e uma bike magnética em nível de ruído."
+    }
+  ]
 }

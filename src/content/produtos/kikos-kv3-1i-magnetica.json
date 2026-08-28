@@ -35,5 +35,35 @@
     "Tipo de resistência": "Magnética",
     "Monitor": "Tempo, velocidade, distância, calorias, odômetro",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Resistência magnética 100% silenciosa, adequada para apartamento",
+    "8 níveis de resistência para progressão gradual",
+    "Display LCD com 5 funções e odômetro",
+    "Monitor cardíaco por hand grip nas manoplas",
+    "Marca estabelecida, com peças de reposição e assistência"
+  ],
+  "contras": [
+    "Suporta apenas 100 kg",
+    "8 níveis atendem iniciante e intermediário, não uso avançado",
+    "Sem Bluetooth e sem programas automáticos",
+    "Leitura de frequência cardíaca por manopla é imprecisa"
+  ],
+  "problemasRelatados": "Como a resistência é magnética, não há desgaste por atrito, e o problema mais citado nos modelos Kikos não é mecânico e sim o painel eletrônico, que pode falhar depois que expira a garantia do console, geralmente menor que a da estrutura. O sensor de frequência cardíaca por manopla dá leituras instáveis, comportamento comum a todo hand grip da categoria. A montagem pede atenção ao aperto dos parafusos do selim e do guidão nas primeiras semanas de uso.",
+  "paraQuem": "quem mora em apartamento ou treina em horário que exige silêncio, pesa até 85 kg, quer uma vertical magnética de marca com assistência e treina de forma leve a moderada.",
+  "naoIndicadoPara": "quem pesa mais de 90 kg, busca treino de alta intensidade ou spinning, ou quer integração com aplicativos de treino.",
+  "faqItems": [
+    {
+      "question": "A Kikos KV3.1i é boa para apartamento?",
+      "answer": "Sim. A resistência magnética opera abaixo de 30 dB, perto de uma conversa baixa, sem o atrito que faz barulho nas bikes mecânicas. É uma das razões principais para escolher este modelo."
+    },
+    {
+      "question": "8 níveis de resistência são suficientes?",
+      "answer": "Para iniciante e intermediário, sim. Cada nível muda a carga de forma perceptível e cobre a progressão dos primeiros meses. Quem chega a um condicionamento avançado tende a querer mais faixas ou um spinning."
+    },
+    {
+      "question": "O monitor cardíaco da KV3.1i é confiável?",
+      "answer": "É por hand grip, que serve como referência aproximada. Para treino guiado por zona de frequência cardíaca, use uma cinta peitoral à parte."
+    }
+  ]
 }

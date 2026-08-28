@@ -31,5 +31,35 @@
     "Tipo de resistência": "Mecânica por fricção",
     "Transmissão": "Correia",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Suporta 150 kg, acima da média da faixa de preço",
+    "Roda de inércia de 13 kg",
+    "Estrutura de aço reforçado",
+    "Uma das mais vendidas da Amazon Brasil",
+    "Costuma aparecer com desconto expressivo"
+  ],
+  "contras": [
+    "Resistência mecânica por fricção",
+    "Marca de marketplace, sem rede de assistência ampla",
+    "Monitor simples",
+    "Acabamento abaixo de marcas estabelecidas"
+  ],
+  "problemasRelatados": "Como marca de marketplace, a Its Fitness, que também vende sob o nome Liftness, tem canal de pós-venda menos estruturado que Gallant ou Kikos, o que aparece nos relatos como demora para conseguir peça de reposição. A pastilha de fricção é o item de desgaste esperado. O suporte de 150 kg é real e um diferencial, mas usuários que trabalham perto desse limite relatam mais vibração no quadro, o que é esperado ao usar o equipamento próximo do teto declarado.",
+  "paraQuem": "quem pesa entre 100 e 130 kg e não encontra opção na faixa de preço, quer o volante de 13 kg e prioriza capacidade de carga e preço sobre marca e assistência.",
+  "naoIndicadoPara": "quem precisa de assistência técnica ágil, quer resistência magnética, ou dá peso à reputação de uma marca estabelecida.",
+  "faqItems": [
+    {
+      "question": "Its Fitness e Liftness são a mesma coisa?",
+      "answer": "São linhas vendidas pela mesma empresa nos marketplaces. As especificações e a estrutura são semelhantes; a diferença costuma ser só o preço do momento e o modelo específico."
+    },
+    {
+      "question": "A Pro 818 aguenta mesmo 150 kg?",
+      "answer": "O suporte de 150 kg é declarado pelo fabricante e é real. Pela regra de margem, ela atende com conforto quem pesa até cerca de 120 kg; acima disso, o uso é possível mas com mais vibração."
+    },
+    {
+      "question": "A Its Fitness tem assistência técnica?",
+      "answer": "O pós-venda é feito pelo vendedor no marketplace, não por uma rede autorizada. Para quem prioriza suporte rápido e peça garantida, uma marca como Gallant ou Kikos é mais segura."
+    }
+  ]
 }

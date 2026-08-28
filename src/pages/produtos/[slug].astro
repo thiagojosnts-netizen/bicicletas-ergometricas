@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import LojaLogo from '../../components/LojaLogo.astro';
+import FAQ from '../../components/FAQ.astro';
 
 export async function getStaticPaths() {
   const produtos = await getCollection('produtos');
@@ -47,6 +48,7 @@ const breadcrumbs = [
   title={`${d.name} — Ficha Completa`}
   description={d.description}
   breadcrumbs={breadcrumbs}
+  faqItems={d.faqItems ?? []}
   isArticle={false}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -122,6 +124,41 @@ const breadcrumbs = [
       </div>
     </div>
 
+    {(d.pros?.length || d.contras?.length) && (
+      <section class="detalhe-bloco">
+        <h2>Prós e contras</h2>
+        <div class="proscontras">
+          {d.pros?.length && (
+            <div class="pc-col pc-pro">
+              <h3>A favor</h3>
+              <ul>{d.pros.map((p) => <li>{p}</li>)}</ul>
+            </div>
+          )}
+          {d.contras?.length && (
+            <div class="pc-col pc-con">
+              <h3>Contra</h3>
+              <ul>{d.contras.map((c) => <li>{c}</li>)}</ul>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    {d.problemasRelatados && (
+      <section class="detalhe-bloco">
+        <h2>Problemas relatados e uso a longo prazo</h2>
+        <p>{d.problemasRelatados}</p>
+      </section>
+    )}
+
+    {(d.paraQuem || d.naoIndicadoPara) && (
+      <section class="detalhe-bloco">
+        <h2>Para quem é</h2>
+        {d.paraQuem && <p><strong>Indicada para:</strong> {d.paraQuem}</p>}
+        {d.naoIndicadoPara && <p><strong>Evite se:</strong> {d.naoIndicadoPara}</p>}
+      </section>
+    )}
+
     {d.especificacoes && Object.keys(d.especificacoes).length > 0 && (
       <section class="detalhe-specs">
         <h2>Especificações Técnicas</h2>
@@ -143,6 +180,10 @@ const breadcrumbs = [
     </div>
 
   </div>
+
+  {d.faqItems && d.faqItems.length > 0 && (
+    <FAQ items={d.faqItems} title={`Perguntas frequentes sobre a ${d.name}`} />
+  )}
 </Layout>
 
 <style>
@@ -257,4 +298,21 @@ const breadcrumbs = [
     font-weight: 600; text-decoration: none;
   }
   .detalhe-back a:hover { text-decoration: underline; }
+
+  .detalhe-bloco { margin-bottom: 2.5rem; }
+  .detalhe-bloco h2 {
+    font-size: 1.2rem; font-weight: 800; color: #111827;
+    margin-bottom: 1rem; font-family: Inter, sans-serif;
+  }
+  .detalhe-bloco p { font-size: 0.95rem; color: #374151; line-height: 1.7; margin: 0 0 0.75rem; }
+  .proscontras { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 640px) { .proscontras { grid-template-columns: 1fr; } }
+  .pc-col h3 {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 0 0 0.5rem;
+  }
+  .pc-pro h3 { color: #2e7d55; }
+  .pc-con h3 { color: #b1442f; }
+  .pc-col ul { margin: 0; padding-left: 1.1rem; }
+  .pc-col li { font-size: 0.9rem; color: #374151; line-height: 1.55; margin: 0.3rem 0; }
 </style>

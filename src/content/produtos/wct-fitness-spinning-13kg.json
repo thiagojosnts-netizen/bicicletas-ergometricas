@@ -35,5 +35,35 @@
     "Tipo de resistência": "Mecânica por fricção",
     "Transmissão": "Correia",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Roda de inércia de 13 kg, pedalada fluida e contínua",
+    "Transmissão por correia: silenciosa e sem lubrificação",
+    "Suporta 120 kg",
+    "Uma das mais vendidas do Mercado Livre na categoria, peça de reposição fácil de achar",
+    "Sensor cardíaco no guidão"
+  ],
+  "contras": [
+    "Resistência mecânica por fricção: troca de pastilha eventual e ajuste menos preciso que a magnética",
+    "Equipamento pesado, ocupa espaço de bike de spinning",
+    "Sem programas e sem Bluetooth",
+    "Monitor básico"
+  ],
+  "problemasRelatados": "Nas bikes de spinning com resistência por fricção, a pastilha de feltro que pressiona o volante desgasta com o uso e precisa ser trocada, peça barata e disponível. Alguns usuários relatam ruído no rolamento após meses de uso intenso, corrigido com lubrificação. O volume de vendas da WCT é a maior vantagem nesse ponto: a peça de reposição é fácil de encontrar. Selim e guidão pedem reaperto periódico, como em qualquer spinning.",
+  "paraQuem": "quem já tem condicionamento e quer treino de spinning em casa, pesa até 100 kg, tem espaço para uma bike de spinning e prioriza pedal pesado e fluido a recursos digitais.",
+  "naoIndicadoPara": "quem quer resistência magnética silenciosa de verdade, mora em apartamento com piso que transmite vibração, ou busca uma vertical confortável para uso leve.",
+  "faqItems": [
+    {
+      "question": "A WCT Fitness 13kg é magnética ou mecânica?",
+      "answer": "Mecânica, por fricção. A pastilha pressiona o volante para criar carga. A transmissão é por correia, que é silenciosa, mas a resistência em si tem o atrito típico do spinning."
+    },
+    {
+      "question": "Precisa trocar peça na WCT com que frequência?",
+      "answer": "A pastilha de fricção é o item de desgaste. A vida útil depende da intensidade e da frequência do uso; em uso doméstico regular, costuma passar de um ano. É peça barata e comum."
+    },
+    {
+      "question": "A roda de 13 kg é suficiente para spinning sério?",
+      "answer": "Sim. De 13 kg para cima, a resistência fica estável durante toda a volta do pedal, que é o que caracteriza um spinning de verdade. Abaixo disso, o pedal perde continuidade em rotação alta."
+    }
+  ]
 }

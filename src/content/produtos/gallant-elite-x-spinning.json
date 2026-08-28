@@ -31,5 +31,35 @@
     "Tipo de resistência": "Mecânica por fricção",
     "Transmissão": "Correia",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Preço de entrada para uma bike de spinning",
+    "Roda de inércia de 8 kg, suficiente para treino leve a moderado",
+    "Transmissão por correia",
+    "Estrutura de aço",
+    "Boa relação entre preço e acabamento"
+  ],
+  "contras": [
+    "Volante de 8 kg é leve, o pedal perde continuidade em rotação alta",
+    "Resistência mecânica por fricção",
+    "Monitor básico",
+    "Não acompanha a evolução de quem fica mais forte"
+  ],
+  "problemasRelatados": "O volante de 8 kg é o limite do modelo: para quem evolui e passa a treinar em alta intensidade, a pedalada começa a travar no fim de cada volta, o que leva parte dos usuários a trocar de bike em 12 a 18 meses. Fora isso, os relatos são os típicos do spinning de entrada, pastilha de fricção como item de desgaste e reaperto de parafusos nas primeiras semanas.",
+  "paraQuem": "quem quer experimentar spinning em casa sem investir alto, treina de forma leve a moderada e pesa até 90 kg.",
+  "naoIndicadoPara": "quem já tem bom condicionamento, treina em alta intensidade ou quer um volante que acompanhe a progressão.",
+  "faqItems": [
+    {
+      "question": "A roda de 8 kg da Elite X é suficiente?",
+      "answer": "Para iniciante e treino leve a moderado, sim. Para spinning de alta intensidade, não: falta inércia e o pedal perde continuidade. Nesse caso, vá para 13 kg ou mais."
+    },
+    {
+      "question": "Vale a pena a Elite X ou a Elite Pro?",
+      "answer": "A Elite X é mais barata e serve para começar. A Elite Pro tem volante de 18 kg e faz sentido para quem já sabe que vai treinar forte e com frequência."
+    },
+    {
+      "question": "A Gallant Elite X é dobrável?",
+      "answer": "Não. É uma bike de spinning de estrutura fixa. Para modelo compacto que guarda com facilidade, procure uma vertical dobrável."
+    }
+  ]
 }

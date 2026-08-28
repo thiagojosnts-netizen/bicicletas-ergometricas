@@ -32,5 +32,35 @@
     "Tipo": "Horizontal",
     "Altura recomendada": "1,45–1,85 m",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Assento com encosto e posição reclinada, menor impacto no joelho e apoio para a lombar",
+    "Resistência magnética silenciosa",
+    "Suporta 120 kg",
+    "Entrada e saída fáceis, útil para idosos e reabilitação",
+    "8 níveis de resistência"
+  ],
+  "contras": [
+    "Ocupa mais espaço que uma vertical",
+    "Gasto calórico menor por sessão, a posição confortável exige menos esforço",
+    "Poucos níveis para uso avançado",
+    "Sem Bluetooth"
+  ],
+  "problemasRelatados": "A horizontal magnética tem menos peças de desgaste que uma vertical mecânica, então os relatos concentram-se no console eletrônico e no ajuste do trilho do assento, que pode ganhar folga e gerar um leve estalo, corrigido com aperto. O assento reclinado é confortável, mas usuários com mais de 1,90 m relatam alcance limitado do pedal mesmo no ajuste máximo.",
+  "paraQuem": "quem está em reabilitação de joelho, quadril ou coluna, tem mais de 50 anos, está com sobrepeso, ou faz sessões longas e prioriza conforto e baixo impacto sobre gasto calórico.",
+  "naoIndicadoPara": "quem quer o maior gasto calórico por minuto, tem pouco espaço, ou busca treino de alta intensidade.",
+  "faqItems": [
+    {
+      "question": "A bicicleta horizontal emagrece menos que a vertical?",
+      "answer": "Por minuto, sim: a posição reclinada é mais confortável e recruta menos musculatura estabilizadora. Em compensação, permite sessões mais longas e é mais segura para quem tem restrição articular, o que pode equilibrar o total."
+    },
+    {
+      "question": "A Gallant Elite Horizontal serve para quem tem hérnia de disco ou dor lombar?",
+      "answer": "O encosto dá apoio à lombar e reduz a carga na coluna em relação à vertical. Ainda assim, qualquer retorno ao exercício após lesão deve ser liberado por um profissional."
+    },
+    {
+      "question": "Qual a altura máxima de usuário?",
+      "answer": "O ajuste do trilho atende bem até cerca de 1,85 m. Acima disso, o alcance do pedal fica curto mesmo na posição máxima."
+    }
+  ]
 }

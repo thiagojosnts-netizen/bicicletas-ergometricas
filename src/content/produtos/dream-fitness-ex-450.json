@@ -35,5 +35,35 @@
     "Regulagem do banco": "3 posições",
     "Monitor": "Velocidade, distância, tempo, calorias e FC",
     "Garantia": "12 meses"
-  }
+  },
+  "pros": [
+    "Preço de entrada, uma das verticais de marca mais baratas do Brasil",
+    "Compacta, cabe em espaço reduzido",
+    "Montagem simples com as ferramentas inclusas",
+    "Banco com regulagem em 3 alturas",
+    "Marca com boa disponibilidade de peças de reposição"
+  ],
+  "contras": [
+    "Resistência mecânica por atrito: mais ruído e desgaste que a magnética",
+    "Suporta apenas 100 kg",
+    "Sem programas de treino e sem Bluetooth",
+    "Volante leve, não serve para treino de alta intensidade"
+  ],
+  "problemasRelatados": "Em verticais mecânicas de entrada como esta, os relatos mais comuns envolvem folga no pedivela e nos pedais depois de alguns meses, resolvida com reaperto, e selim desconfortável em sessões longas, que muitos usuários trocam por uma capa de gel. A resistência por atrito perde um pouco de precisão de ajuste com o tempo e pode gerar um chiado leve. O console registra calorias de forma aproximada, como todo painel básico da categoria. Nada disso compromete o uso para treino regular de baixa a média intensidade, que é a proposta do modelo.",
+  "paraQuem": "quem está começando, treina de 2 a 4 vezes por semana em intensidade leve a moderada, pesa até 85 kg e quer o menor investimento possível numa vertical de marca conhecida.",
+  "naoIndicadoPara": "quem pesa mais de 90 kg, treina em alta intensidade, precisa de silêncio total em apartamento, ou quer acompanhar o treino por aplicativo.",
+  "faqItems": [
+    {
+      "question": "A Dream Fitness EX 450 é silenciosa?",
+      "answer": "Não totalmente. A resistência é mecânica por atrito, que gera um som perceptível em intensidade moderada, entre 40 e 60 dB. Para apartamento ou treino noturno, uma vertical magnética é mais indicada."
+    },
+    {
+      "question": "Quanto peso a EX 450 aguenta?",
+      "answer": "O fabricante declara 100 kg. Pela regra de margem de segurança, o modelo deve suportar de 20 a 25% a mais que o peso do usuário, ela atende bem quem pesa até 80 a 85 kg."
+    },
+    {
+      "question": "A EX 450 serve para emagrecer?",
+      "answer": "Serve para o treino aeróbico regular que ajuda no déficit calórico. Para isso a intensidade leve a moderada que ela permite é suficiente. O resultado depende da frequência e da alimentação, não do equipamento."
+    }
+  ]
 }

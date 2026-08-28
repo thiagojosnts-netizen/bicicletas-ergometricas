@@ -31,5 +31,35 @@
     "Tipo de resistência": "Mecânica (manípulo)",
     "Transmissão": "Correia",
     "Altura recomendada": "até ~1,70 m"
-  }
+  },
+  "pros": [
+    "Transmissão por correia silenciosa",
+    "Preço baixo, uma das mais baratas com correia",
+    "9 níveis de resistência por manípulo",
+    "Estrutura de aço",
+    "Boa avaliação de usuários para a faixa de preço"
+  ],
+  "contras": [
+    "Roda de inércia de apenas 4 kg, pedal leve, não serve para intensidade alta",
+    "Indicada para altura até cerca de 1,70 m",
+    "Marca de marketplace, pós-venda limitado",
+    "Monitor básico"
+  ],
+  "problemasRelatados": "O volante de 4 kg é o principal limite: a NK2019 é feita para treino leve a moderado, e usuários que buscam esforço maior relatam frustração com a falta de inércia. Para altura acima de 1,70 m, o alcance do selim e do guidão fica curto mesmo no ajuste máximo. Sendo marca de marketplace, a reposição de peça pode ser lenta. Para o uso previsto, iniciante em apartamento, os relatos são majoritariamente positivos.",
+  "paraQuem": "iniciante absoluto, com até 1,70 m e 100 kg, que mora em apartamento e prioriza silêncio e preço baixo para começar a pedalar.",
+  "naoIndicadoPara": "quem tem mais de 1,75 m, já treina com intensidade, ou pretende evoluir para treino forte a médio prazo.",
+  "faqItems": [
+    {
+      "question": "A KNakasaki NK2019 serve para quem já treina?",
+      "answer": "Não. O volante de 4 kg é leve demais para treino de intensidade. Ela é feita para iniciante que quer silêncio e baixo custo para começar; quem já tem condicionamento vai querer 8 kg ou mais."
+    },
+    {
+      "question": "Qual a altura máxima de usuário da NK2019?",
+      "answer": "Cerca de 1,70 m. Acima disso, o selim e o guidão não sobem o suficiente para uma postura confortável."
+    },
+    {
+      "question": "A NK2019 é silenciosa mesmo sendo barata?",
+      "answer": "Sim. A transmissão é por correia, não por corrente, o que mantém o funcionamento silencioso independente do preço. É o principal argumento do modelo."
+    }
+  ]
 }
