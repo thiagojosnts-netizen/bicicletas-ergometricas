@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -87,14 +88,7 @@ const faqItems = [
       </p>
 
       <p style="margin-top:1.5rem;">
-        <a
-          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
-          class="btn-cta"
-          target="_blank"
-          rel="noopener sponsored"
-        >
-          Ver melhores opções na Amazon →
-        </a>
+        <CompreCTA modelo="dream-ex450" contexto="Melhor custo-benefício de entrada" />
       </p>
 
       <h2>Faixas de Preço e o que Esperar</h2>

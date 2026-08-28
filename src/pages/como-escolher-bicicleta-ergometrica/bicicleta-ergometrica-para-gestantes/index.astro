@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -158,14 +159,7 @@ const faqItems = [
         Para ver opções de bicicletas horizontais e recumbentes disponíveis no Brasil, acesse o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-horizontal/">guia de bicicleta ergométrica horizontal</a> e o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">guia de recumbente</a>.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+horizontal+gestante&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver ergométricas horizontais na Amazon →
-      </a>
+      <CompreCTA modelo="gallant-horizontal" contexto="Horizontal, postura apoiada" />
 
     </div>
   </section>

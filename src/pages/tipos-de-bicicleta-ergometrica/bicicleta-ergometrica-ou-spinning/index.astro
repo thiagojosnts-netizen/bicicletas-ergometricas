@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
@@ -79,14 +80,7 @@ const faqItems = [
         </p>
       </div>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+spinning&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver bicicletas de spinning na Amazon →
-      </a>
+      <CompreCTA modelo="wct-13kg" contexto="Se a escolha for spinning" />
 
       <p style="margin-top:1.5rem;">
         Veja o <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-spinning/">guia completo da bicicleta de spinning</a> e o <a href="/tipos-de-bicicleta-ergometrica/">comparativo de todos os tipos de bicicleta ergométrica</a>.

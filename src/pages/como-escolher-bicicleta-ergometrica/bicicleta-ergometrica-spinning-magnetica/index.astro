@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -106,14 +107,7 @@ const faqItems = [
       </table>
 
       <p style="margin-top:1rem;">
-        <a
-          href="https://www.amazon.com.br/s?k=bicicleta+spinning+magnetica&tag=bicicletase0d-20"
-          class="btn-cta"
-          target="_blank"
-          rel="noopener sponsored"
-        >
-          Ver spinning magnéticas na Amazon →
-        </a>
+        <CompreCTA modelo="wct-13kg" contexto="Spinning por correia, funcionamento silencioso" />
       </p>
 
       <h2>Spinning Magnética vs Spinning Mecânica</h2>

@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
@@ -79,14 +80,7 @@ const faqItems = [
         Para opções acima dessa faixa com melhor custo-benefício, veja o <a href="/preco-bicicleta-ergometrica/bicicleta-ergometrica-custo-beneficio/">guia de melhor custo-benefício por faixa de preço</a>. Para o guia completo de preços, acesse <a href="/preco-bicicleta-ergometrica/">preço de bicicleta ergométrica</a>.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+barata&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta"
-      >
-        Ver ofertas de bicicleta ergométrica na Amazon →
-      </a>
+      <CompreCTA modelo="dream-ex450" contexto="Melhor opção de entrada" />
     </div>
   </section>
 

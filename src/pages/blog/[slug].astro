@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
+import CompreCTA from '../../components/CompreCTA.astro';
+import { modelos } from '../../data/afiliados';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -15,6 +17,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const slug = post.id.replace(/\.md$/, '');
+const ctaModelo = (post.data.ctaModelo && post.data.ctaModelo in modelos) ? post.data.ctaModelo : 'dream-ex450';
 
 const breadcrumbs = [
   { name: 'Blog', url: '/blog/' },
@@ -61,6 +64,8 @@ const breadcrumbs = [
       <div class="prose">
         <Content />
       </div>
+
+      <CompreCTA modelo={ctaModelo} contexto="Modelo recomendado pela nossa análise" />
 
       <footer style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--token-border);">
         <a href="/blog/" class="btn-primary" style="font-size:0.875rem;">

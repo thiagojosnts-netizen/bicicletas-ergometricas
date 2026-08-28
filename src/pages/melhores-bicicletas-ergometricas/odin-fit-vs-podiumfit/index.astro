@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -121,7 +122,7 @@ const faqItems = [
       <div class="cta-pair">
         <a href="/melhores-bicicletas-ergometricas/odin-fit/" class="btn-primary">Análise Odin Fit →</a>
         <a href="/melhores-bicicletas-ergometricas/podiumfit/" class="btn-secondary">Análise PodiumFit →</a>
-        <a href="https://www.amazon.com.br/s?k=odin+fit+podiumfit+bicicleta+ergometrica&tag=bicicletase0d-20" target="_blank" rel="noopener sponsored" class="btn-cta">Ver na Amazon →</a>
+        <CompreCTA modelo="wct-13kg" contexto="Alternativa de spinning com link direto" />
       </div>
 
     </div>

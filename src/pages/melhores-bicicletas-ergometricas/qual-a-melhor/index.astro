@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -79,14 +80,7 @@ const faqItems = [
         </p>
       </div>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver bicicletas ergométricas na Amazon →
-      </a>
+      <CompreCTA modelo="kikos-kv31" contexto="Escolha segura para a maioria" />
 
       <p style="margin-top:1.5rem;">
         Para decidir entre marcas específicas, veja o comparativo de <a href="/melhores-bicicletas-ergometricas/melhor-marca/">melhor marca de bicicleta ergométrica</a>. Para orçamento reduzido, consulte o <a href="/melhores-bicicletas-ergometricas/melhor-custo-beneficio/">guia de melhor custo-benefício</a>.

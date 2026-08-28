@@ -3,6 +3,7 @@ title: "Bicicleta Ergométrica para Fisioterapia: Guia Completo"
 description: "Qual bicicleta ergométrica é indicada para fisioterapia e reabilitação? Modelos horizontais, recumbentes e os critérios técnicos que fisioterapeutas consideram na escolha."
 datePublished: "2026-06-01"
 tags: ["fisioterapia", "reabilitação", "joelho", "horizontal"]
+ctaModelo: "gallant-horizontal"
 ---
 
 A bicicleta ergométrica é um dos equipamentos mais utilizados em protocolos de fisioterapia e reabilitação. O movimento cíclico de baixo impacto permite trabalhar a musculatura periarticular sem sobrecarregar cartilagens e ligamentos — especialmente em joelho, quadril e coluna lombar.

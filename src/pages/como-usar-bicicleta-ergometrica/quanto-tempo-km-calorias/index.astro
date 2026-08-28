@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Usar Bicicleta Ergométrica', url: '/como-usar-bicicleta-ergometrica/' },
@@ -186,14 +187,7 @@ const faqItems = [
         Para estruturar o treino com controle preciso de intensidade, consulte o guia de <a href="/como-usar-bicicleta-ergometrica/frequencia-cardiaca-bicicleta-ergometrica/">zonas de frequência cardíaca na bicicleta ergométrica</a>.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver ergométricas na Amazon Brasil →
-      </a>
+      <CompreCTA modelo="dream-ex450" contexto="Vertical de entrada com monitor" />
     </div>
   </section>
 

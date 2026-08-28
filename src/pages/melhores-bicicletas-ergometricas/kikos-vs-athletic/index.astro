@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Melhores Bicicletas Ergométricas', url: '/melhores-bicicletas-ergometricas/' },
@@ -115,7 +116,7 @@ const faqItems = [
       <div class="cta-pair">
         <a href="/melhores-bicicletas-ergometricas/kikos/" class="btn-primary">Análise Kikos →</a>
         <a href="/melhores-bicicletas-ergometricas/athletic/" class="btn-secondary">Análise Athletic →</a>
-        <a href="https://www.amazon.com.br/s?k=kikos+athletic+bicicleta+ergometrica&tag=bicicletase0d-20" target="_blank" rel="noopener sponsored" class="btn-cta">Ver na Amazon →</a>
+        <CompreCTA modelo="kikos-kv31" contexto="A Kikos com link e ficha" />
       </div>
 
     </div>

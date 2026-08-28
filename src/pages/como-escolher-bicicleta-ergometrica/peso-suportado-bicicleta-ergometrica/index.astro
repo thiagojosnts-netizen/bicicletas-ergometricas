@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -81,14 +82,7 @@ const faqItems = [
         Volte ao <a href="/como-escolher-bicicleta-ergometrica/">guia completo de como escolher bicicleta ergométrica</a> para avaliar os demais critérios de compra além do peso suportado.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+120kg+suporte&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver ergométricas por capacidade de carga na Amazon →
-      </a>
+      <CompreCTA modelo="its-pro818" contexto="Suporta 150 kg declarados" />
     </div>
   </section>
 

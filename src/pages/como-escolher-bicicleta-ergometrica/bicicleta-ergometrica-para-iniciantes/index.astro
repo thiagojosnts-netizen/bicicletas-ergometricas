@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -201,14 +202,7 @@ const faqItems = [
         Para ver os melhores modelos por faixa de preço, acesse o <a href="/melhores-bicicletas-ergometricas/">ranking completo de bicicletas ergométricas</a>. Para entender os tipos disponíveis, veja o <a href="/tipos-de-bicicleta-ergometrica/">guia de tipos de bicicleta ergométrica</a>.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+iniciante&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver ergométricas para iniciantes na Amazon →
-      </a>
+      <CompreCTA modelo="dream-ex450" contexto="Vertical de entrada mais avaliada" />
 
     </div>
   </section>

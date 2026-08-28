@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
@@ -35,23 +36,23 @@ const modelos = [
   {
     faixa: 'Até R$ 900 no Prime Day',
     perfil: 'Iniciante, uso 1–2x/semana',
-    tipo: 'Vertical magnética',
-    href: 'https://www.amazon.com.br/s?k=bicicleta+ergometrica+magnetica&tag=bicicletase0d-20',
-    cta: 'Ver modelos de entrada na Amazon',
+    tipo: 'Vertical de entrada',
+    href: 'https://link.amazon/B05aGxhNF',
+    cta: 'Ver a Dream Fitness EX 450 na Amazon',
   },
   {
     faixa: 'R$ 900–R$ 1.500 no Prime Day',
     perfil: 'Uso regular, 3–4x/semana',
-    tipo: 'Vertical magnética 12+ níveis',
-    href: 'https://www.amazon.com.br/s?k=bicicleta+ergometrica+12+niveis&tag=bicicletase0d-20',
-    cta: 'Ver modelos intermediários na Amazon',
+    tipo: 'Vertical magnética silenciosa',
+    href: 'https://link.amazon/B071AhLkk',
+    cta: 'Ver a Kikos KV3.1i na Amazon',
   },
   {
     faixa: 'Acima de R$ 1.500 no Prime Day',
     perfil: 'Uso intenso, spinning, múltiplos usuários',
-    tipo: 'Spinning / Magnética premium',
-    href: 'https://www.amazon.com.br/s?k=bicicleta+ergometrica+spinning+profissional&tag=bicicletase0d-20',
-    cta: 'Ver modelos premium na Amazon',
+    tipo: 'Spinning, roda de inércia 18kg',
+    href: 'https://www.amazon.com.br/dp/B0C4K2FTDY?tag=bicicletase0d-20',
+    cta: 'Ver a Gallant Elite Pro na Amazon',
   },
 ];
 ---
@@ -193,16 +194,7 @@ const modelos = [
         Para referência, veja as <a href="/preco-bicicleta-ergometrica/">faixas de preço atuais por categoria</a> e use esse histórico para avaliar o desconto real quando o evento acontecer.
       </p>
 
-      <div style="text-align:center;margin-top:3rem;">
-        <a
-          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20"
-          target="_blank"
-          rel="noopener sponsored"
-          class="btn-cta"
-        >
-          Ver bicicletas ergométricas na Amazon Brasil →
-        </a>
-      </div>
+      <CompreCTA modelo="dream-ex450" contexto="O modelo de entrada mais avaliado para acompanhar no evento" />
 
     </div>
   </section>

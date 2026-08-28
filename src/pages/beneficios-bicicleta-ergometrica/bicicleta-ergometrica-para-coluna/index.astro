@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Benefícios da Bicicleta Ergométrica', url: '/beneficios-bicicleta-ergometrica/' },
@@ -71,14 +72,7 @@ const faqItems = [
         Para o modelo mais indicado para coluna, veja <a href="/tipos-de-bicicleta-ergometrica/bicicleta-ergometrica-recumbente/">bicicleta ergométrica recumbente</a>. Para o guia de regulagem completo, acesse <a href="/como-usar-bicicleta-ergometrica/regulagem-bicicleta-ergometrica/">como regular a bicicleta ergométrica</a>.
       </p>
 
-      <a
-        href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+coluna+recumbente&tag=bicicletase0d-20"
-        target="_blank"
-        rel="noopener sponsored"
-        class="btn-cta" style="margin-top:0.5rem"
-      >
-        Ver ergométricas para coluna na Amazon →
-      </a>
+      <CompreCTA modelo="gallant-horizontal" contexto="Horizontal com apoio para a lombar" />
     </div>
   </section>
 

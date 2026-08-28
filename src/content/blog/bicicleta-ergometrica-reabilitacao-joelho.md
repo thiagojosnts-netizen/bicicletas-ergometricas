@@ -3,6 +3,7 @@ title: "Bicicleta Ergométrica e Reabilitação de Joelho: Guia"
 description: "Bicicleta ergométrica para reabilitação de joelho: como usar após cirurgia de LCA, menisco e artrose. Protocolo de uso, regulagem e modelos indicados por fisioterapeutas."
 datePublished: "2026-06-01"
 tags: ["reabilitação", "joelho", "LCA", "menisco", "artrose"]
+ctaModelo: "gallant-horizontal"
 ---
 
 A bicicleta ergométrica é um dos equipamentos mais utilizados em fisioterapia ortopédica de joelho. O movimento cíclico sem impacto axial permite fortalecer a musculatura periarticular enquanto nutre a cartilagem pelo estímulo sinovial — sem sobrecarregar os tecidos em cicatrização.

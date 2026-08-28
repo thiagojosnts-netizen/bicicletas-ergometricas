@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Tipos de Bicicleta Ergométrica', url: '/tipos-de-bicicleta-ergometrica/' },
@@ -125,14 +126,7 @@ const faqItems = [
       </table>
 
       <p style="margin-top:1rem;">
-        <a
-          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+dobravel&tag=bicicletase0d-20"
-          class="btn-cta"
-          target="_blank"
-          rel="noopener sponsored"
-        >
-          Ver bicicletas dobráveis na Amazon →
-        </a>
+        <CompreCTA modelo="gallant-x-spinning" contexto="Opção compacta da Gallant" />
       </p>
 
       <h2>Bicicleta Dobrável vs Convencional</h2>

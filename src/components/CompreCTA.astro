@@ -1,0 +1,88 @@
+---
+// src/components/CompreCTA.astro
+// Bloco de CTA de afiliado para as páginas informacionais.
+// Uso: <CompreCTA modelo="kikos-kv31" contexto="Para apartamento, a opção silenciosa é:" />
+import LojaLogo from './LojaLogo.astro';
+import { modelos } from '../data/afiliados';
+
+type Loja = 'Amazon' | 'Mercado Livre' | 'Shopee';
+
+interface Props {
+  modelo: keyof typeof modelos;
+  contexto?: string;
+}
+
+const { modelo, contexto } = Astro.props;
+const m = modelos[modelo];
+
+const meta: Record<Loja, { slug: string; prep: string }> = {
+  'Amazon': { slug: 'amazon', prep: 'na' },
+  'Mercado Livre': { slug: 'ml', prep: 'no' },
+  'Shopee': { slug: 'shopee', prep: 'na' },
+};
+---
+
+{m && (
+  <aside class="compre-cta" aria-label={`Onde comprar a ${m.nome}`}>
+    <p class="compre-cta-ctx">{contexto ?? 'Modelo recomendado para este perfil'}</p>
+    <p class="compre-cta-nome">{m.nome}</p>
+    <div class="compre-cta-lojas">
+      {m.ofertas.map((o) => (
+        <a
+          href={o.url}
+          target="_blank"
+          rel="noopener nofollow sponsored"
+          class={`btn-loja btn-${meta[o.loja].slug}`}
+          aria-label={`Ver ${m.nome} ${meta[o.loja].prep} ${o.loja}`}
+        >
+          <LojaLogo loja={o.loja} />
+          <svg class="btn-loja-arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+            <path d="M7 17 L17 7"/><path d="M8 7 h9 v9"/>
+          </svg>
+        </a>
+      ))}
+    </div>
+    <a href={m.destino} class="compre-cta-ficha">Ver análise completa &rarr;</a>
+  </aside>
+)}
+
+<style>
+  .compre-cta {
+    margin: 1.75rem 0;
+    padding: 1.1rem 1.25rem 1.25rem;
+    background: var(--token-surface, #fff);
+    border: 1px solid var(--token-border, #e5e7eb);
+    border-left: 3px solid var(--token-brand, #2D6A4F);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .compre-cta-ctx {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--token-brand, #2D6A4F);
+    margin: 0;
+  }
+  .compre-cta-nome {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--token-text-primary, #111827);
+    margin: 0;
+  }
+  .compre-cta-lojas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-top: 0.15rem;
+  }
+  .compre-cta-ficha {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--token-brand, #2D6A4F);
+    text-decoration: none;
+  }
+  .compre-cta-ficha:hover { text-decoration: underline; }
+</style>

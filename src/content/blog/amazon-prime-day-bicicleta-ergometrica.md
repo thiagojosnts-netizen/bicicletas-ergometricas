@@ -61,13 +61,13 @@ No app da Amazon, ative as notificações de "Preço caiu" para os produtos da s
 Com base nos modelos mais vendidos e avaliados na Amazon Brasil em 2026, os produtos com maior potencial de desconto são:
 
 **Até R$ 900 no Prime Day:**
-- [Bicicletas ergométricas de entrada na Amazon](https://www.amazon.com.br/s?k=bicicleta+ergometrica&tag=bicicletase0d-20) — filtre por avaliação acima de 4 estrelas e mais de 500 reviews
+- [Dream Fitness EX 450](/produtos/dream-fitness-ex-450/) — vertical de entrada, mais de 3.700 avaliações
 
 **R$ 900 a R$ 1.500 no Prime Day:**
-- [Bicicletas ergométricas intermediárias na Amazon](https://www.amazon.com.br/s?k=bicicleta+ergometrica+magnetica&tag=bicicletase0d-20) — resistência magnética, 12+ níveis
+- [Kikos KV3.1i Magnética](/produtos/kikos-kv3-1i-magnetica/) — resistência magnética silenciosa
 
 **Acima de R$ 1.500 no Prime Day:**
-- [Bicicletas ergométricas premium e spinning na Amazon](https://www.amazon.com.br/s?k=bicicleta+ergometrica+spinning&tag=bicicletase0d-20) — volante de inércia 10 kg+
+- [Gallant Elite Pro Spinning](/produtos/gallant-elite-pro-spinning/) — volante de inércia de 18 kg
 
 ## Cuidados para não cair em armadilhas
 

@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import FAQ from '../../../components/FAQ.astro';
+import CompreCTA from '../../../components/CompreCTA.astro';
 
 const breadcrumbs = [
   { name: 'Como Escolher Bicicleta Ergométrica', url: '/como-escolher-bicicleta-ergometrica/' },
@@ -80,14 +81,7 @@ const faqItems = [
       </table>
 
       <p style="margin-top:1rem;">
-        <a
-          href="https://www.amazon.com.br/s?k=bicicleta+ergometrica+150kg&tag=bicicletase0d-20"
-          class="btn-cta"
-          target="_blank"
-          rel="noopener sponsored"
-        >
-          Ver modelos de alta capacidade na Amazon →
-        </a>
+        <CompreCTA modelo="its-pro818" contexto="Suporta 150 kg, acima da média da faixa" />
       </p>
 
       <h2>O que Verificar na Estrutura</h2>
