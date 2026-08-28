@@ -61,7 +61,7 @@ No app da Amazon, ative as notificações de "Preço caiu" para os produtos da s
 Com base nos modelos mais vendidos e avaliados na Amazon Brasil em 2026, os produtos com maior potencial de desconto são:
 
 **Até R$ 900 no Prime Day:**
-- [Dream Fitness EX 450](/produtos/dream-fitness-ex-450/) — vertical de entrada, mais de 3.700 avaliações
+- [Dream Fitness EX 450](/produtos/dream-fitness-ex-450/) — vertical de entrada mais conhecida
 
 **R$ 900 a R$ 1.500 no Prime Day:**
 - [Kikos KV3.1i Magnética](/produtos/kikos-kv3-1i-magnetica/) — resistência magnética silenciosa
