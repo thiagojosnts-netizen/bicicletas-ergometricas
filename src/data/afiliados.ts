@@ -15,7 +15,7 @@ export const modelos: Record<string, ModeloAfiliado> = {
     nome: 'Dream Fitness EX 450',
     destino: '/produtos/dream-fitness-ex-450/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://link.amazon/B05aGxhNF' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B07BK5WHD3?tag=bicicletase0d-20' },
       { loja: 'Mercado Livre', url: 'https://meli.la/1jEg8FC' },
     ],
   },
@@ -23,7 +23,7 @@ export const modelos: Record<string, ModeloAfiliado> = {
     nome: 'Kikos KV3.1i Magnética',
     destino: '/produtos/kikos-kv3-1i-magnetica/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://link.amazon/B071AhLkk' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B0GGJY86KF?tag=bicicletase0d-20' },
       { loja: 'Mercado Livre', url: 'https://meli.la/1tX6pbg' },
     ],
   },
@@ -31,7 +31,7 @@ export const modelos: Record<string, ModeloAfiliado> = {
     nome: 'WCT Fitness Spinning 13kg',
     destino: '/produtos/wct-fitness-spinning-13kg/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://link.amazon/B053BL2DM' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B09Z78CWXY?tag=bicicletase0d-20' },
       { loja: 'Mercado Livre', url: 'https://meli.la/1prAuY7' },
     ],
   },
@@ -61,21 +61,21 @@ export const modelos: Record<string, ModeloAfiliado> = {
     nome: 'Acte Sports E16 Spinning',
     destino: '/melhores-bicicletas-ergometricas/acte-sports/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://amzn.to/3RR5lNN' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B07FMD7WC4?tag=bicicletase0d-20' },
     ],
   },
   'its-pro818': {
     nome: 'Its Fitness Pro 818',
     destino: '/produtos/its-fitness-pro-818/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://link.amazon/B0f21cEEt' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B0FDS8R6DW?tag=bicicletase0d-20' },
     ],
   },
   'knakasaki-nk2019': {
     nome: 'KNakasaki NK2019',
     destino: '/produtos/knakasaki-nk2019/',
     ofertas: [
-      { loja: 'Amazon', url: 'https://link.amazon/B08cHgDiq' },
+      { loja: 'Amazon', url: 'https://www.amazon.com.br/dp/B0DMWNVJ37?tag=bicicletase0d-20' },
     ],
   },
 };
