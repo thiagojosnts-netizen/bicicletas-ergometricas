@@ -38,6 +38,9 @@
     { "source": "/author/lordbuth/", "destination": "/sobre/", "permanent": true },
     { "source": "/category/uncategorized/", "destination": "/blog/", "permanent": true },
     { "source": "/bicicleta-ergometrica-dobravel/", "destination": "/tipos-de-bicicleta-ergometrica/", "permanent": true },
-    { "source": "/acessorios-bicicleta-ergometrica/", "destination": "/como-escolher-bicicleta-ergometrica/", "permanent": true }
+    { "source": "/acessorios-bicicleta-ergometrica/", "destination": "/como-escolher-bicicleta-ergometrica/", "permanent": true },
+    { "source": "/feed", "destination": "/", "permanent": true },
+    { "source": "/feed/", "destination": "/", "permanent": true },
+    { "source": "/comments/feed/", "destination": "/", "permanent": true }
   ]
 }

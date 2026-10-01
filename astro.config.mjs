@@ -6,6 +6,7 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://bicicletasergometricas.com',
+  trailingSlash: 'always',
   redirects: {
     '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-kikos/':     '/melhores-bicicletas-ergometricas/kikos/',
     '/melhores-bicicletas-ergometricas/bicicleta-ergometrica-randers/':   '/melhores-bicicletas-ergometricas/randers/',
