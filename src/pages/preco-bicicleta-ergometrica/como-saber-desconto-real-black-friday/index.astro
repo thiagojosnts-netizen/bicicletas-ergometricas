@@ -1,0 +1,125 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FAQ from '../../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Preço de Bicicleta Ergométrica', url: '/preco-bicicleta-ergometrica/' },
+  { name: 'Desconto Real na Black Friday', url: '/preco-bicicleta-ergometrica/como-saber-desconto-real-black-friday/' },
+];
+
+const faqItems = [
+  {
+    question: 'Um desconto de 70% em bicicleta ergométrica é sempre golpe?',
+    answer: 'Não necessariamente. Liquidação de modelo de linha anterior, produtos com preço de lançamento mais alto ou estoque que a loja quer reduzir podem ter desconto grande e real. O que importa não é o tamanho do percentual anunciado, e sim confirmar no histórico de preço se o valor final está de fato baixo em relação ao que o produto costuma custar.',
+  },
+  {
+    question: 'Quantos dias antes da Black Friday devo anotar o preço?',
+    answer: 'O quanto antes, melhor. Pelo menos 2 a 4 semanas antes do evento já dá uma referência razoável, já que é nesse período que o preço de referência costuma começar a subir antes da data promocional.',
+  },
+  {
+    question: 'O Keepa serve para o Mercado Livre?',
+    answer: 'Não. O Keepa cobre a Amazon, incluindo a Amazon Brasil. Para Mercado Livre, Magazine Luiza e outras lojas, o método mais confiável hoje é manual: tirar um print do preço com a data visível algumas semanas antes do evento.',
+  },
+];
+---
+
+<Layout
+  title="Como Saber se o Desconto da Black Friday é Real"
+  description="Como confirmar se o desconto da Black Friday em bicicleta ergométrica é real: histórico de preço, sinais de desconto encenado e checklist antes de comprar."
+  breadcrumbs={breadcrumbs}
+  faqItems={faqItems}
+  datePublished="2026-10-08"
+  isArticle={true}
+  dateModified="2026-10-08"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="section" aria-labelledby="page-heading">
+    <div class="container" style="max-width:860px;">
+      <h1 id="page-heading">Como Saber se o Desconto da Black Friday de Bicicleta Ergométrica é Real</h1>
+
+      <p class="summarization">
+        Resposta direta: um desconto da Black Friday é real quando o preço anunciado fica abaixo do histórico recente do produto, não apenas abaixo de um preço "de" inflado dias antes do evento. Para confirmar, veja o histórico de preço do modelo, calcule a economia em reais (não só em porcentagem) e compare a mesma versão em pelo menos duas lojas. O guia completo de datas e faixas de preço está no <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">guia de Black Friday 2026</a>.
+      </p>
+
+      <h2>Por que o preço de referência pode subir antes da Black Friday</h2>
+
+      <p>
+        É comum que o preço "de" exibido ao lado do valor promocional suba nas semanas que antecedem a Black Friday. O produto pode ter sido vendido pelo mesmo valor na maior parte do ano, subir de preço em outubro, e então "cair" em novembro para um valor que ainda está acima do que o produto já custava normalmente. O desconto anunciado parece real porque foi calculado sobre o preço inflado, não sobre o preço histórico de fato.
+      </p>
+
+      <p>
+        Essa prática de ajustar o preço de referência pouco antes de uma data promocional é comum no varejo on-line em geral, não é exclusiva de nenhuma loja ou marca específica. O problema para quem compra é que o percentual de desconto anunciado não diz nada sobre qual preço foi usado como base do cálculo. Um desconto anunciado alto pode, na prática, representar uma economia pequena ou nula se o preço de referência também tiver subido antes do evento. Por isso o histórico de preço, e não o percentual anunciado, é o dado que realmente importa para decidir se vale comprar.
+      </p>
+
+      <h2>Como ver o histórico de preço antes de comprar</h2>
+
+      <p>
+        Antes de clicar em comprar, vale conferir o histórico de preço do modelo específico. O método varia por loja.
+      </p>
+
+      <h3>Keepa: o histórico na Amazon</h3>
+
+      <p>
+        Keepa é uma extensão de navegador gratuita para ver o histórico de preço, disponível para Chrome e Firefox, que mostra um gráfico diretamente na página do produto na Amazon, incluindo a Amazon Brasil. Depois de instalada, basta abrir a página do modelo de bicicleta ergométrica que você está considerando: o gráfico aparece junto à área de preço, com a variação dos últimos meses.
+      </p>
+
+      <p>
+        O que olhar no gráfico: o ponto mais baixo da linha nos últimos 90 dias (o preço mínimo real já praticado) e a média do período. Se o preço atual estiver próximo ou abaixo desses dois valores, o desconto é consistente com o histórico. Se o preço atual estiver bem acima da linha mais baixa recente, o desconto da Black Friday pode ser menor do que parece no primeiro olhar.
+      </p>
+
+      <h3>Mercado Livre e outras lojas: o método manual</h3>
+
+      <p>
+        O Mercado Livre, a Magazine Luiza e outras lojas brasileiras não têm um equivalente oficial e amplamente estabelecido ao Keepa. O método mais confiável nesses casos é manual: tire um print da página do produto, com preço e data visíveis, algumas semanas antes da Black Friday. Esse print se torna a sua própria referência para comparar com o preço anunciado no dia do evento.
+      </p>
+
+      <p>
+        Existem extensões de navegador que afirmam mostrar histórico de preço para o Mercado Livre e outras lojas brasileiras. Elas podem ser úteis, mas, como qualquer extensão de navegador, pedem permissões amplas de acesso às páginas que você visita. Antes de instalar qualquer uma, verifique a reputação, o número de avaliações e quem é o desenvolvedor. Na dúvida, o print manual é o método mais simples e seguro.
+      </p>
+
+      <h2>Sinais de que o desconto foi encenado</h2>
+
+      <p>
+        Alguns sinais indicam que um desconto pode estar mais na aparência do que na prática. Nenhum deles, isolado, prova má-fé, mas quando aparecem juntos, vale desconfiar e conferir o histórico de preço antes de decidir.
+      </p>
+
+      <ul>
+        <li><strong>Percentual de desconto chamativo sem histórico de preço disponível</strong> para confirmar se o valor "de" já foi praticado de fato.</li>
+        <li><strong>Contagem regressiva ou aviso de "últimas unidades"</strong> sem um número real de estoque, criando pressa artificial.</li>
+        <li><strong>Cupom que só fica visível no dia do evento</strong>, impossível de verificar ou comparar com antecedência.</li>
+        <li><strong>Frete que sobe na mesma proporção do desconto anunciado</strong>, anulando a economia no valor final.</li>
+        <li><strong>Preço que volta ao mesmo nível de antes poucos dias depois do evento</strong>, sinal de que a promoção era apenas o preço normal com uma etiqueta diferente.</li>
+      </ul>
+
+      <h2>Compare o mesmo modelo, não versões diferentes</h2>
+
+      <p>
+        Um erro comum ao comparar preços entre lojas é tratar como idêntico um modelo que, na verdade, tem versões diferentes. A mesma linha de bicicleta ergométrica pode vir com rodas de inércia de pesos diferentes, cores distintas, ou pacotes que incluem acessórios extras em uma loja e não em outra. Essas diferenças, mesmo pequenas, podem explicar uma diferença de preço que parece um desconto melhor, mas na verdade é um produto diferente.
+      </p>
+
+      <p>
+        Antes de comparar o preço entre Amazon, Mercado Livre e Magazine Luiza, confira se a ficha técnica do anúncio é realmente a mesma: peso da roda de inércia, peso suportado e os itens incluídos na caixa. Se a loja não detalhar essas informações no anúncio, procure a especificação na ficha do fabricante ou em um comparativo independente antes de decidir pelo preço mais baixo. Comparar dois modelos diferentes como se fossem o mesmo produto é um dos jeitos mais comuns de achar que se fez um bom negócio quando, na prática, se comprou uma versão mais simples por um preço parecido com a mais completa.
+      </p>
+
+      <h2>Checklist rápido antes de comprar</h2>
+
+      <p>Antes de finalizar a compra na Black Friday, confira rapidamente:</p>
+
+      <ul>
+        <li>Já vi o histórico de preço dos últimos meses do modelo (Keepa na Amazon, ou meu próprio print em outras lojas)?</li>
+        <li>Sei o preço real que o produto costuma custar, não só o percentual de desconto anunciado?</li>
+        <li>Comparei o mesmo modelo, com a mesma roda de inércia e os mesmos itens inclusos, entre pelo menos duas lojas?</li>
+        <li>O frete não está anulando a economia do desconto?</li>
+        <li>Já vi a faixa de desconto esperada para essa marca no <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">guia completo de Black Friday 2026</a>, para saber se o valor anunciado está dentro do esperado?</li>
+      </ul>
+
+      <p style="margin-top:1.5rem;">
+        Agora que você sabe como confirmar se o desconto é real, volte ao <a href="/preco-bicicleta-ergometrica/black-friday-bicicleta-ergometrica/">guia completo de Black Friday 2026</a> para ver as datas, os alvos de preço por faixa e a expectativa de desconto por marca. Para outras faixas de preço fora da Black Friday, veja o <a href="/preco-bicicleta-ergometrica/">guia de preço de bicicleta ergométrica</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Perguntas frequentes sobre desconto na Black Friday" />
+</Layout>
